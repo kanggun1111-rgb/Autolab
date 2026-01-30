@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Sponsors - Auto_Lab</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sponsors – Auto_Lab</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<!-- GitHub Pages용 base -->
+<base href="/Autolab/">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/sponsors.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/sponsors.css">
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Navbar (기존과 동일) -->
 <header>
   <nav>
     <div class="logo">
-      <a href="../index.html"><img src="../images/logo.png" alt="Autolab Logo"></a>
+      <a href="/Autolab/"><img src="images/logo.png" alt="Autolab Logo"></a>
     </div>
     <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="#all-sponsors">Sponsors</a></li>
-      <li><a href="../index.html#news">News</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="/Autolab/#hero">Home</a></li>
+      <li><a href="/Autolab/#team-intro">Team</a></li>
+      <li><a href="/Autolab/#vehicle">Vehicles</a></li>
+      <li><a href="/Autolab/#sponsors">Sponsors</a></li>
+      <li><a href="/Autolab/#news">News</a></li>
+      <li><a href="/Autolab/#contact">Contact</a></li>
     </ul>
     <div class="hamburger">
       <div></div><div></div><div></div>
@@ -38,31 +41,62 @@
 <section id="sponsors-hero">
   <div class="hero-video-wrapper">
     <video class="bg-video" autoplay muted loop playsinline>
-      <source src="../videos/hero.mp4" type="video/mp4">
+      <source src="videos/hero.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
   <div class="hero-content">
     <h1>Our Sponsors</h1>
-    <h2>Partners & Supporters</h2>
+    <h2>Thank you for supporting Auto_Lab</h2>
   </div>
 </section>
 
-<!-- All Sponsors Section -->
-<section id="all-sponsors" class="all-sponsors">
-  <div class="container">
-    <div class="sponsor-grid">
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor1.png" alt="Sponsor 1"></div>
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor2.png" alt="Sponsor 2"></div>
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor3.png" alt="Sponsor 3"></div>
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor4.png" alt="Sponsor 4"></div>
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor5.png" alt="Sponsor 5"></div>
-      <div class="sponsor-logo"><img src="../images/sponsors/sponsor6.png" alt="Sponsor 6"></div>
-      <!-- 필요 시 추가 로고 넣기 -->
+<!-- Sponsors Tier Content -->
+<section class="sponsors-tiers">
+
+  <!-- Platinum -->
+  <div class="sponsor-tier">
+    <h2 class="tier-title">Platinum Partners</h2>
+    <div class="sponsor-grid platinum">
+      <div class="sponsor-logo"><a href="https://example.com"><img src="images/sponsors/platinum1.png" alt="Platinum Sponsor 1"></a></div>
+      <div class="sponsor-logo"><a href="https://example.com"><img src="images/sponsors/platinum2.png" alt="Platinum Sponsor 2"></a></div>
     </div>
   </div>
+
+  <!-- Gold -->
+  <div class="sponsor-tier">
+    <h2 class="tier-title">Gold Partners</h2>
+    <div class="sponsor-grid gold">
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold1.png" alt="Gold Sponsor 1"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold2.png" alt="Gold Sponsor 2"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold3.png" alt="Gold Sponsor 3"></a></div>
+    </div>
+  </div>
+
+  <!-- Silver -->
+  <div class="sponsor-tier">
+    <h2 class="tier-title">Silver Partners</h2>
+    <div class="sponsor-grid silver">
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver1.png" alt="Silver Sponsor 1"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver2.png" alt="Silver Sponsor 2"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver3.png" alt="Silver Sponsor 3"></a></div>
+    </div>
+  </div>
+
+  <!-- Supporters -->
+  <div class="sponsor-tier">
+    <h2 class="tier-title">Supporters</h2>
+    <div class="sponsor-grid supporters">
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter1.png" alt="Supporter 1"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter2.png" alt="Supporter 2"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter3.png" alt="Supporter 3"></a></div>
+      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter4.png" alt="Supporter 4"></a></div>
+    </div>
+  </div>
+
 </section>
 
 <script src="js/script.js"></script>
 </body>
 </html>
+
