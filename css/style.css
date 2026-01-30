@@ -121,10 +121,27 @@ nav .nav-links li a:hover { color:#f0a500; }
 .split-section .text-container .btn:hover { background:#fff; }
 
 /* Sponsors */
-#sponsors { text-align:center; padding:100px 20px; background:#111; }
-#sponsors h2 { font-family:'Orbitron', sans-serif; font-weight:700; font-size:2.5rem; margin-bottom:50px; color:#FF4500; border-bottom:3px solid #FF4500; display:inline-block; padding-bottom:10px; }
-#sponsors .sponsor-logos img { width:800px; height:auto; display:block; margin:0 auto; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.5); transition:0.3s; }
-#sponsors .sponsor-logos img:hover { transform:scale(1.05); }
+#sponsors .sponsor-logos a {
+  display: block;         /* 이미지를 클릭 영역 전체로 */
+}
+
+#sponsors .sponsor-logos img {
+  width: 100%;           /* 화면 폭에 맞춤 */
+  max-width: 800px;      /* PC에서 최대 크기 제한 */
+  height: auto;          /* 비율 유지 */
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+
+#sponsors .sponsor-logos img:hover {
+  transform: scale(1.05);
+}
+
 
 /* News */
 #news { padding:100px 20px; text-align:center; background:#000; }
