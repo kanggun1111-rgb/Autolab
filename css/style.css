@@ -164,10 +164,13 @@ nav .nav-links li a:hover { color:#f0a500; }
 #news #news-display {
   width: 80%;
   max-width: 600px;
-  border-radius:10px;
-  margin-bottom:20px;
+  max-height: 400px;   /* 높이 제한 추가 */
+  object-fit: cover;    /* 중앙 기준으로 자르기 */
+  border-radius: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
+
 
 #news #news-thumbnails {
   display: flex;
@@ -192,12 +195,14 @@ nav .nav-links li a:hover { color:#f0a500; }
 @media (max-width:768px) {
   #news #news-display {
     width: 90%;
+    max-height: 300px;  /* 모바일에서 조금 더 낮게 */
   }
   #news #news-thumbnails img {
     width: 90px;
     height: 90px;
   }
 }
+
 
 
 /* Contact */
