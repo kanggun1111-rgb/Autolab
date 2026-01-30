@@ -1,0 +1,92 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: #000;
+}
+
+header nav .logo img {
+  height: 50px;
+}
+
+header nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+header nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+#team-detail h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#team-detail .intro {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.org-chart {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.org-chart img {
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.member-card {
+  width: 220px;
+  text-align: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.member-card img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.member-card h3 {
+  margin: 0.5rem 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.member-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
