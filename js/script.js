@@ -6,6 +6,18 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
+// Navbar 스크롤 효과
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50) {  // 50px 이상 스크롤하면
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+
 // 뉴스 썸네일 클릭 시 메인 이미지 변경
 const mainNews = document.getElementById('news-display');
 const thumbs = document.querySelectorAll('#news-thumbnails img');
