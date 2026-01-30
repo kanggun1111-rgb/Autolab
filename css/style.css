@@ -143,160 +143,108 @@ nav .nav-links li a:hover { color:#f0a500; }
    Team Intro Section
 ========================= */
 
+/* =========================
+   Team Section - 화면 절반
+========================= */
 #team-intro {
   position: relative;
   display: flex;
   align-items: center;
-
-  min-height: 60vh; /* 정확히 절반 ❌, 여유 있는 비율 */
-  padding: clamp(80px, 12vh, 140px) 6vw;
-
+  justify-content: flex-start; /* 좌측 정렬 */
+  min-height: 50vh;             /* 화면 절반 높이 */
+  padding: 60px 6vw;
   background-image: url("../images/team.jpg");
   background-size: cover;
-  background-position: center; /* 가운데 기준 크롭 */
+  background-position: center;
   background-repeat: no-repeat;
-
-  overflow: hidden;
-}
-
-/* 텍스트 영역 (우측) */
-#team-intro .team-text {
-  margin-left: auto;
-  width: min(44%, 560px);
-
-  position: relative;
-  z-index: 2;
-
-  padding: 48px 48px;
   color: #fff;
 }
 
-/* Letter box */
-#team-intro .team-text::before {
+/* 다크 오버레이 */
+#team-intro::before {
   content: "";
   position: absolute;
   inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
 
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-  z-index: -1;
+/* 텍스트 영역 */
+#team-intro .team-text {
+  position: relative;
+  z-index: 1;
+  max-width: 600px; /* 좌측 텍스트 영역 제한 */
+  padding: 0 20px;
 }
 
 /* Eyebrow */
 #team-intro .eyebrow {
-  display: block;
-  margin-bottom: 16px;
-
   font-family: "Montserrat", sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: #f0a500;
+  margin-bottom: 12px;
 }
 
-/* Title */
+/* 제목 */
 #team-intro h2 {
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(28px, 3vw, 42px);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-/* Paragraphs */
+/* 본문 */
 #team-intro p {
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.88);
-  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #eee;
 }
 
-#team-intro .lead {
-  font-size: 16px;
-  font-weight: 500;
+/* 버튼 */
+#team-intro .learn-more {
+  display: inline-block;
+  padding: 10px 26px;
+  background: #f0a500;
+  color: #111;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#team-intro .learn-more:hover {
+  background: #ff7a00;
+  color: #fff;
 }
 
 /* =========================
-   Mobile 대응
+   Mobile
 ========================= */
-
 @media (max-width: 768px) {
   #team-intro {
-    padding: 80px 6vw;
+    min-height: 55vh;
+    padding: 40px 4vw;
+    justify-content: center; /* 모바일에서는 중앙 정렬 */
+    text-align: center;
   }
 
   #team-intro .team-text {
-    width: 100%;
-    margin-left: 0;
-    padding: 32px 28px;
+    max-width: 90%;
   }
 
-  #team-intro .team-text::before {
-    border-left: none;
+  #team-intro h2 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
+  #team-intro p {
+    font-size: 0.95rem;
   }
 }
 
-/* =========================
-   Learn More CTA
-========================= */
-
-#team-intro .learn-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  margin-top: 28px;
-
-  font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-/* 얇은 언더라인 (매거진 느낌) */
-#team-intro .learn-more::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.35);
-
-  transform: scaleX(0.3);
-  transform-origin: left;
-  transition: transform 0.35s ease, background 0.35s ease;
-}
-
-/* 화살표 */
-#team-intro .learn-more span {
-  display: inline-block;
-  transition: transform 0.35s ease;
-}
-
-/* Hover */
-#team-intro .learn-more:hover {
-  color: #ff7a00; /* 오렌지 포인트 */
-}
-
-#team-intro .learn-more:hover::after {
-  transform: scaleX(1);
-  background: #ff7a00;
-}
-
-#team-intro .learn-more:hover span {
-  transform: translateX(4px);
-}
 
 /* vehicle */
 /* ===== Vehicle Section ===== */
