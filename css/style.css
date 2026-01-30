@@ -335,12 +335,29 @@ nav .nav-links li a:hover { color:#f0a500; }
   transform: translateY(-6px);
 }
 
+
 /* 카드 내부 구조 */
 .vehicle-category {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
+.vehicle-card-title {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.6); /* 반투명 배경 */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif; /* 뉴스/섹션 제목과 동일 글씨체 */
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 10px;
+  border-radius: 5px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
 
 /* ===== Image ===== */
 
