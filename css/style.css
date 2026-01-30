@@ -15,30 +15,38 @@ nav .nav-links li a:hover { color:#f0a500; }
 .hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
 
 /* Hero */
+/* Hero */
 #hero {
   position: relative;
-  height: 65vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000;
-  color: #fff;
   text-align: center;
-  overflow: hidden; /* 중요: 부모 밖으로 나간 비디오 숨김 */
+  overflow: hidden; /* 중요: 비디오 영역 밖 숨김 */
+  background: #000; /* fallback */
 }
 
-.bg-video {
+.hero-video-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -1;
+  z-index: -1; /* Hero 콘텐츠 뒤로 */
 }
 
-.hero-content { z-index: 1; }
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+.hero-content {
+  position: relative;
+  z-index: 1; /* 버튼과 텍스트가 비디오 위에 */
+  color: #fff;
+}
 
 .split-section {
   display: flex;
