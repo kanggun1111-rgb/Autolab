@@ -239,6 +239,64 @@ nav .nav-links li a:hover { color:#f0a500; }
   }
 }
 
+/* =========================
+   Learn More CTA
+========================= */
+
+#team-intro .learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 28px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* 얇은 언더라인 (매거진 느낌) */
+#team-intro .learn-more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+/* 화살표 */
+#team-intro .learn-more span {
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+/* Hover */
+#team-intro .learn-more:hover {
+  color: #ff7a00; /* 오렌지 포인트 */
+}
+
+#team-intro .learn-more:hover::after {
+  transform: scaleX(1);
+  background: #ff7a00;
+}
+
+#team-intro .learn-more:hover span {
+  transform: translateX(4px);
+}
 
 
 /* Split sections */
