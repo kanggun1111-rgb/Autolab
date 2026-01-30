@@ -301,9 +301,20 @@ nav .nav-links li a:hover { color:#f0a500; }
 /* vehicle */
 /* ===== Vehicle Section ===== */
 
+
 .vehicle-section {
   padding: 6rem 8vw;
 }
+
+.vehicle-section-title {
+  font-family: 'Orbitron', sans-serif; /* 뉴스 섹션과 동일 글씨체 */
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
 
 /* EV / CV 좌우 배치 */
 .vehicles {
