@@ -14,7 +14,14 @@ nav .logo { font-size:1.8rem; font-weight:bold; }
 .split-section.right-img .img-container { order:1; }
 .split-section.right-img .text-container { order:0; text-align:right; }
 
-.split-section .img-container img { width:100%; max-width:500px; height:300px; object-fit:cover; border-radius:10px; }
+.split-section .img-container img {
+  width:100%;
+  max-width:500px;  /* 모든 이미지 최대 폭 통일 */
+  height:300px;     /* 높이 고정 */
+  object-fit:cover; /* 이미지 비율 유지하며 잘림 */
+  border-radius:10px;
+}
+
 .split-section .text-container { flex:1; padding:20px; }
 .split-section .text-container h2 { font-size:2rem; margin-bottom:10px; }
 .split-section .text-container p { font-size:1.1rem; }
