@@ -301,9 +301,13 @@ nav .nav-links li a:hover { color:#f0a500; }
 /* vehicle 영역 */
 /* 전체 섹션 */
 .vehicles {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 6rem 1rem;
+  padding: 6rem 2rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* EV | CV */
+  gap: 4rem;
 }
 
 /* EV / CV 구분 */
@@ -343,6 +347,10 @@ nav .nav-links li a:hover { color:#f0a500; }
   margin: 0 auto;
 }
 
+.vehicle-image-wrapper {
+  margin: 0 auto;
+}
+
 /* 설명 */
 .vehicle-description p {
   font-size: 0.95rem;
@@ -374,8 +382,8 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 /* 반응형 */
 @media (max-width: 900px) {
-  .vehicle-main {
-    grid-template-columns: 1fr;
+  .vehicles {
+    grid-template-columns: 1fr; /* 세로 스택 */
   }
 
  .vehicle-image {
