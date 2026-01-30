@@ -1,0 +1,90 @@
+/* =========================
+   Sponsors Page
+========================= */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+#sponsors-hero {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+#sponsors-hero .hero-video-wrapper {
+  position: absolute;
+  top:0; left:0; width:100%; height:100%;
+  z-index:0;
+}
+
+#sponsors-hero .bg-video {
+  width:100%; height:100%;
+  object-fit: cover;
+}
+
+#sponsors-hero .hero-content {
+  position: relative;
+  z-index:1;
+  color: #fff;
+}
+
+#sponsors-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #f0a500;
+}
+
+#sponsors-hero h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+}
+
+/* Sponsors Grid */
+.all-sponsors {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.all-sponsors .sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+}
+
+.all-sponsors .sponsor-logo img {
+  width: 150px;
+  height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: all 0.3s ease;
+}
+
+.all-sponsors .sponsor-logo img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* 모바일 */
+@media (max-width:768px){
+  #sponsors-hero h1 { font-size: 2rem; }
+  #sponsors-hero h2 { font-size: 1.3rem; }
+  .all-sponsors .sponsor-grid {
+    gap: 20px;
+  }
+}
