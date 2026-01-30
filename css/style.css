@@ -171,57 +171,96 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 
 /* 텍스트 영역 */
-#team-intro .text-container {
-  flex: 0.9;
-  padding: 32px 6vw;
-  max-width: 620px;
+#team-intro {
+  display: flex;
+  align-items: center;
+
+  min-height: 60vh;                 /* 정확히 50% ❌ 여유 있게 */
+  padding: clamp(64px, 10vh, 120px) 0;
+
+  background-image: url("../images/team.jpg");
+  background-size: cover;
+  background-position: center;      /* 🔥 가운데 기준 크롭 */
+  background-repeat: no-repeat;
+
+  position: relative;
+  overflow: hidden;
 }
 
+#team-intro {
+  display: flex;
+  align-items: center;
 
-/* 상단 작은 레이블 (매거진 느낌 핵심) */
-.intro-eyebrow {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  color: #ff4500;
-  margin-bottom: 14px;
-  display: inline-block;
+  min-height: 60vh;                 /* 정확히 50% ❌ 여유 있게 */
+  padding: clamp(64px, 10vh, 120px) 0;
+
+  background-image: url("../images/team.jpg");
+  background-size: cover;
+  background-position: center;      /* 🔥 가운데 기준 크롭 */
+  background-repeat: no-repeat;
+
+  position: relative;
+  overflow: hidden;
 }
 
-#team-intro h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin-bottom: 22px;
+#team-intro .team-text {
+  position: relative;
+  z-index: 1;
+
+  margin-left: auto;
+  width: min(42%, 520px);
+
+  padding-right: clamp(24px, 6vw, 80px);
   color: #fff;
 }
 
-#team-intro .lead {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #e0e0e0;
-  margin-bottom: 14px;
+#team-intro .eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  display: block;
+  margin-bottom: 16px;
+}
+
+#team-intro h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  margin-bottom: 24px;
 }
 
 #team-intro p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: #bdbdbd;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 16px;
+}
+
+#team-intro .lead {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   #team-intro {
-    flex-direction: column;
+    min-height: auto;
+    padding: 72px 24px;
+
+    background-position: center top;
   }
 
-  #team-intro .img-container {
+  #team-intro::before {
+    background: rgba(0,0,0,0.6);
+  }
+
+  #team-intro .team-text {
     width: 100%;
-    max-height: 300px;
+    padding-right: 0;
   }
 }
-
 
 
 /* Split sections */
