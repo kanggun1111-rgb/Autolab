@@ -7,15 +7,21 @@ hamburger.addEventListener('click', () => {
 });
 
 // Navbar 스크롤 효과
-const header = document.querySelector('header');
+window.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header');
 
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 50) {  // 50px 이상 스크롤하면
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+  const checkScroll = () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', checkScroll);
+  checkScroll(); // 초기 로딩 시 상태 확인
 });
+
 
 
 // 뉴스 썸네일 클릭 시 메인 이미지 변경
