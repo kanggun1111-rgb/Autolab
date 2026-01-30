@@ -139,7 +139,6 @@ nav .nav-links li a:hover { color:#f0a500; }
   position: relative;
 }
 
-
 /* =========================
    Team Intro Section
 ========================= */
@@ -149,7 +148,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   display: flex;
   align-items: center;
 
-  min-height: 60vh; /* 화면 절반 느낌 + 여백 */
+  min-height: 60vh; /* 정확히 절반 ❌, 여유 있는 비율 */
   padding: clamp(80px, 12vh, 140px) 6vw;
 
   background-image: url("../images/team.jpg");
@@ -160,7 +159,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   overflow: hidden;
 }
 
-/* 텍스트 박스 */
+/* 텍스트 영역 (우측) */
 #team-intro .team-text {
   margin-left: auto;
   width: min(44%, 560px);
@@ -195,7 +194,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Title */
@@ -206,12 +205,12 @@ nav .nav-links li a:hover { color:#f0a500; }
   margin-bottom: 24px;
 }
 
-/* Body text */
+/* Paragraphs */
 #team-intro p {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255, 255, 255, 0.88);
   margin-bottom: 18px;
 }
 
@@ -221,7 +220,7 @@ nav .nav-links li a:hover { color:#f0a500; }
 }
 
 /* =========================
-   Mobile
+   Mobile 대응
 ========================= */
 
 @media (max-width: 768px) {
@@ -239,6 +238,7 @@ nav .nav-links li a:hover { color:#f0a500; }
     border-left: none;
   }
 }
+
 
 
 
