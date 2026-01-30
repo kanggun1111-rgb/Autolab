@@ -35,9 +35,22 @@ nav .nav-links li a:hover { color:#f0a500; }
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-bottom:20px;
-  padding:60px 20px;
+  margin: 80px 0; /* 기존 20px → 위/아래 여백 늘려서 섹션 구분 */
+  padding: 60px 20px;
+  position: relative;
 }
+
+/* 상단 구분선 추가 */
+.split-section::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #333; /* 구분선 색상 */
+  width: 60%;
+  margin: 0 auto 40px auto;
+  border-radius: 2px;
+}
+
 
 /* Vehicle */
 .split-section.vehicle { flex-direction: row; text-align:left; }
@@ -71,7 +84,16 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 /* Sponsors */
 #sponsors { text-align:center; padding:100px 20px; }
-#sponsors h2 { font-size:2.5rem; margin-bottom:40px; }
+#sponsors h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #f0a500; /* 주황색 */
+  text-shadow: 1px 1px 2px #000; /* 글자 강조 */
+  border-bottom: 3px solid #f0a500; /* 주황색 밑줄 */
+  display: inline-block; /* 밑줄 길이를 글자에 맞춤 */
+  padding-bottom: 10px; /* 밑줄과 글자 간격 */
+}
+
 .sponsor-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
 .sponsor-logos img {
   width: 650px;  /* 기존 200px → 약간 크게 */
