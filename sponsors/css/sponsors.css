@@ -1,101 +1,120 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sponsors – Auto_Lab</title>
+/* =========================
+   Sponsors Tiers Page
+========================= */
 
-<!-- GitHub Pages용 base -->
-<base href="/Autolab/">
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+/* Hero Section */
+#sponsors-hero {
+  position: relative;
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-<link rel="stylesheet" href="css/sponsors.css">
-</head>
-<body>
+#sponsors-hero .hero-video-wrapper {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height:100%;
+  z-index: 0;
+}
 
-<!-- Navbar (기존과 동일) -->
-<header>
-  <nav>
-    <div class="logo">
-      <a href="/Autolab/"><img src="images/logo.png" alt="Autolab Logo"></a>
-    </div>
-    <ul class="nav-links">
-      <li><a href="/Autolab/#hero">Home</a></li>
-      <li><a href="/Autolab/#team-intro">Team</a></li>
-      <li><a href="/Autolab/#vehicle">Vehicles</a></li>
-      <li><a href="/Autolab/#sponsors">Sponsors</a></li>
-      <li><a href="/Autolab/#news">News</a></li>
-      <li><a href="/Autolab/#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <div></div><div></div><div></div>
-    </div>
-  </nav>
-</header>
+#sponsors-hero .bg-video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
 
-<!-- Hero Section -->
-<section id="sponsors-hero">
-  <div class="hero-video-wrapper">
-    <video class="bg-video" autoplay muted loop playsinline>
-      <source src="videos/hero.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="hero-content">
-    <h1>Our Sponsors</h1>
-    <h2>Thank you for supporting Auto_Lab</h2>
-  </div>
-</section>
+#sponsors-hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
 
-<!-- Sponsors Tier Content -->
-<section class="sponsors-tiers">
+#sponsors-hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #f0a500;
+}
 
-  <!-- Platinum -->
-  <div class="sponsor-tier">
-    <h2 class="tier-title">Platinum Partners</h2>
-    <div class="sponsor-grid platinum">
-      <div class="sponsor-logo"><a href="https://example.com"><img src="images/sponsors/platinum1.png" alt="Platinum Sponsor 1"></a></div>
-      <div class="sponsor-logo"><a href="https://example.com"><img src="images/sponsors/platinum2.png" alt="Platinum Sponsor 2"></a></div>
-    </div>
-  </div>
+#sponsors-hero h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
 
-  <!-- Gold -->
-  <div class="sponsor-tier">
-    <h2 class="tier-title">Gold Partners</h2>
-    <div class="sponsor-grid gold">
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold1.png" alt="Gold Sponsor 1"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold2.png" alt="Gold Sponsor 2"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/gold3.png" alt="Gold Sponsor 3"></a></div>
-    </div>
-  </div>
+/* Sponsors Tiers */
+.sponsors-tiers {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  <!-- Silver -->
-  <div class="sponsor-tier">
-    <h2 class="tier-title">Silver Partners</h2>
-    <div class="sponsor-grid silver">
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver1.png" alt="Silver Sponsor 1"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver2.png" alt="Silver Sponsor 2"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/silver3.png" alt="Silver Sponsor 3"></a></div>
-    </div>
-  </div>
+.sponsor-tier {
+  margin-bottom: 60px;
+}
 
-  <!-- Supporters -->
-  <div class="sponsor-tier">
-    <h2 class="tier-title">Supporters</h2>
-    <div class="sponsor-grid supporters">
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter1.png" alt="Supporter 1"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter2.png" alt="Supporter 2"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter3.png" alt="Supporter 3"></a></div>
-      <div class="sponsor-logo"><a href="#"><img src="images/sponsors/supporter4.png" alt="Supporter 4"></a></div>
-    </div>
-  </div>
+.tier-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: #f0a500;
+  margin-bottom: 30px;
+}
 
-</section>
+/* 그리드 공통 */
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+}
 
-<script src="js/script.js"></script>
-</body>
-</html>
+/* 개별 로고 */
+.sponsor-logo img {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: 0.3s ease;
+}
+
+.sponsor-logo img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* 티어별 강조 (선택사항) */
+.sponsor-grid.platinum .sponsor-logo img {
+  filter: none;
+  opacity: 1;
+}
+
+.sponsor-grid.gold .sponsor-logo img {
+  opacity: 0.9;
+}
+
+.sponsor-grid.silver .sponsor-logo img {
+  opacity: 0.8;
+}
+
+.sponsor-grid.supporters .sponsor-logo img {
+  opacity: 0.7;
+}
+
+@media (max-width:768px) {
+  .tier-title {
+    font-size: 1.6rem;
+  }
+  .sponsor-logo img {
+    width: 120px;
+  }
+}
