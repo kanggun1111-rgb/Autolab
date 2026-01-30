@@ -23,31 +23,57 @@ nav .nav-links li a:hover { color:#f0a500; }
 .hero-content .btn { display:inline-block; margin-top:20px; padding:10px 20px; background:#f0a500; color:#111; text-decoration:none; border-radius:5px; transition:0.3s; }
 .hero-content .btn:hover { background:#fff; }
 
-/* Split section 기본 */
-.split { display:flex; flex-direction:column; flex-wrap:wrap; gap:50px; padding:0; }
+.split-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;       /* Vehicle-Team 간 간격 확보 */
+  padding: 80px 20px; /* 상하 여백 */
+  width: 100%;
+}
 
-/* 좌우 이미지 설정 */
-.split-section.left-img .img-container { order:0; }
-.split-section.left-img .text-container { order:1; text-align:left; }
+/* 좌우 이미지 */
+.split-section.left-img .img-container { order: 0; }
+.split-section.left-img .text-container { order: 1; text-align: left; }
 
-.split-section.right-img .img-container { order:1; }
-.split-section.right-img .text-container { order:0; text-align:right; }
+.split-section.right-img .img-container { order: 1; }
+.split-section.right-img .text-container { order: 0; text-align: right; }
 
 /* 이미지 크기 고정 */
 .split-section .img-container img {
-  width:100%;
-  max-width:500px;
-  height:300px;
-  object-fit:cover;
-  border-radius:10px;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* 텍스트 */
-.split-section .text-container { flex:1; padding:20px; }
-.split-section .text-container h2 { font-size:2rem; margin-bottom:10px; }
-.split-section .text-container p { font-size:1.1rem; margin-bottom:15px; }
-.split-section .text-container .btn { display:inline-block; padding:10px 20px; background:#f0a500; color:#111; text-decoration:none; border-radius:5px; transition:0.3s; }
-.split-section .text-container .btn:hover { background:#fff; }
+.split-section .text-container {
+  flex: 1;
+  padding: 20px;
+}
+.split-section .text-container h2 { font-size: 2rem; margin-bottom: 10px; }
+.split-section .text-container p { font-size: 1.1rem; margin-bottom: 15px; }
+.split-section .text-container .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0a500;
+  color: #111;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.split-section .text-container .btn:hover { background: #fff; }
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .split-section { flex-direction: column; text-align: center; gap: 30px; }
+  .split-section .img-container { order: 0; margin-bottom: 15px; }
+  .split-section .text-container { order: 1; text-align: center; }
+}
+
 
 /* Sponsors */
 #sponsors { text-align:center; padding:100px 20px; }
