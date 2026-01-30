@@ -169,103 +169,59 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 /* 상단 작은 레이블 (매거진 느낌 핵심) */
 .intro-eyebrow {
-  display: inline-block;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   color: #ff4500;
   margin-bottom: 14px;
+  display: inline-block;
 }
 
-/* 타이틀 */
 #team-intro h2 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   color: #fff;
 }
 
-/* 리드 문단 */
 #team-intro .lead {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.1rem;
-  line-height: 1.9;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: #e0e0e0;
-  margin-bottom: 20px;
-}
-
-/* 일반 문단 */
-#team-intro p {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #bdbdbd;
-  margin-bottom: 16px;
-}
-
-/* Team Intro Section */
-#team-intro {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  background: #111;
-}
-
-/* 왼쪽 이미지 */
-#team-intro .img-container {
-  flex: 1.1;
-  height: 100%;
-}
-
-#team-intro .img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 텍스트 영역 */
-#team-intro .text-container {
-  flex: 0.9;
-  padding: 60px 80px;
-  max-width: 620px;
-}
-
-/* 상단 작은 레이블 (매거진 느낌 핵심) */
-.intro-eyebrow {
-  display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  color: #ff4500;
   margin-bottom: 14px;
 }
 
-/* 타이틀 */
-#team-intro h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-bottom: 28px;
-  color: #fff;
-}
-
-/* 리드 문단 */
-#team-intro .lead {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.1rem;
-  line-height: 1.9;
-  color: #e0e0e0;
-  margin-bottom: 20px;
-}
-
-/* 일반 문단 */
 #team-intro p {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1rem;
-  line-height: 1.85;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: #bdbdbd;
-  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  #team-intro {
+    height: auto;
+    min-height: unset;
+    padding: 60px 20px;
+  }
+
+  #team-intro .img-container img {
+    height: 280px;
+  }
+
+  #team-intro .text-container {
+    padding: 30px 20px 0;
+  }
+
+  #team-intro h2 {
+    font-size: 2rem;
+  }
+
+  #team-intro .lead {
+    font-size: 1rem;
+  }
 }
 
 
