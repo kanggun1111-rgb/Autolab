@@ -148,16 +148,17 @@ nav .nav-links li a:hover { color:#f0a500; }
   display: flex;
   align-items: center;
 
-  min-height: 60vh; /* 정확히 절반 ❌, 여유 있는 비율 */
-  padding: clamp(80px, 12vh, 140px) 6vw;
+  min-height: 46vh;              /* 🔥 핵심: 반 화면 체감 */
+  padding: 64px 6vw;             /* 패딩을 고정값으로 줄임 */
 
   background-image: url("../images/team.jpg");
   background-size: cover;
-  background-position: center; /* 가운데 기준 크롭 */
+  background-position: center;
   background-repeat: no-repeat;
 
   overflow: hidden;
 }
+
 
 /* 텍스트 영역 (우측) */
 #team-intro .team-text {
@@ -225,8 +226,10 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 @media (max-width: 768px) {
   #team-intro {
-    padding: 80px 6vw;
+    min-height: 52vh;   /* 모바일은 살짝 여유 */
+    padding: 56px 6vw;
   }
+}
 
   #team-intro .team-text {
     width: 100%;
