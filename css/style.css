@@ -300,7 +300,17 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 /* vehicle */
 /* ===== Vehicle Section ===== */
-/* Section Title */
+
+/* =========================
+   Vehicle Section
+========================= */
+
+/* 섹션 자체 패딩 */
+.vehicle-section {
+  padding: 6rem 8vw;
+}
+
+/* 섹션 제목 */
 .vehicle-section-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
@@ -310,8 +320,19 @@ nav .nav-links li a:hover { color:#f0a500; }
   text-align: center;
 }
 
-/* 카드 전체 */
+/* 차량 카드 컨테이너 */
+.vehicles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개의 카드 */
+  gap: 2rem; /* 카드 사이 간격 */
+  justify-content: center;
+}
+
+/* 카드 자체 */
 .vehicle-card {
+  max-width: 550px;  /* 카드 최대 너비 제한 */
+  width: 100%;       /* 부모 컨테이너 안에서 늘어나도록 */
+  margin: 0 auto;    /* 가운데 정렬 */
   background-color: #111;
   border-radius: 18px;
   overflow: hidden;
@@ -329,8 +350,8 @@ nav .nav-links li a:hover { color:#f0a500; }
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  flex-wrap: nowrap; /* 좌우 고정 */
-  align-items: center; /* 수직 중앙 정렬 */
+  flex-wrap: nowrap;       /* 좌우 고정 */
+  align-items: center;     /* 수직 중앙 정렬 */
 }
 
 /* 좌측 이미지 영역 (60%) */
@@ -339,7 +360,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  max-height: 250px; /* 카드 크기 제한 */
+  max-height: 250px;       /* 카드 크기 제한 */
 }
 
 .vehicle-image-wrapper img {
@@ -348,7 +369,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   object-fit: cover;
 }
 
-/* 이미지 위 제목 오버레이 */
+/* 카드 상단 EV/CV 제목 오버레이 */
 .vehicle-card-title {
   position: absolute;
   top: 12px;
@@ -369,7 +390,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   flex: 0 0 40%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 텍스트 위쪽 정렬 */
+  justify-content: flex-start; /* 위쪽 정렬 */
   color: #fff;
 }
 
@@ -392,7 +413,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   color: #ff7a00;
 }
 
-/* 하단 스펙 */
+/* 카드 하단 스펙 */
 .vehicle-specs {
   display: flex;
   justify-content: space-around;
@@ -403,20 +424,31 @@ nav .nav-links li a:hover { color:#f0a500; }
   font-weight: 500;
 }
 
-/* 반응형 */
+/* =========================
+   반응형
+========================= */
 @media (max-width: 900px) {
+  /* 모바일에서는 한 줄에 카드 1개 */
+  .vehicles {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* 카드 내부 좌우 → 세로 배치 */
   .vehicle-category {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
   }
-  
+
+  /* 이미지/텍스트 영역 100% */
   .vehicle-image-wrapper,
   .vehicle-description {
     flex: 0 0 100%;
-    max-height: none; /* 모바일에서 이미지 제한 해제 */
+    max-height: none; /* 모바일에서는 이미지 제한 해제 */
   }
 
+  /* 카드 하단 스펙 */
   .vehicle-specs {
     flex-wrap: wrap;
     gap: 0.5rem;
