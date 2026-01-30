@@ -333,10 +333,14 @@ nav .nav-links li a:hover { color:#f0a500; }
   align-items: center;
 }
 
+/* 이미지 컨테이너 역할 */
 .vehicle-image {
   width: 100%;
-  height: auto;
+  max-width: 520px;     /* 데스크탑에서 가로 고정 */
+  height: 280px;        /* 세로 고정 */
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 /* 설명 */
@@ -374,10 +378,16 @@ nav .nav-links li a:hover { color:#f0a500; }
     grid-template-columns: 1fr;
   }
 
+ .vehicle-image {
+    max-width: 360px;
+    height: 220px;
+  }
+
   .vehicle-specs {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 1.5rem;
   }
+
 }
 
 /* Sponsors */
