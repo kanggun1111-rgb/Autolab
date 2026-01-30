@@ -145,30 +145,29 @@ nav .nav-links li a:hover { color:#f0a500; }
   display: flex;
   align-items: center;
 
-  /* 🔥 '반 화면 느낌'의 핵심 */
   padding: clamp(64px, 10vh, 120px) 0;
-
-  /* 절대 고정 높이 금지 */
-  max-height: 75vh;
-
   background: #0e0e0e;
-  color: #fff;
+
+  overflow: hidden;   /* 🔥 이게 핵심 */
 }
+
 
 /* 왼쪽 이미지 */
 #team-intro .img-container {
   flex: 1.1;
-  height: auto;
-  max-height: 520px;    /* 🔥 매거진 컷 높이 */
-  overflow: hidden;
+
+  max-height: 520px;
+  overflow: hidden;    /* 🔥 이미지가 절대 밖으로 안 나감 */
 }
 
 #team-intro .img-container img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  object-position: center 30%;
+  display: block;
 }
+
 
 
 /* 텍스트 영역 */
@@ -215,19 +214,14 @@ nav .nav-links li a:hover { color:#f0a500; }
 @media (max-width: 768px) {
   #team-intro {
     flex-direction: column;
-    max-height: none;
-    padding: 64px 0;
   }
 
   #team-intro .img-container {
-    max-height: 320px;
     width: 100%;
-  }
-
-  #team-intro .text {
-    padding: 32px 24px 0;
+    max-height: 300px;
   }
 }
+
 
 
 /* Split sections */
