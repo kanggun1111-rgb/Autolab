@@ -4,34 +4,48 @@ body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
 /* Navbar */
 /* Navbar 기본 */
-/* Navbar 기본 */
+/* Header 기본 */
 header {
-  position: fixed;   /* 화면 상단 고정 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 80px;
-  background: transparent; /* 최상단에서 투명 */
+  background: transparent;
   color: #fff;
-  z-index: 9999;     /* 모든 요소 위 */
+  z-index: 9999;
   transition: background 0.3s ease;
 }
 
-/* 스크롤하면 배경 검은색 */
+/* 스크롤 시 배경 변경 */
 header.scrolled {
   background: #111;
 }
 
-/* 로고 이미지 */
+/* Nav 구조 */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* 로고 */
 nav .logo img {
   height: 55px;
   width: auto;
 }
 
-/* nav-links, hamburger 등 기존 CSS 유지 */
+/* 메뉴 링크 */
+nav .nav-links {
+  display: flex;
+  list-style: none;
+}
 
+nav .nav-links li {
+  margin-left: 20px;
+}
 
-nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
 nav .nav-links li a {
   color: #fff;
   text-decoration: none;
@@ -44,12 +58,39 @@ nav .nav-links li a:hover {
 }
 
 /* Hamburger */
-.hamburger { display:none; flex-direction:column; cursor:pointer; }
-.hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-/* 스크롤 시 Navbar 배경 */
-header.scrolled {
-  background: #111;
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* 모바일 */
+@media (max-width:768px){
+  nav .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
 
 
