@@ -304,6 +304,7 @@ nav .nav-links li a:hover { color:#f0a500; }
   max-width: 1400px;
   margin: 0 auto;
   padding: 6rem 2rem;
+  position: relative; 
 
   display: grid;
   grid-template-columns: 1fr 1fr; /* EV | CV */
@@ -380,6 +381,39 @@ nav .nav-links li a:hover { color:#f0a500; }
   margin-top: 0.25rem;
 }
 
+.vehicle-category {
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-card {
+  flex: 1;
+}
+
+.vehicle-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-6px);
+}
+
+.vehicle-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.vehicle-link:hover {
+  text-decoration: underline;
+}
+
+
+
 /* 반응형 */
 @media (max-width: 900px) {
   .vehicles {
@@ -397,6 +431,27 @@ nav .nav-links li a:hover { color:#f0a500; }
   }
 
 }
+
+/* 중앙 기준선 */
+@media (min-width: 901px) {
+  .vehicles::before {
+    content: "";
+    position: absolute;
+    top: 6rem;
+    bottom: 6rem;
+    left: 50%;
+    width: 1px;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .vehicles::before {
+    display: none;
+  }
+}
+
 
 /* Sponsors */
 
