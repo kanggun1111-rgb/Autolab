@@ -298,19 +298,87 @@ nav .nav-links li a:hover { color:#f0a500; }
   transform: translateX(4px);
 }
 
+/* vehicle 영역 */
+/* 전체 섹션 */
+.vehicles {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1rem;
+}
 
-/* Split sections */
-.split-section { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:50px; padding:80px 20px; width:100%; }
-.split-section.left-img .img-container { order:0; }
-.split-section.left-img .text-container { order:1; text-align:left; }
-.split-section.right-img .img-container { order:1; }
-.split-section.right-img .text-container { order:0; text-align:right; }
-.split-section .img-container img { width:100%; max-width:500px; height:300px; object-fit:cover; border-radius:10px; }
-.split-section .text-container { flex:1; padding:20px; }
-.split-section .text-container h2 { font-size:2rem; margin-bottom:10px; }
-.split-section .text-container p { font-size:1.1rem; margin-bottom:15px; }
-.split-section .text-container .btn { font-family:'Montserrat', sans-serif; font-weight:600; text-transform:uppercase; padding:10px 20px; background:#f0a500; color:#111; border-radius:5px; transition:0.3s; }
-.split-section .text-container .btn:hover { background:#fff; }
+/* EV / CV 구분 */
+.vehicle-category {
+  margin-bottom: 8rem;
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+
+/* 카드 */
+.vehicle-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* 중앙 영역 */
+.vehicle-main {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.vehicle-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 설명 */
+.vehicle-description p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* 하단 스펙 */
+.vehicle-specs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.spec strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: block;
+}
+
+.spec span {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.25rem;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .vehicle-main {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-specs {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1.5rem;
+  }
+}
 
 /* Sponsors */
 
