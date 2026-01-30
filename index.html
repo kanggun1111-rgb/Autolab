@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -26,33 +27,21 @@
 
 <!-- Hero -->
 <section id="hero">
-  <video autoplay muted loop class="bg-video" playsinline>
+  <video class="bg-video" autoplay muted loop>
     <source src="videos/hero.mp4" type="video/mp4">
   </video>
   <div class="hero-content">
     <h1>Autolab EV Team</h1>
-    <p>Formula Student Electric Vehicle</p>
-    <a href="#about" class="btn">Learn More</a>
+    <p>부산대학교 Formula Student Electric Vehicle</p>
+    <a href="#about" class="btn">Explore</a>
   </div>
 </section>
 
-<!-- About / Split -->
-<section id="about">
+<!-- About / Vehicle & Team -->
+<section id="about" class="split">
 
-  <!-- TEAM Section (위쪽) -->
-  <div class="split-section right-img">
-    <div class="img-container">
-      <img src="images/team.jpg" alt="Team">
-    </div>
-    <div class="text-container">
-      <h2>Team</h2>
-      <p>부산대학교 Autolab EV Team 소개</p>
-      <a href="team.html" class="btn">View Details</a>
-    </div>
-  </div>
-
-  <!-- VEHICLE Section (아래쪽) -->
-  <div class="split-section left-img">
+  <!-- Vehicle (Hero 바로 아래) -->
+  <div class="split-section vehicle">
     <div class="img-container">
       <img src="images/car.jpg" alt="Vehicle">
     </div>
@@ -63,17 +52,38 @@
     </div>
   </div>
 
+  <!-- Team -->
+  <div class="split-section team">
+    <div class="img-container">
+      <img src="images/team.jpg" alt="Team">
+    </div>
+    <div class="text-container">
+      <h2>Team</h2>
+      <p>부산대학교 Autolab EV Team 소개</p>
+      <a href="team.html" class="btn">View Details</a>
+    </div>
+  </div>
+
 </section>
 
+<!-- Sponsors -->
+<section id="sponsors">
+  <h2>Sponsors</h2>
+  <div class="sponsor-logos">
+    <img src="images/sponsor1.png" alt="Sponsor 1">
+    <img src="images/sponsor2.png" alt="Sponsor 2">
+    <img src="images/sponsor3.png" alt="Sponsor 3">
+  </div>
+</section>
 
 <!-- News -->
 <section id="news">
   <h2>Latest News</h2>
-  <div class="news-main">
-    <img id="news-display" src="images/news1.jpg" alt="News Main">
-  </div>
-  <div class="news-thumbnails" id="news-thumbnails">
-    <!-- JS에서 Instagram 최신 뉴스 이미지 삽입 -->
+  <img id="news-display" src="images/news1.jpg" alt="News Main">
+  <div id="news-thumbnails">
+    <img src="images/news1.jpg" alt="News 1">
+    <img src="images/news2.jpg" alt="News 2">
+    <img src="images/news3.jpg" alt="News 3">
   </div>
 </section>
 
@@ -82,11 +92,11 @@
   <h2>Contact</h2>
   <div class="contact-container">
     <div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=..." frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/embed?..."></iframe>
     </div>
     <div class="contact-info">
-      <p>Email: autolab@example.com</p>
-      <p>Phone: +82 10-1234-5678</p>
+      <p>Email: contact@autolab.com</p>
+      <p>Phone: 010-xxxx-xxxx</p>
     </div>
   </div>
 </section>
