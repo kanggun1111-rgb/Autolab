@@ -696,26 +696,57 @@ nav .nav-links li a:hover {
   border: none;
 }
 
-/* 연락처 */
-.contact-container .contact-info {
-  flex: 1 1 300px;
-  min-width: 250px;
+/* 연락처 카드 그룹 */
+.contact-cards {
+  display: flex;
+  flex: 1 1 400px;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 개별 카드 */
+.contact-card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px 25px;
+  border-radius: 12px;
+  min-width: 220px;
+  max-width: 250px;
   text-align: left;
+  transition: transform 0.3s, background 0.3s;
 }
 
-.contact-container .contact-info p {
-  margin-bottom: 16px;
-  font-size: 1rem;
-  line-height: 1.6;
+.contact-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
 }
 
-.contact-container .contact-info a {
+.contact-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #f0a500;
+}
+
+.contact-card p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-card a {
   color: #f0a500;
   text-decoration: none;
 }
 
-.contact-container .contact-info a:hover {
+.contact-card a:hover {
   text-decoration: underline;
+}
+
+/* 주소 */
+.contact-address {
+  margin-top: 40px;
+  font-size: 1rem;
 }
 
 /* 모바일 대응 */
@@ -726,8 +757,15 @@ nav .nav-links li a:hover {
     text-align: center;
   }
 
-  .contact-container .contact-info {
+  .contact-cards {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .contact-card {
     text-align: center;
   }
 }
+
 
