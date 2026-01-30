@@ -660,18 +660,74 @@ nav .nav-links li a:hover {
 
 
 /* Contact */
-#contact { padding:100px 20px; background:#111; color:#fff; }
-.contact-container { display:flex; flex-wrap:wrap; }
-.contact-container .map { flex:1; min-width:300px; padding:10px; }
-.contact-container .contact-info { flex:1; min-width:200px; padding:10px; }
 
-/* 모바일 */
-@media (max-width:768px){
-  nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; }
-  nav .nav-links.active { display:flex; }
-  .hamburger { display:flex; }
-  .split-section { flex-direction:column; text-align:center; }
-  .split-section .img-container { order:0; margin-bottom:15px; }
-  .split-section .text-container { order:1; text-align:center; }
-  .contact-container { flex-direction:column; }
+#contact {
+  padding: 100px 20px;
+  background: #111;
+  color: #fff;
+  text-align: center;
 }
+
+#contact h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 50px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* 지도 */
+.contact-container .map {
+  flex: 1 1 400px;
+  min-width: 300px;
+  height: 350px;
+}
+
+.contact-container .map iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 연락처 */
+.contact-container .contact-info {
+  flex: 1 1 300px;
+  min-width: 250px;
+  text-align: left;
+}
+
+.contact-container .contact-info p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-container .contact-info a {
+  color: #f0a500;
+  text-decoration: none;
+}
+
+.contact-container .contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* 모바일 대응 */
+@media (max-width:768px){
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-container .contact-info {
+    text-align: center;
+  }
+}
+
