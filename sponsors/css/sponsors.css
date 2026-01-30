@@ -1,120 +1,82 @@
-/* =========================
-   Sponsors Tiers Page
-========================= */
-
-body {
+/* ===== Sponsors 전용 ===== */
+.sponsors-page {
   font-family: 'Roboto', sans-serif;
-  background: #000;
+  background-color: #0a0a0a;
   color: #fff;
-  margin: 0;
-  padding: 0;
-}
-
-/* Hero Section */
-#sponsors-hero {
-  position: relative;
-  height: 45vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 60px 20px;
   text-align: center;
 }
 
-#sponsors-hero .hero-video-wrapper {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height:100%;
-  z-index: 0;
-}
-
-#sponsors-hero .bg-video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-#sponsors-hero .hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-#sponsors-hero h1 {
+.sponsors-section h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
   color: #f0a500;
+  margin-bottom: 10px;
 }
 
-#sponsors-hero h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  color: #fff;
-}
-
-/* Sponsors Tiers */
-.sponsors-tiers {
-  padding: 60px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
+.sponsors-section p {
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  line-height: 1.6;
 }
 
 .sponsor-tier {
   margin-bottom: 60px;
 }
 
-.tier-title {
+.sponsor-tier h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   color: #f0a500;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-/* 그리드 공통 */
 .sponsor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 40px;
-  justify-items: center;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
-/* 개별 로고 */
-.sponsor-logo img {
-  width: 140px;
+.sponsor-grid img {
+  max-width: 180px;
   height: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: 0.3s ease;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.sponsor-logo img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
+.sponsor-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(240, 165, 0, 0.5);
 }
 
-/* 티어별 강조 (선택사항) */
-.sponsor-grid.platinum .sponsor-logo img {
-  filter: none;
-  opacity: 1;
+/* Navbar */
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #000;
 }
 
-.sponsor-grid.gold .sponsor-logo img {
-  opacity: 0.9;
+.sponsors-logo img {
+  height: 50px;
 }
 
-.sponsor-grid.silver .sponsor-logo img {
-  opacity: 0.8;
+.sponsors-nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
 }
 
-.sponsor-grid.supporters .sponsor-logo img {
-  opacity: 0.7;
+.sponsors-nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-@media (max-width:768px) {
-  .tier-title {
-    font-size: 1.6rem;
-  }
-  .sponsor-logo img {
-    width: 120px;
-  }
+.sponsors-nav-links li a:hover {
+  color: #f0a500;
 }
+

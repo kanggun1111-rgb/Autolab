@@ -1,99 +1,65 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto_Lab Team</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto_Lab Team</title>
 
-<!-- 프로젝트 루트 기준 -->
-<base href="/Autolab/">
+  <base href="/Autolab/">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/team.css">
+  <!-- 팀 전용 CSS -->
+  <link rel="stylesheet" href="css/team.css">
 </head>
 <body>
 
-<!-- Navbar -->
 <header>
   <nav>
-    <div class="logo">
-      <a href="/Autolab/"><img src="images/logo.png" alt="Autolab Logo"></a>
+    <div class="team-logo">
+      <img src="images/logo.png" alt="Auto_Lab Logo">
     </div>
-    <ul class="nav-links">
-      <li><a href="/Autolab/#hero">Home</a></li>
-      <li><a href="/Autolab/#team-intro">Team</a></li>
-      <li><a href="/Autolab/#vehicle">Vehicles</a></li>
-      <li><a href="/Autolab/#sponsors">Sponsors</a></li>
-      <li><a href="/Autolab/#news">News</a></li>
-      <li><a href="/Autolab/#contact">Contact</a></li>
+    <ul class="team-nav-links">
+      <li><a href="/Autolab/index.html#hero">Home</a></li>
+      <li><a href="/Autolab/index.html#team-intro">Team</a></li>
+      <li><a href="/Autolab/index.html#vehicle">Vehicles</a></li>
+      <li><a href="/Autolab/index.html#sponsors">Sponsors</a></li>
+      <li><a href="/Autolab/index.html#news">News</a></li>
+      <li><a href="/Autolab/index.html#contact">Contact</a></li>
     </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
   </nav>
 </header>
 
-<!-- Hero Section -->
-<section class="team-hero">
-  <div class="team-hero-content">
+<main class="team-page">
+
+  <section class="team-intro">
+    <span class="team-eyebrow">ABOUT US</span>
     <h1>Auto_Lab</h1>
     <h2>Formula Student Team</h2>
-    <p>Meet our talented members and the team structure</p>
-  </div>
-</section>
+    <p class="team-lead">
+      1996년 설립된 부산대학교 자작자동차 동아리 Auto_Lab은<br>
+      2020년 Formula Student CV 클래스 첫 출전을 시작으로,<br>
+      2024년 EV 클래스에 도전하며 새로운 도약을 이어가고 있습니다.
+    </p>
+    <p>
+      설계, 해석, 제작, 주행 데이터 분석까지 — Auto_Lab은 단순한 제작을 넘어,<br>
+      실제 엔지니어링 경험을 축적하는 것을 목표로 도전하고 있습니다.
+    </p>
+  </section>
 
-<!-- Organization Chart -->
-<section class="team-org-chart">
-  <h2>Team Structure</h2>
-  <img src="images/team-org.png" alt="Organization Chart">
-</section>
-
-<!-- Team Members -->
-<section class="team-members">
-  <h2>Our Team</h2>
-  <div class="member-grid">
-
-    <!-- Member Card -->
-    <div class="member-card">
-      <img src="images/team_kanggun.jpg" alt="강건">
-      <h3>강건</h3>
-      <p class="role">EV Team Leader</p>
-      <p>Email: <a href="mailto:kanggun1111@pusan.ac.kr">kanggun1111@pusan.ac.kr</a></p>
-      <p>Phone: <a href="tel:+821085304462">+82 010 8530 4462</a></p>
+  <!-- 조직도 섹션 -->
+  <section class="team-org">
+    <h3>Our Team Structure</h3>
+    <div class="team-org-chart">
+      <img src="images/team/org_chart.png" alt="Team Organization Chart">
     </div>
+  </section>
 
-    <div class="member-card">
-      <img src="images/team_kimminsu.jpg" alt="김민수">
-      <h3>김민수</h3>
-      <p class="role">CV Team Leader</p>
-      <p>Email: <a href="mailto:kimminsu@pusan.ac.kr">kimminsu@pusan.ac.kr</a></p>
-      <p>Phone: <a href="tel:+821012345678">+82 010 1234 5678</a></p>
-    </div>
-
-    <div class="member-card">
-      <img src="images/team_parkjihoon.jpg" alt="박지훈">
-      <h3>박지훈</h3>
-      <p class="role">President</p>
-      <p>Email: <a href="mailto:parkjihoon@pusan.ac.kr">parkjihoon@pusan.ac.kr</a></p>
-      <p>Phone: <a href="tel:+8201087654321">+82 010 8765 4321</a></p>
-    </div>
-
-    <!-- 필요시 다른 팀원 추가 가능 -->
-  </div>
-</section>
-
-<!-- Back Button -->
-<div class="team-back">
-  <a href="/Autolab/#team-intro" class="btn-outline">← Back to Home</a>
-</div>
+</main>
 
 <script src="js/script.js"></script>
 </body>
 </html>
-
