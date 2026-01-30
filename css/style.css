@@ -74,7 +74,7 @@ nav .nav-links li a:hover { color:#f0a500; }
 #sponsors h2 { font-size:2.5rem; margin-bottom:40px; }
 .sponsor-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
 .sponsor-logos img {
-  width: 300px;  /* 기존 200px → 약간 크게 */
+  width: 650px;  /* 기존 200px → 약간 크게 */
   height: auto;  /* 세로 비율 유지 */
   object-fit: contain;
   border-radius: 5px;
