@@ -14,8 +14,8 @@ nav .nav-links li a:hover { color:#f0a500; }
 .hamburger { display:none; flex-direction:column; cursor:pointer; }
 .hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
 
-/* Hero */
-/* Hero */
+/*hero*/ 
+
 #hero {
   position: relative;
   height: 80vh;
@@ -23,8 +23,8 @@ nav .nav-links li a:hover { color:#f0a500; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: hidden; /* 중요: 비디오 영역 밖 숨김 */
-  background: #000; /* fallback */
+  overflow: hidden;
+  background: #000;
 }
 
 .hero-video-wrapper {
@@ -32,21 +32,22 @@ nav .nav-links li a:hover { color:#f0a500; }
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1; /* Hero 콘텐츠 뒤로 */
+  height: 100%;  /* 이걸 확실히 */
+  z-index: -1;   /* Hero 콘텐츠 뒤 */
 }
 
 .bg-video {
   width: 100%;
-  height: 100%;
+  height: 100%;    /* 부모 높이를 꽉 채움 */
   object-fit: cover;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1; /* 버튼과 텍스트가 비디오 위에 */
+  z-index: 1;       /* 텍스트와 버튼이 비디오 위에 */
   color: #fff;
 }
+
 
 .split-section {
   display: flex;
