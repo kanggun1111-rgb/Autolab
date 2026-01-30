@@ -115,8 +115,10 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 .team-intro-container {
   display: flex;
-  min-height: 90vh; /* 화면을 꽉 채우는 느낌 */
+  height: 50vh;       /* 화면의 절반 */
+  min-height: 420px;  /* 너무 작아지는 것 방지 */
 }
+
 
 /* 왼쪽 이미지 영역 */
 .team-intro-image {
@@ -134,7 +136,7 @@ nav .nav-links li a:hover { color:#f0a500; }
 /* 오른쪽 텍스트 영역 */
 .team-intro-content {
   flex: 1;
-  padding: 80px 70px;
+  padding: 50px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,19 +157,15 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 @media (max-width: 900px) {
   .team-intro-container {
-    flex-direction: column;
+    height: auto;
   }
 
   .team-intro-image {
-    height: 60vh;
+    height: 40vh;
   }
 
   .team-intro-content {
-    padding: 50px 30px;
-  }
-
-  .team-intro-content h2 {
-    font-size: 2.2rem;
+    padding: 40px 25px;
   }
 }
 
