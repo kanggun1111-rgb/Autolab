@@ -298,61 +298,66 @@ nav .nav-links li a:hover { color:#f0a500; }
   transform: translateX(4px);
 }
 
-/* vehicle 영역 */
-/* 전체 섹션 */
+/* vehicle */
+/* ===== Vehicle Section ===== */
+
+.vehicle-section {
+  padding: 6rem 8vw;
+}
+
+/* EV / CV 좌우 배치 */
 .vehicles {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
-  position: relative; 
-
   display: grid;
-  grid-template-columns: 1fr 1fr; /* EV | CV */
-  gap: 4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
 }
 
-/* EV / CV 구분 */
-.vehicle-category {
-  margin-bottom: 8rem;
-}
-
-.category-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  letter-spacing: -0.02em;
-}
-
-/* 카드 */
+/* 카드 자체 */
 .vehicle-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-6px);
+}
+
+/* 카드 내부 구조 */
+.vehicle-category {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  height: 100%;
 }
 
-/* 중앙 영역 */
-.vehicle-main {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 3rem;
-  align-items: center;
-}
+/* ===== Image ===== */
 
-/* 이미지 컨테이너 역할 */
-.vehicle-image {
-  width: 100%;
-  max-width: 520px;     /* 데스크탑에서 가로 고정 */
-  height: 280px;        /* 세로 고정 */
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
+/* 이미지 영역 크기 고정 */
 .vehicle-image-wrapper {
-  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
-/* 설명 */
+/* 어떤 이미지든 동일하게 */
+.vehicle-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Text ===== */
+
+.vehicle-description {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .vehicle-description p {
   font-size: 0.95rem;
   line-height: 1.7;
@@ -360,47 +365,9 @@ nav .nav-links li a:hover { color:#f0a500; }
   margin: 0;
 }
 
-/* 하단 스펙 */
-.vehicle-specs {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid #ddd;
-  padding-top: 1.5rem;
-  text-align: center;
-}
-
-.spec strong {
-  font-size: 1.6rem;
-  font-weight: 700;
-  display: block;
-}
-
-.spec span {
-  font-size: 0.75rem;
-  color: #777;
-  margin-top: 0.25rem;
-}
-
-.vehicle-category {
-  display: flex;
-  flex-direction: column;
-}
-
-.vehicle-card {
-  flex: 1;
-}
-
-.vehicle-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.vehicle-card:hover {
-  transform: translateY(-6px);
-}
-
+/* Detail link */
 .vehicle-link {
-  display: inline-block;
-  margin-top: 1.2rem;
+  margin-top: auto;
   font-size: 0.85rem;
   font-weight: 600;
   color: #000;
@@ -412,43 +379,15 @@ nav .nav-links li a:hover { color:#f0a500; }
   text-decoration: underline;
 }
 
+/* ===== Mobile ===== */
 
-
-/* 반응형 */
 @media (max-width: 900px) {
   .vehicles {
-    grid-template-columns: 1fr; /* 세로 스택 */
+    grid-template-columns: 1fr;
   }
 
- .vehicle-image {
-    max-width: 360px;
-    height: 220px;
-  }
-
-  .vehicle-specs {
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 1.5rem;
-  }
-
-}
-
-/* 중앙 기준선 */
-@media (min-width: 901px) {
-  .vehicles::before {
-    content: "";
-    position: absolute;
-    top: 6rem;
-    bottom: 6rem;
-    left: 50%;
-    width: 1px;
-    background-color: #e0e0e0;
-    transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 900px) {
-  .vehicles::before {
-    display: none;
+  .vehicle-section {
+    padding: 4rem 6vw;
   }
 }
 
