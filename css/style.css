@@ -124,6 +124,22 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 #sponsors { text-align:center; padding:100px 20px; background:#111; } #sponsors h2 { font-family:'Orbitron', sans-serif; font-weight:700; font-size:2.5rem; margin-bottom:50px; color:#FF4500; border-bottom:3px solid #FF4500; display:inline-block; padding-bottom:10px; }
 
+.sponsor-text {
+  margin: 20px 0 40px;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sponsor-text {
+  margin: 20px 0 40px;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+}
+
 
 #sponsors .sponsor-logos a {
   display: block;         /* 이미지를 클릭 영역 전체로 */
