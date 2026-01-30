@@ -32,14 +32,26 @@ nav .logo img {
 
 
 nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
-nav .nav-links { display:flex; list-style:none; }
-nav .nav-links li { margin-left:20px; }
-nav .nav-links li a { color:#fff; text-decoration:none; transition:0.3s; }
-nav .nav-links li a:hover { color:#f0a500; }
+nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav .nav-links li a:hover {
+  color: #f0a500; /* FS 팀 포인트 컬러 */
+}
 
 /* Hamburger */
 .hamburger { display:none; flex-direction:column; cursor:pointer; }
 .hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
+
+/* 스크롤 시 Navbar 배경 */
+header.scrolled {
+  background: #111;
+}
+
 
 /* Hero */
 
