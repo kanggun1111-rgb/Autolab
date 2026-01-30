@@ -40,17 +40,6 @@ nav .nav-links li a:hover { color:#f0a500; }
   position: relative;
 }
 
-/* 상단 구분선 추가 */
-.split-section::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background-color: #333; /* 구분선 색상 */
-  width: 60%;
-  margin: 0 auto 40px auto;
-  border-radius: 2px;
-}
-
 /* Split section 좌우 설정 */
 .split-section.left-img .img-container { order: 0; }
 .split-section.left-img .text-container { order: 1; text-align: left; }
