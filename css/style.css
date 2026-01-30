@@ -106,6 +106,39 @@ nav .nav-links li a:hover { color:#f0a500; }
   background: #fff;
 }
 
+#logo-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 25vh;          /* 충분한 여백 */
+  min-height: 180px;
+
+  background-color: #000;
+}
+
+#logo-divider img {
+  width: 160px;          /* 로고 크기 */
+  opacity: 0.9;
+}
+
+#logo-divider::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  top: 50%;
+}
+
+#logo-divider {
+  position: relative;
+}
+
+#logo-divider {
+  position: relative;
+}
+
 
 #team-intro {
   width: 100%;
