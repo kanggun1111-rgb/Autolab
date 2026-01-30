@@ -205,14 +205,30 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 #team-intro .team-text {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   margin-left: auto;
   width: min(42%, 520px);
 
-  padding-right: clamp(24px, 6vw, 80px);
+  padding: 48px 48px;
   color: #fff;
 }
+
+#team-intro .team-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);   /* 핵심: 글자 가독성 */
+  backdrop-filter: blur(6px);       /* 매거진 감성 */
+  -webkit-backdrop-filter: blur(6px);
+
+  border-left: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+
+  z-index: -1;
+}
+
 
 #team-intro .eyebrow {
   font-family: "Montserrat", sans-serif;
@@ -245,22 +261,16 @@ nav .nav-links li a:hover { color:#f0a500; }
 }
 
 @media (max-width: 768px) {
-  #team-intro {
-    min-height: auto;
-    padding: 72px 24px;
-
-    background-position: center top;
-  }
-
-  #team-intro::before {
-    background: rgba(0,0,0,0.6);
-  }
-
   #team-intro .team-text {
     width: 100%;
-    padding-right: 0;
+    padding: 32px 28px;
+  }
+
+  #team-intro .team-text::before {
+    border-left: none;
   }
 }
+
 
 
 /* Split sections */
