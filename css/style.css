@@ -140,119 +140,79 @@ nav .nav-links li a:hover { color:#f0a500; }
 }
 
 
-/* Team Intro Section */
+/* =========================
+   Team Intro Section
+========================= */
+
 #team-intro {
+  position: relative;
   display: flex;
   align-items: center;
 
-  padding: clamp(64px, 10vh, 120px) 0;
-  background: #0e0e0e;
-
-  overflow: hidden;   /* 🔥 이게 핵심 */
-}
-
-
-/* 왼쪽 이미지 */
-#team-intro .img-container {
-  flex: 1.1;
-
-  max-height: 520px;
-  overflow: hidden;    /* 🔥 이미지가 절대 밖으로 안 나감 */
-}
-
-#team-intro .img-container img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  display: block;
-}
-
-
-
-/* 텍스트 영역 */
-#team-intro {
-  display: flex;
-  align-items: center;
-
-  min-height: 60vh;                 /* 정확히 50% ❌ 여유 있게 */
-  padding: clamp(64px, 10vh, 120px) 0;
+  min-height: 60vh; /* 화면 절반 느낌 + 여백 */
+  padding: clamp(80px, 12vh, 140px) 6vw;
 
   background-image: url("../images/team.jpg");
   background-size: cover;
-  background-position: center;      /* 🔥 가운데 기준 크롭 */
+  background-position: center; /* 가운데 기준 크롭 */
   background-repeat: no-repeat;
 
-  position: relative;
   overflow: hidden;
 }
 
-#team-intro {
-  display: flex;
-  align-items: center;
-
-  min-height: 60vh;                 /* 정확히 50% ❌ 여유 있게 */
-  padding: clamp(64px, 10vh, 120px) 0;
-
-  background-image: url("../images/team.jpg");
-  background-size: cover;
-  background-position: center;      /* 🔥 가운데 기준 크롭 */
-  background-repeat: no-repeat;
-
-  position: relative;
-  overflow: hidden;
-}
-
+/* 텍스트 박스 */
 #team-intro .team-text {
+  margin-left: auto;
+  width: min(44%, 560px);
+
   position: relative;
   z-index: 2;
-
-  margin-left: auto;
-  width: min(42%, 520px);
 
   padding: 48px 48px;
   color: #fff;
 }
 
+/* Letter box */
 #team-intro .team-text::before {
   content: "";
   position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.55);   /* 핵심: 글자 가독성 */
-  backdrop-filter: blur(6px);       /* 매거진 감성 */
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  border-left: 1px solid rgba(255,255,255,0.08);
-  border-radius: 2px;
-
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
   z-index: -1;
 }
 
-
+/* Eyebrow */
 #team-intro .eyebrow {
-  font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
   display: block;
   margin-bottom: 16px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
 }
 
+/* Title */
 #team-intro h2 {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 700;
   margin-bottom: 24px;
 }
 
+/* Body text */
 #team-intro p {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 18px;
 }
 
 #team-intro .lead {
@@ -260,9 +220,18 @@ nav .nav-links li a:hover { color:#f0a500; }
   font-weight: 500;
 }
 
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width: 768px) {
+  #team-intro {
+    padding: 80px 6vw;
+  }
+
   #team-intro .team-text {
     width: 100%;
+    margin-left: 0;
     padding: 32px 28px;
   }
 
