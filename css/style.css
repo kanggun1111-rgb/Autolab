@@ -148,9 +148,27 @@ nav .nav-links li a:hover { color:#f0a500; }
 
 
 /* News */
-#news { padding:100px 20px; text-align:center; background:#000; }
-#news h2 { margin-bottom:30px; font-family:'Orbitron', sans-serif; font-weight:700; color:#fff; }
-#news #news-display { width:80%; max-width:600px; margin-bottom:20px; border-radius:10px; }
+#news {
+  padding: 100px 20px;
+  background:#000;
+  text-align:center;
+}
+
+#news h2 {
+  margin-bottom:40px;
+  font-family:'Orbitron', sans-serif;
+  font-weight:700;
+  color:#fff;
+}
+
+#news #news-display {
+  width: 80%;
+  max-width: 600px;
+  border-radius:10px;
+  margin-bottom:20px;
+  cursor: pointer;
+}
+
 #news #news-thumbnails {
   display: flex;
   justify-content: center;
@@ -158,21 +176,24 @@ nav .nav-links li a:hover { color:#f0a500; }
   gap: 10px;
 }
 
-#news #news-thumbnails a img {
-  width: 120px;        /* 정사각형 */
-  height: 120px;       /* 정사각형 */
-  object-fit: cover;   /* 이미지 비율 유지하면서 중앙 기준 잘림 */
+#news #news-thumbnails img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-#news #news-thumbnails a img:hover {
+#news #news-thumbnails img:hover {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  #news #news-thumbnails a img {
+@media (max-width:768px) {
+  #news #news-display {
+    width: 90%;
+  }
+  #news #news-thumbnails img {
     width: 90px;
     height: 90px;
   }
