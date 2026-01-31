@@ -623,95 +623,172 @@ nav .nav-links li a:hover {
 }
 
 
+/* =========================
+   Sponsors Section (Premium Wall)
+========================= */
 
-/* Sponsors Section */
-.sponsors-section {
-  padding: 6rem 8vw;
+.sponsors-section{
+  padding: 6rem 6vw;
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
+    radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
+    #0b0f16;
+}
+
+.sponsors-header{
   text-align: center;
-  background-color: #1a1a1a;
+  margin-bottom: 3.2rem;
 }
 
-.sponsors-header .eyebrow {
-  font-size: 0.7rem;
+.sponsors-header .eyebrow{
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
-  font-weight: 600;
-  color: #777;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.8rem;
 }
 
-.sponsors-header h2 {
-  font-size: 2rem;
-  margin: 1rem 0;
+.sponsors-header h2{
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 3.6vw, 2.6rem);
+  letter-spacing: 0.02em;
+  margin: 0.3rem 0 0.8rem;
+  color: #fff;
 }
 
-.sponsors-header p {
-  font-size: 0.95rem;
-  color: #555;
-  max-width: 560px;
+.sponsors-header p{
+  max-width: 720px;
   margin: 0 auto;
+  color: rgba(255,255,255,0.70);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.sponsor-grid {
-  margin-top: 4rem;
+/* 로고 월 그리드 */
+.sponsor-grid{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  align-items: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
 }
 
-.sponsor-logo {
-  width: 100%;
-  height: 90px;
+/* 로고 카드 */
+.sponsor-card{
+  height: 120px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 18px;
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  outline: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  text-decoration: none;
+
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, outline-color .25s ease, box-shadow .25s ease;
 }
 
-.sponsor-logo img {
-  width: 120px;
-  height: 50px;
+/* 은은한 하이라이트 레이어 */
+.sponsor-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(520px 260px at 20% 0%, rgba(240,165,0,0.12), transparent 60%),
+    radial-gradient(480px 240px at 90% 30%, rgba(225,6,0,0.10), transparent 55%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+
+.sponsor-card img{
+  max-width: 70%;
+  max-height: 55px;
   object-fit: contain;
+
   filter: grayscale(100%);
-  opacity: 0.65;
-  transition: all 0.3s ease;
+  opacity: 0.72;
+  transform: translateY(0);
+  transition: filter .25s ease, opacity .25s ease, transform .25s ease;
 }
 
-.sponsor-logo img:hover {
-  filter: grayscale(0%);
+.sponsor-card:hover{
+  transform: translateY(-6px);
+  outline-color: rgba(255,255,255,0.14);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
+}
+
+.sponsor-card:hover::before{
   opacity: 1;
 }
 
-.sponsor-cta {
-  margin-top: 4rem;
+.sponsor-card:hover img{
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
-.btn-outline {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  border: 1px solid #000;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+/* CTA (Vehicles 하단 버튼 톤과 통일) */
+.sponsor-cta{
+  margin-top: 3.2rem;
+  text-align: center;
+}
+
+.sponsor-archive-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.78);
   text-decoration: none;
-  color: #fff;
-  transition: all 0.25s ease;
+
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.12);
+
+  transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
 }
 
-.btn-outline:hover {
-  background-color: #000;
-  color: #ff8c00;
+.sponsor-archive-link:hover{
+  color: #f0a500;
+  background: rgba(240,165,0,0.12);
+  outline-color: rgba(240,165,0,0.35);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 900px) {
-  .sponsor-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+/* 반응형 */
+@media (max-width: 900px){
+  .sponsor-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.3rem;
   }
+}
 
-  .sponsors-section {
-    padding: 4rem 6vw;
+@media (max-width: 520px){
+  .sponsor-grid{
+    grid-template-columns: 1fr;
+  }
+  .sponsor-card{
+    height: 110px;
+  }
+  .sponsor-card img{
+    max-width: 65%;
   }
 }
+
 
 /* News Section */
 .news-section {
