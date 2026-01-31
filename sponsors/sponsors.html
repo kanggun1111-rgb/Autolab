@@ -18,33 +18,28 @@
 </head>
 
 <body>
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">AUTOLAB EV</a>
 
-<!-- Navbar -->
-<header>
-  <nav>
-    <div class="logo">
-      <img src="main/images/logo.png" alt="Autolab Logo">
+      <nav class="nav-links">
+        <a href="index.html#hero-grid">Home</a>
+        <a href="team/team.html">Team</a>
+        <a href="vehicles/index.html">Vehicles</a>
+        <a href="sponsors/sponsors.html">Sponsors</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-
-    <ul class="nav-links">
-      <li><a href="#hero-grid">Home</a></li>
-      <li><a href="#team-intro">Team</a></li>
-      <li><a href="#vehicle">Vehicles</a></li>
-      <li><a href="#sponsors">Sponsors</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-</header>
+  </header>
 
   <!-- HERO -->
-  <section id="sponsors-hero" class="sponsors-hero">
+  <section id="sponsors-hero" class="sponsors-hero" data-nav-hero>
     <div class="sponsors-hero-inner">
       <p class="eyebrow">PARTNERSHIP</p>
       <h1>Our Sponsors & Partners</h1>
@@ -55,7 +50,14 @@
 
       <div class="hero-cta">
         <a class="cta-pill" href="index.html#contact">Become a Partner →</a>
-        <a class="cta-ghost" href="index.html#sponsors">Back to Main →</a>
+        <a
+          class="cta-ghost"
+          href="sponsors/files/Autolab_Sponsor_Proposal.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Sponsor Proposal (PDF) →
+        </a>
       </div>
     </div>
 
@@ -69,7 +71,6 @@
 
   <!-- PREMIUM WALL -->
   <section id="partner-wall" class="sponsors-section">
-
     <div class="partner-controls">
       <button class="chip is-active" type="button" data-filter="all">All</button>
       <button class="chip" type="button" data-filter="title">Title</button>
@@ -81,91 +82,60 @@
     <div class="partner-grid" id="partnerGrid">
       <!-- NOTE: 로고 파일은 sponsors/images/ 안에 넣어주세요 -->
       <!-- data-tier: title | gold | silver | support -->
-      <article class="partner-card" data-tier="title">
+
+      <article class="partner-card tier-title" data-tier="title">
+        <div class="partner-tier">TITLE PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-title-01.png" alt="Title Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Title Partner</h3>
-          <p>Strategic collaboration for vehicle development and testing.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="gold">
+      <article class="partner-card tier-gold" data-tier="gold">
+        <div class="partner-tier">GOLD PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-gold-01.png" alt="Gold Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Gold Partner</h3>
-          <p>Manufacturing support and critical component sponsorship.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="gold">
+      <article class="partner-card tier-gold" data-tier="gold">
+        <div class="partner-tier">GOLD PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-gold-02.png" alt="Gold Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Gold Partner</h3>
-          <p>Engineering resources and advanced materials support.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="silver">
+      <article class="partner-card tier-silver" data-tier="silver">
+        <div class="partner-tier">SILVER PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-silver-01.png" alt="Silver Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Silver Partner</h3>
-          <p>Tools, logistics, and workshop infrastructure support.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="silver">
+      <article class="partner-card tier-silver" data-tier="silver">
+        <div class="partner-tier">SILVER PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-silver-02.png" alt="Silver Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Silver Partner</h3>
-          <p>Testing assistance and quality validation support.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="support">
+      <article class="partner-card tier-support" data-tier="support">
+        <div class="partner-tier">SUPPORT PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-support-01.png" alt="Support Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Support Partner</h3>
-          <p>Operational support that keeps the project moving.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="support">
+      <article class="partner-card tier-support" data-tier="support">
+        <div class="partner-tier">SUPPORT PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-support-02.png" alt="Support Partner Logo">
         </div>
-        <div class="partner-meta">
-          <h3>Support Partner</h3>
-          <p>Student development and education-driven partnership.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
       </article>
 
-      <article class="partner-card" data-tier="support">
+      <article class="partner-card tier-support" data-tier="support">
+        <div class="partner-tier">SUPPORT PARTNER</div>
         <div class="partner-logo">
           <img src="sponsors/images/logo-support-03.png" alt="Support Partner Logo">
-        </div>
-        <div class="partner-meta">
-          <h3>Support Partner</h3>
-          <p>Parts sponsorship and rapid prototyping support.</p>
-          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
         </div>
       </article>
     </div>
@@ -175,7 +145,7 @@
     </div>
   </section>
 
-  <!-- SPONSOR PACKAGES -->
+  <!-- PACKAGES -->
   <section id="packages" class="sponsors-section">
     <div class="section-header">
       <span class="eyebrow">SPONSORSHIP</span>
@@ -240,31 +210,8 @@
 
   <script src="main/script.js"></script>
 
-  <!-- Team/ Sponsors 페이지에서 #hero-grid가 없어도 header.scrolled 동작하도록 보완 -->
+  <!-- Partner filter chips (page-local) -->
   <script>
-    // Mobile menu toggle (page-local)
-    (function () {
-      const header = document.querySelector('.site-header');
-      const toggle = document.querySelector('.nav-toggle');
-      if (header && toggle) {
-        toggle.addEventListener('click', () => header.classList.toggle('menu-open'));
-      }
-    })();
-
-    // Navbar scrolled class (hero 기준)
-    (function () {
-      const header = document.querySelector('.site-header');
-      const hero = document.querySelector('#sponsors-hero');
-      if (!header || !hero) return;
-
-      const obs = new IntersectionObserver(([entry]) => {
-        header.classList.toggle('scrolled', !entry.isIntersecting);
-      }, { threshold: 0.12 });
-
-      obs.observe(hero);
-    })();
-
-    // Partner filter chips
     (function () {
       const chips = Array.from(document.querySelectorAll('.chip'));
       const cards = Array.from(document.querySelectorAll('.partner-card'));
@@ -290,8 +237,5 @@
       });
     })();
   </script>
-
-<script src="main/script.js"></script>
-
 </body>
 </html>

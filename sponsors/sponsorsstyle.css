@@ -1,7 +1,6 @@
 /* sponsors/sponsorsstyle.css */
 
-
-/* ---------- NAVBAR fallback (메인과 충돌 최소) ---------- */
+/* ---------- NAVBAR fallback (same as sponsors look) ---------- */
 .site-header{
   position: fixed;
   inset: 0 0 auto 0;
@@ -123,7 +122,7 @@
 
 /* ---------- HERO ---------- */
 .sponsors-hero{
-  padding: 140px 6vw 12px; /* Hero 하단을 최소화해 Partner Wall과 밀착 */
+  padding: 140px 6vw 12px; /* Hero 하단 최소화 */
   position: relative;
 }
 
@@ -187,8 +186,9 @@
   padding: 11px 14px;
   border-radius: 999px;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: rgba(255,255,255,0.84);
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.04);
@@ -200,7 +200,7 @@
 
 /* HUD marks */
 .hud-marks{
-  margin-top: 12px; /* Hero와 Partner Wall 밀착을 위해 축소 */
+  margin-top: 12px; /* Hero-Partner Wall 밀착 */
   max-width: 1100px;
 }
 
@@ -232,12 +232,7 @@
 
 /* Hero 바로 밑으로 붙이기 */
 #partner-wall{
-  padding-top: 8px; /* 핵심: Hero 바로 아래로 */
-}
-
-/* 혹시 남아있을지 모르는 section-header 제거(안전장치) */
-#partner-wall .section-header{
-  display: none;
+  padding-top: 8px;
 }
 
 /* ---------- FILTER CHIPS ---------- */
@@ -280,24 +275,25 @@
   max-width: 1240px;
 }
 
-/* 카드 크기 변주: 프리미엄 월 느낌 */
+/* 카드 = 로고 + 티어 HUD */
 .partner-card{
   grid-column: span 4;
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  align-items: center;
-
+  min-height: 160px;
   padding: 18px;
+
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.02);
   box-shadow:
     0 10px 30px rgba(0,0,0,0.25),
     inset 0 0 0 1px rgba(255,255,255,0.03);
 
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
   position: relative;
   overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .partner-card:hover{
@@ -309,58 +305,7 @@
     inset 0 0 0 1px rgba(240,165,0,0.12);
 }
 
-.partner-logo{
-  height: 84px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
-}
-
-.partner-logo img{
-  width: 86%;
-  height: 64%;
-  object-fit: contain;
-  filter: grayscale(1) contrast(1.1) brightness(0.95);
-  opacity: 0.92;
-  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
-  transform: translateZ(0);
-}
-
-.partner-card:hover .partner-logo img{
-  filter: grayscale(0) contrast(1.05) brightness(1);
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-.partner-meta h3{
-  margin: 0 0 6px 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.partner-meta p{
-  margin: 0 0 10px 0;
-  color: rgba(255,255,255,0.72);
-  font-size: 0.92rem;
-  line-height: 1.35;
-}
-
-.partner-link{
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  color: rgba(255,255,255,0.86);
-  position: relative;
-}
-
-.partner-link:hover{
-  color: rgba(255,255,255,0.96);
-}
-
-/* tier 강조(얇은 HUD 바) */
+/* 왼쪽 HUD tier bar (기본값: gold tone) */
 .partner-card::before{
   content: "";
   position: absolute;
@@ -368,22 +313,110 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, rgba(240,165,0,0.8), rgba(225,6,0,0.55));
-  opacity: 0.65;
+  background: linear-gradient(
+    180deg,
+    rgba(240,165,0,0.9),
+    rgba(225,6,0,0.55)
+  );
+  opacity: 0.7;
 }
 
-/* 반응형 */
+/* Tier HUD label */
+.partner-tier{
+  position: absolute;
+  top: 10px;
+  left: 16px;
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.85);
+  opacity: 0.88;
+}
+
+/* Logo */
+.partner-logo{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.partner-logo img{
+  width: 88%;
+  height: 74%;
+  object-fit: contain;
+
+  filter: grayscale(1) contrast(1.1) brightness(0.95);
+  opacity: 0.92;
+
+  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
+}
+
+.partner-card:hover .partner-logo img{
+  filter: grayscale(0) contrast(1.05) brightness(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ---------- TIER COLOR SYSTEM ---------- */
+
+/* Title */
+.tier-title{
+  grid-column: span 6;
+  min-height: 190px;
+}
+
+.tier-title::before{
+  background: linear-gradient(180deg, #f0a500, #ff6a00);
+  opacity: 0.75;
+}
+
+.tier-title .partner-tier{
+  color: #f0a500;
+}
+
+/* Gold */
+.tier-gold::before{
+  background: linear-gradient(180deg, #f0a500, #e10600);
+  opacity: 0.75;
+}
+
+.tier-gold .partner-tier{
+  color: #f0a500;
+}
+
+/* Silver */
+.tier-silver::before{
+  background: linear-gradient(180deg, rgba(210,210,210,0.9), rgba(140,140,140,0.8));
+  opacity: 0.72;
+}
+
+.tier-silver .partner-tier{
+  color: rgba(210,210,210,0.92);
+}
+
+/* Support */
+.tier-support::before{
+  background: linear-gradient(180deg, rgba(160,160,160,0.85), rgba(110,110,110,0.7));
+  opacity: 0.70;
+}
+
+.tier-support .partner-tier{
+  color: rgba(170,170,170,0.88);
+}
+
+/* Responsive */
 @media (max-width: 1100px){
   .partner-card{ grid-column: span 6; }
+  .tier-title{ grid-column: span 12; min-height: 180px; }
 }
+
 @media (max-width: 720px){
-  .partner-card{
-    grid-column: span 12;
-    grid-template-columns: 1fr;
-  }
-  .partner-logo{
-    height: 88px;
-  }
+  .partner-card{ grid-column: span 12; min-height: 150px; }
+  .partner-logo img{ width: 90%; height: 72%; }
 }
 
 /* ---------- BOTTOM CTA ---------- */
@@ -413,6 +446,32 @@
 }
 
 /* ---------- PACKAGES ---------- */
+.section-header{
+  margin-bottom: 56px;
+}
+
+.section-header .eyebrow{
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f0a500;
+}
+
+.section-header h2{
+  margin-top: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.section-bar{
+  margin-top: 12px;
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, #f0a500, #e10600);
+  opacity: 0.75;
+}
+
 .package-grid{
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -507,6 +566,4 @@
 @media (max-width: 720px){
   .package-card{ grid-column: span 12; }
 }
-
-
 
