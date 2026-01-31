@@ -1,70 +1,123 @@
-/* Reset & 기본 */
-* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
-body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
+/* =========================
+   Base + Theme
+========================= */
+:root{
+  --bg-0:#000;
+  --bg-1:#070b12;
 
-/* Navbar */
-header {
+  --accent:#f0a500;
+  --accent2:#e10600;
+
+  --glow-a: rgba(240,165,0,0.11);
+  --glow-b: rgba(225,6,0,0.09);
+
+  --stroke: rgba(255,255,255,0.10);
+  --fade-h: 140px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:'Roboto', sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(1200px 600px at 12% 0%, var(--glow-a), transparent 58%),
+    radial-gradient(900px 520px at 88% 18%, var(--glow-b), transparent 55%),
+    linear-gradient(to bottom, var(--bg-0), var(--bg-1));
+  scroll-padding-top: 90px;
+}
+
+.container{
+  width: min(1400px, 100%);
+  margin: 0 auto;
+}
+
+/* 섹션 공통(배경 통일 + 페이드 연결) */
+.section{
+  position: relative;
+  background: transparent;
+}
+
+.section::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-1px;
+  height: var(--fade-h);
+  pointer-events:none;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.90) 85%,
+    #000 100%
+  );
+}
+
+/* =========================
+   Navbar
+========================= */
+header{
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 80px;
-  background: transparent;
+
+  background: transparent; /* hero 보일 때 투명 */
   color: #fff;
   z-index: 9999;
+
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* hero가 안 보일 때 배경 생김 */
-header.scrolled {
+/* hero가 화면에서 사라지면 배경 생김 */
+header.scrolled{
   background: rgba(17,17,17,0.92);
   backdrop-filter: blur(12px);
 }
 
-
-/* Nav 구조 */
-nav {
+nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  height: 80px;
+  padding: 0 20px;
 }
 
-/* 로고 */
-nav .logo img {
+nav .logo img{
   height: 55px;
   width: auto;
 }
 
-/* 메뉴 링크 */
-nav .nav-links {
+nav .nav-links{
   display: flex;
   list-style: none;
 }
 
-nav .nav-links li {
+nav .nav-links li{
   margin-left: 20px;
 }
 
-nav .nav-links li a {
-  color: #fff;
-  text-decoration: none;
+nav .nav-links li a{
+  color:#fff;
+  text-decoration:none;
   font-weight: 600;
   transition: 0.3s;
 }
 
-nav .nav-links li a:hover {
-  color: #f0a500; /* FS 팀 포인트 컬러 */
+nav .nav-links li a:hover{
+  color: var(--accent);
 }
 
 /* Hamburger */
-.hamburger {
+.hamburger{
   display: none;
   flex-direction: column;
   cursor: pointer;
 }
 
-.hamburger div {
+.hamburger div{
   width: 25px;
   height: 3px;
   background: #fff;
@@ -72,35 +125,35 @@ nav .nav-links li a:hover {
   transition: 0.3s;
 }
 
-/* 모바일 */
 @media (max-width:768px){
-  nav .nav-links {
-    display: none;
+  nav .nav-links{
+    display:none;
     flex-direction: column;
-    background: #111;
-    position: absolute;
+    background: rgba(17,17,17,0.96);
+    position:absolute;
     top: 80px;
+    left: 0;
     width: 100%;
     padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
-  nav .nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex;
-  }
+  nav .nav-links.active{ display:flex; }
+  .hamburger{ display:flex; }
 }
 
-/* Hero */
-
-#hero-grid {
-  background: #111;
-  padding: 80px 6vw;
+/* =========================
+   Hero Grid
+========================= */
+#hero-grid{
+  padding: 110px 6vw 80px; /* header 고려 */
+  background:
+    radial-gradient(1100px 520px at 20% 10%, rgba(240,165,0,0.12), transparent 60%),
+    radial-gradient(900px 520px at 90% 30%, rgba(225,6,0,0.10), transparent 58%),
+    transparent;
 }
 
-.hero-grid {
+.hero-grid{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto auto;
@@ -109,251 +162,232 @@ nav .nav-links li a:hover {
   margin: 0 auto;
 }
 
-/* 카드 공통 */
-.hero-card {
+.hero-card{
   position: relative;
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
   background: #000;
   cursor: pointer;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  outline: 1px solid rgba(255,255,255,0.07);
+  transition: transform .28s ease, outline-color .28s ease;
 }
 
-.hero-card img {
-  width: 100%;
-  height: 100%;
+.hero-card:hover{
+  transform: translateY(-6px);
+  outline-color: rgba(255,255,255,0.14);
+}
+
+.hero-card img{
+  width:100%;
+  height:100%;
   object-fit: cover;
-  filter: brightness(0.7);
-  transition: transform 0.6s ease;
+  filter: brightness(0.70) contrast(1.05);
+  transform: scale(1.02);
+  transition: transform 0.65s ease, filter 0.65s ease;
 }
 
-.hero-card:hover img {
-  transform: scale(1.05);
+.hero-card:hover img{
+  transform: scale(1.08);
+  filter: brightness(0.78) contrast(1.08);
 }
 
-/* 카드 텍스트 */
-.card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 24px;
-  z-index: 2;
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.0) 75%);
+  z-index:1;
 }
 
-.card-content h3 {
-  font-family: "Orbitron", sans-serif;
-  font-size: 1.4rem;
-  margin-bottom: 8px;
+.card-content{
+  position:absolute;
+  left:0; bottom:0;
+  padding: 26px;
+  z-index:2;
+  max-width: 92%;
 }
 
-.card-content p {
-  font-size: 0.95rem;
-  opacity: 0.85;
+.card-content h3{
+  font-family:"Orbitron", sans-serif;
+  font-size: clamp(1.15rem, 1.4vw, 1.6rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.card-content a {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 18px;
-  background: #e10600;
-  color: #fff;
+.card-content p{
+  font-size: 0.96rem;
+  line-height: 1.55;
+  opacity: 0.86;
+}
+
+.card-cta{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 18px;
+  background: var(--accent2);
+  color:#fff;
   border-radius: 999px;
-  font-size: 0.85rem;
-  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration:none;
+  transition: transform .2s ease, filter .2s ease;
+}
+.card-cta:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.06);
 }
 
-/* 개별 카드 배치 */
-.card-large {
+.card-large{
   grid-row: 1 / span 2;
   grid-column: 1 / 2;
-  min-height: 480px;
+  min-height: 520px;
 }
-
-.card-wide {
+.card-wide{
   grid-column: 2 / span 2;
+  min-height: 250px;
+}
+.card-small{
   min-height: 240px;
 }
 
-.card-small {
-  min-height: 220px;
-}
-
-@media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card-large,
-  .card-wide,
-  .card-small {
-    grid-column: auto;
-    grid-row: auto;
+@media (max-width: 900px){
+  #hero-grid{ padding: 90px 4vw 60px; }
+  .hero-grid{ grid-template-columns: 1fr; }
+  .card-large, .card-wide, .card-small{
+    grid-column:auto;
+    grid-row:auto;
     min-height: 260px;
   }
 }
 
-
 /* =========================
-   Team Intro Section
+   Team Intro
 ========================= */
-
-#team-intro {
+#team-intro{
   padding: 80px 6vw;
-  background: #111;
-  color: #fff;
+  background:
+    radial-gradient(900px 480px at 15% 80%, rgba(240,165,0,0.10), transparent 60%),
+    transparent;
 }
 
-.team-container {
-  display: flex;
-  align-items: center;
+.team-container{
+  display:flex;
+  align-items:center;
   gap: 60px;
   flex-wrap: wrap;
 }
 
-.team-image {
+.team-image{
   flex: 1 1 400px;
-  overflow: hidden;
+  overflow:hidden;
   border-radius: 12px;
   position: relative;
+  outline: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
 }
 
-.team-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+.team-image img{
+  width:100%;
+  height:auto;
+  display:block;
   transition: transform 0.5s ease;
 }
 
-.team-image:hover img {
+.team-image:hover img{
   transform: scale(1.05) rotate(-1deg);
 }
 
-.team-text {
+.team-text{
   flex: 1 1 500px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.55);
   padding: 40px 30px;
-  border-left: 6px solid #f0a500;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  position: relative;
+  border-left: 6px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+  outline: 1px solid rgba(255,255,255,0.08);
 }
 
-.team-text .eyebrow {
-  font-family: "Montserrat", sans-serif;
+.team-text .eyebrow{
+  font-family:"Montserrat", sans-serif;
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #f0a500;
+  color: var(--accent);
   margin-bottom: 12px;
 }
 
-.team-text h2 {
-  font-family: "Orbitron", sans-serif;
+.team-text h2{
+  font-family:"Orbitron", sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 20px;
 }
 
-.team-text h2 span {
-  color: #ff3d00;
-}
+.team-text h2 span{ color: #ff3d00; }
 
-.team-text p {
-  font-family: "Roboto", sans-serif;
+.team-text p{
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 20px;
-  color: #eee;
+  color: rgba(255,255,255,0.88);
 }
 
-.learn-more {
-  display: inline-block;
+.learn-more{
+  display:inline-block;
   padding: 12px 28px;
-  background: linear-gradient(135deg, #f0a500, #ff3d00);
-  color: #111;
+  background: linear-gradient(135deg, var(--accent), #ff3d00);
+  color:#111;
   font-weight: 700;
-  text-decoration: none;
-  border-radius: 6px;
+  text-decoration:none;
+  border-radius: 999px;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
-.learn-more .arrow {
-  display: inline-block;
+.learn-more:hover{
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+  color:#fff;
+}
+
+.learn-more .arrow{
+  display:inline-block;
   margin-left: 6px;
   transition: transform 0.3s ease;
 }
+.learn-more:hover .arrow{ transform: translateX(4px); }
 
-.learn-more:hover {
-  background: linear-gradient(135deg, #ff3d00, #f0a500);
-  color: #fff;
-}
-
-.learn-more:hover .arrow {
-  transform: translateX(4px);
-}
-
-/* 모바일 */
-@media (max-width: 768px) {
-  .team-container {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .team-text {
+@media (max-width: 768px){
+  .team-container{ flex-direction: column; gap: 30px; }
+  .team-text{
     border-left: none;
-    border-top: 4px solid #f0a500;
+    border-top: 4px solid var(--accent);
     padding: 30px 20px;
   }
 }
 
 /* =========================
-   Vehicle Section (F1/HUD)
+   Vehicles (F1/HUD)
 ========================= */
-
 .vehicle-section{
-  position: relative; /* ★ ::after를 쓰기 위해 필수 */
   padding: 6rem 6vw;
   background:
     radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
     radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
-    #000;
-}
-
-/* Vehicles → Sponsors 자연 전환용 페이드 */
-.vehicle-section::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-1px;
-  height:140px;
-
-  pointer-events:none; /* 클릭 방해 X */
-  z-index:1;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.35) 40%,
-    #000 100%
-  );
-}
-
-
-.container{
-  width: min(1400px, 100%);
-  margin: 0 auto;
+    transparent;
 }
 
 .vehicle-header{
-  text-align: center;
+  text-align:center;
   margin-bottom: 3rem;
 }
 
 .vehicle-header .eyebrow{
-  display: inline-block;
-  font-family: "Montserrat", sans-serif;
+  display:inline-block;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -362,12 +396,10 @@ nav .nav-links li a:hover {
 }
 
 .vehicle-section-title{
-  font-family: "Orbitron", sans-serif;
+  font-family:"Orbitron", sans-serif;
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #fff;
   margin-bottom: 0.8rem;
-  letter-spacing: 0.02em;
 }
 
 .vehicle-subtitle{
@@ -378,29 +410,24 @@ nav .nav-links li a:hover {
   line-height: 1.6;
 }
 
-/* 2-card layout: 화면을 더 시원하게 */
 .vehicles{
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.5rem;
   align-items: stretch;
 }
 
-/* 카드 */
 .vehicle-card{
-  width: 100%;
+  width:100%;
   border-radius: 22px;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 70%, rgba(255,255,255,0.02) 100%);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 70%, rgba(255,255,255,0.02) 100%);
   outline: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 22px 60px rgba(0,0,0,0.55);
-  transform: translateY(0);
-  transition: transform 0.28s ease, outline-color 0.28s ease, box-shadow 0.28s ease;
+  transition: transform .28s ease, outline-color .28s ease, box-shadow .28s ease;
   position: relative;
 }
 
-/* 레이싱 느낌: 살짝 빛나는 코너 */
 .vehicle-card::before{
   content:"";
   position:absolute;
@@ -419,33 +446,29 @@ nav .nav-links li a:hover {
   box-shadow: 0 28px 78px rgba(0,0,0,0.65);
 }
 
-.vehicle-card:hover::before{
-  opacity: 1;
-}
+.vehicle-card:hover::before{ opacity: 1; }
 
-/* 상단(이미지 + 설명) */
 .vehicle-top{
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* 이미지가 더 커 보이게 */
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 2rem;
   padding: 2.2rem;
-  min-height: 290px; /* 카드 높이 안정 */
+  min-height: 290px;
   align-items: stretch;
 }
 
-/* 이미지 영역 */
 .vehicle-image-wrapper{
   position: relative;
   border-radius: 16px;
-  overflow: hidden;
+  overflow:hidden;
   height: 100%;
   outline: 1px solid rgba(255,255,255,0.10);
   background: #000;
 }
 
 .vehicle-image-wrapper img{
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
   object-fit: cover;
   filter: brightness(0.92) contrast(1.05);
   transform: scale(1.01);
@@ -457,12 +480,11 @@ nav .nav-links li a:hover {
   filter: brightness(0.98) contrast(1.08);
 }
 
-/* EV/CV 큰 라벨 */
 .vehicle-card-title{
-  position: absolute;
+  position:absolute;
   left: 16px;
   top: 14px;
-  font-family: "Orbitron", sans-serif;
+  font-family:"Orbitron", sans-serif;
   font-size: 1.25rem;
   letter-spacing: 0.08em;
   padding: 8px 12px;
@@ -472,12 +494,11 @@ nav .nav-links li a:hover {
   backdrop-filter: blur(10px);
 }
 
-/* HUD Tag */
 .vehicle-tag{
-  position: absolute;
+  position:absolute;
   right: 16px;
   top: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -485,17 +506,16 @@ nav .nav-links li a:hover {
   padding: 8px 12px;
   border-radius: 999px;
   background: rgba(240,165,0,0.14);
-  color: #f0a500;
+  color: var(--accent);
   outline: 1px solid rgba(240,165,0,0.22);
   backdrop-filter: blur(10px);
 }
 
-/* 설명 영역: 링크 위치 맞추기 핵심 */
+/* 링크 위치 맞추기 핵심 */
 .vehicle-description{
-  display: flex;
+  display:flex;
   flex-direction: column;
   height: 100%;
-  color: #fff;
 }
 
 .vehicle-description p{
@@ -504,20 +524,18 @@ nav .nav-links li a:hover {
   color: rgba(255,255,255,0.86);
   margin-bottom: 1.1rem;
 
-  /* 너무 길면 라인 클램프(선택이지만 추천) */
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* ✅ 링크를 하단으로 고정 = 두 카드 위치 맞음 */
 .vehicle-link{
-  margin-top: auto;              /* 핵심 */
+  margin-top: auto; /* ✅ 두 카드 링크 위치 동일 */
   font-size: 0.9rem;
   font-weight: 700;
-  color: #f0a500;
-  text-decoration: none;
+  color: var(--accent);
+  text-decoration:none;
   align-self: flex-start;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -527,31 +545,20 @@ nav .nav-links li a:hover {
   transform: translateX(4px);
 }
 
-/* 스펙 바: HUD 스타일 */
 .vehicle-specs{
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
   padding: 1.1rem 1.4rem 1.4rem;
   border-top: 1px solid rgba(255,255,255,0.10);
-
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.10));
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.10));
 }
 
-/* spec item */
-.spec{
-  padding: 0.8rem 0.9rem;
-  position: relative;
-}
-
-.spec:not(:first-child){
-  border-left: 1px solid rgba(255,255,255,0.08);
-}
+.spec{ padding: 0.8rem 0.9rem; }
+.spec:not(:first-child){ border-left: 1px solid rgba(255,255,255,0.08); }
 
 .spec-label{
-  display: block;
-  font-family: "Montserrat", sans-serif;
+  display:block;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -560,117 +567,76 @@ nav .nav-links li a:hover {
 }
 
 .spec-value{
-  display: block;
-  font-family: "Orbitron", sans-serif;
+  display:block;
+  font-family:"Orbitron", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.02em;
-  color: #fff;
 }
-
-/* 반응형 */
-@media (max-width: 1100px){
-  .vehicle-top{
-    grid-template-columns: 1fr; /* 세로 스택 */
-    min-height: auto;
-  }
-
-  .vehicle-image-wrapper{
-    height: 240px;
-  }
-
-  .vehicle-specs{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* =========================
-   Vehicle Footer CTA
-========================= */
 
 .vehicle-footer{
   margin-top: 3.5rem;
-  text-align: center;
+  text-align:center;
 }
 
 .vehicle-archive-link{
-  display: inline-flex;
-  align-items: center;
+  display:inline-flex;
+  align-items:center;
   gap: 6px;
-
-  font-family: "Montserrat", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-
   color: rgba(255,255,255,0.75);
-  text-decoration: none;
-
+  text-decoration:none;
   padding: 0.65rem 1.4rem;
   border-radius: 999px;
-
   background: rgba(255,255,255,0.04);
   outline: 1px solid rgba(255,255,255,0.12);
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    outline-color 0.25s ease,
-    transform 0.25s ease;
+  transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
 }
 
 .vehicle-archive-link:hover{
-  color: #f0a500;
+  color: var(--accent);
   background: rgba(240,165,0,0.12);
   outline-color: rgba(240,165,0,0.35);
   transform: translateY(-2px);
 }
 
+@media (max-width: 1100px){
+  .vehicle-top{ grid-template-columns: 1fr; min-height:auto; }
+  .vehicle-image-wrapper{ height: 240px; }
+  .vehicle-specs{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
 
 @media (max-width: 900px){
-  .vehicles{
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .vehicle-section{
-    padding: 5rem 6vw;
-  }
+  .vehicles{ grid-template-columns: 1fr; gap: 2rem; }
+  .vehicle-section{ padding: 5rem 6vw; }
 }
 
 @media (max-width: 520px){
-  .vehicle-specs{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .vehicle-specs{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 
-
 /* =========================
-   Sponsors Section (Premium Wall)
+   Sponsors (Premium Wall)
 ========================= */
-
 .sponsors-section{
   padding: 6rem 6vw;
   background:
     radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
     radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
-    linear-gradient(
-      to bottom,
-      #000 0%,
-      #020409 40%,
-      #050912 100%
-    );
+    transparent;
 }
 
-
 .sponsors-header{
-  text-align: center;
+  text-align:center;
   margin-bottom: 3.2rem;
 }
 
 .sponsors-header .eyebrow{
-  display: inline-block;
-  font-family: "Montserrat", sans-serif;
+  display:inline-block;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -679,11 +645,10 @@ nav .nav-links li a:hover {
 }
 
 .sponsors-header h2{
-  font-family: "Orbitron", sans-serif;
+  font-family:"Orbitron", sans-serif;
   font-size: clamp(2rem, 3.6vw, 2.6rem);
   letter-spacing: 0.02em;
   margin: 0.3rem 0 0.8rem;
-  color: #fff;
 }
 
 .sponsors-header p{
@@ -694,34 +659,30 @@ nav .nav-links li a:hover {
   line-height: 1.6;
 }
 
-/* 로고 월 그리드 */
 .sponsor-grid{
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.6rem;
-  align-items: stretch;
 }
 
-/* 로고 카드 */
 .sponsor-card{
   height: 120px;
   border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding: 18px;
 
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   outline: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-  text-decoration: none;
+  text-decoration:none;
 
   position: relative;
-  overflow: hidden;
+  overflow:hidden;
   transition: transform .25s ease, outline-color .25s ease, box-shadow .25s ease;
 }
 
-/* 은은한 하이라이트 레이어 */
 .sponsor-card::before{
   content:"";
   position:absolute;
@@ -738,7 +699,6 @@ nav .nav-links li a:hover {
   max-width: 70%;
   max-height: 55px;
   object-fit: contain;
-
   filter: grayscale(100%);
   opacity: 0.72;
   transform: translateY(0);
@@ -751,35 +711,31 @@ nav .nav-links li a:hover {
   box-shadow: 0 26px 70px rgba(0,0,0,0.60);
 }
 
-.sponsor-card:hover::before{
-  opacity: 1;
-}
-
+.sponsor-card:hover::before{ opacity: 1; }
 .sponsor-card:hover img{
   filter: grayscale(0%);
   opacity: 1;
   transform: translateY(-2px);
 }
 
-/* CTA (Vehicles 하단 버튼 톤과 통일) */
 .sponsor-cta{
   margin-top: 3.2rem;
-  text-align: center;
+  text-align:center;
 }
 
 .sponsor-archive-link{
-  display: inline-flex;
-  align-items: center;
+  display:inline-flex;
+  align-items:center;
   gap: 6px;
 
-  font-family: "Montserrat", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
   color: rgba(255,255,255,0.78);
-  text-decoration: none;
+  text-decoration:none;
 
   padding: 0.65rem 1.4rem;
   border-radius: 999px;
@@ -791,263 +747,242 @@ nav .nav-links li a:hover {
 }
 
 .sponsor-archive-link:hover{
-  color: #f0a500;
+  color: var(--accent);
   background: rgba(240,165,0,0.12);
   outline-color: rgba(240,165,0,0.35);
   transform: translateY(-2px);
 }
 
-/* 반응형 */
 @media (max-width: 900px){
-  .sponsor-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.3rem;
-  }
+  .sponsor-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.3rem; }
 }
 
 @media (max-width: 520px){
-  .sponsor-grid{
-    grid-template-columns: 1fr;
-  }
-  .sponsor-card{
-    height: 110px;
-  }
-  .sponsor-card img{
-    max-width: 65%;
-  }
+  .sponsor-grid{ grid-template-columns: 1fr; }
+  .sponsor-card{ height: 110px; }
+  .sponsor-card img{ max-width: 65%; }
 }
 
-
-/* News Section */
-.news-section {
-  padding: 6rem 8vw;
-  background: #000;
-  color: #fff;
-  text-align: center;
+/* =========================
+   News
+========================= */
+.news-section{
+  padding: 6rem 6vw;
+  background:
+    radial-gradient(900px 520px at 80% 20%, rgba(225,6,0,0.07), transparent 60%),
+    transparent;
+  text-align:center;
 }
 
-.news-section .eyebrow {
+.news-section .eyebrow{
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   font-weight: 600;
-  color: #777;
+  color: rgba(255,255,255,0.55);
   text-transform: uppercase;
+  display:inline-block;
+  margin-bottom: .8rem;
+  font-family:"Montserrat", sans-serif;
 }
 
-.news-section h2 {
-  font-family: 'Orbitron', sans-serif;
+.news-section h2{
+  font-family:"Orbitron", sans-serif;
   font-size: 2.2rem;
-  margin: 1rem 0 3rem;
+  margin: 0.2rem 0 3rem;
 }
 
-.news-grid {
-  display: grid;
+.news-grid{
+  display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
-  align-items: stretch;
 }
 
-.news-card {
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
+.news-card{
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow:hidden;
+  transition: transform .3s ease, box-shadow .3s ease, outline-color .3s ease;
+  display:flex;
   flex-direction: column;
 }
 
-.news-card:hover {
+.news-card:hover{
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  outline-color: rgba(255,255,255,0.14);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
 }
 
-.news-image img {
-  width: 100%;
+.news-image img{
+  width:100%;
   height: 180px;
   object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
 }
 
-.news-content {
-  padding: 1.2rem 1rem 1.5rem;
-  flex: 1;
-  display: flex;
+.news-content{
+  padding: 1.2rem 1.1rem 1.5rem;
+  flex:1;
+  display:flex;
   flex-direction: column;
+  text-align: left;
 }
 
-.news-content h3 {
-  font-family: 'Montserrat', sans-serif;
+.news-content h3{
+  font-family:"Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.news-date {
+.news-date{
   font-size: 0.75rem;
-  color: #aaa;
+  color: rgba(255,255,255,0.60);
   margin-bottom: 0.8rem;
 }
 
-.news-excerpt {
-  flex: 1;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #ddd;
+.news-excerpt{
+  flex:1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
   margin-bottom: 1rem;
 }
 
-.news-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #f0a500;
-  text-decoration: none;
+.news-link{
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration:none;
   align-self: flex-start;
-  transition: color 0.3s ease;
+  transition: transform .2s ease, color .2s ease;
+}
+.news-link:hover{
+  color:#ff7a00;
+  transform: translateX(4px);
 }
 
-.news-link:hover {
-  color: #ff7a00;
+@media (max-width: 768px){
+  .news-grid{ grid-template-columns: 1fr; gap: 2rem; }
 }
 
-@media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-/* Contact Section */
-#contact {
+/* =========================
+   Contact
+========================= */
+#contact{
   padding: 100px 20px;
-  background: #111;
-  color: #fff;
-  text-align: center;
+  background:
+    radial-gradient(900px 520px at 30% 30%, rgba(240,165,0,0.07), transparent 65%),
+    transparent;
+  text-align:center;
 }
 
-#contact h2 {
-  font-family: 'Orbitron', sans-serif;
+#contact h2{
+  font-family:"Orbitron", sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 60px;
-  color: #f0a500;
+  color: var(--accent);
   letter-spacing: 2px;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
-/* 컨테이너 */
-.contact-container {
-  display: flex;
-  flex-direction: column; /* 지도 위 카드 아래 */
-  align-items: center;
+.contact-container{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
   gap: 40px;
 }
 
-/* 지도 */
-.map {
-  width: 100%;
+.map{
+  width:100%;
   max-width: 1000px;
   height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  border-radius: 16px;
+  overflow:hidden;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+  outline: 1px solid rgba(255,255,255,0.08);
 }
 
-.map iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  transition: transform 0.5s ease;
+.map iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  transition: transform .5s ease;
 }
+.map:hover iframe{ transform: scale(1.02); }
 
-.map:hover iframe {
-  transform: scale(1.02);
-}
-
-/* 카드 그룹 */
-.contact-cards {
-  display: flex;
-  justify-content: center;
+.contact-cards{
+  display:flex;
+  justify-content:center;
   gap: 30px;
   flex-wrap: wrap;
   max-width: 1000px;
 }
 
-/* 카드 스타일 */
-.contact-card {
+.contact-card{
   background: rgba(255,255,255,0.05);
   padding: 25px 20px;
-  border-radius: 12px;
+  border-radius: 16px;
   min-width: 220px;
   max-width: 260px;
-  text-align: left;
+  text-align:left;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  overflow:hidden;
+  outline: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  transition: transform .3s, box-shadow .3s, background .3s, outline-color .3s;
 }
 
-.contact-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(120deg, rgba(240,165,0,0.3), rgba(255,61,0,0.3));
+.contact-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(120deg, rgba(240,165,0,0.22), rgba(225,6,0,0.18));
   opacity: 0;
-  transition: opacity 0.3s;
-  border-radius: 12px;
-  z-index: 0;
+  transition: opacity .3s;
+  z-index:0;
 }
 
-.contact-card:hover::before {
-  opacity: 1;
-}
-
-.contact-card:hover {
+.contact-card:hover::before{ opacity: 1; }
+.contact-card:hover{
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  outline-color: rgba(255,255,255,0.14);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
   background: rgba(255,255,255,0.08);
 }
 
-.contact-card h3 {
-  font-family: 'Montserrat', sans-serif;
+.contact-card h3{
+  font-family:"Montserrat", sans-serif;
   margin-bottom: 12px;
   font-size: 1.1rem;
-  color: #f0a500;
+  color: var(--accent);
   position: relative;
-  z-index: 1;
+  z-index:1;
 }
 
-.contact-card p {
+.contact-card p{
   margin-bottom: 10px;
   font-size: 0.95rem;
   line-height: 1.5;
   position: relative;
-  z-index: 1;
+  z-index:1;
 }
 
-.contact-card a {
-  color: #f0a500;
-  text-decoration: none;
+.contact-card a{
+  color: var(--accent);
+  text-decoration:none;
 }
+.contact-card a:hover{ text-decoration: underline; }
 
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
-.contact-address {
+.contact-address{
   margin-top: 50px;
   font-size: 1rem;
-  color: #eee;
+  color: rgba(255,255,255,0.85);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* 모바일 */
-@media (max-width: 768px) {
-  .map {
-    height: 300px;
-  }
-
-  .contact-cards {
-    flex-direction: column;
-    gap: 20px;
-  }
+@media (max-width: 768px){
+  .map{ height: 300px; }
+  .contact-cards{ flex-direction: column; gap: 20px; }
 }
-
