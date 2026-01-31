@@ -85,7 +85,7 @@ nav .nav-links li a:hover{
 
 /* ---------- HERO ---------- */
 .sponsors-hero{
-  padding: 140px 6vw 24px; /* ↓ hero 하단 압축 */
+  padding: 140px 6vw 16px; /* ↓ hero 하단 압축 */
   position: relative;
 }
 
@@ -163,7 +163,7 @@ nav .nav-links li a:hover{
 
 /* HUD marks */
 .hud-marks{
-  margin-top: 34px;
+  margin-top: 16px;
   max-width: 1100px;
 }
 
@@ -191,25 +191,6 @@ nav .nav-links li a:hover{
 /* ---------- SECTION COMMON ---------- */
 .sponsors-section{
   padding: 110px 6vw;
-}
-
-/* section-header (메인 규격과 동일 룰) */
-.section-header{
-  margin-bottom: 56px;
-}
-
-.section-header .eyebrow{
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #f0a500;
-}
-
-.section-header h2{
-  margin-top: 8px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
 }
 
 .section-bar{
