@@ -1,6 +1,89 @@
 
 /* team/teamstyle.css */
 
+/* =========================
+   Navbar
+========================= */
+header{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  z-index: 9999;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+header.scrolled{
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(12px);
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+}
+
+nav .logo img{
+  height: 55px;
+  width: auto;
+}
+
+nav .nav-links{
+  display: flex;
+  list-style: none;
+}
+
+nav .nav-links li{
+  margin-left: 20px;
+}
+
+nav .nav-links li a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+nav .nav-links li a:hover{
+  color: var(--accent);
+}
+
+/* Hamburger */
+.hamburger{
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div{
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+@media (max-width:768px){
+  nav .nav-links{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 18px 0;
+    background: rgba(0,0,0,0.92);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  nav .nav-links.active{ display: flex; }
+  .hamburger{ display: flex; }
+}
+
+
 /* ---------- TEAM HERO ---------- */
 .team-hero {
   padding: 140px 6vw 120px;
