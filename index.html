@@ -118,21 +118,31 @@
 <!-- vehicle -->
 <section id="vehicle" class="vehicle-section">
   <div class="container">
-    <h2 class="vehicle-section-title">2026 Vehicles</h2>
+    <div class="vehicle-header">
+      <span class="eyebrow">VEHICLES</span>
+      <h2 class="vehicle-section-title">2026 Vehicles</h2>
+      <p class="vehicle-subtitle">
+        EV / CV 플랫폼의 개발 방향과 성능 지표를 한눈에 확인하세요.
+      </p>
+    </div>
 
     <div class="vehicles">
 
       <!-- EV CARD -->
-      <div class="vehicle-card">
-        <div class="vehicle-category">
+      <article class="vehicle-card">
+        <div class="vehicle-top">
           <div class="vehicle-image-wrapper">
             <img src="main/images/EV.jpg" alt="EV Vehicle">
             <span class="vehicle-card-title">EV</span>
+
+            <!-- HUD Tag -->
+            <span class="vehicle-tag">EV Platform</span>
           </div>
 
           <div class="vehicle-description">
             <p>
-              ALE-26. Developed with a full aerodynamic package and new powertrain system. The car focuses on acceleration
+              ALE-26. Developed with a full aerodynamic package and new powertrain system.
+              The car focuses on acceleration.
             </p>
 
             <a href="vehicles/EV.html" class="vehicle-link">
@@ -141,27 +151,45 @@
           </div>
         </div>
 
-        <div class="vehicle-specs">
-          <span>235 kg</span>
-          <span>141 kW</span>
-          <span>6.8 kWh</span>
-          <span>2025</span>
-          <span>FS</span>
+        <div class="vehicle-specs" aria-label="EV specs">
+          <div class="spec">
+            <span class="spec-label">Mass</span>
+            <span class="spec-value">235 kg</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Power</span>
+            <span class="spec-value">141 kW</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Energy</span>
+            <span class="spec-value">6.8 kWh</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Year</span>
+            <span class="spec-value">2025</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Class</span>
+            <span class="spec-value">FS</span>
+          </div>
         </div>
-      </div>
+      </article>
 
       <!-- CV CARD -->
-      <div class="vehicle-card">
-        <div class="vehicle-category">
+      <article class="vehicle-card">
+        <div class="vehicle-top">
           <div class="vehicle-image-wrapper">
             <img src="main/images/CV.jpg" alt="CV Vehicle">
             <span class="vehicle-card-title">CV</span>
+
+            <!-- HUD Tag -->
+            <span class="vehicle-tag">IC Platform</span>
           </div>
 
           <div class="vehicle-description">
             <p>
-              CV-05 represents our internal combustion platform, emphasizing
-              mechanical reliability, weight reduction, and driver-oriented vehicle dynamics.
+              CV-05 represents our internal combustion platform, emphasizing mechanical reliability,
+              weight reduction, and driver-oriented vehicle dynamics.
             </p>
 
             <a href="vehicles/CV.html" class="vehicle-link">
@@ -170,18 +198,34 @@
           </div>
         </div>
 
-        <div class="vehicle-specs">
-          <span>220 kg</span>
-          <span>636 CC</span>
-          <span>4 Cylinder</span>
-          <span>2025</span>
-          <span>FS</span>
+        <div class="vehicle-specs" aria-label="CV specs">
+          <div class="spec">
+            <span class="spec-label">Mass</span>
+            <span class="spec-value">220 kg</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Engine</span>
+            <span class="spec-value">636 CC</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Config</span>
+            <span class="spec-value">4 Cylinder</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Year</span>
+            <span class="spec-value">2025</span>
+          </div>
+          <div class="spec">
+            <span class="spec-label">Class</span>
+            <span class="spec-value">FS</span>
+          </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
+
 
 <!-- Sponsors -->
 <section id="sponsors" class="sponsors-section">

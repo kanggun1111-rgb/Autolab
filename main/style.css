@@ -307,132 +307,278 @@ nav .nav-links li a:hover {
   }
 }
 
-
 /* =========================
-   Vehicle Section
+   Vehicle Section (F1/HUD)
 ========================= */
-.vehicle-section {
-  padding: 6rem 8vw;
+
+.vehicle-section{
+  padding: 6rem 6vw; /* 기존 8vw보다 넓게 사용 */
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
+    radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
+    #000;
 }
 
-.vehicle-section-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
+.container{
+  width: min(1400px, 100%);
+  margin: 0 auto;
+}
+
+.vehicle-header{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.vehicle-header .eyebrow{
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.8rem;
+}
+
+.vehicle-section-title{
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
   color: #fff;
-  margin-bottom: 3rem;
-  text-align: center;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.02em;
 }
 
-.vehicles {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  justify-content: center;
-}
-
-.vehicle-card {
-  max-width: 550px;
-  width: 100%;
+.vehicle-subtitle{
+  max-width: 720px;
   margin: 0 auto;
-  background-color: #111;
-  border-radius: 18px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  color: rgba(255,255,255,0.70);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.vehicle-card:hover {
-  transform: translateY(-6px);
-}
-
-.vehicle-category {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  flex-wrap: nowrap;
+/* 2-card layout: 화면을 더 시원하게 */
+.vehicles{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
   align-items: stretch;
-  height: 250px;
 }
 
-.vehicle-image-wrapper {
-  flex: 0 0 60%;
+/* 카드 */
+.vehicle-card{
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 70%, rgba(255,255,255,0.02) 100%);
+  outline: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.55);
+  transform: translateY(0);
+  transition: transform 0.28s ease, outline-color 0.28s ease, box-shadow 0.28s ease;
   position: relative;
-  border-radius: 12px;
+}
+
+/* 레이싱 느낌: 살짝 빛나는 코너 */
+.vehicle-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(500px 240px at 20% 0%, rgba(240,165,0,0.12), transparent 60%),
+    radial-gradient(480px 240px at 90% 20%, rgba(225,6,0,0.10), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events:none;
+}
+
+.vehicle-card:hover{
+  transform: translateY(-8px);
+  outline-color: rgba(255,255,255,0.14);
+  box-shadow: 0 28px 78px rgba(0,0,0,0.65);
+}
+
+.vehicle-card:hover::before{
+  opacity: 1;
+}
+
+/* 상단(이미지 + 설명) */
+.vehicle-top{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* 이미지가 더 커 보이게 */
+  gap: 2rem;
+  padding: 2.2rem;
+  min-height: 290px; /* 카드 높이 안정 */
+  align-items: stretch;
+}
+
+/* 이미지 영역 */
+.vehicle-image-wrapper{
+  position: relative;
+  border-radius: 16px;
   overflow: hidden;
   height: 100%;
+  outline: 1px solid rgba(255,255,255,0.10);
+  background: #000;
 }
 
-.vehicle-image-wrapper img {
+.vehicle-image-wrapper img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+  transform: scale(1.01);
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
-.vehicle-description {
-  flex: 0 0 40%;
+.vehicle-card:hover .vehicle-image-wrapper img{
+  transform: scale(1.07);
+  filter: brightness(0.98) contrast(1.08);
+}
+
+/* EV/CV 큰 라벨 */
+.vehicle-card-title{
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  outline: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+}
+
+/* HUD Tag */
+.vehicle-tag{
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(240,165,0,0.14);
+  color: #f0a500;
+  outline: 1px solid rgba(240,165,0,0.22);
+  backdrop-filter: blur(10px);
+}
+
+/* 설명 영역: 링크 위치 맞추기 핵심 */
+.vehicle-description{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  color: #fff;
   height: 100%;
+  color: #fff;
 }
 
-.vehicle-description p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+.vehicle-description p{
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.86);
+  margin-bottom: 1.1rem;
+
+  /* 너무 길면 라인 클램프(선택이지만 추천) */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.vehicle-link {
-  font-size: 0.85rem;
-  font-weight: 600;
+/* ✅ 링크를 하단으로 고정 = 두 카드 위치 맞음 */
+.vehicle-link{
+  margin-top: auto;              /* 핵심 */
+  font-size: 0.9rem;
+  font-weight: 700;
   color: #f0a500;
   text-decoration: none;
   align-self: flex-start;
-  transition: color 0.3s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.vehicle-link:hover {
+.vehicle-link:hover{
   color: #ff7a00;
+  transform: translateX(4px);
 }
 
-.vehicle-specs {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem 2rem 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 0.85rem;
+/* 스펙 바: HUD 스타일 */
+.vehicle-specs{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  padding: 1.1rem 1.4rem 1.4rem;
+  border-top: 1px solid rgba(255,255,255,0.10);
+
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.10));
+}
+
+/* spec item */
+.spec{
+  padding: 0.8rem 0.9rem;
+  position: relative;
+}
+
+.spec:not(:first-child){
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.spec-label{
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.35rem;
+}
+
+.spec-value{
+  display: block;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   color: #fff;
-  font-weight: 700;
 }
 
 /* 반응형 */
-@media (max-width: 900px) {
-  .vehicles {
+@media (max-width: 1100px){
+  .vehicle-top{
+    grid-template-columns: 1fr; /* 세로 스택 */
+    min-height: auto;
+  }
+
+  .vehicle-image-wrapper{
+    height: 240px;
+  }
+
+  .vehicle-specs{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px){
+  .vehicles{
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .vehicle-category {
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .vehicle-image-wrapper,
-  .vehicle-description {
-    flex: 0 0 100%;
-    max-height: none;
-  }
-
-  .vehicle-specs {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
+  .vehicle-section{
+    padding: 5rem 6vw;
   }
 }
+
+@media (max-width: 520px){
+  .vehicle-specs{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
 
 /* Sponsors Section */
 .sponsors-section {
