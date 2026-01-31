@@ -1,76 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto_Lab Sponsors</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autolab Sponsors</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<base href="/Autolab/">
 
-  <!-- CSS (같은 폴더) -->
-  <link rel="stylesheet" href="sponsorsstyle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="sponsorsstyle.css">
 </head>
 <body>
 
+<!-- Navbar -->
 <header>
   <nav>
     <div class="logo">
-      <img src="logo.png" alt="Auto_Lab Logo">
+      <img src="../images/logo.png" alt="Autolab Logo">
     </div>
     <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#team-intro">Team</a></li>
-      <li><a href="../index.html#vehicle">Vehicles</a></li>
-      <li><a href="../index.html#sponsors">Sponsors</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/team.html">Team</a></li>
+      <li><a href="../vehicles/EV.html">Vehicles</a></li>
+      <li><a href="sponsors.html" class="active">Sponsors</a></li>
       <li><a href="../index.html#news">News</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </nav>
 </header>
 
-<main>
-  <section id="sponsor-detail">
-    <div class="container">
-      <h1>Our Sponsors</h1>
-      <p class="intro">Auto_Lab은 파트너의 신뢰와 지원 덕분에 지속적인 성장을 이어가고 있습니다.</p>
+<!-- Hero Section -->
+<section id="sponsors-hero">
+  <div class="hero-content">
+    <h1>Partners & Supporters</h1>
+    <p>Driving Innovation Together</p>
+    <span class="subtitle">Auto_Lab is powered by our valued sponsors</span>
 
-      <!-- 계층별 스폰서 -->
-      <div class="sponsor-tier">
-        <h2>Platinum</h2>
-        <div class="logos">
-          <img src="sponsor1.png" alt="Sponsor 1">
-          <img src="sponsor2.png" alt="Sponsor 2">
-        </div>
-      </div>
-
-      <div class="sponsor-tier">
-        <h2>Gold</h2>
-        <div class="logos">
-          <img src="sponsor3.png" alt="Sponsor 3">
-          <img src="sponsor4.png" alt="Sponsor 4">
-        </div>
-      </div>
-
-      <div class="sponsor-tier">
-        <h2>Silver</h2>
-        <div class="logos">
-          <img src="sponsor5.png" alt="Sponsor 5">
-        </div>
-      </div>
-
-      <div class="sponsor-tier">
-        <h2>Bronze</h2>
-        <div class="logos">
-          <img src="sponsor6.png" alt="Sponsor 6">
-        </div>
-      </div>
-
+    <!-- PDF 안내 버튼 -->
+    <div class="pdf-btn-wrapper">
+      <a href="docs/sponsor_guide.pdf" target="_blank" class="btn-pdf">
+        Download Sponsor Guide PDF
+      </a>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+
+<!-- Sponsors Section -->
+<section id="sponsor-levels">
+  <div class="container">
+
+    <!-- Title Sponsor -->
+    <div class="sponsor-tier">
+      <h2>Title Sponsor</h2>
+      <div class="sponsor-grid">
+        <div class="sponsor-logo">
+          <img src="images/sponsors/title1.png" alt="Title Sponsor 1">
+        </div>
+      </div>
+    </div>
+
+    <!-- Platinum -->
+    <div class="sponsor-tier">
+      <h2>Platinum</h2>
+      <div class="sponsor-grid">
+        <div class="sponsor-logo"><img src="images/sponsors/platinum1.png" alt="Platinum Sponsor 1"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/platinum2.png" alt="Platinum Sponsor 2"></div>
+      </div>
+    </div>
+
+    <!-- Gold -->
+    <div class="sponsor-tier">
+      <h2>Gold</h2>
+      <div class="sponsor-grid">
+        <div class="sponsor-logo"><img src="images/sponsors/gold1.png" alt="Gold Sponsor 1"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/gold2.png" alt="Gold Sponsor 2"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/gold3.png" alt="Gold Sponsor 3"></div>
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div class="sponsor-tier">
+      <h2>Silver</h2>
+      <div class="sponsor-grid">
+        <div class="sponsor-logo"><img src="images/sponsors/silver1.png" alt="Silver Sponsor 1"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/silver2.png" alt="Silver Sponsor 2"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/silver3.png" alt="Silver Sponsor 3"></div>
+      </div>
+    </div>
+
+    <!-- Bronze -->
+    <div class="sponsor-tier">
+      <h2>Bronze</h2>
+      <div class="sponsor-grid">
+        <div class="sponsor-logo"><img src="images/sponsors/bronze1.png" alt="Bronze Sponsor 1"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/bronze2.png" alt="Bronze Sponsor 2"></div>
+        <div class="sponsor-logo"><img src="images/sponsors/bronze3.png" alt="Bronze Sponsor 3"></div>
+      </div>
+    </div>
+
+    <a href="../index.html" class="btn-back">← Back to Home</a>
+  </div>
+</section>
 
 <script src="../js/script.js"></script>
 </body>

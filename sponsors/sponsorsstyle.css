@@ -1,77 +1,107 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto_Lab Sponsors</title>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+/* Navbar */
+header {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:80px;
+  background:transparent;
+  color:#fff;
+  z-index:9999;
+  transition: background 0.3s ease;
+}
+header.scrolled { background:#111; }
+nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+nav .logo img { height:55px; }
+nav .nav-links { display:flex; list-style:none; }
+nav .nav-links li { margin-left:20px; }
+nav .nav-links li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
+nav .nav-links li a:hover,
+nav .nav-links li a.active { color:#f0a500; }
+.hamburger { display:none; flex-direction:column; cursor:pointer; }
+.hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
 
-  <!-- CSS (같은 폴더) -->
-  <link rel="stylesheet" href="sponsorsstyle.css">
-</head>
-<body>
+/* 모바일 */
+@media (max-width:768px){
+  nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; padding:20px 0; }
+  nav .nav-links.active { display:flex; }
+  .hamburger { display:flex; }
+}
 
-<header>
-  <nav>
-    <div class="logo">
-      <img src="logo.png" alt="Auto_Lab Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#team-intro">Team</a></li>
-      <li><a href="../index.html#vehicle">Vehicles</a></li>
-      <li><a href="../index.html#sponsors">Sponsors</a></li>
-      <li><a href="../index.html#news">News</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+/* Hero Section (F1 느낌) */
+#sponsors-hero {
+  height:50vh;
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background: url("images/hero.jpg") center/cover no-repeat;
+  position: relative;
+}
+#sponsors-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+}
+#sponsors-hero .hero-content { position:relative; z-index:1; color:#fff; }
+#sponsors-hero h1 { font-family:'Orbitron', sans-serif; font-size:clamp(2rem,5vw,3rem); margin-bottom:10px; text-shadow:2px 2px 12px rgba(0,0,0,0.7);}
+#sponsors-hero p { font-size:1rem; margin-bottom:5px; text-shadow:1px 1px 10px rgba(0,0,0,0.5);}
+#sponsors-hero .subtitle { font-size:0.9rem; letter-spacing:0.05em; color:#f0a500; }
 
-<main>
-  <section id="sponsor-detail">
-    <div class="container">
-      <h1>Our Sponsors</h1>
-      <p class="intro">Auto_Lab은 파트너의 신뢰와 지원 덕분에 지속적인 성장을 이어가고 있습니다.</p>
+/* PDF 버튼 */
+.pdf-btn-wrapper {
+  margin-top: 2rem;
+}
 
-      <!-- 계층별 스폰서 -->
-      <div class="sponsor-tier">
-        <h2>Platinum</h2>
-        <div class="logos">
-          <img src="sponsor1.png" alt="Sponsor 1">
-          <img src="sponsor2.png" alt="Sponsor 2">
-        </div>
-      </div>
+.btn-pdf {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #f0a500, #ff7a00);
+  color: #111;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(240, 165, 0, 0.4);
+  transition: all 0.3s ease;
+}
 
-      <div class="sponsor-tier">
-        <h2>Gold</h2>
-        <div class="logos">
-          <img src="sponsor3.png" alt="Sponsor 3">
-          <img src="sponsor4.png" alt="Sponsor 4">
-        </div>
-      </div>
+.btn-pdf:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+}
 
-      <div class="sponsor-tier">
-        <h2>Silver</h2>
-        <div class="logos">
-          <img src="sponsor5.png" alt="Sponsor 5">
-        </div>
-      </div>
 
-      <div class="sponsor-tier">
-        <h2>Bronze</h2>
-        <div class="logos">
-          <img src="sponsor6.png" alt="Sponsor 6">
-        </div>
-      </div>
+/* Sponsor Levels */
+#sponsor-levels { padding:4rem 5vw; max-width:1100px; margin:0 auto; }
+.sponsor-tier { margin-bottom:4rem; text-align:center; }
+.sponsor-tier h2 { font-family:'Orbitron', sans-serif; font-size:1.8rem; color:#f0a500; margin-bottom:2rem; }
 
-    </div>
-  </section>
-</main>
+/* Grid */
+.sponsor-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:2rem; justify-items:center; align-items:center; }
+.sponsor-logo img { max-width:120px; max-height:80px; object-fit:contain; filter: grayscale(100%); opacity:0.7; transition: all 0.3s ease; }
+.sponsor-logo img:hover { filter: grayscale(0%); opacity:1; transform:scale(1.05); }
 
-<script src="../js/script.js"></script>
-</body>
-</html>
+/* Back Button */
+.btn-back {
+  display:inline-block;
+  padding:10px 26px;
+  background:#f0a500;
+  color:#111;
+  font-weight:700;
+  text-decoration:none;
+  border-radius:6px;
+  transition: background 0.3s ease;
+  margin-top:2rem;
+}
+.btn-back:hover { background:#ff7a00; color:#fff; }
+
+/* 반응형 */
+@media(max-width:768px){
+  #sponsors-hero { height:40vh; }
+  .sponsor-grid { gap:1.5rem; }
+}
