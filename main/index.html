@@ -5,27 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Autolab EV Team</title>
 
-<!-- 프로젝트 루트 기준 -->
-<base href="/Autolab/">
-
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css">
+<!-- Main 페이지 전용 CSS -->
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
 <!-- Navbar -->
 <header>
   <nav>
-    <!-- 로고 -->
     <div class="logo">
-      <img src="images/logo.png" alt="Autolab Logo">
+      <img src="./images/logo.png" alt="Autolab Logo">
     </div>
 
-    <!-- 메뉴 링크 -->
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#team-intro">Team</a></li>
@@ -35,7 +31,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <!-- Hamburger -->
     <div class="hamburger">
       <div></div>
       <div></div>
@@ -44,11 +39,10 @@
   </nav>
 </header>
 
-
 <section id="hero">
   <div class="hero-video-wrapper">
     <video class="bg-video" autoplay muted loop playsinline>
-      <source src="videos/hero.mp4" type="video/mp4">
+      <source src="./videos/hero.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
@@ -59,68 +53,45 @@
   </div>
 </section>
 
-
-<!-- Logo Divider -->
 <section id="logo-divider">
-  <img src="images/logo.png" alt="Auto_Lab Logo">
+  <img src="./images/logo.png" alt="Auto_Lab Logo">
 </section>
 
-
-<!-- team intro -->
 <section id="team-intro">
   <div class="team-text">
     <span class="eyebrow">ABOUT US</span>
-
     <h2>Auto_Lab<br>Formula Student</h2>
-
     <p class="lead">
       1996년 설립된 부산대학교 자작자동차 동아리 Auto_Lab은<br>
       2020년 Formula Student CV 클래스 첫 출전을 시작으로,<br>
       2024년 EV 클래스에 도전하며 새로운 도약을 이어가고 있습니다.
     </p>
-
     <p>
       설계, 해석, 제작, 주행 데이터 분석까지 — 
       Auto_Lab은 단순한 제작을 넘어,
       실제 엔지니어링 경험을 축적하는 것을 목표로 도전하고 있습니다.
     </p>
-
-    <a href="about/team.html" class="learn-more">Learn more <span>→</span></a>
-
+    <a href="../team/team.html" class="learn-more">Learn more <span>→</span></a>
   </div>
 </section>
 
-
-<!-- vehicle -->
 <section id="vehicle" class="vehicle-section">
   <div class="container">
-    <!-- 섹션 제목 -->
     <h2 class="vehicle-section-title">2026 Vehicles</h2>
-
     <div class="vehicles">
-
-      <!-- EV CARD -->
       <div class="vehicle-card">
         <div class="vehicle-category">
-          <!-- 좌측 이미지 + 카드 제목 -->
           <div class="vehicle-image-wrapper">
-            <img src="images/EV.jpg" alt="EV Vehicle">
+            <img src="./images/EV.jpg" alt="EV Vehicle">
             <span class="vehicle-card-title">EV</span>
           </div>
-
-          <!-- 우측 설명 텍스트 -->
           <div class="vehicle-description">
             <p>
               ALE-26. Developed with a full aerodynamic package and new powertrain system. The car focuses on acceleration
             </p>
-
-            <a href="vehicles/EV.html" class="vehicle-link">
-              Vehicle Detail →
-            </a>
+            <a href="../vehicles/EV.html" class="vehicle-link">Vehicle Detail →</a>
           </div>
         </div>
-
-        <!-- 하단 스펙 -->
         <div class="vehicle-specs">
           <span>235 kg</span>
           <span>141 kW</span>
@@ -130,26 +101,20 @@
         </div>
       </div>
 
-      <!-- CV CARD -->
       <div class="vehicle-card">
         <div class="vehicle-category">
           <div class="vehicle-image-wrapper">
-            <img src="images/CV.jpg" alt="CV Vehicle">
+            <img src="./images/CV.jpg" alt="CV Vehicle">
             <span class="vehicle-card-title">CV</span>
           </div>
-
           <div class="vehicle-description">
             <p>
               CV-05 represents our internal combustion platform, emphasizing
               mechanical reliability, weight reduction, and driver-oriented vehicle dynamics.
             </p>
-
-            <a href="vehicles/CV.html" class="vehicle-link">
-              Vehicle Detail →
-            </a>
+            <a href="../vehicles/CV.html" class="vehicle-link">Vehicle Detail →</a>
           </div>
         </div>
-
         <div class="vehicle-specs">
           <span>220 kg</span>
           <span>636 CC</span>
@@ -158,13 +123,10 @@
           <span>FS</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- Sponsors -->
 <section id="sponsors" class="sponsors-section">
   <div class="sponsors-header">
     <span class="eyebrow">SPONSORS</span>
@@ -174,46 +136,28 @@
     </p>
   </div>
 
-  <!-- Sponsor Logos -->
   <div class="sponsor-grid">
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor1.png" alt="Sponsor 1">
-    </div>
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor2.png" alt="Sponsor 2">
-    </div>
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor3.png" alt="Sponsor 3">
-    </div>
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor4.png" alt="Sponsor 4">
-    </div>
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor5.png" alt="Sponsor 5">
-    </div>
-    <div class="sponsor-logo">
-      <img src="images/sponsors/sponsor6.png" alt="Sponsor 6">
-    </div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor1.png" alt="Sponsor 1"></div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor2.png" alt="Sponsor 2"></div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor3.png" alt="Sponsor 3"></div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor4.png" alt="Sponsor 4"></div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor5.png" alt="Sponsor 5"></div>
+    <div class="sponsor-logo"><img src="../sponsors/images/sponsor6.png" alt="Sponsor 6"></div>
   </div>
 
-<!-- Show More Button -->
-<div class="sponsor-cta">
-  <a href="sponsors/sponsors.html" class="btn-outline">View All Partners →</a>
-</div>
-
+  <div class="sponsor-cta">
+    <a href="../sponsors/sponsors.html" class="btn-outline">View All Partners →</a>
+  </div>
 </section>
 
-
-<!-- News -->
 <section id="news" class="news-section">
   <div class="container">
     <span class="eyebrow">LATEST NEWS</span>
     <h2>Updates & Announcements</h2>
     <div class="news-grid">
-      <!-- 뉴스 카드 반복 -->
       <div class="news-card">
         <div class="news-image">
-          <img src="images/news1.jpg" alt="News 1">
+          <img src="./images/news1.jpg" alt="News 1">
         </div>
         <div class="news-content">
           <h3>EV-06 Launch Event</h3>
@@ -227,7 +171,7 @@
 
       <div class="news-card">
         <div class="news-image">
-          <img src="images/news2.jpg" alt="News 2">
+          <img src="./images/news2.jpg" alt="News 2">
         </div>
         <div class="news-content">
           <h3>CV-05 Performance Review</h3>
@@ -238,25 +182,18 @@
           <a href="https://www.instagram.com/p/CsD2B2vHh2Q/" target="_blank" class="news-link">Read More →</a>
         </div>
       </div>
-
-      <!-- 필요 시 카드 추가 -->
     </div>
   </div>
 </section>
 
-
-<!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
   <div class="contact-container">
-    <!-- 지도 -->
     <div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.9069147173977!2d129.0805088749459!3d35.23368717273499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893edc3fabc63%3A0x4ecb89e92303d724!2z67aA7IKw64yA7ZWZ6rWQIOq4sOqzhOq4sOyIoOyXsOq1rOuPmQ!5e0!3m2!1sko!2skr!4v1769797442481!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.9069147173977!2d129.0805088749459!3d35.23368717273499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893edc3fabc63%3A0x4ecb89e92303d724!2z67aA7IKw64yA7ZWZ6rWQIOq4sOq4sOyIoOyXsOq1rOuPmQ!5e0!3m2!1sko!2skr!4v1769797442481!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- 연락처 카드 그룹 -->
     <div class="contact-cards">
-      <!-- EV 팀장 -->
       <div class="contact-card">
         <h3>EV Team Leader</h3>
         <p><strong>Name:</strong> 강건</p>
@@ -264,7 +201,6 @@
         <p><strong>Phone:</strong> <a href="tel:+821085304462">+82 010 8530 4462</a></p>
       </div>
 
-      <!-- CV 팀장 -->
       <div class="contact-card">
         <h3>CV Team Leader</h3>
         <p><strong>Name:</strong> 김민수</p>
@@ -272,7 +208,6 @@
         <p><strong>Phone:</strong> <a href="tel:+821012345678">+82 010 1234 5678</a></p>
       </div>
 
-      <!-- 회장 -->
       <div class="contact-card">
         <h3>President</h3>
         <p><strong>Name:</strong> 박지훈</p>
@@ -282,12 +217,11 @@
     </div>
   </div>
 
-  <!-- 주소 -->
   <p class="contact-address">
     <strong>Address:</strong> 부산광역시 금정구 부산대학교 기계기술연구동
   </p>
 </section>
 
-<script src="js/script.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
