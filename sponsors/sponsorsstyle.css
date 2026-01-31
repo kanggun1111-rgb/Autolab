@@ -85,7 +85,7 @@ nav .nav-links li a:hover{
 
 /* ---------- HERO ---------- */
 .sponsors-hero{
-  padding: 140px 6vw 48px; /* ↓ hero 하단 압축 */
+  padding: 140px 6vw 24px; /* ↓ hero 하단 압축 */
   position: relative;
 }
 
