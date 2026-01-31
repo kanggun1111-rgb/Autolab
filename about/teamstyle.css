@@ -1,92 +1,101 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fefefe;
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
+
+/* Navbar */
+header {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:80px;
+  background:transparent;
+  color:#fff;
+  z-index:9999;
+  transition: background 0.3s ease;
+}
+header.scrolled { background:#111; }
+
+nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+nav .logo img { height:55px; }
+nav .nav-links { display:flex; list-style:none; }
+nav .nav-links li { margin-left:20px; }
+nav .nav-links li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
+nav .nav-links li a:hover,
+nav .nav-links li a.active { color:#f0a500; }
+.hamburger { display:none; flex-direction:column; cursor:pointer; }
+.hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
+
+/* 모바일 */
+@media (max-width:768px){
+  nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; padding:20px 0; }
+  nav .nav-links.active { display:flex; }
+  .hamburger { display:flex; }
 }
 
-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-  background-color: #000;
+/* Hero Section (FSAE 느낌) */
+#team-hero {
+  height:60vh;
+  min-height:350px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background: url("images/hero.jpg") center/cover no-repeat;
+  position: relative;
 }
-
-header nav .logo img {
-  height: 50px;
+#team-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.6);
 }
+#team-hero .hero-content { position:relative; z-index:1; color:#fff; }
+#team-hero h1 { font-family:'Orbitron', sans-serif; font-size:clamp(2rem,5vw,3rem); margin-bottom:10px; text-shadow: 2px 2px 12px rgba(0,0,0,0.7);}
+#team-hero p { font-size:1rem; margin-bottom:5px; text-shadow:1px 1px 10px rgba(0,0,0,0.5);}
+#team-hero .subtitle { font-size:0.9rem; letter-spacing:0.05em; color:#f0a500; }
 
-header nav .nav-links {
+/* Team Info */
+#team-info { padding:6rem 5vw; max-width:900px; margin:0 auto; text-align:center; }
+#team-info h2 { font-family:'Orbitron', sans-serif; font-size:2rem; margin-bottom:1rem; }
+#team-info p { font-size:1rem; line-height:1.6; margin-bottom:2rem; color:#eee; }
+#team-info h3 { font-family:'Montserrat', sans-serif; font-size:1.2rem; color:#f0a500; margin:2rem 0 1rem; }
+
+/* History List */
+.history-list {
   list-style: none;
-  display: flex;
-  gap: 2rem;
+  margin-bottom:2rem;
+}
+.history-list li {
+  font-size:1rem;
+  line-height:1.6;
+  padding:6px 0;
+  border-left:3px solid #f0a500;
+  padding-left:10px;
+  margin-bottom:8px;
 }
 
-header nav .nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-}
+/* Organization Chart */
+#org-chart { padding:4rem 5vw; text-align:center; background:#111; }
+.org-chart { display:flex; justify-content:center; margin-bottom:2rem; }
+.org-chart img { max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.5); }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
+/* Back Button */
+.btn-back {
+  display:inline-block;
+  padding:10px 26px;
+  background:#f0a500;
+  color:#111;
+  font-weight:700;
+  text-decoration:none;
+  border-radius:6px;
+  transition: background 0.3s ease;
+  margin:0 auto;
 }
+.btn-back:hover { background:#ff7a00; color:#fff; }
 
-#team-detail h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-#team-detail .intro {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.org-chart {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.org-chart img {
-  max-width: 80%;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.team-members {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.member-card {
-  width: 220px;
-  text-align: center;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.member-card img {
-  width: 100%;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.member-card h3 {
-  margin: 0.5rem 0;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.member-card p {
-  margin: 0.3rem 0;
-  font-size: 0.9rem;
+/* 반응형 */
+@media(max-width:768px){
+  #team-hero { height:45vh; }
+  #team-info { padding:4rem 3vw; }
+  .history-list li { font-size:0.95rem; }
 }

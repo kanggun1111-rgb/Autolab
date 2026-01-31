@@ -1,74 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto_Lab Team</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autolab Team</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<base href="/Autolab/">
 
-  <!-- CSS (같은 폴더) -->
-  <link rel="stylesheet" href="teamstyle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="teamstyle.css">
 </head>
 <body>
 
+<!-- Navbar -->
 <header>
   <nav>
     <div class="logo">
-      <img src="logo.png" alt="Auto_Lab Logo">
+      <img src="../images/logo.png" alt="Autolab Logo">
     </div>
     <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#team-intro">Team</a></li>
-      <li><a href="../index.html#vehicle">Vehicles</a></li>
-      <li><a href="../index.html#sponsors">Sponsors</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="../vehicles/EV.html">Vehicles</a></li>
+      <li><a href="../sponsors/sponsors.html">Sponsors</a></li>
       <li><a href="../index.html#news">News</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </nav>
 </header>
 
-<main>
-  <section id="team-detail">
-    <div class="container">
-      <h1>Auto_Lab Formula Student Team</h1>
-      <p class="intro">
-        1996년 설립된 부산대학교 자작자동차 동아리 Auto_Lab은 Formula Student에 지속적으로 참가하며
-        설계, 제작, 주행 데이터 분석 등 실제 엔지니어링 경험을 쌓고 있습니다.
-      </p>
+<!-- Hero Section -->
+<section id="team-hero">
+  <div class="hero-content">
+    <h1>Auto_Lab</h1>
+    <p>Pusan National University Formula Student Team</p>
+    <span class="subtitle">Engineering. Racing. Innovation.</span>
+  </div>
+</section>
 
-      <!-- 조직도 -->
-      <div class="org-chart">
-        <img src="org_chart.jpg" alt="Organization Chart">
-      </div>
+<!-- Team Info -->
+<section id="team-info">
+  <div class="container">
+    <h2>About Auto_Lab</h2>
+    <p>
+      부산대학교 자작자동차 동아리 Auto_Lab은 1996년 설립 이후,
+      설계, 제작, 해석, 데이터 분석까지 아우르는 Formula Student 팀입니다.
+    </p>
 
-      <!-- 팀원 소개 -->
-      <div class="team-members">
-        <div class="member-card">
-          <img src="member1.jpg" alt="강건">
-          <h3>강건</h3>
-          <p>EV Team Leader</p>
-          <p><a href="mailto:kanggun1111@pusan.ac.kr">kanggun1111@pusan.ac.kr</a></p>
-        </div>
-        <div class="member-card">
-          <img src="member2.jpg" alt="김민수">
-          <h3>김민수</h3>
-          <p>CV Team Leader</p>
-          <p><a href="mailto:kimminsu@pusan.ac.kr">kimminsu@pusan.ac.kr</a></p>
-        </div>
-        <div class="member-card">
-          <img src="member3.jpg" alt="박지훈">
-          <h3>박지훈</h3>
-          <p>President</p>
-          <p><a href="mailto:parkjihoon@pusan.ac.kr">parkjihoon@pusan.ac.kr</a></p>
-        </div>
-      </div>
+    <h3>Team History & Milestones</h3>
+    <ul class="history-list">
+      <li><strong>1996:</strong> Auto_Lab 설립</li>
+      <li><strong>2020:</strong> CV 클래스 Formula Student 첫 출전</li>
+      <li><strong>2022:</strong> EV 클래스 참가 시작</li>
+      <li><strong>2024:</strong> 풀 에어로 및 데이터 로깅 시스템 적용</li>
+      <li><strong>2025:</strong> 국내외 대회에서 우수 성적 달성</li>
+    </ul>
+
+    <h3>Graduate Outcomes</h3>
+    <p>
+      Auto_Lab에서 활동한 다수의 학생들이 매년 삼성, 현대, LG, SK, 글로벌 자동차 및
+      기술 기업에 취업하며 실제 산업 현장에서 전문성을 발휘하고 있습니다.
+      이러한 성과는 Auto_Lab이 단순한 동아리를 넘어 실무형 엔지니어를 양성하는
+      플랫폼임을 보여줍니다.
+    </p>
+  </div>
+</section>
+
+<!-- Organization Chart -->
+<section id="org-chart">
+  <div class="container">
+    <h3>Organization Chart</h3>
+    <div class="org-chart">
+      <img src="images/org_chart.png" alt="Organization Chart">
     </div>
-  </section>
-</main>
+    <a href="../index.html#team-intro" class="btn-back">← Back to Home</a>
+  </div>
+</section>
 
 <script src="../js/script.js"></script>
 </body>
