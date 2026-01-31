@@ -1,90 +1,168 @@
+
+<!-- team/team.html -->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoLab Team</title>
+  <meta charset="UTF-8" />
+  <base href="/Autolab/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autolab EV Team | Team</title>
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- 페이지 전용 CSS -->
-<link rel="stylesheet" href="teamstyle.css">
+  <!-- Main + Team CSS -->
+  <link rel="stylesheet" href="../main/style.css">
+  <link rel="stylesheet" href="../team/teamstyle.css">
 </head>
 <body>
 
-<!-- Navbar -->
-<header>
-  <nav>
-    <div class="logo">
-      <a href="../index.html"><img src="images/logo.png" alt="AutoLab Logo"></a>
+  <!-- Navbar (메인과 동일 구조 가정) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">AUTOLAB EV</a>
+      <nav class="nav-links">
+        <a href="index.html#team-intro">Team</a>
+        <a href="index.html#vehicle">Vehicle</a>
+        <a href="index.html#sponsors">Sponsors</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#team-intro">Team</a></li>
-      <li><a href="../index.html#vehicle">Vehicles</a></li>
-      <li><a href="../index.html#sponsors">Sponsors</a></li>
-      <li><a href="../index.html#news">News</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+  </header>
+
+  <!-- HERO -->
+  <section id="team-hero" class="team-hero">
+    <div class="team-hero-inner">
+      <p class="eyebrow">AUTOLAB EV TEAM</p>
+      <h1>Engineering a Competitive<br>Electric Formula Team</h1>
+      <p class="hero-desc">
+        Autolab EV Team is a student-led electric formula team focused on
+        system-level engineering, data-driven development, and continuous iteration.
+      </p>
     </div>
-  </nav>
-</header>
+  </section>
 
-<!-- Hero -->
-<section id="hero">
-  <div class="hero-content">
-    <h1>AutoLab</h1>
-    <h2>Pusan National University</h2>
-    <h3>Formula Student Team</h3>
-  </div>
-</section>
+  <!-- TEAM HISTORY -->
+  <section id="team-history" class="team-section">
+    <div class="section-header">
+      <span class="eyebrow">TIMELINE</span>
+      <h2>Team History</h2>
+      <div class="section-bar"></div>
+    </div>
 
-<!-- Team Info -->
-<section id="team-info">
-  <div class="container">
-    <span class="eyebrow">ABOUT US</span>
-    <h2>AutoLab Formula Student</h2>
-    <p class="lead">
-      1996년 설립된 부산대학교 자작자동차 동아리 AutoLab은<br>
-      2020년 CV 클래스 첫 출전을 시작으로, 2024년 EV 클래스에 도전하며 새로운 도약을 이어가고 있습니다.
-    </p>
-    <p>
-      매년 다수의 인원이 대기업 및 글로벌 기업에 진출하며, 실제 엔지니어링 경험을 축적하는 것을 목표로 설계, 해석, 제작, 데이터 분석까지 도전하고 있습니다.
-    </p>
+    <div class="history-timeline">
+      <div class="history-item">
+        <div class="history-year">2022</div>
+        <div class="history-panel">
+          <h3>Team Founded</h3>
+          <p>
+            Autolab EV Team was established with the goal of developing a
+            competitive Formula SAE Electric vehicle from the ground up.
+          </p>
+        </div>
+      </div>
 
-    <h3>연혁</h3>
-    <ul class="history">
-      <li>1996 – AutoLab 설립</li>
-      <li>2005 – Formula Student 첫 참여</li>
-      <li>2020 – CV 클래스 첫 출전</li>
-      <li>2024 – EV 클래스 도전</li>
-      <li>2026 – 최신 풀에어로 EV 차량 개발</li>
-    </ul>
-  </div>
-</section>
+      <div class="history-item">
+        <div class="history-year">2023</div>
+        <div class="history-panel">
+          <h3>First Electric Prototype</h3>
+          <p>
+            Completion of the first rolling EV chassis and initial powertrain
+            validation through track testing.
+          </p>
+        </div>
+      </div>
 
-<!-- Organization Chart -->
-<section id="org-chart">
-  <h2>Organization</h2>
-  <img src="images/org_chart.png" alt="Organization Chart">
-</section>
+      <div class="history-item">
+        <div class="history-year">2024</div>
+        <div class="history-panel">
+          <h3>System Optimization Phase</h3>
+          <p>
+            Focus shifted toward weight reduction, aerodynamic development,
+            and reliability-oriented design iteration.
+          </p>
+        </div>
+      </div>
 
-<script>
-// Hamburger 메뉴 토글
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+      <div class="history-item">
+        <div class="history-year">2025</div>
+        <div class="history-panel">
+          <h3>Full Aero & Data-Driven Development</h3>
+          <p>
+            Introduction of full aerodynamic package and integrated data
+            acquisition strategy for performance-based decision making.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-</script>
+  <!-- ORGANIZATION -->
+  <section id="organization" class="team-section">
+    <div class="section-header">
+      <span class="eyebrow">STRUCTURE</span>
+      <h2>Organization</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="org-grid">
+      <div class="org-card">
+        <h3>Vehicle Dynamics</h3>
+        <p>
+          Suspension geometry, steering system, tire analysis, and on-track
+          handling optimization.
+        </p>
+      </div>
+
+      <div class="org-card">
+        <h3>Powertrain</h3>
+        <p>
+          Motor, inverter, drivetrain design, torque delivery optimization,
+          and efficiency analysis.
+        </p>
+      </div>
+
+      <div class="org-card">
+        <h3>Electronics & Control</h3>
+        <p>
+          HV/LV architecture, ECU logic, data logging, sensor integration,
+          and system safety.
+        </p>
+      </div>
+
+      <div class="org-card">
+        <h3>Aerodynamics</h3>
+        <p>
+          Downforce development, CFD validation, aerodynamic balance, and
+          cooling airflow management.
+        </p>
+      </div>
+
+      <div class="org-card">
+        <h3>Manufacturing</h3>
+        <p>
+          Composite layup, machining, welding, assembly processes,
+          and quality control.
+        </p>
+      </div>
+
+      <div class="org-card">
+        <h3>Management & Operations</h3>
+        <p>
+          Project planning, sponsorship relations, cost management,
+          and competition logistics.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="../main/script.js"></script>
 </body>
 </html>
-
