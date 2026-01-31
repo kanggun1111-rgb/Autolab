@@ -1,101 +1,51 @@
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* Reset & 기본 */
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
 body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
 /* Navbar */
 header {
   position: fixed;
-  top:0; left:0;
-  width:100%;
-  height:80px;
-  background:transparent;
-  color:#fff;
-  z-index:9999;
-  transition: background 0.3s ease;
+  top:0; left:0; width:100%; height:80px; background:transparent; color:#fff; z-index:9999; transition: background 0.3s ease;
 }
 header.scrolled { background:#111; }
-
 nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
 nav .logo img { height:55px; }
 nav .nav-links { display:flex; list-style:none; }
 nav .nav-links li { margin-left:20px; }
 nav .nav-links li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
-nav .nav-links li a:hover,
-nav .nav-links li a.active { color:#f0a500; }
+nav .nav-links li a:hover { color:#f0a500; }
 .hamburger { display:none; flex-direction:column; cursor:pointer; }
 .hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
 
-/* 모바일 */
 @media (max-width:768px){
   nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; padding:20px 0; }
   nav .nav-links.active { display:flex; }
   .hamburger { display:flex; }
 }
 
-/* Hero Section (FSAE 느낌) */
-#team-hero {
-  height:60vh;
-  min-height:350px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background: url("images/hero.jpg") center/cover no-repeat;
-  position: relative;
-}
-#team-hero::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.6);
-}
-#team-hero .hero-content { position:relative; z-index:1; color:#fff; }
-#team-hero h1 { font-family:'Orbitron', sans-serif; font-size:clamp(2rem,5vw,3rem); margin-bottom:10px; text-shadow: 2px 2px 12px rgba(0,0,0,0.7);}
-#team-hero p { font-size:1rem; margin-bottom:5px; text-shadow:1px 1px 10px rgba(0,0,0,0.5);}
-#team-hero .subtitle { font-size:0.9rem; letter-spacing:0.05em; color:#f0a500; }
+/* Hero */
+#hero { position:relative; height:60vh; display:flex; justify-content:center; align-items:center; text-align:center; background:linear-gradient(180deg,#000,#111); }
+#hero h1 { font-family:'Orbitron', sans-serif; font-size:3rem; font-weight:700; margin-bottom:12px; color:#f0a500; }
+#hero h2 { font-family:'Montserrat', sans-serif; font-size:2rem; font-weight:700; margin-bottom:8px; }
+#hero h3 { font-family:'Orbitron', sans-serif; font-size:1.5rem; font-weight:700; }
 
 /* Team Info */
-#team-info { padding:6rem 5vw; max-width:900px; margin:0 auto; text-align:center; }
-#team-info h2 { font-family:'Orbitron', sans-serif; font-size:2rem; margin-bottom:1rem; }
-#team-info p { font-size:1rem; line-height:1.6; margin-bottom:2rem; color:#eee; }
-#team-info h3 { font-family:'Montserrat', sans-serif; font-size:1.2rem; color:#f0a500; margin:2rem 0 1rem; }
-
-/* History List */
-.history-list {
-  list-style: none;
-  margin-bottom:2rem;
-}
-.history-list li {
-  font-size:1rem;
-  line-height:1.6;
-  padding:6px 0;
-  border-left:3px solid #f0a500;
-  padding-left:10px;
-  margin-bottom:8px;
-}
+#team-info { padding:6rem 8vw; max-width:900px; margin:0 auto; }
+#team-info .eyebrow { font-family:'Montserrat',sans-serif; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:#f0a500; margin-bottom:12px; display:block; }
+#team-info h2 { font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:20px; }
+#team-info p { font-size:1rem; line-height:1.6; margin-bottom:20px; color:#eee; }
+#team-info .history { margin-top:20px; list-style:none; padding-left:20px; }
+#team-info .history li { margin-bottom:8px; font-size:0.95rem; }
 
 /* Organization Chart */
-#org-chart { padding:4rem 5vw; text-align:center; background:#111; }
-.org-chart { display:flex; justify-content:center; margin-bottom:2rem; }
-.org-chart img { max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+#org-chart { padding:4rem 8vw; text-align:center; }
+#org-chart h2 { font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:20px; color:#f0a500; }
+#org-chart img { max-width:100%; height:auto; border-radius:12px; }
 
-/* Back Button */
-.btn-back {
-  display:inline-block;
-  padding:10px 26px;
-  background:#f0a500;
-  color:#111;
-  font-weight:700;
-  text-decoration:none;
-  border-radius:6px;
-  transition: background 0.3s ease;
-  margin:0 auto;
-}
-.btn-back:hover { background:#ff7a00; color:#fff; }
-
-/* 반응형 */
+/* 모바일 대응 */
 @media(max-width:768px){
-  #team-hero { height:45vh; }
-  #team-info { padding:4rem 3vw; }
-  .history-list li { font-size:0.95rem; }
+  #hero h1 { font-size:2rem; }
+  #hero h2 { font-size:1.4rem; }
+  #hero h3 { font-size:1.2rem; }
+  #team-info { padding:4rem 4vw; }
 }

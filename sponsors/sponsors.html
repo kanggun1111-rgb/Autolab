@@ -1,116 +1,51 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autolab Sponsors</title>
+/* Reset & 기본 */
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
+body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
-<base href="/Autolab/">
+/* Navbar */
+header {
+  position: fixed;
+  top:0; left:0; width:100%; height:80px; background:transparent; color:#fff; z-index:9999; transition: background 0.3s ease;
+}
+header.scrolled { background:#111; }
+nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+nav .logo img { height:55px; }
+nav .nav-links { display:flex; list-style:none; }
+nav .nav-links li { margin-left:20px; }
+nav .nav-links li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
+nav .nav-links li a:hover { color:#f0a500; }
+.hamburger { display:none; flex-direction:column; cursor:pointer; }
+.hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+@media (max-width:768px){
+  nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; padding:20px 0; }
+  nav .nav-links.active { display:flex; }
+  .hamburger { display:flex; }
+}
 
-<link rel="stylesheet" href="./sponsorsstyle.css">
-</head>
-<body>
+/* Hero */
+#hero { position:relative; height:60vh; display:flex; justify-content:center; align-items:center; text-align:center; background:linear-gradient(180deg,#000,#111); }
+#hero h1 { font-family:'Orbitron', sans-serif; font-size:3rem; font-weight:700; margin-bottom:12px; color:#f0a500; }
+#hero h2 { font-family:'Montserrat', sans-serif; font-size:2rem; font-weight:700; margin-bottom:8px; }
+#hero h3 { font-family:'Orbitron', sans-serif; font-size:1.5rem; font-weight:700; }
 
-<!-- Navbar -->
-<header>
-  <nav>
-    <div class="logo">
-      <img src="../images/logo.png" alt="Autolab Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../about/team.html">Team</a></li>
-      <li><a href="../vehicles/EV.html">Vehicles</a></li>
-      <li><a href="sponsors.html" class="active">Sponsors</a></li>
-      <li><a href="../index.html#news">News</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-</header>
+/* Team Info */
+#team-info { padding:6rem 8vw; max-width:900px; margin:0 auto; }
+#team-info .eyebrow { font-family:'Montserrat',sans-serif; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:#f0a500; margin-bottom:12px; display:block; }
+#team-info h2 { font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:20px; }
+#team-info p { font-size:1rem; line-height:1.6; margin-bottom:20px; color:#eee; }
+#team-info .history { margin-top:20px; list-style:none; padding-left:20px; }
+#team-info .history li { margin-bottom:8px; font-size:0.95rem; }
 
-<!-- Hero Section -->
-<section id="sponsors-hero">
-  <div class="hero-content">
-    <h1>Partners & Supporters</h1>
-    <p>Driving Innovation Together</p>
-    <span class="subtitle">Auto_Lab is powered by our valued sponsors</span>
+/* Organization Chart */
+#org-chart { padding:4rem 8vw; text-align:center; }
+#org-chart h2 { font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:20px; color:#f0a500; }
+#org-chart img { max-width:100%; height:auto; border-radius:12px; }
 
-    <!-- PDF 안내 버튼 -->
-    <div class="pdf-btn-wrapper">
-      <a href="docs/sponsor_guide.pdf" target="_blank" class="btn-pdf">
-        Download Sponsor Guide PDF
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- Sponsors Section -->
-<section id="sponsor-levels">
-  <div class="container">
-
-    <!-- Title Sponsor -->
-    <div class="sponsor-tier">
-      <h2>Title Sponsor</h2>
-      <div class="sponsor-grid">
-        <div class="sponsor-logo">
-          <img src="images/sponsors/title1.png" alt="Title Sponsor 1">
-        </div>
-      </div>
-    </div>
-
-    <!-- Platinum -->
-    <div class="sponsor-tier">
-      <h2>Platinum</h2>
-      <div class="sponsor-grid">
-        <div class="sponsor-logo"><img src="images/sponsors/platinum1.png" alt="Platinum Sponsor 1"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/platinum2.png" alt="Platinum Sponsor 2"></div>
-      </div>
-    </div>
-
-    <!-- Gold -->
-    <div class="sponsor-tier">
-      <h2>Gold</h2>
-      <div class="sponsor-grid">
-        <div class="sponsor-logo"><img src="images/sponsors/gold1.png" alt="Gold Sponsor 1"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/gold2.png" alt="Gold Sponsor 2"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/gold3.png" alt="Gold Sponsor 3"></div>
-      </div>
-    </div>
-
-    <!-- Silver -->
-    <div class="sponsor-tier">
-      <h2>Silver</h2>
-      <div class="sponsor-grid">
-        <div class="sponsor-logo"><img src="images/sponsors/silver1.png" alt="Silver Sponsor 1"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/silver2.png" alt="Silver Sponsor 2"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/silver3.png" alt="Silver Sponsor 3"></div>
-      </div>
-    </div>
-
-    <!-- Bronze -->
-    <div class="sponsor-tier">
-      <h2>Bronze</h2>
-      <div class="sponsor-grid">
-        <div class="sponsor-logo"><img src="images/sponsors/bronze1.png" alt="Bronze Sponsor 1"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/bronze2.png" alt="Bronze Sponsor 2"></div>
-        <div class="sponsor-logo"><img src="images/sponsors/bronze3.png" alt="Bronze Sponsor 3"></div>
-      </div>
-    </div>
-
-    <a href="../index.html" class="btn-back">← Back to Home</a>
-  </div>
-</section>
-
-<script src="../js/script.js"></script>
-</body>
-</html>
+/* 모바일 대응 */
+@media(max-width:768px){
+  #hero h1 { font-size:2rem; }
+  #hero h2 { font-size:1.4rem; }
+  #hero h3 { font-size:1.2rem; }
+  #team-info { padding:4rem 4vw; }
+}

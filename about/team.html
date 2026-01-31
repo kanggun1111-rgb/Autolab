@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autolab Team</title>
+<title>AutoLab Team</title>
 
-<base href="/Autolab/">
-
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="./teamstyle.css">
+<!-- 페이지 전용 CSS -->
+<link rel="stylesheet" href="teamstyle.css">
 </head>
 <body>
 
@@ -19,13 +19,13 @@
 <header>
   <nav>
     <div class="logo">
-      <img src="../images/logo.png" alt="Autolab Logo">
+      <a href="../index.html"><img src="images/logo.png" alt="AutoLab Logo"></a>
     </div>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="team.html" class="active">Team</a></li>
-      <li><a href="../vehicles/EV.html">Vehicles</a></li>
-      <li><a href="../sponsors/sponsors.html">Sponsors</a></li>
+      <li><a href="../index.html#hero">Home</a></li>
+      <li><a href="../index.html#team-intro">Team</a></li>
+      <li><a href="../index.html#vehicle">Vehicles</a></li>
+      <li><a href="../index.html#sponsors">Sponsors</a></li>
       <li><a href="../index.html#news">News</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
@@ -37,55 +37,54 @@
   </nav>
 </header>
 
-<!-- Hero Section -->
-<section id="team-hero">
+<!-- Hero -->
+<section id="hero">
   <div class="hero-content">
-    <h1>Auto_Lab</h1>
-    <p>Pusan National University Formula Student Team</p>
-    <span class="subtitle">Engineering. Racing. Innovation.</span>
+    <h1>AutoLab</h1>
+    <h2>Pusan National University</h2>
+    <h3>Formula Student Team</h3>
   </div>
 </section>
 
 <!-- Team Info -->
 <section id="team-info">
   <div class="container">
-    <h2>About Auto_Lab</h2>
+    <span class="eyebrow">ABOUT US</span>
+    <h2>AutoLab Formula Student</h2>
+    <p class="lead">
+      1996년 설립된 부산대학교 자작자동차 동아리 AutoLab은<br>
+      2020년 CV 클래스 첫 출전을 시작으로, 2024년 EV 클래스에 도전하며 새로운 도약을 이어가고 있습니다.
+    </p>
     <p>
-      부산대학교 자작자동차 동아리 Auto_Lab은 1996년 설립 이후,
-      설계, 제작, 해석, 데이터 분석까지 아우르는 Formula Student 팀입니다.
+      매년 다수의 인원이 대기업 및 글로벌 기업에 진출하며, 실제 엔지니어링 경험을 축적하는 것을 목표로 설계, 해석, 제작, 데이터 분석까지 도전하고 있습니다.
     </p>
 
-    <h3>Team History & Milestones</h3>
-    <ul class="history-list">
-      <li><strong>1996:</strong> Auto_Lab 설립</li>
-      <li><strong>2020:</strong> CV 클래스 Formula Student 첫 출전</li>
-      <li><strong>2022:</strong> EV 클래스 참가 시작</li>
-      <li><strong>2024:</strong> 풀 에어로 및 데이터 로깅 시스템 적용</li>
-      <li><strong>2025:</strong> 국내외 대회에서 우수 성적 달성</li>
+    <h3>연혁</h3>
+    <ul class="history">
+      <li>1996 – AutoLab 설립</li>
+      <li>2005 – Formula Student 첫 참여</li>
+      <li>2020 – CV 클래스 첫 출전</li>
+      <li>2024 – EV 클래스 도전</li>
+      <li>2026 – 최신 풀에어로 EV 차량 개발</li>
     </ul>
-
-    <h3>Graduate Outcomes</h3>
-    <p>
-      Auto_Lab에서 활동한 다수의 학생들이 매년 삼성, 현대, LG, SK, 글로벌 자동차 및
-      기술 기업에 취업하며 실제 산업 현장에서 전문성을 발휘하고 있습니다.
-      이러한 성과는 Auto_Lab이 단순한 동아리를 넘어 실무형 엔지니어를 양성하는
-      플랫폼임을 보여줍니다.
-    </p>
   </div>
 </section>
 
 <!-- Organization Chart -->
 <section id="org-chart">
-  <div class="container">
-    <h3>Organization Chart</h3>
-    <div class="org-chart">
-      <img src="images/org_chart.png" alt="Organization Chart">
-    </div>
-    <a href="../index.html#team-intro" class="btn-back">← Back to Home</a>
-  </div>
+  <h2>Organization</h2>
+  <img src="images/org_chart.png" alt="Organization Chart">
 </section>
 
-<script src="../js/script.js"></script>
+<script>
+// Hamburger 메뉴 토글
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
 </body>
 </html>
 
