@@ -204,21 +204,22 @@ nav .nav-links li a:hover {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 50vh;
+  min-height: 60vh;
   padding: 60px 6vw;
   background-image: url("images/team.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
+  overflow: hidden;
 }
 
-/* 다크 오버레이 */
+/* 다크 그라디언트 오버레이 */
 #team-intro::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(120deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
   z-index: 0;
 }
 
@@ -228,6 +229,14 @@ nav .nav-links li a:hover {
   z-index: 1;
   max-width: 600px;
   padding: 0 20px;
+  transform: translateX(-10px);
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
 
 #team-intro .eyebrow {
@@ -241,9 +250,11 @@ nav .nav-links li a:hover {
 
 #team-intro h2 {
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: 16px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
 #team-intro p {
@@ -252,22 +263,35 @@ nav .nav-links li a:hover {
   line-height: 1.6;
   margin-bottom: 20px;
   color: #eee;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 #team-intro .learn-more {
   display: inline-block;
-  padding: 10px 26px;
-  background: #f0a500;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #f0a500, #ff7a00);
   color: #111;
   font-weight: 700;
   text-decoration: none;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#team-intro .learn-more .arrow {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
 }
 
 #team-intro .learn-more:hover {
-  background: #ff7a00;
+  background: linear-gradient(135deg, #ff7a00, #f0a500);
   color: #fff;
+}
+
+#team-intro .learn-more:hover .arrow {
+  transform: translateX(4px);
 }
 
 /* =========================
@@ -293,6 +317,7 @@ nav .nav-links li a:hover {
     font-size: 0.95rem;
   }
 }
+
 
 /* =========================
    Vehicle Section
