@@ -95,81 +95,103 @@ nav .nav-links li a:hover {
 
 /* Hero */
 
-#hero {
+#hero-grid {
+  background: #081526;
+  padding: 80px 6vw;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 카드 공통 */
+.hero-card {
   position: relative;
-  height: 80vh;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  border-radius: 18px;
   overflow: hidden;
   background: #000;
+  cursor: pointer;
 }
 
-/* 배경 영상 */
-.hero-video-wrapper {
-  position: absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-}
-
-.bg-video {
-  width:100%;
-  height:100%;
+.hero-card img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  filter: brightness(0.7);
+  transition: transform 0.6s ease;
 }
 
-/* 다크 오버레이 */
-#hero::before {
-  content: "";
+.hero-card:hover img {
+  transform: scale(1.05);
+}
+
+/* 카드 텍스트 */
+.card-content {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+  z-index: 2;
 }
 
-/* 텍스트 */
-.hero-content {
-  position: relative;
-  z-index:1;
+.card-content h3 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.card-content a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: #e10600;
   color: #fff;
-  text-align: center;
-  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
 }
 
-.hero-content h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem,5vw,3.5rem);
-  margin: 0 0 12px;
-  text-shadow: 4px 4px 20px rgba(0,0,0,0.7);
+/* 개별 카드 배치 */
+.card-large {
+  grid-row: 1 / span 2;
+  grid-column: 1 / 2;
+  min-height: 480px;
 }
 
-.hero-content h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2rem,4vw,2.8rem);
-  margin: 0 0 12px;
-  text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
+.card-wide {
+  grid-column: 2 / span 2;
+  min-height: 240px;
 }
 
-.hero-content h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.8rem,3.5vw,2.5rem);
-  margin: 0;
-  text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+.card-small {
+  min-height: 220px;
 }
 
-/* 모바일 대응 */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 2rem; }
-  .hero-content h2 { font-size: 1.6rem; }
-  .hero-content h3 { font-size: 1.4rem; }
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-large,
+  .card-wide,
+  .card-small {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 260px;
+  }
 }
+
+
 
 #logo-divider {
   display: flex;
