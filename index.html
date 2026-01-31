@@ -21,12 +21,10 @@
 <!-- Navbar -->
 <header>
   <nav>
-    <!-- 로고 -->
     <div class="logo">
       <img src="main/images/logo.png" alt="Autolab Logo">
     </div>
 
-    <!-- 메뉴 링크 -->
     <ul class="nav-links">
       <li><a href="#hero-grid">Home</a></li>
       <li><a href="#team-intro">Team</a></li>
@@ -36,7 +34,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <!-- Hamburger -->
     <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
       <div></div>
       <div></div>
@@ -46,10 +43,9 @@
 </header>
 
 <!-- HERO GRID -->
-<section id="hero-grid" class="section">
+<section id="hero-grid" class="section section-hero">
   <div class="hero-grid">
 
-    <!-- 카드 A : About Us -> team-intro -->
     <article class="hero-card card-large">
       <img src="main/images/hero-about.jpg" alt="About Auto_Lab">
       <div class="card-content">
@@ -59,7 +55,6 @@
       </div>
     </article>
 
-    <!-- 카드 B : Vehicles -> vehicle -->
     <article class="hero-card card-wide">
       <img src="main/images/hero-vehicles.jpg" alt="Auto_Lab Vehicles">
       <div class="card-content">
@@ -69,7 +64,6 @@
       </div>
     </article>
 
-    <!-- 카드 C : Sponsors -> sponsors -->
     <article class="hero-card card-small">
       <img src="main/images/hero-sponsors.jpg" alt="Auto_Lab Sponsors">
       <div class="card-content">
@@ -79,7 +73,6 @@
       </div>
     </article>
 
-    <!-- 카드 D : News -> news -->
     <article class="hero-card card-small">
       <img src="main/images/hero-news.jpg" alt="Auto_Lab News">
       <div class="card-content">
@@ -95,36 +88,50 @@
 <!-- TEAM INTRO -->
 <section id="team-intro" class="section">
   <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">ABOUT US</span>
+      <h2>Auto_Lab Formula Student</h2>
+      <p class="section-subtitle">
+        설계부터 제작, 데이터 기반 검증까지. Auto_Lab의 엔지니어링 문화를 소개합니다.
+      </p>
+    </div>
+
     <div class="team-container">
       <div class="team-image">
         <img src="main/images/team.jpg" alt="Auto_Lab Team in Action">
       </div>
+
       <div class="team-text">
-        <span class="eyebrow">ABOUT US</span>
-        <h2>Auto_Lab<br><span>Formula Student</span></h2>
         <p class="lead">
           1996년 설립된 부산대학교 자작자동차 동아리 Auto_Lab은<br>
           2020년 Formula Student CV 클래스 첫 출전을 시작으로,<br>
           2024년 EV 클래스에 도전하며 새로운 도약을 이어가고 있습니다.
         </p>
+
         <p>
           설계, 해석, 제작, 주행 데이터 분석까지 — 
           Auto_Lab은 단순한 제작을 넘어,
           실제 엔지니어링 경험을 축적하는 것을 목표로 도전하고 있습니다.
         </p>
-        <a href="team/team.html" class="learn-more">Learn more <span class="arrow">→</span></a>
+
+        <a href="team/team.html" class="learn-more">
+          Learn more <span class="arrow">→</span>
+        </a>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- VEHICLE -->
-<section id="vehicle" class="vehicle-section section">
+<!-- VEHICLES -->
+<section id="vehicle" class="section vehicle-section">
   <div class="container">
-    <div class="vehicle-header">
+
+    <div class="section-header">
       <span class="eyebrow">VEHICLES</span>
-      <h2 class="vehicle-section-title">2026 Vehicles</h2>
-      <p class="vehicle-subtitle">
+      <h2>2026 Vehicles</h2>
+      <p class="section-subtitle">
         EV / CV 플랫폼의 개발 방향과 성능 지표를 한눈에 확인하세요.
       </p>
     </div>
@@ -146,7 +153,9 @@
               The car focuses on acceleration.
             </p>
 
-            <a href="vehicles/EV.html" class="vehicle-link">Vehicle Detail →</a>
+            <a href="vehicles/EV.html" class="vehicle-link">
+              Vehicle Detail →
+            </a>
           </div>
         </div>
 
@@ -174,7 +183,9 @@
               weight reduction, and driver-oriented vehicle dynamics.
             </p>
 
-            <a href="vehicles/CV.html" class="vehicle-link">Vehicle Detail →</a>
+            <a href="vehicles/CV.html" class="vehicle-link">
+              Vehicle Detail →
+            </a>
           </div>
         </div>
 
@@ -189,21 +200,23 @@
 
     </div>
 
-    <!-- Previous Vehicles CTA -->
     <div class="vehicle-footer">
-      <a href="vehicles/index.html" class="vehicle-archive-link">View Previous Vehicles →</a>
+      <a href="vehicles/index.html" class="vehicle-archive-link">
+        View Previous Vehicles →
+      </a>
     </div>
 
   </div>
 </section>
 
 <!-- SPONSORS -->
-<section id="sponsors" class="sponsors-section section">
+<section id="sponsors" class="section sponsors-section">
   <div class="container">
-    <div class="sponsors-header">
+
+    <div class="section-header">
       <span class="eyebrow">SPONSORS</span>
       <h2>Partners & Supporters</h2>
-      <p>
+      <p class="section-subtitle">
         Auto_Lab’s journey is made possible through the trust and support of our partners.
       </p>
     </div>
@@ -230,16 +243,26 @@
     </div>
 
     <div class="sponsor-cta">
-      <a href="sponsors/sponsors.html" class="sponsor-archive-link">View All Partners →</a>
+      <a href="sponsors/sponsors.html" class="sponsor-archive-link">
+        View All Partners →
+      </a>
     </div>
+
   </div>
 </section>
 
 <!-- NEWS -->
-<section id="news" class="news-section section">
+<section id="news" class="section news-section">
   <div class="container">
-    <span class="eyebrow">LATEST NEWS</span>
-    <h2>Updates & Announcements</h2>
+
+    <div class="section-header">
+      <span class="eyebrow">LATEST NEWS</span>
+      <h2>Updates & Announcements</h2>
+      <p class="section-subtitle">
+        최근 업데이트와 공지사항을 확인하세요.
+      </p>
+    </div>
+
     <div class="news-grid">
       <div class="news-card">
         <div class="news-image">
@@ -269,47 +292,59 @@
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <div class="contact-container">
-    <div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.9069147173977!2d129.0805088749459!3d35.23368717273499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893edc3fabc63%3A0x4ecb89e92303d724!2z67aA7IKw64yA7ZWZ6rWQIOq4sOq4sOyIoOyXsOq1rOuPmQ!5e0!3m2!1sko!2skr!4v1769797442481!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<section id="contact" class="section contact-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">CONTACT</span>
+      <h2>Get in Touch</h2>
+      <p class="section-subtitle">
+        협업/후원/문의는 아래 연락처로 부탁드립니다.
+      </p>
     </div>
 
-    <div class="contact-cards">
-      <div class="contact-card">
-        <h3>EV Team Leader</h3>
-        <p><strong>Name:</strong> 강건</p>
-        <p><strong>Email:</strong> <a href="mailto:kanggun1111@pusan.ac.kr">kanggun1111@pusan.ac.kr</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+821085304462">+82 010 8530 4462</a></p>
+    <div class="contact-container">
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.9069147173977!2d129.0805088749459!3d35.23368717273499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893edc3fabc63%3A0x4ecb89e92303d724!2z67aA7IKw64yA7ZWZ6rWQIOq4sOq4sOyIoOyXsOq1rOuPmQ!5e0!3m2!1sko!2skr!4v1769797442481!5m2!1sko!2skr"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
-      <div class="contact-card">
-        <h3>CV Team Leader</h3>
-        <p><strong>Name:</strong> 김민수</p>
-        <p><strong>Email:</strong> <a href="mailto:kimminsu@pusan.ac.kr">kimminsu@pusan.ac.kr</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+821012345678">+82 010 1234 5678</a></p>
-      </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <h3>EV Team Leader</h3>
+          <p><strong>Name:</strong> 강건</p>
+          <p><strong>Email:</strong> <a href="mailto:kanggun1111@pusan.ac.kr">kanggun1111@pusan.ac.kr</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+821085304462">+82 010 8530 4462</a></p>
+        </div>
 
-      <div class="contact-card">
-        <h3>President</h3>
-        <p><strong>Name:</strong> 박지훈</p>
-        <p><strong>Email:</strong> <a href="mailto:parkjihoon@pusan.ac.kr">parkjihoon@pusan.ac.kr</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+8201087654321">+82 010 8765 4321</a></p>
+        <div class="contact-card">
+          <h3>CV Team Leader</h3>
+          <p><strong>Name:</strong> 김민수</p>
+          <p><strong>Email:</strong> <a href="mailto:kimminsu@pusan.ac.kr">kimminsu@pusan.ac.kr</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+821012345678">+82 010 1234 5678</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h3>President</h3>
+          <p><strong>Name:</strong> 박지훈</p>
+          <p><strong>Email:</strong> <a href="mailto:parkjihoon@pusan.ac.kr">parkjihoon@pusan.ac.kr</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+8201087654321">+82 010 8765 4321</a></p>
+        </div>
       </div>
     </div>
+
+    <p class="contact-address">
+      <strong>Address:</strong> 부산광역시 금정구 부산대학교 기계기술연구동
+    </p>
+
   </div>
-
-  <p class="contact-address">
-    <strong>Address:</strong> 부산광역시 금정구 부산대학교 기계기술연구동
-  </p>
 </section>
 
-<!-- 메인 JS -->
 <script src="main/script.js"></script>
 </body>
 </html>

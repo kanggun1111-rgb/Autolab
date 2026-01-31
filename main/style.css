@@ -1,58 +1,40 @@
 /* =========================
-   Base + Theme
+   Base + Theme (Single Canvas)
 ========================= */
 :root{
-  --bg-0:#000;
-  --bg-1:#070b12;
+  --bg0:#000;
+  --bg1:#05070c;
 
   --accent:#f0a500;
   --accent2:#e10600;
 
-  --glow-a: rgba(240,165,0,0.11);
-  --glow-b: rgba(225,6,0,0.09);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.62);
 
+  --panel: rgba(255,255,255,0.045);
   --stroke: rgba(255,255,255,0.10);
-  --fade-h: 140px;
+  --stroke2: rgba(255,255,255,0.14);
+
+  --shadow: 0 18px 55px rgba(0,0,0,0.55);
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
+
 body{
   font-family:'Roboto', sans-serif;
-  color:#fff;
+  color: var(--text);
   background:
-    radial-gradient(1200px 600px at 12% 0%, var(--glow-a), transparent 58%),
-    radial-gradient(900px 520px at 88% 18%, var(--glow-b), transparent 55%),
-    linear-gradient(to bottom, var(--bg-0), var(--bg-1));
-  scroll-padding-top: 90px;
+    radial-gradient(1200px 600px at 15% 0%, rgba(240,165,0,0.10), transparent 60%),
+    radial-gradient(900px 520px at 85% 20%, rgba(225,6,0,0.08), transparent 55%),
+    linear-gradient(to bottom, var(--bg0), var(--bg1));
+  scroll-padding-top: 92px;
 }
 
 .container{
   width: min(1400px, 100%);
   margin: 0 auto;
-}
-
-/* 섹션 공통(배경 통일 + 페이드 연결) */
-.section{
-  position: relative;
-  background: transparent;
-}
-
-.section::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  bottom:-1px;
-  height: var(--fade-h);
-  pointer-events:none;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.35) 40%,
-    rgba(0,0,0,0.90) 85%,
-    #000 100%
-  );
+  padding: 0 6vw;
 }
 
 /* =========================
@@ -63,17 +45,13 @@ header{
   top: 0; left: 0;
   width: 100%;
   height: 80px;
-
-  background: transparent; /* hero 보일 때 투명 */
-  color: #fff;
+  background: transparent;
   z-index: 9999;
-
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* hero가 화면에서 사라지면 배경 생김 */
 header.scrolled{
-  background: rgba(17,17,17,0.92);
+  background: rgba(0,0,0,0.88);
   backdrop-filter: blur(12px);
 }
 
@@ -100,10 +78,10 @@ nav .nav-links li{
 }
 
 nav .nav-links li a{
-  color:#fff;
-  text-decoration:none;
+  color: #fff;
+  text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.25s;
 }
 
 nav .nav-links li a:hover{
@@ -127,32 +105,80 @@ nav .nav-links li a:hover{
 
 @media (max-width:768px){
   nav .nav-links{
-    display:none;
+    display: none;
     flex-direction: column;
-    background: rgba(17,17,17,0.96);
-    position:absolute;
+    position: absolute;
     top: 80px;
     left: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: 18px 0;
+    background: rgba(0,0,0,0.92);
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
+  nav .nav-links.active{ display: flex; }
+  .hamburger{ display: flex; }
+}
 
-  nav .nav-links.active{ display:flex; }
-  .hamburger{ display:flex; }
+/* =========================
+   Sections (No background per section)
+========================= */
+.section{
+  background: transparent !important;
+  padding: 120px 0;
+}
+
+/* Hero는 헤더 높이 고려 */
+.section-hero{
+  padding-top: 110px;
+  padding-bottom: 90px;
+}
+
+/* 공통 섹션 헤더 + 미세 장식 */
+.section-header{
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.section-header .eyebrow{
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.section-header h2{
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  letter-spacing: 0.02em;
+  color: #fff;
+  position: relative;
+}
+
+.section-header h2::after{
+  content:"";
+  display:block;
+  width: 56px;
+  height: 2px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0.75;
+  border-radius: 2px;
+}
+
+.section-subtitle{
+  max-width: 760px;
+  margin: 1rem auto 0;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  font-size: 1rem;
 }
 
 /* =========================
    Hero Grid
 ========================= */
-#hero-grid{
-  padding: 110px 6vw 80px; /* header 고려 */
-  background:
-    radial-gradient(1100px 520px at 20% 10%, rgba(240,165,0,0.12), transparent 60%),
-    radial-gradient(900px 520px at 90% 30%, rgba(225,6,0,0.10), transparent 58%),
-    transparent;
-}
-
 .hero-grid{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -160,6 +186,7 @@ nav .nav-links li a:hover{
   gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 6vw;
 }
 
 .hero-card{
@@ -168,14 +195,14 @@ nav .nav-links li a:hover{
   overflow: hidden;
   background: #000;
   cursor: pointer;
-  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow);
   outline: 1px solid rgba(255,255,255,0.07);
   transition: transform .28s ease, outline-color .28s ease;
 }
 
 .hero-card:hover{
   transform: translateY(-6px);
-  outline-color: rgba(255,255,255,0.14);
+  outline-color: var(--stroke2);
 }
 
 .hero-card img{
@@ -196,7 +223,7 @@ nav .nav-links li a:hover{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.0) 75%);
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.0) 75%);
   z-index:1;
 }
 
@@ -214,6 +241,7 @@ nav .nav-links li a:hover{
   letter-spacing: 0.02em;
   margin-bottom: 10px;
   text-transform: uppercase;
+  color:#fff;
 }
 
 .card-content p{
@@ -241,6 +269,7 @@ nav .nav-links li a:hover{
   filter: brightness(1.06);
 }
 
+/* hero 카드 배치 */
 .card-large{
   grid-row: 1 / span 2;
   grid-column: 1 / 2;
@@ -255,8 +284,9 @@ nav .nav-links li a:hover{
 }
 
 @media (max-width: 900px){
-  #hero-grid{ padding: 90px 4vw 60px; }
-  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-grid{
+    grid-template-columns: 1fr;
+  }
   .card-large, .card-wide, .card-small{
     grid-column:auto;
     grid-row:auto;
@@ -265,29 +295,21 @@ nav .nav-links li a:hover{
 }
 
 /* =========================
-   Team Intro
+   Team Intro (콘텐츠 패널만)
 ========================= */
-#team-intro{
-  padding: 80px 6vw;
-  background:
-    radial-gradient(900px 480px at 15% 80%, rgba(240,165,0,0.10), transparent 60%),
-    transparent;
-}
-
 .team-container{
   display:flex;
-  align-items:center;
+  align-items: center;
   gap: 60px;
   flex-wrap: wrap;
 }
 
 .team-image{
-  flex: 1 1 400px;
+  flex: 1 1 420px;
   overflow:hidden;
-  border-radius: 12px;
-  position: relative;
+  border-radius: 14px;
   outline: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow);
 }
 
 .team-image img{
@@ -302,38 +324,26 @@ nav .nav-links li a:hover{
 }
 
 .team-text{
-  flex: 1 1 500px;
-  background: rgba(0,0,0,0.55);
+  flex: 1 1 520px;
+  background: rgba(0,0,0,0.50);
   padding: 40px 30px;
-  border-left: 6px solid var(--accent);
-  border-radius: 14px;
-  box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+  border-radius: 16px;
   outline: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow);
 }
 
-.team-text .eyebrow{
-  font-family:"Montserrat", sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
+.team-text .lead{
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,0.90);
 }
-
-.team-text h2{
-  font-family:"Orbitron", sans-serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 20px;
-}
-
-.team-text h2 span{ color: #ff3d00; }
 
 .team-text p{
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 20px;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.85);
 }
 
 .learn-more{
@@ -341,75 +351,33 @@ nav .nav-links li a:hover{
   padding: 12px 28px;
   background: linear-gradient(135deg, var(--accent), #ff3d00);
   color:#111;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration:none;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .learn-more:hover{
-  filter: brightness(1.05);
   transform: translateY(-2px);
+  filter: brightness(1.05);
   color:#fff;
 }
 
 .learn-more .arrow{
   display:inline-block;
   margin-left: 6px;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 .learn-more:hover .arrow{ transform: translateX(4px); }
 
 @media (max-width: 768px){
-  .team-container{ flex-direction: column; gap: 30px; }
-  .team-text{
-    border-left: none;
-    border-top: 4px solid var(--accent);
-    padding: 30px 20px;
-  }
+  .team-container{ flex-direction: column; gap: 28px; }
+  .team-text{ padding: 28px 20px; }
 }
 
 /* =========================
    Vehicles (F1/HUD)
 ========================= */
-.vehicle-section{
-  padding: 6rem 6vw;
-  background:
-    radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
-    radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
-    transparent;
-}
-
-.vehicle-header{
-  text-align:center;
-  margin-bottom: 3rem;
-}
-
-.vehicle-header .eyebrow{
-  display:inline-block;
-  font-family:"Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 0.8rem;
-}
-
-.vehicle-section-title{
-  font-family:"Orbitron", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.vehicle-subtitle{
-  max-width: 720px;
-  margin: 0 auto;
-  color: rgba(255,255,255,0.70);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 .vehicles{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -418,12 +386,11 @@ nav .nav-links li a:hover{
 }
 
 .vehicle-card{
-  width:100%;
   border-radius: 22px;
   overflow:hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 70%, rgba(255,255,255,0.02) 100%);
   outline: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 22px 60px rgba(0,0,0,0.55);
+  box-shadow: var(--shadow);
   transition: transform .28s ease, outline-color .28s ease, box-shadow .28s ease;
   position: relative;
 }
@@ -433,7 +400,7 @@ nav .nav-links li a:hover{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(500px 240px at 20% 0%, rgba(240,165,0,0.12), transparent 60%),
+    radial-gradient(520px 260px at 20% 0%, rgba(240,165,0,0.12), transparent 60%),
     radial-gradient(480px 240px at 90% 20%, rgba(225,6,0,0.10), transparent 55%);
   opacity: 0;
   transition: opacity 0.28s ease;
@@ -442,10 +409,9 @@ nav .nav-links li a:hover{
 
 .vehicle-card:hover{
   transform: translateY(-8px);
-  outline-color: rgba(255,255,255,0.14);
+  outline-color: var(--stroke2);
   box-shadow: 0 28px 78px rgba(0,0,0,0.65);
 }
-
 .vehicle-card:hover::before{ opacity: 1; }
 
 .vehicle-top{
@@ -492,6 +458,7 @@ nav .nav-links li a:hover{
   background: rgba(0,0,0,0.55);
   outline: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
+  color:#fff;
 }
 
 .vehicle-tag{
@@ -500,7 +467,7 @@ nav .nav-links li a:hover{
   top: 16px;
   font-family:"Montserrat", sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 12px;
@@ -511,11 +478,12 @@ nav .nav-links li a:hover{
   backdrop-filter: blur(10px);
 }
 
-/* 링크 위치 맞추기 핵심 */
+/* ✅ 링크 하단 정렬 핵심 */
 .vehicle-description{
   display:flex;
   flex-direction: column;
   height: 100%;
+  color:#fff;
 }
 
 .vehicle-description p{
@@ -531,9 +499,9 @@ nav .nav-links li a:hover{
 }
 
 .vehicle-link{
-  margin-top: auto; /* ✅ 두 카드 링크 위치 동일 */
-  font-size: 0.9rem;
-  font-weight: 700;
+  margin-top: auto; /* ✅ 정렬 */
+  font-size: 0.95rem;
+  font-weight: 800;
   color: var(--accent);
   text-decoration:none;
   align-self: flex-start;
@@ -571,6 +539,7 @@ nav .nav-links li a:hover{
   font-family:"Orbitron", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.02em;
+  color:#fff;
 }
 
 .vehicle-footer{
@@ -584,7 +553,7 @@ nav .nav-links li a:hover{
   gap: 6px;
   font-family:"Montserrat", sans-serif;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.75);
@@ -611,7 +580,6 @@ nav .nav-links li a:hover{
 
 @media (max-width: 900px){
   .vehicles{ grid-template-columns: 1fr; gap: 2rem; }
-  .vehicle-section{ padding: 5rem 6vw; }
 }
 
 @media (max-width: 520px){
@@ -621,44 +589,6 @@ nav .nav-links li a:hover{
 /* =========================
    Sponsors (Premium Wall)
 ========================= */
-.sponsors-section{
-  padding: 6rem 6vw;
-  background:
-    radial-gradient(900px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 55%),
-    radial-gradient(700px 420px at 90% 25%, rgba(225,6,0,0.08), transparent 55%),
-    transparent;
-}
-
-.sponsors-header{
-  text-align:center;
-  margin-bottom: 3.2rem;
-}
-
-.sponsors-header .eyebrow{
-  display:inline-block;
-  font-family:"Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 0.8rem;
-}
-
-.sponsors-header h2{
-  font-family:"Orbitron", sans-serif;
-  font-size: clamp(2rem, 3.6vw, 2.6rem);
-  letter-spacing: 0.02em;
-  margin: 0.3rem 0 0.8rem;
-}
-
-.sponsors-header p{
-  max-width: 720px;
-  margin: 0 auto;
-  color: rgba(255,255,255,0.70);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 .sponsor-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -675,7 +605,7 @@ nav .nav-links li a:hover{
 
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   outline: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow);
   text-decoration:none;
 
   position: relative;
@@ -707,7 +637,7 @@ nav .nav-links li a:hover{
 
 .sponsor-card:hover{
   transform: translateY(-6px);
-  outline-color: rgba(255,255,255,0.14);
+  outline-color: var(--stroke2);
   box-shadow: 0 26px 70px rgba(0,0,0,0.60);
 }
 
@@ -727,22 +657,17 @@ nav .nav-links li a:hover{
   display:inline-flex;
   align-items:center;
   gap: 6px;
-
   font-family:"Montserrat", sans-serif;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-
   color: rgba(255,255,255,0.78);
   text-decoration:none;
-
   padding: 0.65rem 1.4rem;
   border-radius: 999px;
-
   background: rgba(255,255,255,0.04);
   outline: 1px solid rgba(255,255,255,0.12);
-
   transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
 }
 
@@ -766,35 +691,11 @@ nav .nav-links li a:hover{
 /* =========================
    News
 ========================= */
-.news-section{
-  padding: 6rem 6vw;
-  background:
-    radial-gradient(900px 520px at 80% 20%, rgba(225,6,0,0.07), transparent 60%),
-    transparent;
-  text-align:center;
-}
-
-.news-section .eyebrow{
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-  display:inline-block;
-  margin-bottom: .8rem;
-  font-family:"Montserrat", sans-serif;
-}
-
-.news-section h2{
-  font-family:"Orbitron", sans-serif;
-  font-size: 2.2rem;
-  margin: 0.2rem 0 3rem;
-}
-
 .news-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 .news-card{
@@ -802,15 +703,16 @@ nav .nav-links li a:hover{
   outline: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
   overflow:hidden;
-  transition: transform .3s ease, box-shadow .3s ease, outline-color .3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
   display:flex;
   flex-direction: column;
+  box-shadow: var(--shadow);
 }
 
 .news-card:hover{
   transform: translateY(-6px);
-  outline-color: rgba(255,255,255,0.14);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+  outline-color: var(--stroke2);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
 }
 
 .news-image img{
@@ -831,12 +733,13 @@ nav .nav-links li a:hover{
 .news-content h3{
   font-family:"Montserrat", sans-serif;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 0.5rem;
+  color:#fff;
 }
 
 .news-date{
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: rgba(255,255,255,0.60);
   margin-bottom: 0.8rem;
 }
@@ -850,12 +753,12 @@ nav .nav-links li a:hover{
 }
 
 .news-link{
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 800;
   color: var(--accent);
   text-decoration:none;
   align-self: flex-start;
-  transition: transform .2s ease, color .2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 .news-link:hover{
   color:#ff7a00;
@@ -869,24 +772,6 @@ nav .nav-links li a:hover{
 /* =========================
    Contact
 ========================= */
-#contact{
-  padding: 100px 20px;
-  background:
-    radial-gradient(900px 520px at 30% 30%, rgba(240,165,0,0.07), transparent 65%),
-    transparent;
-  text-align:center;
-}
-
-#contact h2{
-  font-family:"Orbitron", sans-serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: 60px;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-}
-
 .contact-container{
   display:flex;
   flex-direction: column;
@@ -896,11 +781,11 @@ nav .nav-links li a:hover{
 
 .map{
   width:100%;
-  max-width: 1000px;
-  height: 400px;
+  max-width: 1100px;
+  height: 420px;
   border-radius: 16px;
   overflow:hidden;
-  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+  box-shadow: var(--shadow);
   outline: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -908,7 +793,7 @@ nav .nav-links li a:hover{
   width:100%;
   height:100%;
   border:none;
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 .map:hover iframe{ transform: scale(1.02); }
 
@@ -917,7 +802,7 @@ nav .nav-links li a:hover{
   justify-content:center;
   gap: 30px;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1100px;
 }
 
 .contact-card{
@@ -925,13 +810,13 @@ nav .nav-links li a:hover{
   padding: 25px 20px;
   border-radius: 16px;
   min-width: 220px;
-  max-width: 260px;
+  max-width: 280px;
   text-align:left;
   position: relative;
   overflow:hidden;
   outline: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
-  transition: transform .3s, box-shadow .3s, background .3s, outline-color .3s;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, outline-color 0.3s;
 }
 
 .contact-card::before{
@@ -940,16 +825,22 @@ nav .nav-links li a:hover{
   inset:0;
   background: linear-gradient(120deg, rgba(240,165,0,0.22), rgba(225,6,0,0.18));
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   z-index:0;
 }
 
 .contact-card:hover::before{ opacity: 1; }
 .contact-card:hover{
   transform: translateY(-6px);
-  outline-color: rgba(255,255,255,0.14);
+  outline-color: var(--stroke2);
   box-shadow: 0 26px 70px rgba(0,0,0,0.60);
   background: rgba(255,255,255,0.08);
+}
+
+.contact-card h3,
+.contact-card p{
+  position: relative;
+  z-index:1;
 }
 
 .contact-card h3{
@@ -957,16 +848,12 @@ nav .nav-links li a:hover{
   margin-bottom: 12px;
   font-size: 1.1rem;
   color: var(--accent);
-  position: relative;
-  z-index:1;
 }
 
 .contact-card p{
   margin-bottom: 10px;
   font-size: 0.95rem;
   line-height: 1.5;
-  position: relative;
-  z-index:1;
 }
 
 .contact-card a{
@@ -979,10 +866,16 @@ nav .nav-links li a:hover{
   margin-top: 50px;
   font-size: 1rem;
   color: rgba(255,255,255,0.85);
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 768px){
-  .map{ height: 300px; }
+  .map{ height: 320px; }
   .contact-cards{ flex-direction: column; gap: 20px; }
+}
+
+/* =========================
+   Small screens: container padding tweak
+========================= */
+@media (max-width: 900px){
+  .container{ padding: 0 4vw; }
 }
