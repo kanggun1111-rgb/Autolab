@@ -1,73 +1,60 @@
-/*----------------------------------------
-  기본 설정
-----------------------------------------*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset & 기본 */
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
+body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/*----------------------------------------
-  헤더 & 네비게이션
-----------------------------------------*/
+/* Navbar */
+/* Navbar 기본 */
+/* Header 기본 */
 header {
   position: fixed;
-  width: 100%;
   top: 0;
   left: 0;
-  z-index: 999;
-  background-color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  color: #fff;
+  z-index: 9999;
+  transition: background 0.3s ease;
 }
 
+/* 스크롤 시 배경 변경 */
 header.scrolled {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #111;
 }
 
+/* Nav 구조 */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
+  padding: 10px 20px;
 }
 
+/* 로고 */
 nav .logo img {
-  width: 120px;
+  height: 55px;
+  width: auto;
 }
 
-.nav-links {
+/* 메뉴 링크 */
+nav .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
 }
 
-.nav-links li a {
-  font-weight: 500;
-  transition: color 0.3s;
+nav .nav-links li {
+  margin-left: 20px;
 }
 
-.nav-links li a:hover {
-  color: #0077ff;
+nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav .nav-links li a:hover {
+  color: #f0a500; /* FS 팀 포인트 컬러 */
 }
 
 /* Hamburger */
@@ -75,389 +62,709 @@ nav .logo img {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 5px;
 }
 
 .hamburger div {
   width: 25px;
   height: 3px;
-  background-color: #333;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
 }
 
-/*----------------------------------------
-  Hero 섹션
-----------------------------------------*/
-#hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  object-fit: cover;
-}
-
-.hero-content {
-  color: #fff;
-  text-align: center;
-}
-
-.hero-content h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-content h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-content h3 {
-  font-size: 1.5rem;
-}
-
-/*----------------------------------------
-  로고 구분 섹션
-----------------------------------------*/
-#logo-divider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 0;
-  background-color: #f8f8f8;
-}
-
-#logo-divider img {
-  width: 150px;
-}
-
-/*----------------------------------------
-  팀 소개 섹션
-----------------------------------------*/
-#team-intro {
-  background-image: url("../team/images/team.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  padding: 6rem 2rem;
-  text-align: left;
-}
-
-#team-intro .eyebrow {
-  display: block;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #00bfff;
-  margin-bottom: 0.5rem;
-}
-
-#team-intro h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-#team-intro p.lead {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-#team-intro p {
-  margin-bottom: 1rem;
-}
-
-#team-intro .learn-more {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 2px solid #00bfff;
-  color: #00bfff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-#team-intro .learn-more span {
-  margin-left: 0.3rem;
-}
-
-#team-intro .learn-more:hover {
-  background-color: #00bfff;
-  color: #fff;
-}
-
-/*----------------------------------------
-  차량 섹션
-----------------------------------------*/
-.vehicle-section {
-  padding: 6rem 2rem;
-  background-color: #f4f4f4;
-  text-align: center;
-}
-
-.vehicle-section-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-}
-
-.vehicles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.vehicle-card {
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  max-width: 350px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.vehicle-image-wrapper {
-  position: relative;
-}
-
-.vehicle-card-title {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: #0077ff;
-  color: #fff;
-  padding: 0.3rem 0.6rem;
-  font-weight: 700;
-  border-radius: 4px;
-}
-
-.vehicle-description {
-  padding: 1rem;
-  text-align: left;
-}
-
-.vehicle-description p {
-  margin-bottom: 0.5rem;
-}
-
-.vehicle-link {
-  color: #0077ff;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-.vehicle-link:hover {
-  color: #005bb5;
-}
-
-.vehicle-specs {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.5rem 1rem;
-  background-color: #f0f0f0;
-  font-weight: 500;
-}
-
-/*----------------------------------------
-  스폰서 섹션
-----------------------------------------*/
-.sponsors-section {
-  padding: 6rem 2rem;
-  background-color: #fff;
-  text-align: center;
-}
-
-.sponsors-header .eyebrow {
-  color: #00bfff;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.sponsor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-  align-items: center;
-}
-
-.sponsor-logo img {
-  width: 100%;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.sponsor-logo img:hover {
-  filter: grayscale(0%);
-}
-
-.sponsor-cta .btn-outline {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 2px solid #00bfff;
-  color: #00bfff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.sponsor-cta .btn-outline:hover {
-  background-color: #00bfff;
-  color: #fff;
-}
-
-/*----------------------------------------
-  뉴스 섹션
-----------------------------------------*/
-.news-section {
-  padding: 6rem 2rem;
-  background-color: #f4f4f4;
-  text-align: center;
-}
-
-.news-section .eyebrow {
-  color: #00bfff;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.news-card {
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.news-card .news-image img {
-  width: 100%;
-  display: block;
-}
-
-.news-card .news-content {
-  padding: 1rem;
-  text-align: left;
-}
-
-.news-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.news-date {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.news-excerpt {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.news-link {
-  color: #0077ff;
-  font-weight: 600;
-}
-
-.news-link:hover {
-  color: #005bb5;
-}
-
-/*----------------------------------------
-  Contact 섹션
-----------------------------------------*/
-#contact {
-  padding: 6rem 2rem;
-  background-color: #fff;
-  text-align: center;
-}
-
-.contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.contact-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.contact-card {
-  background-color: #f4f4f4;
-  padding: 1.5rem;
-  border-radius: 12px;
-  min-width: 250px;
-  text-align: left;
-}
-
-.contact-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 0.5rem;
-}
-
-.contact-address {
-  margin-top: 2rem;
-  font-weight: 500;
-}
-
-/*----------------------------------------
-  반응형
-----------------------------------------*/
-@media (max-width: 1024px) {
-  .nav-links {
+/* 모바일 */
+@media (max-width:768px){
+  nav .nav-links {
     display: none;
     flex-direction: column;
-    gap: 1rem;
-    background-color: rgba(255,255,255,0.95);
+    background: #111;
     position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    padding: 1rem;
-    border-radius: 8px;
+    top: 80px;
+    width: 100%;
+    padding: 20px 0;
   }
 
-  .nav-links.active {
+  nav .nav-links.active {
     display: flex;
   }
 
   .hamburger {
     display: flex;
   }
+}
 
-  .vehicles {
-    flex-direction: column;
+
+/* Hero */
+
+#hero {
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* 배경 영상 */
+.hero-video-wrapper {
+  position: absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+
+.bg-video {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+/* 다크 오버레이 */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 0;
+}
+
+/* 텍스트 */
+.hero-content {
+  position: relative;
+  z-index:1;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem,5vw,3.5rem);
+  margin: 0 0 12px;
+  text-shadow: 4px 4px 20px rgba(0,0,0,0.7);
+}
+
+.hero-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem,4vw,2.8rem);
+  margin: 0 0 12px;
+  text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
+}
+
+.hero-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem,3.5vw,2.5rem);
+  margin: 0;
+  text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content h2 { font-size: 1.6rem; }
+  .hero-content h3 { font-size: 1.4rem; }
+}
+
+
+#logo-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 25vh;          /* 충분한 여백 */
+  min-height: 180px;
+
+  background-color: #000;
+}
+
+#logo-divider img {
+  width: 160px;          /* 로고 크기 */
+  opacity: 0.9;
+}
+
+#logo-divider::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  top: 50%;
+}
+
+#logo-divider {
+  position: relative;
+}
+
+#logo-divider {
+  position: relative;
+}
+
+/* =========================
+   Team Intro Section
+========================= */
+
+/* =========================
+   Team Section - 화면 절반
+========================= */
+#team-intro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 좌측 정렬 */
+  min-height: 50vh;             /* 화면 절반 높이 */
+  padding: 60px 6vw;
+  background-image: url("../images/team.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+/* 다크 오버레이 */
+#team-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* 텍스트 영역 */
+#team-intro .team-text {
+  position: relative;
+  z-index: 1;
+  max-width: 600px; /* 좌측 텍스트 영역 제한 */
+  padding: 0 20px;
+}
+
+/* Eyebrow */
+#team-intro .eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f0a500;
+  margin-bottom: 12px;
+}
+
+/* 제목 */
+#team-intro h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* 본문 */
+#team-intro p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #eee;
+}
+
+/* 버튼 */
+#team-intro .learn-more {
+  display: inline-block;
+  padding: 10px 26px;
+  background: #f0a500;
+  color: #111;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#team-intro .learn-more:hover {
+  background: #ff7a00;
+  color: #fff;
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 768px) {
+  #team-intro {
+    min-height: 55vh;
+    padding: 40px 4vw;
+    justify-content: center; /* 모바일에서는 중앙 정렬 */
+    text-align: center;
   }
 
-  .news-grid {
-    grid-template-columns: 1fr;
+  #team-intro .team-text {
+    max-width: 90%;
   }
 
-  .contact-container, .contact-cards {
-    flex-direction: column;
+  #team-intro h2 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
+  #team-intro p {
+    font-size: 0.95rem;
   }
 }
+
+
+/* vehicle */
+/* ===== Vehicle Section ===== */
+
+/* =========================
+   Vehicle Section
+========================= */
+
+/* 섹션 자체 패딩 */
+.vehicle-section {
+  padding: 6rem 8vw;
+}
+
+/* 섹션 제목 */
+.vehicle-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* 차량 카드 컨테이너 */
+.vehicles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개의 카드 */
+  gap: 2rem; /* 카드 사이 간격 */
+  justify-content: center;
+}
+
+/* 카드 자체 */
+.vehicle-card {
+  max-width: 550px;  /* 카드 최대 너비 제한 */
+  width: 100%;       /* 부모 컨테이너 안에서 늘어나도록 */
+  margin: 0 auto;    /* 가운데 정렬 */
+  background-color: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-6px);
+}
+
+/* 카드 내부 좌우 영역 */
+.vehicle-category {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: nowrap;
+  align-items: stretch; /* 텍스트 영역과 이미지 높이 동일 */
+  height: 250px; /* 카드 내부 고정 높이 */
+}
+
+/* 좌측 이미지 영역 (60%) */
+.vehicle-image-wrapper {
+  flex: 0 0 60%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%; /* 부모 높이와 동일 */
+}
+
+.vehicle-image-wrapper img {
+  width: 100%;
+  height: 100%; /* 카드 높이에 맞춤 */
+  object-fit: cover;
+}
+
+/* 우측 텍스트 영역 (40%) */
+.vehicle-description {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+  height: 100%; /* 이미지와 동일 높이 */
+}
+
+.vehicle-description p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.vehicle-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f0a500;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.3s ease;
+}
+
+.vehicle-link:hover {
+  color: #ff7a00;
+}
+
+/* 카드 하단 스펙 */
+.vehicle-specs {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 2rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* =========================
+   반응형
+========================= */
+@media (max-width: 900px) {
+  /* 모바일에서는 한 줄에 카드 1개 */
+  .vehicles {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* 카드 내부 좌우 → 세로 배치 */
+  .vehicle-category {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* 이미지/텍스트 영역 100% */
+  .vehicle-image-wrapper,
+  .vehicle-description {
+    flex: 0 0 100%;
+    max-height: none; /* 모바일에서는 이미지 제한 해제 */
+  }
+
+  /* 카드 하단 스펙 */
+  .vehicle-specs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+}
+
+
+
+/* Sponsors */
+
+/* ===== Sponsors Section ===== */
+
+.sponsors-section {
+  padding: 6rem 8vw;
+  text-align: center;
+  background-color: #1a1a1a;
+}
+
+/* Header */
+.sponsors-header .eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: #777;
+}
+
+.sponsors-header h2 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.sponsors-header p {
+  font-size: 0.95rem;
+  color: #555;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ===== Logo Grid ===== */
+
+.sponsor-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Logo box */
+.sponsor-logo {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image */
+.sponsor-logo img {
+  width: 120px;
+  height: 50px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: all 0.3s ease;
+}
+
+.sponsor-logo img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ===== CTA ===== */
+
+.sponsor-cta {
+  margin-top: 4rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border: 1px solid #000;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+  background-color: #000;
+  color: #ff8c00;
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 900px) {
+  .sponsor-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .sponsors-section {
+    padding: 4rem 6vw;
+  }
+}
+
+
+/* News */
+.news-section {
+  padding: 6rem 8vw;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.news-section .eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.news-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  margin: 1rem 0 3rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.news-card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.news-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 1.2rem 1rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.news-date {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+}
+
+.news-excerpt {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.news-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f0a500;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.3s ease;
+}
+
+.news-link:hover {
+  color: #ff7a00;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+
+/* Contact */
+
+#contact {
+  padding: 100px 20px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+#contact h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 50px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* 지도 */
+.contact-container .map {
+  flex: 1 1 400px;
+  min-width: 300px;
+  height: 350px;
+}
+
+.contact-container .map iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 연락처 카드 그룹 */
+.contact-cards {
+  display: flex;
+  flex: 1 1 400px;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 개별 카드 */
+.contact-card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px 25px;
+  border-radius: 12px;
+  min-width: 220px;
+  max-width: 250px;
+  text-align: left;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.contact-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+.contact-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #f0a500;
+}
+
+.contact-card p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-card a {
+  color: #f0a500;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* 주소 */
+.contact-address {
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map iframe {
+    width: 100%;
+    height: 300px;
+  }
+
+  .contact-card {
+    width: 90%;
+  }
+}
+
+
