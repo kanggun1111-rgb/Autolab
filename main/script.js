@@ -9,18 +9,29 @@ hamburger.addEventListener('click', () => {
 // Navbar 스크롤 효과
 window.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
+  const hero = document.getElementById('hero-grid');
 
-  const checkScroll = () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  if (!header || !hero) return;
+
+  // hero-grid가 화면에 "조금이라도" 보이면 투명(= scrolled 제거)
+  // hero-grid가 화면에서 완전히 사라지면 배경 적용(= scrolled 추가)
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        header.classList.remove('scrolled');
+      } else {
+        header.classList.add('scrolled');
+      }
+    },
+    {
+      root: null,
+      threshold: 0.01, // 1%라도 보이면 isIntersecting=true
     }
-  };
+  );
 
-  window.addEventListener('scroll', checkScroll);
-  checkScroll(); // 초기 로딩 시 상태 확인
+  observer.observe(hero);
 });
+
 
 //뉴스
 
@@ -37,10 +48,3 @@ thumbs.forEach(thumb => {
   });
 });
 
-// 기존 Hero video 재생 및 햄버거 메뉴 코드는 그대로 유지
-
-
-// Hero 비디오 강제 재생 (브라우저 정책 대비)
-const heroVideo = document.querySelector('.bg-video');
-heroVideo.muted = true;
-heroVideo.play().catch(err => console.warn("Video autoplay prevented:", err));

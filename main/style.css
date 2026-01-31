@@ -3,8 +3,6 @@
 body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
 
 /* Navbar */
-/* Navbar 기본 */
-/* Header 기본 */
 header {
   position: fixed;
   top: 0;
@@ -14,13 +12,15 @@ header {
   background: transparent;
   color: #fff;
   z-index: 9999;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* 스크롤 시 배경 변경 */
+/* hero가 안 보일 때 배경 생김 */
 header.scrolled {
-  background: #111;
+  background: rgba(17,17,17,0.92);
+  backdrop-filter: blur(12px);
 }
+
 
 /* Nav 구조 */
 nav {
