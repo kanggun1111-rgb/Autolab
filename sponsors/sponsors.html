@@ -43,8 +43,6 @@
   </nav>
 </header>
 
-  </header>
- 
   <!-- HERO -->
   <section id="sponsors-hero" class="sponsors-hero" data-nav-hero>
     <div class="sponsors-hero-inner">
@@ -82,10 +80,9 @@
     </div>
 
     <div class="partner-wall" id="partnerWall">
-      <!-- ========== TITLE ROW ========== -->
+      <!-- TITLE ROW -->
       <div class="tier-row" data-tier-row="title">
-        <div class="tier-row-inner tier-title-row" id="titleRow">
-          <!-- Title Partner(s) -->
+        <div class="tier-row-inner">
           <article class="partner-card tier-title" data-tier="title">
             <div class="partner-tier">TITLE PARTNER</div>
             <div class="partner-logo">
@@ -93,7 +90,7 @@
             </div>
           </article>
 
-          <!-- Add more title partners by duplicating the article above -->
+          <!-- Duplicate for more title partners -->
           <!--
           <article class="partner-card tier-title" data-tier="title">
             <div class="partner-tier">TITLE PARTNER</div>
@@ -105,7 +102,7 @@
         </div>
       </div>
 
-      <!-- ========== GOLD ROW ========== -->
+      <!-- GOLD ROW -->
       <div class="tier-row" data-tier-row="gold">
         <div class="tier-row-inner">
           <article class="partner-card tier-gold" data-tier="gold">
@@ -124,7 +121,7 @@
         </div>
       </div>
 
-      <!-- ========== SILVER ROW ========== -->
+      <!-- SILVER ROW -->
       <div class="tier-row" data-tier-row="silver">
         <div class="tier-row-inner">
           <article class="partner-card tier-silver" data-tier="silver">
@@ -143,7 +140,7 @@
         </div>
       </div>
 
-      <!-- ========== SUPPORT ROW ========== -->
+      <!-- SUPPORT ROW -->
       <div class="tier-row" data-tier-row="support">
         <div class="tier-row-inner">
           <article class="partner-card tier-support" data-tier="support">
@@ -177,18 +174,9 @@
 
   <script src="main/script.js"></script>
 
-  <!-- Filters + Title row layout mode -->
+  <!-- Filters (row-level) -->
   <script>
     (function () {
-      // Title row mode: single title -> center; multi title -> grid
-      const titleRow = document.getElementById('titleRow');
-      if (titleRow) {
-        const titleCards = titleRow.querySelectorAll('.partner-card[data-tier="title"]');
-        titleRow.classList.toggle('is-single', titleCards.length === 1);
-        titleRow.classList.toggle('is-multi', titleCards.length > 1);
-      }
-
-      // Filter chips (row-level)
       const chips = Array.from(document.querySelectorAll('.chip'));
       const rows = Array.from(document.querySelectorAll('.tier-row'));
       if (!chips.length || !rows.length) return;
