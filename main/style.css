@@ -822,23 +822,21 @@ nav .nav-links li a:hover{
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.85);
-  opacity: 0.9;
-  transition: filter 220ms ease, opacity 220ms ease;
-}
 
-.sponsor-tile:hover{
-  transform: translateY(-4px);
-  outline-color: rgba(240,165,0,0.45);
-  box-shadow:
-    0 26px 70px rgba(0,0,0,0.55),
-    0 0 40px rgba(240,165,0,0.10);
+  /* 기본: 컬러 */
+  filter: grayscale(0) brightness(0.92) contrast(1.02);
+  opacity: 0.95;
+
+  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
 }
 
 .sponsor-tile:hover img{
-  filter: grayscale(0) brightness(1);
+  /* hover: 더 선명하게 */
+  filter: grayscale(0) brightness(1) contrast(1.06);
   opacity: 1;
+  transform: scale(1.02);
 }
+
 
 /* Recruitment block */
 .sponsor-recruit{
