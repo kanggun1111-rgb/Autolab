@@ -2,7 +2,6 @@ git add .
 git commit -m "Update whatever"
 git push
 
-
 업데이트
 
  git 껐다 켜면 해야 할 것
