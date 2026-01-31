@@ -82,9 +82,10 @@ nav .nav-links li a:hover{
   .hamburger{ display: flex; }
 }
 
+
 /* ---------- HERO ---------- */
 .sponsors-hero{
-  padding: 140px 6vw 12px; /* Hero 하단 최소화 */
+  padding: 140px 6vw 12px;
   position: relative;
 }
 
@@ -162,7 +163,7 @@ nav .nav-links li a:hover{
 
 /* HUD marks */
 .hud-marks{
-  margin-top: 12px; /* Hero-Partner Wall 밀착 */
+  margin-top: 12px;
   max-width: 1100px;
 }
 
@@ -192,7 +193,6 @@ nav .nav-links li a:hover{
   padding: 110px 6vw;
 }
 
-/* Hero 바로 밑으로 붙이기 */
 #partner-wall{
   padding-top: 8px;
 }
@@ -229,20 +229,53 @@ nav .nav-links li a:hover{
   box-shadow: 0 0 22px rgba(240,165,0,0.12);
 }
 
-/* ---------- PREMIUM WALL GRID ---------- */
-.partner-grid{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 18px;
+/* ---------- PARTNER WALL (tier rows) ---------- */
+.partner-wall{
   max-width: 1240px;
 }
 
-/* 카드 = 로고 + 티어 HUD */
-.partner-card{
-  grid-column: span 4;
-  min-height: 160px;
-  padding: 18px;
+.tier-row{
+  margin-top: 16px;
+}
 
+.tier-row:first-child{
+  margin-top: 0;
+}
+
+.tier-row-inner{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+
+/* Title row layout
+   - single: center 1 card
+   - multi : nice centered grid (2~3 per row depending on width)
+*/
+.tier-title-row.is-single{
+  justify-items: center;
+}
+.tier-title-row.is-single .partner-card{
+  grid-column: 4 / span 6;
+  min-height: 190px;
+}
+
+.tier-title-row.is-multi{
+  justify-items: center;
+}
+.tier-title-row.is-multi .partner-card{
+  grid-column: span 6; /* 2개면 예쁘게 2열 */
+  min-height: 190px;
+}
+
+/* General rows: 3 per row */
+.tier-row-inner:not(.tier-title-row) .partner-card{
+  grid-column: span 4;
+}
+
+/* ---------- SPONSOR CARD (logo + tier HUD) ---------- */
+.partner-card{
+  padding: 18px;
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.02);
   box-shadow:
@@ -254,6 +287,7 @@ nav .nav-links li a:hover{
 
   display: grid;
   place-items: center;
+  min-height: 160px;
 
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
@@ -267,7 +301,6 @@ nav .nav-links li a:hover{
     inset 0 0 0 1px rgba(240,165,0,0.12);
 }
 
-/* 왼쪽 HUD tier bar (기본값: gold tone) */
 .partner-card::before{
   content: "";
   position: absolute;
@@ -275,30 +308,22 @@ nav .nav-links li a:hover{
   top: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(240,165,0,0.9),
-    rgba(225,6,0,0.55)
-  );
-  opacity: 0.7;
+  opacity: 0.75;
+  background: linear-gradient(180deg, #f0a500, #e10600);
 }
 
-/* Tier HUD label */
 .partner-tier{
   position: absolute;
   top: 10px;
   left: 16px;
-
   font-family: 'Orbitron', sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-
-  color: rgba(255,255,255,0.85);
   opacity: 0.88;
+  color: rgba(255,255,255,0.85);
 }
 
-/* Logo */
 .partner-logo{
   width: 100%;
   height: 100%;
@@ -310,10 +335,8 @@ nav .nav-links li a:hover{
   width: 88%;
   height: 74%;
   object-fit: contain;
-
   filter: grayscale(1) contrast(1.1) brightness(0.95);
   opacity: 0.92;
-
   transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
 }
 
@@ -324,64 +347,35 @@ nav .nav-links li a:hover{
 }
 
 /* ---------- TIER COLOR SYSTEM ---------- */
-
-/* Title */
-.tier-title{
-  grid-column: span 6;
-  min-height: 190px;
-}
-
 .tier-title::before{
   background: linear-gradient(180deg, #f0a500, #ff6a00);
-  opacity: 0.75;
 }
-
 .tier-title .partner-tier{
   color: #f0a500;
 }
 
-/* Gold */
 .tier-gold::before{
   background: linear-gradient(180deg, #f0a500, #e10600);
-  opacity: 0.75;
 }
-
 .tier-gold .partner-tier{
   color: #f0a500;
 }
 
-/* Silver */
 .tier-silver::before{
   background: linear-gradient(180deg, rgba(210,210,210,0.9), rgba(140,140,140,0.8));
-  opacity: 0.72;
 }
-
 .tier-silver .partner-tier{
   color: rgba(210,210,210,0.92);
 }
 
-/* Support */
 .tier-support::before{
   background: linear-gradient(180deg, rgba(160,160,160,0.85), rgba(110,110,110,0.7));
-  opacity: 0.70;
 }
-
 .tier-support .partner-tier{
   color: rgba(170,170,170,0.88);
 }
 
-/* Responsive */
-@media (max-width: 1100px){
-  .partner-card{ grid-column: span 6; }
-  .tier-title{ grid-column: span 12; min-height: 180px; }
-}
-
-@media (max-width: 720px){
-  .partner-card{ grid-column: span 12; min-height: 150px; }
-  .partner-logo img{ width: 90%; height: 72%; }
-}
-
-/* ---------- BOTTOM CTA ---------- */
+/* ---------- CTA ---------- */
 .sponsors-bottom-cta{
   margin-top: 28px;
 }
@@ -407,7 +401,7 @@ nav .nav-links li a:hover{
   box-shadow: 0 0 28px rgba(240,165,0,0.18);
 }
 
-/* ---------- PACKAGES ---------- */
+/* ---------- SECTION HEADER (kept for future sections) ---------- */
 .section-header{
   margin-bottom: 56px;
 }
@@ -434,98 +428,16 @@ nav .nav-links li a:hover{
   opacity: 0.75;
 }
 
-.package-grid{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 18px;
-  max-width: 1240px;
-}
-
-.package-card{
-  grid-column: span 3;
-  padding: 22px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.02);
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.25),
-    inset 0 0 0 1px rgba(255,255,255,0.03);
-
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.package-card:hover{
-  transform: translateY(-3px);
-  border-color: rgba(240,165,0,0.45);
-  box-shadow:
-    0 14px 38px rgba(0,0,0,0.35),
-    0 0 28px rgba(240,165,0,0.12),
-    inset 0 0 0 1px rgba(240,165,0,0.12);
-}
-
-.pkg-top{
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.pkg-tag{
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  color: rgba(240,165,0,0.95);
-}
-
-.package-card h3{
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.pkg-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,0.74);
-  line-height: 1.45;
-  font-size: 0.95rem;
-}
-
-.pkg-list li{
-  margin: 8px 0;
-}
-
-.pkg-link{
-  margin-top: 16px;
-  display: inline-flex;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  color: rgba(255,255,255,0.86);
-}
-
-.pkg-link:hover{
-  color: rgba(255,255,255,0.96);
-}
-
-.package-card::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(240,165,0,0.8), rgba(225,6,0,0.55));
-  opacity: 0.55;
-}
-
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 1100px){
-  .package-card{ grid-column: span 6; }
+  .tier-row-inner:not(.tier-title-row) .partner-card{ grid-column: span 6; }
+  .tier-title-row.is-single .partner-card{ grid-column: span 12; }
+  .tier-title-row.is-multi .partner-card{ grid-column: span 12; }
 }
+
 @media (max-width: 720px){
-  .package-card{ grid-column: span 12; }
+  .tier-row-inner:not(.tier-title-row) .partner-card{ grid-column: span 12; }
+  .partner-card{ min-height: 150px; }
+  .partner-logo img{ width: 90%; height: 72%; }
 }
 

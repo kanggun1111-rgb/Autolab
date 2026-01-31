@@ -1,11 +1,11 @@
-<!-- sponsors/sponsors.html -->
+ <!-- sponsors/sponsors.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <base href="/Autolab/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autolab EV Team | Sponsors</title>
+  <title>Auto_Lab Formula Student | Sponsors</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
 </header>
 
   </header>
-
+ 
   <!-- HERO -->
   <section id="sponsors-hero" class="sponsors-hero" data-nav-hero>
     <div class="sponsors-hero-inner">
@@ -57,12 +57,7 @@
 
       <div class="hero-cta">
         <a class="cta-pill" href="index.html#contact">Become a Partner →</a>
-        <a
-          class="cta-ghost"
-          href="sponsors/files/Autolab_Sponsor_Proposal.pdf"
-          target="_blank"
-          rel="noopener"
-        >
+        <a class="cta-ghost" href="sponsors/files/Autolab_Sponsor_Proposal.pdf" target="_blank" rel="noopener">
           Sponsor Proposal (PDF) →
         </a>
       </div>
@@ -76,7 +71,7 @@
     </div>
   </section>
 
-  <!-- PREMIUM WALL -->
+  <!-- PARTNER WALL -->
   <section id="partner-wall" class="sponsors-section">
     <div class="partner-controls">
       <button class="chip is-active" type="button" data-filter="all">All</button>
@@ -86,65 +81,93 @@
       <button class="chip" type="button" data-filter="support">Support</button>
     </div>
 
-    <div class="partner-grid" id="partnerGrid">
-      <!-- NOTE: 로고 파일은 sponsors/images/ 안에 넣어주세요 -->
-      <!-- data-tier: title | gold | silver | support -->
+    <div class="partner-wall" id="partnerWall">
+      <!-- ========== TITLE ROW ========== -->
+      <div class="tier-row" data-tier-row="title">
+        <div class="tier-row-inner tier-title-row" id="titleRow">
+          <!-- Title Partner(s) -->
+          <article class="partner-card tier-title" data-tier="title">
+            <div class="partner-tier">TITLE PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-title-01.png" alt="Title Partner Logo">
+            </div>
+          </article>
 
-      <article class="partner-card tier-title" data-tier="title">
-        <div class="partner-tier">TITLE PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-title-01.png" alt="Title Partner Logo">
+          <!-- Add more title partners by duplicating the article above -->
+          <!--
+          <article class="partner-card tier-title" data-tier="title">
+            <div class="partner-tier">TITLE PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-title-02.png" alt="Title Partner Logo">
+            </div>
+          </article>
+          -->
         </div>
-      </article>
+      </div>
 
-      <article class="partner-card tier-gold" data-tier="gold">
-        <div class="partner-tier">GOLD PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-gold-01.png" alt="Gold Partner Logo">
-        </div>
-      </article>
+      <!-- ========== GOLD ROW ========== -->
+      <div class="tier-row" data-tier-row="gold">
+        <div class="tier-row-inner">
+          <article class="partner-card tier-gold" data-tier="gold">
+            <div class="partner-tier">GOLD PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-gold-01.png" alt="Gold Partner Logo">
+            </div>
+          </article>
 
-      <article class="partner-card tier-gold" data-tier="gold">
-        <div class="partner-tier">GOLD PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-gold-02.png" alt="Gold Partner Logo">
+          <article class="partner-card tier-gold" data-tier="gold">
+            <div class="partner-tier">GOLD PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-gold-02.png" alt="Gold Partner Logo">
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
 
-      <article class="partner-card tier-silver" data-tier="silver">
-        <div class="partner-tier">SILVER PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-silver-01.png" alt="Silver Partner Logo">
-        </div>
-      </article>
+      <!-- ========== SILVER ROW ========== -->
+      <div class="tier-row" data-tier-row="silver">
+        <div class="tier-row-inner">
+          <article class="partner-card tier-silver" data-tier="silver">
+            <div class="partner-tier">SILVER PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-silver-01.png" alt="Silver Partner Logo">
+            </div>
+          </article>
 
-      <article class="partner-card tier-silver" data-tier="silver">
-        <div class="partner-tier">SILVER PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-silver-02.png" alt="Silver Partner Logo">
+          <article class="partner-card tier-silver" data-tier="silver">
+            <div class="partner-tier">SILVER PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-silver-02.png" alt="Silver Partner Logo">
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
 
-      <article class="partner-card tier-support" data-tier="support">
-        <div class="partner-tier">SUPPORT PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-support-01.png" alt="Support Partner Logo">
-        </div>
-      </article>
+      <!-- ========== SUPPORT ROW ========== -->
+      <div class="tier-row" data-tier-row="support">
+        <div class="tier-row-inner">
+          <article class="partner-card tier-support" data-tier="support">
+            <div class="partner-tier">SUPPORT PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-support-01.png" alt="Support Partner Logo">
+            </div>
+          </article>
 
-      <article class="partner-card tier-support" data-tier="support">
-        <div class="partner-tier">SUPPORT PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-support-02.png" alt="Support Partner Logo">
-        </div>
-      </article>
+          <article class="partner-card tier-support" data-tier="support">
+            <div class="partner-tier">SUPPORT PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-support-02.png" alt="Support Partner Logo">
+            </div>
+          </article>
 
-      <article class="partner-card tier-support" data-tier="support">
-        <div class="partner-tier">SUPPORT PARTNER</div>
-        <div class="partner-logo">
-          <img src="sponsors/images/logo-support-03.png" alt="Support Partner Logo">
+          <article class="partner-card tier-support" data-tier="support">
+            <div class="partner-tier">SUPPORT PARTNER</div>
+            <div class="partner-logo">
+              <img src="sponsors/images/logo-support-03.png" alt="Support Partner Logo">
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
     </div>
 
     <div class="sponsors-bottom-cta">
@@ -152,86 +175,33 @@
     </div>
   </section>
 
-  <!-- PACKAGES -->
-  <section id="packages" class="sponsors-section">
-    <div class="section-header">
-      <span class="eyebrow">SPONSORSHIP</span>
-      <h2>Partnership Packages</h2>
-      <div class="section-bar"></div>
-    </div>
-
-    <div class="package-grid">
-      <div class="package-card">
-        <div class="pkg-top">
-          <span class="pkg-tag">TITLE</span>
-          <h3>Title Partner</h3>
-        </div>
-        <ul class="pkg-list">
-          <li>Primary logo placement across car & media</li>
-          <li>Exclusive collaboration content</li>
-          <li>Long-term technical partnership</li>
-        </ul>
-        <a class="pkg-link" href="index.html#contact">Request Details →</a>
-      </div>
-
-      <div class="package-card">
-        <div class="pkg-top">
-          <span class="pkg-tag">GOLD</span>
-          <h3>Gold Partner</h3>
-        </div>
-        <ul class="pkg-list">
-          <li>Large logo placement</li>
-          <li>Project update reports & deliverables</li>
-          <li>Recruiting / branding exposure</li>
-        </ul>
-        <a class="pkg-link" href="index.html#contact">Request Details →</a>
-      </div>
-
-      <div class="package-card">
-        <div class="pkg-top">
-          <span class="pkg-tag">SILVER</span>
-          <h3>Silver Partner</h3>
-        </div>
-        <ul class="pkg-list">
-          <li>Medium logo placement</li>
-          <li>Event & competition mention</li>
-          <li>Workshop visibility</li>
-        </ul>
-        <a class="pkg-link" href="index.html#contact">Request Details →</a>
-      </div>
-
-      <div class="package-card">
-        <div class="pkg-top">
-          <span class="pkg-tag">SUPPORT</span>
-          <h3>Support Partner</h3>
-        </div>
-        <ul class="pkg-list">
-          <li>Logo on partner wall</li>
-          <li>Social / website acknowledgment</li>
-          <li>In-kind support welcome</li>
-        </ul>
-        <a class="pkg-link" href="index.html#contact">Request Details →</a>
-      </div>
-    </div>
-  </section>
-
   <script src="main/script.js"></script>
 
-  <!-- Partner filter chips (page-local) -->
+  <!-- Filters + Title row layout mode -->
   <script>
     (function () {
+      // Title row mode: single title -> center; multi title -> grid
+      const titleRow = document.getElementById('titleRow');
+      if (titleRow) {
+        const titleCards = titleRow.querySelectorAll('.partner-card[data-tier="title"]');
+        titleRow.classList.toggle('is-single', titleCards.length === 1);
+        titleRow.classList.toggle('is-multi', titleCards.length > 1);
+      }
+
+      // Filter chips (row-level)
       const chips = Array.from(document.querySelectorAll('.chip'));
-      const cards = Array.from(document.querySelectorAll('.partner-card'));
-      if (!chips.length || !cards.length) return;
+      const rows = Array.from(document.querySelectorAll('.tier-row'));
+      if (!chips.length || !rows.length) return;
 
       function setActive(btn) {
         chips.forEach(c => c.classList.toggle('is-active', c === btn));
       }
 
       function applyFilter(tier) {
-        cards.forEach(card => {
-          const ok = (tier === 'all') || (card.dataset.tier === tier);
-          card.style.display = ok ? '' : 'none';
+        rows.forEach(row => {
+          const rowTier = row.getAttribute('data-tier-row');
+          const show = (tier === 'all') || (rowTier === tier);
+          row.style.display = show ? '' : 'none';
         });
       }
 
