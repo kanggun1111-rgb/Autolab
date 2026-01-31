@@ -1,31 +1,26 @@
 /* =========================
    Base + Theme (Single Canvas)
 ========================= */
-/* =========================
-   Base + Theme (Single Canvas | Orange Light)
-========================= */
 :root{
-  /* Background canvas */
-  --bg0:#fff7ec;   /* 아주 연한 웜 화이트 */
-  --bg1:#f6efe4;   /* 살짝 베이지 */
+  /* Background canvas (brighter dark) */
+  --bg0:#0a0c12;
+  --bg1:#121621;
 
-  /* Accent (Orange system) */
-  --accent:#f28c28;   /* 메인 오렌지 */
-  --accent2:#e4572e;  /* 레이싱 레드-오렌지 */
+  /* Accent (유지) */
+  --accent:#f0a500;
+  --accent2:#e10600;
 
   /* Text */
-  --text: rgba(28,24,20,0.96);
-  --muted: rgba(28,24,20,0.62);
+  --text: rgba(255,255,255,0.94);
+  --muted: rgba(255,255,255,0.68);
 
   /* Panels */
-  --panel: rgba(255,255,255,0.85);
-  --stroke: rgba(28,24,20,0.10);
-  --stroke2: rgba(28,24,20,0.18);
+  --panel: rgba(255,255,255,0.065);
+  --stroke: rgba(255,255,255,0.12);
+  --stroke2: rgba(255,255,255,0.18);
 
-  /* Shadow (soft, warm) */
-  --shadow:
-    0 12px 28px rgba(40,24,8,0.12),
-    0 2px 6px rgba(40,24,8,0.06);
+  /* Shadow (조금 부드럽게) */
+  --shadow: 0 18px 55px rgba(0,0,0,0.45);
 }
 
 
@@ -36,16 +31,8 @@ body{
   font-family:'Roboto', sans-serif;
   color: var(--text);
   background:
-    radial-gradient(
-      1200px 600px at 12% -5%,
-      rgba(242,140,40,0.18),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 520px at 88% 18%,
-      rgba(228,87,46,0.12),
-      transparent 55%
-    ),
+    radial-gradient(1200px 600px at 15% 0%, rgba(240,165,0,0.14), transparent 60%),
+    radial-gradient(900px 520px at 85% 20%, rgba(225,6,0,0.12), transparent 55%),
     linear-gradient(to bottom, var(--bg0), var(--bg1));
   scroll-padding-top: 92px;
 }
