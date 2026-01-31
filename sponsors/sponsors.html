@@ -1,51 +1,112 @@
-/* Reset & 기본 */
-* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
-body { font-family:'Roboto', sans-serif; background:#000; color:#fff; }
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoLab Sponsors</title>
 
-/* Navbar */
-header {
-  position: fixed;
-  top:0; left:0; width:100%; height:80px; background:transparent; color:#fff; z-index:9999; transition: background 0.3s ease;
-}
-header.scrolled { background:#111; }
-nav { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
-nav .logo img { height:55px; }
-nav .nav-links { display:flex; list-style:none; }
-nav .nav-links li { margin-left:20px; }
-nav .nav-links li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
-nav .nav-links li a:hover { color:#f0a500; }
-.hamburger { display:none; flex-direction:column; cursor:pointer; }
-.hamburger div { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-@media (max-width:768px){
-  nav .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:80px; width:100%; padding:20px 0; }
-  nav .nav-links.active { display:flex; }
-  .hamburger { display:flex; }
-}
+<link rel="stylesheet" href="sponsorsstyle.css">
+</head>
+<body>
 
-/* Hero */
-#hero { position:relative; height:60vh; display:flex; justify-content:center; align-items:center; text-align:center; background:linear-gradient(180deg,#000,#111); }
-#hero h1 { font-family:'Orbitron', sans-serif; font-size:3rem; font-weight:700; margin-bottom:12px; color:#f0a500; }
-#hero h2 { font-family:'Montserrat', sans-serif; font-size:2rem; font-weight:700; margin-bottom:8px; }
-#hero h3 { font-family:'Orbitron', sans-serif; font-size:1.5rem; font-weight:700; }
+<!-- Navbar -->
+<header>
+  <nav>
+    <div class="logo">
+      <a href="../index.html"><img src="images/logo.png" alt="AutoLab Logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html#hero">Home</a></li>
+      <li><a href="../index.html#team-intro">Team</a></li>
+      <li><a href="../index.html#vehicle">Vehicles</a></li>
+      <li><a href="../index.html#sponsors">Sponsors</a></li>
+      <li><a href="../index.html#news">News</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+</header>
 
-/* Team Info */
-#team-info { padding:6rem 8vw; max-width:900px; margin:0 auto; }
-#team-info .eyebrow { font-family:'Montserrat',sans-serif; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:#f0a500; margin-bottom:12px; display:block; }
-#team-info h2 { font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:20px; }
-#team-info p { font-size:1rem; line-height:1.6; margin-bottom:20px; color:#eee; }
-#team-info .history { margin-top:20px; list-style:none; padding-left:20px; }
-#team-info .history li { margin-bottom:8px; font-size:0.95rem; }
+<!-- Hero Section -->
+<section id="hero">
+  <div class="hero-content">
+    <h1>Our Sponsors</h1>
+    <h2>Partners & Supporters</h2>
+    <a href="sponsors_guide.pdf" class="pdf-btn" target="_blank">스폰서 등급 안내 PDF →</a>
+  </div>
+</section>
 
-/* Organization Chart */
-#org-chart { padding:4rem 8vw; text-align:center; }
-#org-chart h2 { font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:20px; color:#f0a500; }
-#org-chart img { max-width:100%; height:auto; border-radius:12px; }
+<!-- Sponsors Grid -->
+<section id="sponsors-section">
+  <div class="container">
 
-/* 모바일 대응 */
-@media(max-width:768px){
-  #hero h1 { font-size:2rem; }
-  #hero h2 { font-size:1.4rem; }
-  #hero h3 { font-size:1.2rem; }
-  #team-info { padding:4rem 4vw; }
-}
+    <!-- Title -->
+    <div class="sponsor-group">
+      <h3 class="sponsor-level title">Title Sponsors</h3>
+      <div class="sponsor-logos">
+        <img src="images/title1.png" alt="Title Sponsor 1">
+      </div>
+    </div>
+
+    <!-- Platinum -->
+    <div class="sponsor-group">
+      <h3 class="sponsor-level platinum">Platinum Sponsors</h3>
+      <div class="sponsor-logos">
+        <img src="images/platinum1.png" alt="Platinum 1">
+        <img src="images/platinum2.png" alt="Platinum 2">
+      </div>
+    </div>
+
+    <!-- Gold -->
+    <div class="sponsor-group">
+      <h3 class="sponsor-level gold">Gold Sponsors</h3>
+      <div class="sponsor-logos">
+        <img src="images/gold1.png" alt="Gold 1">
+        <img src="images/gold2.png" alt="Gold 2">
+        <img src="images/gold3.png" alt="Gold 3">
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div class="sponsor-group">
+      <h3 class="sponsor-level silver">Silver Sponsors</h3>
+      <div class="sponsor-logos">
+        <img src="images/silver1.png" alt="Silver 1">
+        <img src="images/silver2.png" alt="Silver 2">
+        <img src="images/silver3.png" alt="Silver 3">
+      </div>
+    </div>
+
+    <!-- Bronze -->
+    <div class="sponsor-group">
+      <h3 class="sponsor-level bronze">Bronze Sponsors</h3>
+      <div class="sponsor-logos">
+        <img src="images/bronze1.png" alt="Bronze 1">
+        <img src="images/bronze2.png" alt="Bronze 2">
+        <img src="images/bronze3.png" alt="Bronze 3">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Hamburger 메뉴 토글
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
+</body>
+</html>
