@@ -189,14 +189,19 @@ nav .nav-links li a:hover{
 .hero-grid{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: 1fr 1fr;  /* ✅ 행을 동일 비율로 고정 */
   gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 6vw;
+
+  /* ✅ 전체 hero 높이를 한 번만 정의 (여기가 핵심) */
+  height: min(78vh, 760px);
 }
 
+
 .hero-card{
+  height: 100%;
   position: relative;
   border-radius: 22px;
   overflow: hidden;
@@ -276,21 +281,20 @@ nav .nav-links li a:hover{
   filter: brightness(1.06);
 }
 
-/* hero 카드 배치 (height control) */
+/* hero 카드 배치 (aspect-ratio 기반 고정) */
 .card-large{
   grid-row: 1 / span 2;
   grid-column: 1 / 2;
-  height: clamp(420px, 55vh, 620px);
 }
 
 .card-wide{
   grid-column: 2 / span 2;
-  height: clamp(220px, 28vh, 320px);
 }
 
 .card-small{
-  height: clamp(200px, 26vh, 300px);
+  /* 그냥 기본 */
 }
+
 
 
 @media (max-width: 900px){
