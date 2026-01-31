@@ -1,112 +1,293 @@
+<!-- sponsors/sponsors.html -->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoLab Sponsors</title>
+  <meta charset="UTF-8" />
+  <base href="/Autolab/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autolab EV Team | Sponsors</title>
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="sponsorsstyle.css">
+  <!-- Main + Sponsors CSS (base 기준) -->
+  <link rel="stylesheet" href="main/style.css">
+  <link rel="stylesheet" href="sponsors/sponsorsstyle.css">
 </head>
+
 <body>
+  <!-- Navbar (메인과 동일 구조를 쓰는 게 베스트. 지금은 팀/메인과 호환되는 기본 구조) -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">AUTOLAB EV</a>
 
-<!-- Navbar -->
-<header>
-  <nav>
-    <div class="logo">
-      <a href="../index.html"><img src="images/logo.png" alt="AutoLab Logo"></a>
+      <nav class="nav-links">
+        <a href="index.html#hero-grid">Home</a>
+        <a href="index.html#team-intro">Team</a>
+        <a href="index.html#vehicle">Vehicle</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <ul class="nav-links">
-      <li><a href="../index.html#hero">Home</a></li>
-      <li><a href="../index.html#team-intro">Team</a></li>
-      <li><a href="../index.html#vehicle">Vehicles</a></li>
-      <li><a href="../index.html#sponsors">Sponsors</a></li>
-      <li><a href="../index.html#news">News</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-</header>
+  </header>
 
-<!-- Hero Section -->
-<section id="hero">
-  <div class="hero-content">
-    <h1>Our Sponsors</h1>
-    <h2>Partners & Supporters</h2>
-    <a href="sponsors_guide.pdf" class="pdf-btn" target="_blank">스폰서 등급 안내 PDF →</a>
-  </div>
-</section>
+  <!-- HERO -->
+  <section id="sponsors-hero" class="sponsors-hero">
+    <div class="sponsors-hero-inner">
+      <p class="eyebrow">PARTNERSHIP</p>
+      <h1>Our Sponsors & Partners</h1>
+      <p class="hero-desc">
+        Autolab EV Team is built with the support of partners who believe in student engineering,
+        real-world manufacturing, and data-driven performance.
+      </p>
 
-<!-- Sponsors Grid -->
-<section id="sponsors-section">
-  <div class="container">
-
-    <!-- Title -->
-    <div class="sponsor-group">
-      <h3 class="sponsor-level title">Title Sponsors</h3>
-      <div class="sponsor-logos">
-        <img src="images/title1.png" alt="Title Sponsor 1">
+      <div class="hero-cta">
+        <a class="cta-pill" href="index.html#contact">Become a Partner →</a>
+        <a class="cta-ghost" href="index.html#sponsors">Back to Main →</a>
       </div>
     </div>
 
-    <!-- Platinum -->
-    <div class="sponsor-group">
-      <h3 class="sponsor-level platinum">Platinum Sponsors</h3>
-      <div class="sponsor-logos">
-        <img src="images/platinum1.png" alt="Platinum 1">
-        <img src="images/platinum2.png" alt="Platinum 2">
+    <div class="hud-marks" aria-hidden="true">
+      <div class="hud-line"></div>
+      <div class="hud-dots">
+        <span></span><span></span><span></span><span></span>
       </div>
     </div>
+  </section>
 
-    <!-- Gold -->
-    <div class="sponsor-group">
-      <h3 class="sponsor-level gold">Gold Sponsors</h3>
-      <div class="sponsor-logos">
-        <img src="images/gold1.png" alt="Gold 1">
-        <img src="images/gold2.png" alt="Gold 2">
-        <img src="images/gold3.png" alt="Gold 3">
-      </div>
+  <!-- PREMIUM WALL -->
+  <section id="partner-wall" class="sponsors-section">
+    <div class="section-header">
+      <span class="eyebrow">PREMIUM WALL</span>
+      <h2>Partners</h2>
+      <div class="section-bar"></div>
     </div>
 
-    <!-- Silver -->
-    <div class="sponsor-group">
-      <h3 class="sponsor-level silver">Silver Sponsors</h3>
-      <div class="sponsor-logos">
-        <img src="images/silver1.png" alt="Silver 1">
-        <img src="images/silver2.png" alt="Silver 2">
-        <img src="images/silver3.png" alt="Silver 3">
-      </div>
+    <div class="partner-controls">
+      <button class="chip is-active" type="button" data-filter="all">All</button>
+      <button class="chip" type="button" data-filter="title">Title</button>
+      <button class="chip" type="button" data-filter="gold">Gold</button>
+      <button class="chip" type="button" data-filter="silver">Silver</button>
+      <button class="chip" type="button" data-filter="support">Support</button>
     </div>
 
-    <!-- Bronze -->
-    <div class="sponsor-group">
-      <h3 class="sponsor-level bronze">Bronze Sponsors</h3>
-      <div class="sponsor-logos">
-        <img src="images/bronze1.png" alt="Bronze 1">
-        <img src="images/bronze2.png" alt="Bronze 2">
-        <img src="images/bronze3.png" alt="Bronze 3">
-      </div>
+    <div class="partner-grid" id="partnerGrid">
+      <!-- NOTE: 로고 파일은 sponsors/images/ 안에 넣어주세요 -->
+      <!-- data-tier: title | gold | silver | support -->
+      <article class="partner-card" data-tier="title">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-title-01.png" alt="Title Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Title Partner</h3>
+          <p>Strategic collaboration for vehicle development and testing.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="gold">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-gold-01.png" alt="Gold Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Gold Partner</h3>
+          <p>Manufacturing support and critical component sponsorship.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="gold">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-gold-02.png" alt="Gold Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Gold Partner</h3>
+          <p>Engineering resources and advanced materials support.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="silver">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-silver-01.png" alt="Silver Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Silver Partner</h3>
+          <p>Tools, logistics, and workshop infrastructure support.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="silver">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-silver-02.png" alt="Silver Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Silver Partner</h3>
+          <p>Testing assistance and quality validation support.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="support">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-support-01.png" alt="Support Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Support Partner</h3>
+          <p>Operational support that keeps the project moving.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="support">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-support-02.png" alt="Support Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Support Partner</h3>
+          <p>Student development and education-driven partnership.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
+
+      <article class="partner-card" data-tier="support">
+        <div class="partner-logo">
+          <img src="sponsors/images/logo-support-03.png" alt="Support Partner Logo">
+        </div>
+        <div class="partner-meta">
+          <h3>Support Partner</h3>
+          <p>Parts sponsorship and rapid prototyping support.</p>
+          <a class="partner-link" href="#" target="_blank" rel="noopener">Visit Website →</a>
+        </div>
+      </article>
     </div>
 
-  </div>
-</section>
+    <div class="sponsors-bottom-cta">
+      <a class="cta-button" href="index.html#contact">Partner With Us →</a>
+    </div>
+  </section>
 
-<script>
-// Hamburger 메뉴 토글
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+  <!-- SPONSOR PACKAGES -->
+  <section id="packages" class="sponsors-section">
+    <div class="section-header">
+      <span class="eyebrow">SPONSORSHIP</span>
+      <h2>Partnership Packages</h2>
+      <div class="section-bar"></div>
+    </div>
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-</script>
+    <div class="package-grid">
+      <div class="package-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">TITLE</span>
+          <h3>Title Partner</h3>
+        </div>
+        <ul class="pkg-list">
+          <li>Primary logo placement across car & media</li>
+          <li>Exclusive collaboration content</li>
+          <li>Long-term technical partnership</li>
+        </ul>
+        <a class="pkg-link" href="index.html#contact">Request Details →</a>
+      </div>
+
+      <div class="package-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">GOLD</span>
+          <h3>Gold Partner</h3>
+        </div>
+        <ul class="pkg-list">
+          <li>Large logo placement</li>
+          <li>Project update reports & deliverables</li>
+          <li>Recruiting / branding exposure</li>
+        </ul>
+        <a class="pkg-link" href="index.html#contact">Request Details →</a>
+      </div>
+
+      <div class="package-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">SILVER</span>
+          <h3>Silver Partner</h3>
+        </div>
+        <ul class="pkg-list">
+          <li>Medium logo placement</li>
+          <li>Event & competition mention</li>
+          <li>Workshop visibility</li>
+        </ul>
+        <a class="pkg-link" href="index.html#contact">Request Details →</a>
+      </div>
+
+      <div class="package-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">SUPPORT</span>
+          <h3>Support Partner</h3>
+        </div>
+        <ul class="pkg-list">
+          <li>Logo on partner wall</li>
+          <li>Social / website acknowledgment</li>
+          <li>In-kind support welcome</li>
+        </ul>
+        <a class="pkg-link" href="index.html#contact">Request Details →</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="main/script.js"></script>
+
+  <!-- Team/ Sponsors 페이지에서 #hero-grid가 없어도 header.scrolled 동작하도록 보완 -->
+  <script>
+    // Mobile menu toggle (page-local)
+    (function () {
+      const header = document.querySelector('.site-header');
+      const toggle = document.querySelector('.nav-toggle');
+      if (header && toggle) {
+        toggle.addEventListener('click', () => header.classList.toggle('menu-open'));
+      }
+    })();
+
+    // Navbar scrolled class (hero 기준)
+    (function () {
+      const header = document.querySelector('.site-header');
+      const hero = document.querySelector('#sponsors-hero');
+      if (!header || !hero) return;
+
+      const obs = new IntersectionObserver(([entry]) => {
+        header.classList.toggle('scrolled', !entry.isIntersecting);
+      }, { threshold: 0.12 });
+
+      obs.observe(hero);
+    })();
+
+    // Partner filter chips
+    (function () {
+      const chips = Array.from(document.querySelectorAll('.chip'));
+      const cards = Array.from(document.querySelectorAll('.partner-card'));
+      if (!chips.length || !cards.length) return;
+
+      function setActive(btn) {
+        chips.forEach(c => c.classList.toggle('is-active', c === btn));
+      }
+
+      function applyFilter(tier) {
+        cards.forEach(card => {
+          const ok = (tier === 'all') || (card.dataset.tier === tier);
+          card.style.display = ok ? '' : 'none';
+        });
+      }
+
+      chips.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tier = btn.dataset.filter;
+          setActive(btn);
+          applyFilter(tier);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
