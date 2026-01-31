@@ -561,6 +561,50 @@ nav .nav-links li a:hover {
   }
 }
 
+/* =========================
+   Vehicle Footer CTA
+========================= */
+
+.vehicle-footer{
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.vehicle-archive-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.12);
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    outline-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.vehicle-archive-link:hover{
+  color: #f0a500;
+  background: rgba(240,165,0,0.12);
+  outline-color: rgba(240,165,0,0.35);
+  transform: translateY(-2px);
+}
+
+
 @media (max-width: 900px){
   .vehicles{
     grid-template-columns: 1fr;
