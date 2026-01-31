@@ -1,0 +1,17 @@
+git add .
+git commit -m "Update whatever"
+git push
+
+
+업데이트
+
+ git 껐다 켜면 해야 할 것
+
+cd /c/Users/kangg/OneDrive/autolab_web          # 프로젝트 폴더로 이동
+git remote set-url origin https://github.com/kanggun1111-rgb/Autolab.git  # 원격 연결
+git branch -M main                              # 로컬 브랜치를 main으로 변경
+git push -u origin main                          # 원격 main과 연결하고 푸시
+
+
+
+이후 가장 위 3개 코드 복붙하면 코드 한번에 올라감
