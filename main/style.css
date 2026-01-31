@@ -276,30 +276,35 @@ nav .nav-links li a:hover{
   filter: brightness(1.06);
 }
 
-/* hero 카드 배치 */
+/* hero 카드 배치 (height control) */
 .card-large{
   grid-row: 1 / span 2;
   grid-column: 1 / 2;
-  min-height: 520px;
+  height: clamp(420px, 55vh, 620px);
 }
+
 .card-wide{
   grid-column: 2 / span 2;
-  min-height: 250px;
+  height: clamp(220px, 28vh, 320px);
 }
+
 .card-small{
-  min-height: 240px;
+  height: clamp(200px, 26vh, 300px);
 }
+
 
 @media (max-width: 900px){
   .hero-grid{
     grid-template-columns: 1fr;
   }
-  .card-large, .card-wide, .card-small{
-    grid-column:auto;
-    grid-row:auto;
-    min-height: 260px;
+
+  .card-large,
+  .card-wide,
+  .card-small{
+    height: clamp(240px, 40vh, 340px);
   }
 }
+
 
 /* =========================
    Main Team Intro (HUD Panels)
