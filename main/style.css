@@ -200,46 +200,47 @@ nav .nav-links li a:hover {
 ========================= */
 
 #team-intro {
-  position: relative;
+  padding: 80px 6vw;
+  background: #111;
+  color: #fff;
+}
+
+.team-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 60vh;
-  padding: 60px 6vw;
-  background-image: url("images/team.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.team-image {
+  flex: 1 1 400px;
   overflow: hidden;
-}
-
-/* 다크 그라디언트 오버레이 */
-#team-intro::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-  z-index: 0;
-}
-
-/* 텍스트 영역 */
-#team-intro .team-text {
+  border-radius: 12px;
   position: relative;
-  z-index: 1;
-  max-width: 600px;
-  padding: 0 20px;
-  transform: translateX(-10px);
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
 }
 
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
+.team-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-#team-intro .eyebrow {
+.team-image:hover img {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.team-text {
+  flex: 1 1 500px;
+  background: rgba(0,0,0,0.6);
+  padding: 40px 30px;
+  border-left: 6px solid #f0a500;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.team-text .eyebrow {
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   letter-spacing: 0.2em;
@@ -248,28 +249,29 @@ nav .nav-links li a:hover {
   margin-bottom: 12px;
 }
 
-#team-intro h2 {
+.team-text h2 {
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.2;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
 }
 
-#team-intro p {
+.team-text h2 span {
+  color: #ff3d00;
+}
+
+.team-text p {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 20px;
   color: #eee;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-#team-intro .learn-more {
+.learn-more {
   display: inline-block;
   padding: 12px 28px;
-  background: linear-gradient(135deg, #f0a500, #ff7a00);
+  background: linear-gradient(135deg, #f0a500, #ff3d00);
   color: #111;
   font-weight: 700;
   text-decoration: none;
@@ -279,42 +281,32 @@ nav .nav-links li a:hover {
   overflow: hidden;
 }
 
-#team-intro .learn-more .arrow {
+.learn-more .arrow {
   display: inline-block;
   margin-left: 6px;
   transition: transform 0.3s ease;
 }
 
-#team-intro .learn-more:hover {
-  background: linear-gradient(135deg, #ff7a00, #f0a500);
+.learn-more:hover {
+  background: linear-gradient(135deg, #ff3d00, #f0a500);
   color: #fff;
 }
 
-#team-intro .learn-more:hover .arrow {
+.learn-more:hover .arrow {
   transform: translateX(4px);
 }
 
-/* =========================
-   Mobile
-========================= */
+/* 모바일 */
 @media (max-width: 768px) {
-  #team-intro {
-    min-height: 55vh;
-    padding: 40px 4vw;
-    justify-content: center;
-    text-align: center;
+  .team-container {
+    flex-direction: column;
+    gap: 30px;
   }
 
-  #team-intro .team-text {
-    max-width: 90%;
-  }
-
-  #team-intro h2 {
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
-  }
-
-  #team-intro p {
-    font-size: 0.95rem;
+  .team-text {
+    border-left: none;
+    border-top: 4px solid #f0a500;
+    padding: 30px 20px;
   }
 }
 
