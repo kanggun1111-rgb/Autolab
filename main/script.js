@@ -55,3 +55,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     history.pushState(null, '', id);
   });
 });
+
