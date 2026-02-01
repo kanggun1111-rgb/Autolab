@@ -1,163 +1,178 @@
-/* vehicles/vehicledetail.js (v3)
-   - One shared page: vehicles/detail.html?id=ale-26
-   - Finds the matching item in vehicles.json (featured only)
-*/
-(async function(){
-  // ===== Safe i18n (page-scoped) =====
-  const asset = (p) => {
-    const baseEl = document.querySelector('base');
-    const base = baseEl ? baseEl.getAttribute('href') : '/';
-    const normBase = (base || '/').replace(/\/+$/,'');
-    const normP = String(p || '').replace(/^\/+/,'');
-    return `${normBase}/${normP}`;
-  };
+// vehicles/vehicledetail.js — language toggle without i18n keys (safe fallback)
+// - Keeps existing functionality
+// - Uses localStorage.lang = 'en' | 'ko'
+// - Selects localized fields from vehicles.json when values are {ko,en}
 
-  const getLang = () => {
-    const g = (window.__getLang ? window.__getLang() : (localStorage.getItem('lang') || 'en'));
-    return (g === 'ko' || g === 'en') ? g : 'en';
-  };
+(function(){
+  "use strict";
 
-  let PAGE_I18N = null;
-  const loadPageI18n = async () => {
-    if (PAGE_I18N) return PAGE_I18N;
-    try{
-      const res = await fetch(asset('vehicles/i18n.json'), { cache: 'no-store' });
-      PAGE_I18N = await res.json();
-    }catch(e){
-      PAGE_I18N = { ko: {}, en: {} };
-    }
-    return PAGE_I18N;
-  };
+  function asset(path){
+    const base = document.querySelector("base")?.getAttribute("href") || "/";
+    const cleanBase = base.replace(/\/+$/,"");
+    const cleanPath = String(path || "").replace(/^\/+/,"");
+    return cleanBase + "/" + cleanPath;
+  }
 
-  const tPage = (key, fallback='') => {
-    const lang = getLang();
-    const dict = (PAGE_I18N && PAGE_I18N[lang]) ? PAGE_I18N[lang] : null;
-    const v = dict ? dict[key] : undefined;
-    if (v !== undefined && v !== null && String(v).trim() !== '') return String(v);
-    if (window.__t) return window.__t(key, fallback);
-    return fallback;
-  };
+  function getLang(){
+    const v = (localStorage.getItem("lang") || "").toLowerCase();
+    return (v === "ko" || v === "en") ? v : "en";
+  }
+  function setLang(next){
+    const lang = (next === "ko") ? "ko" : "en";
+    localStorage.setItem("lang", lang);
+    document.documentElement.lang = lang;
+    const btn = document.getElementById("langToggleBtn");
+    if (btn) btn.textContent = (lang === "en" ? "KOR" : "ENG");
+    return lang;
+  }
 
-  const applyI18n = () => {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      const val = tPage(key, el.textContent || '');
-      if (val) el.textContent = val;
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.getAttribute('data-i18n-html');
-      const val = tPage(key, el.innerHTML || '');
-      if (val) el.innerHTML = val;
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      const val = tPage(key, el.getAttribute('placeholder') || '');
-      if (val) el.setAttribute('placeholder', val);
-    });
-  };
-
-  const pick = (val) => {
-    const lang = getLang();
-    if (val && typeof val === 'object' && !Array.isArray(val)) {
-      if (val[lang] != null) return val[lang];
-      if (val.en != null) return val.en;
-      if (val.ko != null) return val.ko;
+  function pick(val, lang){
+    if (val && typeof val === "object" && !Array.isArray(val)){
+      if (typeof val[lang] === "string") return val[lang];
+      if (lang === "ko" && typeof val.ko === "string") return val.ko;
+      if (lang === "en" && typeof val.en === "string") return val.en;
     }
     return val;
+  }
+
+  const UI = {
+    en: {
+      invalid: "Invalid access. Please open this page from Vehicles.",
+      loadFail: "Failed to load data.",
+      notFound: "Vehicle data not found. Check vehicles.json (featured).",
+      fillHighlights: "Add highlights in vehicles.json.",
+      fillSections: "You can add section content in vehicles.json.",
+      fillGallery: "Add images to show them here."
+    },
+    ko: {
+      invalid: "잘못된 접근입니다. Vehicles 페이지에서 다시 진입하세요.",
+      loadFail: "데이터를 불러오지 못했습니다.",
+      notFound: "차량 정보를 찾을 수 없습니다. vehicles.json의 featured 항목을 확인하세요.",
+      fillHighlights: "내용을 vehicles.json에서 채워주세요.",
+      fillSections: "vehicles.json에서 섹션 내용을 추가할 수 있습니다.",
+      fillGallery: "이미지를 추가하면 여기에 표시됩니다."
+    }
   };
 
-  const T = (k, f='') => tPage(k, f);
-  const mount = document.getElementById('detailMount');
-  if (!mount) return;
-
-  await loadPageI18n();
-  applyI18n();
-
-  const params = new URLSearchParams(location.search);
-  const id = params.get('id');
-
-  if (!id){
-    mount.innerHTML = `<p style="opacity:.85">${T('vehicles.detail.err.no_id','Invalid access. (missing id)')}</p><p style="opacity:.7">${T('vehicles.detail.err.enter_from','Please enter from the Vehicles page.')}</p>`;
-    return;
+  function esc(s){
+    return String(s ?? "").replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
   }
 
-  let data;
-  try{
-    const res = await fetch(asset('vehicles/vehicles.json'), { cache:'no-store' });
-    data = await res.json();
-  }catch(e){
-    mount.innerHTML = `<p style="opacity:.85">${T('vehicles.err.load','Failed to load data.')}</p>`;
-    return;
-  }
+  function render(mount, v, lang){
+    const stats = v.stats || {};
+    const highlightsArr = (v.highlights || []).filter(Boolean).map(x => `<li>${esc(pick(x, lang) ?? "")}</li>`).join("");
+    const highlights = highlightsArr || `<li style="opacity:.75">${esc(UI[lang].fillHighlights)}</li>`;
 
-  const featured = data.featured || [];
-  const v = featured.find(x => String(x.id).toLowerCase() === String(id).toLowerCase());
+    const sectionsArr = (v.sections || []).map(sec => {
+      const title = esc(pick(sec.title, lang) ?? sec.title ?? "");
+      const bodyArr = (sec.body || []).map(p => `<p>${esc(pick(p, lang) ?? p)}</p>`).join("");
+      return `
+        <div class="section-block">
+          <h3>${title}</h3>
+          ${bodyArr}
+        </div>
+      `;
+    }).join("");
+    const sections = sectionsArr || `<div class="section-block"><h3>Concept</h3><p style="opacity:.8">${esc(UI[lang].fillSections)}</p></div>`;
 
-  if (!v){
-    mount.innerHTML = `<p style="opacity:.85">${T('vehicles.detail.err.not_found','Vehicle not found.')}</p><p style="opacity:.7">${T('vehicles.detail.err.check_featured','Check the featured list in vehicles.json.')}</p>`;
-    return;
-  }
+    const galleryArr = (v.gallery || []).filter(Boolean).map(src => `
+      <div class="shot"><img src="${esc(src)}" alt="${esc(pick(v.name, lang) ?? v.name)}"></div>
+    `).join("");
+    const gallery = galleryArr || `<p style="opacity:.8">${esc(UI[lang].fillGallery)}</p>`;
 
-  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]));
-  const stats = v.stats || {};
-  const highlights = (v.highlights || []).filter(Boolean).map(x => `<li>${esc(pick(x))}</li>`).join('');
-  const sections = (v.sections || []).map(sec => `
-    <div class="section-block">
-      <h3>${esc(pick(sec.title))}</h3>
-      ${(sec.body || []).map(p => `<p>${esc(pick(p))}</p>`).join('')}
-    </div>
-  `).join('');
+    document.title = `${pick(v.name, lang) ?? v.name} | Vehicles | Auto_Lab`;
 
-  const gallery = (v.gallery || []).filter(Boolean).map(src => `
-    <div class="shot"><img src="${esc(src)}" alt="${esc(v.name)}"></div>
-  `).join('');
-
-  document.title = `${v.name} | Vehicles | Auto_Lab`;
-
-  mount.innerHTML = `
-    <section class="detail-hero">
-      <div class="detail-cover">
-        <img src="${esc(v.cover)}" alt="${esc(v.name)}">
-      </div>
-
-      <div class="detail-panel">
-        <span class="detail-chip">${esc(v.type)} • ${esc(v.season)}</span>
-        <h1>${esc(v.name)}</h1>
-        <p>${esc(pick(v.tagline || ''))}</p>
-
-        <div class="detail-actions">
-          <a class="primary" href="vehicles/vehicles.html">${T('vehicles.detail.nav.back','← Back to Vehicles')}</a>
-          <a href="#specs">${T('vehicles.detail.nav.specs','Specs')}</a>
-          <a href="#gallery">${T('vehicles.detail.nav.gallery','Gallery')}</a>
+    mount.innerHTML = `
+      <section class="detail-hero">
+        <div class="detail-cover">
+          <img src="${esc(v.cover)}" alt="${esc(pick(v.name, lang) ?? v.name)}">
         </div>
 
-        <div class="detail-grid" id="specs">
-          <div class="card kv">
-            <h2>KEY SPECS</h2>
-            <dl>
-              ${Object.entries(stats).map(([k,val]) => `
-                <dt>${esc(k)}</dt><dd>${esc(val)}</dd>
-              `).join('')}
-            </dl>
+        <div class="detail-panel">
+          <span class="detail-chip">${esc(v.type)} • ${esc(v.season)}</span>
+          <h1>${esc(pick(v.name, lang) ?? v.name)}</h1>
+          <p>${esc(pick(v.tagline, lang) ?? "")}</p>
+
+          <div class="detail-actions">
+            <a class="primary" href="vehicles/vehicles.html">← Back to Vehicles</a>
+            <a href="#specs">Specs</a>
+            <a href="#gallery">Gallery</a>
           </div>
 
-          <div class="card bullets">
-            <h2>HIGHLIGHTS</h2>
-            <ul>${highlights || `<li style="opacity:.75">${T('vehicles.detail.empty.highlights','Add highlights in vehicles.json.')}</li>`}</ul>
+          <div class="detail-grid" id="specs">
+            <div class="card kv">
+              <h2>KEY SPECS</h2>
+              <dl>
+                ${Object.entries(stats).map(([k,val]) => `
+                  <dt>${esc(pick(k, lang) ?? k)}</dt><dd>${esc(pick(val, lang) ?? val)}</dd>
+                `).join("")}
+              </dl>
+            </div>
+
+            <div class="card bullets">
+              <h2>HIGHLIGHTS</h2>
+              <ul>${highlights}</ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="sections">
-      ${sections || `<div class="section-block"><h3>Concept</h3><p style="opacity:.8">${T('vehicles.detail.empty.sections','Add section content in vehicles.json.')}</p></div>`}
-    </section>
+      <section class="sections">
+        ${sections}
+      </section>
 
-    <section id="gallery">
-      <div class="card" style="margin-top:18px;">
-        <h2>GALLERY</h2>
-        <div class="gallery">${gallery || `<p style="opacity:.8">${T('vehicles.detail.empty.gallery','Add images to show them here.')}</p>`}</div>
-      </div>
-    </section>
-  `;
+      <section id="gallery">
+        <div class="card" style="margin-top:18px;">
+          <h2>GALLERY</h2>
+          <div class="gallery">${gallery}</div>
+        </div>
+      </section>
+    `;
+  }
+
+  (async function(){
+    const mount = document.getElementById("detailMount");
+    if (!mount) return;
+
+    // init lang + toggle button
+    let lang = setLang(getLang());
+    const btn = document.getElementById("langToggleBtn");
+    if (btn){
+      btn.addEventListener("click", () => {
+        lang = setLang(lang === "en" ? "ko" : "en");
+        // re-render once data already loaded
+        if (window.__vehicleDetailData) render(mount, window.__vehicleDetailData, lang);
+      });
+    }
+
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+
+    if (!id){
+      mount.innerHTML = `<p style="opacity:.85">${esc(UI[lang].invalid)}</p>`;
+      return;
+    }
+
+    let data;
+    try{
+      const res = await fetch(asset("vehicles/vehicles.json"), { cache:"no-store" });
+      data = await res.json();
+    }catch(e){
+      mount.innerHTML = `<p style="opacity:.85">${esc(UI[lang].loadFail)}</p>`;
+      return;
+    }
+
+    const featured = data.featured || [];
+    const v = featured.find(x => String(x.id).toLowerCase() === String(id).toLowerCase());
+
+    if (!v){
+      mount.innerHTML = `<p style="opacity:.85">${esc(UI[lang].notFound)}</p>`;
+      return;
+    }
+
+    window.__vehicleDetailData = v; // cache for re-render on lang switch
+    render(mount, v, lang);
+  })();
 })();
