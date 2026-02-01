@@ -1,37 +1,63 @@
 /* sponsors/sponsors.js
    - sponsors.json 기반 렌더링 (KO/EN)
+   - HTML data-en / data-ko 동시 지원
    - Title/Gold/Silver/Support: grid
-   - Logos never crop: object-fit:contain is handled in CSS
 */
 (async function(){
-  const T = (k, f='') => (window.__t ? window.__t(k, f) : f);
+  /* --------------------
+     Language helpers
+  -------------------- */
+  const getLang = () => (window.__getLang ? window.__getLang() : (localStorage.getItem('lang') || 'en'));
+  const esc = (s)=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
+  /* --------------------
+     HTML (data-en / data-ko)
+  -------------------- */
+  function applyHtmlLang(){
+    const L = getLang();
+    document.documentElement.lang = L;
+
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const text =
+        L === 'ko'
+          ? el.getAttribute('data-ko') || el.getAttribute('data-en')
+          : el.getAttribute('data-en');
+
+      if (text != null) el.textContent = text;
+    });
+  }
+
+  /* --------------------
+     JSON-based sponsors
+  -------------------- */
   const mount = document.getElementById('tiersMount');
   if (!mount) return;
-
-  const lang = () => (window.__getLang ? window.__getLang() : 'ko');
-  const esc = (s)=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
   let data;
   try{
     const res = await fetch('sponsors/sponsors.json', { cache:'no-store' });
     data = await res.json();
   }catch(e){
-    mount.innerHTML = '<p style="opacity:.8">데이터를 불러오지 못했습니다.</p>';
+    mount.innerHTML = '<p style="opacity:.8">Failed to load sponsors data.</p>';
     return;
   }
 
   function setHero(){
-    const L = lang();
-    const hero = (data.hero && data.hero[L]) || (data.hero && data.hero.ko) || {};
+    const L = getLang();
+    const hero = (data.hero && data.hero[L]) || (data.hero && data.hero.en) || {};
 
-    const setText = (id, v) => { const el=document.getElementById(id); if(el) el.textContent = v || ''; };
+    const setText = (id, v) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = v || '';
+    };
+
     setText('heroEyebrow', hero.eyebrow);
     setText('heroTitle', hero.title);
     setText('heroSubtitle', hero.subtitle);
 
     const c1 = document.getElementById('heroCtaPrimary');
     const c2 = document.getElementById('heroCtaSecondary');
+
     if (c1 && hero.cta_primary){
       c1.textContent = hero.cta_primary.label || '';
       c1.href = hero.cta_primary.href || '#';
@@ -44,8 +70,12 @@
 
   function card(item, featured=false){
     const href = (item.url || '').trim();
-    const link = href ? `<a class="logo-link" href="${esc(href)}" target="_blank" rel="noopener">Visit →</a>` : `<span style="opacity:.65;font-weight:800;">&nbsp;</span>`;
+    const link = href
+      ? `<a class="logo-link" href="${esc(href)}" target="_blank" rel="noopener">Visit →</a>`
+      : `<span style="opacity:.65;font-weight:800;">&nbsp;</span>`;
+
     const name = item.name || '';
+
     return `
       <article class="logo-card ${featured ? 'featured' : ''}">
         <div class="logo-card__inner">
@@ -64,15 +94,22 @@
 
   function renderTier(t){
     const tierName = t.tier || '';
-    const L = lang();
+    const L = getLang();
+
     const noteObj = t.note || '';
-    const note = (typeof noteObj === 'object' && noteObj) ? (noteObj[L] || noteObj.ko || '') : (noteObj || '');
+    const note =
+      (typeof noteObj === 'object')
+        ? (noteObj[L] || noteObj.en || '')
+        : noteObj;
+
     const layout = t.layout || 'grid';
     const items = Array.isArray(t.items) ? t.items : [];
 
     const isFeatured = layout === 'featured';
     const gridClass = isFeatured ? 'logo-grid featured' : 'logo-grid';
-    const cards = items.map(i => card(i, isFeatured)).join('') || `<p style="opacity:.75">${T('sponsors.empty','No sponsors yet.')}</p>`;
+
+    const cards = items.map(i => card(i, isFeatured)).join('')
+      || `<p style="opacity:.75">No sponsors yet.</p>`;
 
     return `
       <section class="tier-block" data-tier="${esc(tierName)}">
@@ -92,11 +129,15 @@
   }
 
   function renderAll(){
-    setHero();
+    applyHtmlLang();   // 🔑 HTML 언어 적용
+    setHero();         // JSON hero
     const tiers = Array.isArray(data.tiers) ? data.tiers : [];
     mount.innerHTML = tiers.map(renderTier).join('');
   }
 
+  /* --------------------
+     Init & lang change
+  -------------------- */
   renderAll();
   if (window.__onLangChange) window.__onLangChange(renderAll);
 })();

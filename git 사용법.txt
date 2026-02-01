@@ -21,3 +21,5 @@ git pull --rebase origin main
 git push origin main
 
 과정 거치기
+
+다른 잡다한 에러는 지피티 참고 ㄱㄱ 잘설명해줌
