@@ -191,6 +191,9 @@ nav .nav-links li a:hover{
   width: min(1600px, 100%);
   margin: 0 auto;
   border-radius: 26px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
   overflow: hidden;
   box-shadow: var(--shadow);
   outline: 1px solid rgba(255,255,255,0.07);
@@ -217,7 +220,7 @@ nav .nav-links li a:hover{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 90px;
   padding-bottom: 10px;
   max-width: 920px;
 }
@@ -304,10 +307,13 @@ nav .nav-links li a:hover{
 /* =========================
    Hero Section
 ========================= */
+
+/* ✅ hero-banner를 화면 최상단부터 시작시키기 */
 .section-hero{
-  padding-top: 110px;
-  padding-bottom: 64px;
+  padding-top: 0;        /* 110px 제거 */
+  padding-bottom: 72px;  /* 유지 */
 }
+
 
 /* Grid (Desktop) */
 .hero-grid{
