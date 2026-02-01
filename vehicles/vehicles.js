@@ -1,12 +1,71 @@
 /* vehicles/vehicles.js (v3)
-   ✅ 요구사항
-   - '현재 시즌 2대(ALE/ALC)'만 상세 페이지로 연결
-   - 이전 차량은 모달 유지 (상세 페이지 없음)
-   - 2027 등 다음 시즌은 vehicles.json만 수정하면 자동 반영
-   - 상세 페이지는 단일 페이지(detail.html?id=ale-27)로 자동 업데이트
 */
 (async function(){
-  const T = (k, f='') => (window.__t ? window.__t(k, f) : f);
+  // ===== Safe i18n (page-scoped) =====
+  const asset = (p) => {
+    const baseEl = document.querySelector('base');
+    const base = baseEl ? baseEl.getAttribute('href') : '/';
+    const normBase = (base || '/').replace(/\/+$/,'');
+    const normP = String(p || '').replace(/^\/+/,'');
+    return `${normBase}/${normP}`;
+  };
+
+  const getLang = () => {
+    const g = (window.__getLang ? window.__getLang() : (localStorage.getItem('lang') || 'en'));
+    return (g === 'ko' || g === 'en') ? g : 'en';
+  };
+
+  let PAGE_I18N = null;
+  const loadPageI18n = async () => {
+    if (PAGE_I18N) return PAGE_I18N;
+    try{
+      const res = await fetch(asset('vehicles/i18n.json'), { cache: 'no-store' });
+      PAGE_I18N = await res.json();
+    }catch(e){
+      PAGE_I18N = { ko: {}, en: {} };
+    }
+    return PAGE_I18N;
+  };
+
+  const tPage = (key, fallback='') => {
+    const lang = getLang();
+    const dict = (PAGE_I18N && PAGE_I18N[lang]) ? PAGE_I18N[lang] : null;
+    const v = dict ? dict[key] : undefined;
+    if (v !== undefined && v !== null && String(v).trim() !== '') return String(v);
+    // fall back to global translator if present
+    if (window.__t) return window.__t(key, fallback);
+    return fallback;
+  };
+
+  const applyI18n = () => {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = tPage(key, el.textContent || '');
+      if (val) el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const val = tPage(key, el.innerHTML || '');
+      if (val) el.innerHTML = val;
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const val = tPage(key, el.getAttribute('placeholder') || '');
+      if (val) el.setAttribute('placeholder', val);
+    });
+  };
+
+  const pick = (val) => {
+    const lang = getLang();
+    if (val && typeof val === 'object' && !Array.isArray(val)) {
+      if (val[lang] != null) return val[lang];
+      if (val.en != null) return val.en;
+      if (val.ko != null) return val.ko;
+    }
+    return val;
+  };
+
+  const T = (k, f='') => tPage(k, f);
   const featuredGrid = document.getElementById('featuredGrid');
   const previousGrid = document.getElementById('previousGrid');
   const filterType = document.getElementById('filterType');
@@ -20,12 +79,15 @@
 
   if (!featuredGrid || !previousGrid) return;
 
+  await loadPageI18n();
+  applyI18n();
+
+
   let data;
   try{
-    const res = await fetch('vehicles/vehicles.json', { cache: 'no-store' });
+    const res = await fetch(asset('vehicles/vehicles.json'), { cache: 'no-store' });
     data = await res.json();
   }catch(err){
-    featuredGrid.innerHTML = '<p style="opacity:.8">데이터를 불러오지 못했습니다.</p>';
     return;
   }
 
@@ -71,13 +133,12 @@
   function renderFeatured(season){
     const pair = featuredPairForSeason(season);
     if (pair.length === 0){
-      featuredGrid.innerHTML = '<p style="opacity:.8">해당 시즌 차량 데이터가 없습니다.</p>';
       return;
     }
 
     featuredGrid.innerHTML = pair.slice(0,2).map(v => {
       const stats = v.stats || {};
-      const highlights = (v.highlights || []).slice(0, 3).map(x => `<li>${esc(x)}</li>`).join('');
+      const highlights = (v.highlights || []).slice(0, 3).map(x => `<li>${esc(pick(x))}</li>`).join('');
       return `
         <article class="vehicle-card">
           <div class="vehicle-card__media">
@@ -88,11 +149,11 @@
             <span class="vehicle-chip">${esc(v.type)} • ${esc(v.season)}</span>
 
             <div class="vehicle-title">
-              <h3>${esc(v.name)}</h3>
+              <h3>${esc(pick(v.name))}</h3>
               <span>${esc(v.type)} PLATFORM</span>
             </div>
 
-            <p class="vehicle-card__tagline">${esc(v.tagline || '')}</p>
+            <p class="vehicle-card__tagline">${esc(pick(v.tagline || ''))}</p>
 
             <div class="vehicle-split">
               <div class="vehicle-stats">
@@ -140,13 +201,13 @@
         </div>
         <div class="prev-card__body">
           <div class="prev-card__top">
-            <h3>${esc(v.name)}</h3>
+            <h3>${esc(pick(v.name))}</h3>
             <span>${esc(v.type)} • ${esc(v.season)}</span>
           </div>
 
           <div class="prev-specs">
             ${Object.entries(v.specs || {}).slice(0, 3).map(([k,val]) => `
-              <div class="row"><b>${esc(k)}</b><span>${esc(val)}</span></div>
+              <div class="row"><b>${esc(pick(k))}</b><span>${esc(pick(val))}</span></div>
             `).join('')}
           </div>
         </div>
