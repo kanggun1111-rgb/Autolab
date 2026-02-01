@@ -1418,3 +1418,10 @@ header nav .nav-links .nav-mobile-only button{
   width: 100%;
   justify-content: center;
 }
+
+/* PC에서는 "View PC" 버튼 숨김 (모바일/태블릿에서만 표시) */
+@media (min-width: 1024px) {
+  #toggleViewBtn {
+    display: none !important;
+  }
+}
