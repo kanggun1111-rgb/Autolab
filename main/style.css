@@ -164,17 +164,6 @@ nav .nav-links li a:hover{
   position: relative;
 }
 
-.section-header h2::after{
-  content:"";
-  display:block;
-  width: 56px;
-  height: 2px;
-  margin: 18px auto 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0.75;
-  border-radius: 2px;
-}
-
 /* =========================
    Section Header (F1 framed)
 ========================= */
@@ -305,7 +294,6 @@ nav .nav-links li a:hover{
     display: none;
   }
 }
-
 
 .section-subtitle{
   max-width: 760px;
