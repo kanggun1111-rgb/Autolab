@@ -40,55 +40,80 @@
 </header>
 <main class="sponsors-page">
 <div class="container">
+
 <!-- HERO -->
 <section class="s-hero">
-<div class="s-hero__left">
-<span class="eyebrow" id="heroEyebrow"></span>
-<h1 id="heroTitle"></h1>
-<p class="subtitle" id="heroSubtitle"></p>
-<div class="hero-actions">
-<a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
-<a href="#" id="heroCtaSecondary">Contact →</a>
-</div>
-<div class="hero-note">
-<b>Tier:</b> Title • Gold • Silver • Support
-          </div>
-</div>
-<div class="s-hero__right">
-<div class="hero-card">
-<div class="hero-card__top">
-<span class="badge">SPONSORSHIP</span>
-<span class="muted">Auto_Lab Formula Student</span>
-</div>
-<div class="hero-card__mid">
-<h3>함께 더 빠르게.</h3>
-<p data-i18n="sponsors.guide.text.0">개발 비용, 제작 인프라, 테스트 운영은 파트너의 지원으로 확장됩니다.</p>
-</div>
-<div class="hero-card__bottom">
-<div class="chip">Aero</div>
-<div class="chip">Data</div>
-<div class="chip">Reliability</div>
-<div class="chip">Endurance</div>
-</div>
-</div>
-</div>
+  <div class="s-hero__left">
+    <span
+      class="eyebrow"
+      id="heroEyebrow"
+      data-en="SPONSORSHIP"
+      data-ko="스폰서십"
+    >SPONSORSHIP</span>
+
+    <h1
+      id="heroTitle"
+      data-en="Sponsors"
+      data-ko="스폰서"
+    >Sponsors</h1>
+
+    <p
+      class="subtitle"
+      id="heroSubtitle"
+      data-en="Partner with Auto_Lab to accelerate development and testing."
+      data-ko="Auto_Lab의 개발과 테스트를 함께 가속할 파트너를 찾습니다."
+    >Partner with Auto_Lab to accelerate development and testing.</p>
+
+    <div class="hero-actions">
+      <!-- 버튼/헤더는 항상 영어여야 한다면: data-ko를 아예 안 넣고 영어 고정 -->
+      <a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
+      <a href="#" id="heroCtaSecondary">Contact →</a>
+    </div>
+
+    <div class="hero-note">
+      <b>Tier:</b> Title • Gold • Silver • Support
+    </div>
+  </div>
+
+  <div class="s-hero__right">
+    <div class="hero-card">
+      <div class="hero-card__top">
+        <span
+          class="badge"
+          data-en="SPONSORSHIP"
+          data-ko="SPONSORSHIP"
+        >SPONSORSHIP</span>
+
+        <span
+          class="muted"
+          data-en="Auto_Lab Formula Student"
+          data-ko="Auto_Lab Formula Student"
+        >Auto_Lab Formula Student</span>
+      </div>
+
+      <div class="hero-card__mid">
+        <h3
+          data-en="Move Faster Together."
+          data-ko="함께 더 빠르게."
+        >Move Faster Together.</h3>
+
+        <p
+          data-en="Development cost, manufacturing infrastructure, and test operations scale with partner support."
+          data-ko="개발 비용, 제작 인프라, 테스트 운영은 파트너의 지원으로 확장됩니다."
+        >Development cost, manufacturing infrastructure, and test operations scale with partner support.</p>
+      </div>
+
+      <div class="hero-card__bottom">
+        <!-- 칩/버튼은 네 규칙대로 영어 고정이면 그대로 두면 됨 -->
+        <div class="chip">Aero</div>
+        <div class="chip">Data</div>
+        <div class="chip">Reliability</div>
+        <div class="chip">Endurance</div>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- TIERS -->
 <div id="tiersMount"></div>
-<!-- FOOTER NOTE -->
-<section class="s-foot">
-<div class="foot-card">
-<h2>스폰서 참여 안내</h2>
-<ol>
-<li><b data-i18n="sponsors.guide.text.1">로고 파일</b>을 <code>Autolab/sponsors/images/</code>에 넣습니다. (PNG/SVG 권장)</li>
-<li><code>sponsors/sponsors.json</code>의 해당 Tier에 항목을 추가/수정합니다.</li>
-<li>로고가 잘리지 않도록 <b data-i18n="sponsors.guide.text.2">이미지는 투명 여백 포함</b>으로 준비하면 가장 안정적입니다.</li>
-</ol>
-</div>
-</section>
-</div>
-</main>
-<script src="main/script.js"></script>
-<script src="sponsors/sponsors.js"></script>
-</body>
-</html>
+
