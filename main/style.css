@@ -141,11 +141,11 @@ nav .nav-links li a:hover{
 }
 
 /* =========================
-   Section Header (Wing Style)
+   Section Header (Aggressive Wing)
 ========================= */
 .section-header{
   text-align: center;
-  margin-bottom: 3.2rem;
+  margin-bottom: 3.6rem;
 }
 
 .section-header .eyebrow{
@@ -155,89 +155,105 @@ nav .nav-links li a:hover{
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
-/* 제목 + 윙을 한 줄로 묶는 래퍼 */
+/* 제목 + 윙 */
 .section-title-row{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  margin: 0 auto;
+  gap: 22px;
   width: 100%;
 }
 
-/* 좌/우 윙 */
+/* 좌/우 윙 공통 */
 .section-title-row::before,
 .section-title-row::after{
   content:"";
-  height: 10px;
-  width: clamp(120px, 18vw, 260px);
-  border-radius: 999px;
-  opacity: 0.92;
+  height: 18px; /* ✅ 두께 증가 */
+  width: clamp(140px, 22vw, 320px);
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(0,0,0,0) 0 12px,
-      rgba(0,0,0,0.55) 12px 18px
+      rgba(0,0,0,0) 0 14px,
+      rgba(0,0,0,0.55) 14px 22px
     ),
-    linear-gradient(90deg, rgba(225,6,0,0.95), rgba(225,6,0,0.70));
-  filter: drop-shadow(0 10px 28px rgba(225,6,0,0.18));
-  outline: 1px solid rgba(255,255,255,0.06);
+    linear-gradient(
+      90deg,
+      rgba(225,6,0,1),
+      rgba(225,6,0,0.85)
+    );
+  clip-path: polygon(
+    0 0,
+    94% 0,
+    100% 50%,
+    94% 100%,
+    0 100%
+  ); /* ✅ 각진 화살촉 형태 */
+  box-shadow:
+    0 14px 38px rgba(225,6,0,0.28),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 
-/* 왼쪽: 끝단을 살짝 쐐기 형태로 */
+/* 왼쪽 */
 .section-title-row::before{
-  clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
+  transform: translateX(-6px);
 }
 
-/* 오른쪽: 좌우 반전 */
+/* 오른쪽 (좌우 반전) */
 .section-title-row::after{
-  transform: scaleX(-1);
-  clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
+  transform: scaleX(-1) translateX(-6px);
 }
 
+/* 제목 */
 .section-header h2{
   font-family: "Orbitron", sans-serif;
   font-size: clamp(2.1rem, 4vw, 2.9rem);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   color: #fff;
   position: relative;
   display: inline-block;
+  padding: 0 4px;
 }
 
-/* 기존 컨셉 유지: 아래 얇은 레이싱 바 */
+/* 기존 컨셉 유지: 하단 레이싱 바 */
 .section-header h2::after{
   content:"";
   display:block;
-  width: 56px;
-  height: 2px;
-  margin: 18px auto 0;
+  width: 64px;
+  height: 3px; /* 살짝 두껍게 */
+  margin: 20px auto 0;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0.75;
-  border-radius: 2px;
+  opacity: 0.85;
+  border-radius: 1px;
 }
 
+/* 부제 */
 .section-subtitle{
   max-width: 760px;
-  margin: 1rem auto 0;
+  margin: 1.2rem auto 0;
   line-height: 1.65;
   color: rgba(255,255,255,0.72);
   font-size: 1rem;
 }
 
-/* 모바일에서 윙 과하지 않게 */
+/* 모바일 대응 */
 @media (max-width: 560px){
   .section-title-row{
-    gap: 12px;
+    gap: 14px;
   }
+
   .section-title-row::before,
   .section-title-row::after{
-    width: 84px;
-    height: 8px;
-    opacity: 0.85;
+    height: 12px;
+    width: 90px;
+  }
+
+  .section-header h2::after{
+    width: 48px;
+    height: 2px;
   }
 }
 
