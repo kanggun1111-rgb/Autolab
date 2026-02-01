@@ -140,7 +140,9 @@ nav .nav-links li a:hover{
   padding-bottom: 90px;
 }
 
-/* 공통 섹션 헤더 + 미세 장식 */
+/* =========================
+   Section Header (Wing Style)
+========================= */
 .section-header{
   text-align: center;
   margin-bottom: 3.2rem;
@@ -156,14 +158,57 @@ nav .nav-links li a:hover{
   margin-bottom: 0.8rem;
 }
 
+/* 제목 + 윙을 한 줄로 묶는 래퍼 */
+.section-title-row{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 좌/우 윙 */
+.section-title-row::before,
+.section-title-row::after{
+  content:"";
+  height: 10px;
+  width: clamp(120px, 18vw, 260px);
+  border-radius: 999px;
+  opacity: 0.92;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0) 0 12px,
+      rgba(0,0,0,0.55) 12px 18px
+    ),
+    linear-gradient(90deg, rgba(225,6,0,0.95), rgba(225,6,0,0.70));
+  filter: drop-shadow(0 10px 28px rgba(225,6,0,0.18));
+  outline: 1px solid rgba(255,255,255,0.06);
+}
+
+/* 왼쪽: 끝단을 살짝 쐐기 형태로 */
+.section-title-row::before{
+  clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
+}
+
+/* 오른쪽: 좌우 반전 */
+.section-title-row::after{
+  transform: scaleX(-1);
+  clip-path: polygon(0 0, 96% 0, 100% 100%, 0 100%);
+}
+
 .section-header h2{
   font-family: "Orbitron", sans-serif;
   font-size: clamp(2.1rem, 4vw, 2.9rem);
   letter-spacing: 0.02em;
   color: #fff;
   position: relative;
+  display: inline-block;
 }
 
+/* 기존 컨셉 유지: 아래 얇은 레이싱 바 */
 .section-header h2::after{
   content:"";
   display:block;
@@ -182,6 +227,20 @@ nav .nav-links li a:hover{
   color: rgba(255,255,255,0.72);
   font-size: 1rem;
 }
+
+/* 모바일에서 윙 과하지 않게 */
+@media (max-width: 560px){
+  .section-title-row{
+    gap: 12px;
+  }
+  .section-title-row::before,
+  .section-title-row::after{
+    width: 84px;
+    height: 8px;
+    opacity: 0.85;
+  }
+}
+
 
 /* =========================
    Hero Grid
@@ -310,442 +369,88 @@ nav .nav-links li a:hover{
 }
 
 /* =========================
-   About Us (F1 Split Command Center)
+   News
 ========================= */
-.about-f1{
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 22px;
-  align-items: stretch;
-  max-width: 1240px;
-}
-
-.about-left{
-  position: relative;
-  border-radius: 22px;
-  background: var(--panel);
-  outline: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  padding: 34px 30px 26px;
-  overflow: hidden;
-}
-
-.about-left::before{
-  content:"";
-  position:absolute;
-  left:0; top:0;
-  width:3px; height:100%;
-  background: linear-gradient(180deg, var(--accent), var(--accent2));
-  opacity: 0.75;
-}
-
-.about-kicker{
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.72);
-  text-transform: uppercase;
-}
-
-.about-title{
-  margin-top: 10px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 2.6vw, 2.6rem);
-  letter-spacing: 0.01em;
-}
-
-.about-bar{
-  margin-top: 12px;
-  width: 56px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0.78;
-}
-
-.about-sub{
-  margin-top: 14px;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.6;
-}
-
-.about-lede{
-  margin-top: 18px;
-  color: rgba(255,255,255,0.86);
-  line-height: 1.75;
-  font-size: 1.02rem;
-}
-
-.about-cta-row{
-  margin-top: 22px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.about-cta{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: rgba(255,255,255,0.95);
-  border: 1px solid rgba(240,165,0,0.40);
-  background: rgba(240,165,0,0.10);
-  box-shadow: 0 0 28px rgba(240,165,0,0.12);
-  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
-}
-
-.about-cta:hover{
-  transform: translateY(-2px);
-  border-color: rgba(240,165,0,0.65);
-  background: rgba(240,165,0,0.16);
-  box-shadow: 0 0 40px rgba(240,165,0,0.18);
-}
-
-.about-cta.ghost{
-  border-color: rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.05);
-  box-shadow: none;
-  color: rgba(255,255,255,0.88);
-}
-
-.about-cta.ghost:hover{
-  border-color: rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.07);
-  box-shadow: none;
-}
-
-.about-hud{
-  margin-top: 22px;
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  opacity: 0.8;
-}
-
-.hud-dot{
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(240,165,0,0.55);
-  box-shadow: 0 0 18px rgba(240,165,0,0.12);
-}
-
-.hud-line{
-  flex:1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(240,165,0,0.55), rgba(225,6,0,0.25), transparent);
-}
-
-/* Right modules */
-.about-right{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr;
-  gap: 18px;
-}
-
-.about-module{
-  position: relative;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.02);
-  outline: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
-  padding: 22px;
-  overflow: hidden;
-  transition: transform 220ms ease, outline-color 220ms ease, background 220ms ease;
-}
-
-.about-module::before{
-  content:"";
-  position:absolute;
-  left:0; top:0;
-  width:3px; height:100%;
-  background: linear-gradient(180deg, rgba(240,165,0,0.70), rgba(225,6,0,0.40));
-  opacity: 0.65;
-}
-
-.about-module:hover{
-  transform: translateY(-4px);
-  outline-color: rgba(240,165,0,0.35);
-  background: rgba(255,255,255,0.04);
-}
-
-.module-label{
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  color: rgba(240,165,0,0.92);
-  margin: 0 0 10px 0;
-}
-
-.module-text{
-  margin: 0;
-  color: rgba(255,255,255,0.78);
-  line-height: 1.65;
-  font-size: 0.98rem;
-}
-
-.about-module--wide{
-  grid-column: 1 / span 2;
-}
-
-.tag-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
-  margin-top: 6px;
-}
-
-.tag{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.88);
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-/* Bottom strip */
-.about-strip{
-  margin-top: 18px;
-  max-width: 1240px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 18px;
-}
-
-.about-strip .strip-item{
-  grid-column: span 4;
-  padding: 14px 16px;
-  border-radius: 14px;
-  outline: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.about-strip .k{
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.12em;
-  font-size: 0.70rem;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.62);
-}
-
-.about-strip .v{
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  color: rgba(255,255,255,0.86);
-  font-size: 0.95rem;
-}
-
-@media (max-width: 980px){
-  .about-f1{
-    grid-template-columns: 1fr;
-  }
-  .about-right{
-    grid-template-columns: 1fr;
-  }
-  .about-module--wide{
-    grid-column: auto;
-  }
-  .tag-grid{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-  .about-strip .strip-item{
-    grid-column: span 12;
-  }
-}
-
-
-
-/* =========================
-   Vehicles (F1/HUD)
-========================= */
-.vehicles{
+.news-grid{
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
   align-items: stretch;
 }
 
-.vehicle-card{
-  border-radius: 10px;
-  overflow:hidden;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 70%, rgba(255,255,255,0.02) 100%);
+.news-card{
+  background: rgba(255,255,255,0.04);
   outline: 1px solid rgba(255,255,255,0.08);
-  box-shadow: var(--shadow);
-  transition: transform .28s ease, outline-color .28s ease, box-shadow .28s ease;
-  position: relative;
-}
-
-.vehicle-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(520px 260px at 20% 0%, rgba(240,165,0,0.12), transparent 60%),
-    radial-gradient(480px 240px at 90% 20%, rgba(225,6,0,0.10), transparent 55%);
-  opacity: 0;
-  transition: opacity 0.28s ease;
-  pointer-events:none;
-}
-
-.vehicle-card:hover{
-  transform: translateY(-8px);
-  outline-color: var(--stroke2);
-  box-shadow: 0 28px 78px rgba(0,0,0,0.65);
-}
-.vehicle-card:hover::before{ opacity: 1; }
-
-.vehicle-top{
-  display:grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 2rem;
-  padding: 2.2rem;
-  min-height: 290px;
-  align-items: stretch;
-}
-
-.vehicle-image-wrapper{
-  position: relative;
   border-radius: 16px;
   overflow:hidden;
-  height: 100%;
-  outline: 1px solid rgba(255,255,255,0.10);
-  background: #000;
-}
-
-.vehicle-image-wrapper img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  filter: brightness(0.92) contrast(1.05);
-  transform: scale(1.01);
-  transition: transform 0.6s ease, filter 0.6s ease;
-}
-
-.vehicle-card:hover .vehicle-image-wrapper img{
-  transform: scale(1.07);
-  filter: brightness(0.98) contrast(1.08);
-}
-
-.vehicle-card-title{
-  position:absolute;
-  left: 16px;
-  top: 14px;
-  font-family:"Orbitron", sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.08em;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.55);
-  outline: 1px solid rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-  color:#fff;
-}
-
-.vehicle-tag{
-  position:absolute;
-  right: 16px;
-  top: 16px;
-  font-family:"Montserrat", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(240,165,0,0.14);
-  color: var(--accent);
-  outline: 1px solid rgba(240,165,0,0.22);
-  backdrop-filter: blur(10px);
-}
-
-/* ✅ 링크 하단 정렬 핵심 */
-.vehicle-description{
+  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
   display:flex;
   flex-direction: column;
-  height: 100%;
+  box-shadow: var(--shadow);
+}
+
+.news-card:hover{
+  transform: translateY(-6px);
+  outline-color: var(--stroke2);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
+}
+
+.news-image img{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+}
+
+.news-content{
+  padding: 1.2rem 1.1rem 1.5rem;
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.news-content h3{
+  font-family:"Montserrat", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
   color:#fff;
 }
 
-.vehicle-description p{
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.86);
-  margin-bottom: 1.1rem;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.news-date{
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 0.8rem;
 }
 
-.vehicle-link{
-  margin-top: auto; /* ✅ 정렬 */
+.news-excerpt{
+  flex:1;
   font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 1rem;
+}
+
+.news-link{
+  font-size: 0.92rem;
   font-weight: 800;
   color: var(--accent);
   text-decoration:none;
   align-self: flex-start;
   transition: transform 0.2s ease, color 0.2s ease;
 }
-
-.vehicle-link:hover{
-  color: #ff7a00;
+.news-link:hover{
+  color:#ff7a00;
   transform: translateX(4px);
 }
 
-.vehicle-specs{
-  display:grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  padding: 1.1rem 1.4rem 1.4rem;
-  border-top: 1px solid rgba(255,255,255,0.10);
-  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.10));
-}
-
-.spec{ padding: 0.8rem 0.9rem; }
-.spec:not(:first-child){ border-left: 1px solid rgba(255,255,255,0.08); }
-
-.spec-label{
-  display:block;
-  font-family:"Montserrat", sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 0.35rem;
-}
-
-.spec-value{
-  display:block;
-  font-family:"Orbitron", sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  color:#fff;
-}
-
-.vehicle-footer{
-  margin-top: 3.5rem;
+.news-footer{
+  margin-top: 3.2rem;
   text-align:center;
 }
 
-.vehicle-archive-link{
+.news-archive-link{
   display:inline-flex;
   align-items:center;
   gap: 6px;
@@ -763,26 +468,18 @@ nav .nav-links li a:hover{
   transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
 }
 
-.vehicle-archive-link:hover{
+.news-archive-link:hover{
   color: var(--accent);
   background: rgba(240,165,0,0.12);
   outline-color: rgba(240,165,0,0.35);
   transform: translateY(-2px);
 }
 
-@media (max-width: 1100px){
-  .vehicle-top{ grid-template-columns: 1fr; min-height:auto; }
-  .vehicle-image-wrapper{ height: 240px; }
-  .vehicle-specs{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 768px){
+  .news-grid{ grid-template-columns: 1fr; gap: 2rem; }
 }
 
-@media (max-width: 900px){
-  .vehicles{ grid-template-columns: 1fr; gap: 2rem; }
-}
 
-@media (max-width: 520px){
-  .vehicle-specs{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
 
 /* =========================
    Sponsors (Main Page)
@@ -917,117 +614,6 @@ nav .nav-links li a:hover{
   }
 }
 
-
-/* =========================
-   News
-========================= */
-.news-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  align-items: stretch;
-}
-
-.news-card{
-  background: rgba(255,255,255,0.04);
-  outline: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  overflow:hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
-  display:flex;
-  flex-direction: column;
-  box-shadow: var(--shadow);
-}
-
-.news-card:hover{
-  transform: translateY(-6px);
-  outline-color: var(--stroke2);
-  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
-}
-
-.news-image img{
-  width:100%;
-  height: 180px;
-  object-fit: cover;
-  filter: brightness(0.92) contrast(1.05);
-}
-
-.news-content{
-  padding: 1.2rem 1.1rem 1.5rem;
-  flex:1;
-  display:flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.news-content h3{
-  font-family:"Montserrat", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color:#fff;
-}
-
-.news-date{
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.60);
-  margin-bottom: 0.8rem;
-}
-
-.news-excerpt{
-  flex:1;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.82);
-  margin-bottom: 1rem;
-}
-
-.news-link{
-  font-size: 0.92rem;
-  font-weight: 800;
-  color: var(--accent);
-  text-decoration:none;
-  align-self: flex-start;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.news-link:hover{
-  color:#ff7a00;
-  transform: translateX(4px);
-}
-
-.news-footer{
-  margin-top: 3.2rem;
-  text-align:center;
-}
-
-.news-archive-link{
-  display:inline-flex;
-  align-items:center;
-  gap: 6px;
-  font-family:"Montserrat", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
-  text-decoration:none;
-  padding: 0.65rem 1.4rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.04);
-  outline: 1px solid rgba(255,255,255,0.12);
-  transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
-}
-
-.news-archive-link:hover{
-  color: var(--accent);
-  background: rgba(240,165,0,0.12);
-  outline-color: rgba(240,165,0,0.35);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px){
-  .news-grid{ grid-template-columns: 1fr; gap: 2rem; }
-}
 
 /* =========================
    Contact
