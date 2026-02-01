@@ -355,19 +355,94 @@ nav .nav-links li a:hover{
   /* 그냥 기본 */
 }
 
+/* =========================
+   Hero Grid - Mobile Optimization v2
+========================= */
 
-
+/* Tablet ~ Mobile: 1 column, height auto, better rhythm */
 @media (max-width: 900px){
   .hero-grid{
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;               /* ✅ 고정 높이 해제 */
+    gap: 16px;                  /* ✅ 간격 축소 */
+    padding: 0 3.5vw;           /* ✅ 모바일 좌우 여백 */
   }
 
   .card-large,
   .card-wide,
   .card-small{
-    height: clamp(240px, 40vh, 340px);
+    grid-column: auto;
+    grid-row: auto;
+    height: auto;               /* ✅ 카드 높이를 컨텐츠 기반으로 */
+    min-height: 220px;          /* ✅ 너무 납작해지지 않게 */
+  }
+
+  /* 이미지가 카드 높이를 채우도록 */
+  .hero-card img{
+    height: 100%;
+  }
+
+  /* 텍스트/버튼이 너무 아래로 몰리지 않게 */
+  .card-content{
+    padding: 22px;
+    max-width: 100%;
+  }
+
+  .card-content p{
+    font-size: 0.95rem;
+  }
+
+  .card-cta{
+    padding: 10px 16px;
+    font-size: 0.86rem;
   }
 }
+
+/* Small mobile: compact heights + readable */
+@media (max-width: 560px){
+  .section-hero{
+    padding-top: 96px;          /* 헤더 고정 고려: 살짝 줄임 */
+    padding-bottom: 48px;
+  }
+
+  .hero-grid{
+    gap: 14px;
+    padding: 0 16px;            /* ✅ vw보다 안정적인 고정 패딩 */
+  }
+
+  /* 모바일에서는 카드 높이를 “명확한 스택”으로 */
+  .card-large{ min-height: 320px; }
+  .card-wide{  min-height: 220px; }
+  .card-small{ min-height: 200px; }
+
+  .card-content{
+    padding: 18px;
+  }
+
+  .card-content h3{
+    font-size: 1.05rem;
+  }
+
+  .card-content p{
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .card-cta{
+    margin-top: 12px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Ultra small: keep it tight */
+@media (max-width: 360px){
+  .hero-grid{ padding: 0 12px; }
+  .card-large{ min-height: 300px; }
+}
+
+
 
 /* =========================
    News
