@@ -19,7 +19,8 @@
 <body>
 
 <!-- Navbar -->
-<header>
+<header class="site-header">
+
   <nav>
     <div class="logo">
       <img src="main/images/logo.png" alt="Autolab Logo">
@@ -105,41 +106,57 @@
 
 </section>
 
-
-<!-- SPONSORS (Main Preview + Recruitment) -->
-<section id="sponsors" class="section section-sponsors">
-
+<!-- SPONSORS (Main Preview) -->
+<section id="sponsors" class="section section-sponsors sponsors-f1">
   <div class="container">
 
-    <header class="section-header">
-      <h2>Our Sponsors</h2>
-      <p>Auto_Lab의 도전을 함께하는 파트너</p>
-    </header>
+    <div class="section-header">
+      <span class="eyebrow">SPONSORS</span>
+      <h2>Partners & Supporters</h2>
+      <p class="section-subtitle">Auto_Lab의 도전은 파트너의 신뢰와 지원으로 완성됩니다.</p>
+    </div>
 
-    <!-- Main Sponsor (Highlight) -->
-    <div class="sponsor-feature">
+    <!-- Title / Featured Sponsor -->
+    <div class="sponsor-title-card">
+      <div class="sponsor-title-badge">TITLE PARTNER</div>
       <img src="sponsors/images/title-sponsor.png" alt="Title Sponsor">
     </div>
 
-    <!-- Sponsor Grid -->
-    <div class="sponsor-grid">
-      <img src="sponsors/images/sponsor-1.png" alt="Sponsor">
-      <img src="sponsors/images/sponsor-2.png" alt="Sponsor">
-      <img src="sponsors/images/sponsor-3.png" alt="Sponsor">
-      <img src="sponsors/images/sponsor-4.png" alt="Sponsor">
-      <img src="sponsors/images/sponsor-5.png" alt="Sponsor">
-      <img src="sponsors/images/sponsor-6.png" alt="Sponsor">
+    <!-- Marquee row 1 -->
+    <div class="sponsor-marquee" aria-label="Sponsor logos scrolling row">
+      <div class="sponsor-marquee-track">
+        <img src="sponsors/images/sponsor-1.png" alt="Sponsor 1">
+        <img src="sponsors/images/sponsor-2.png" alt="Sponsor 2">
+        <img src="sponsors/images/sponsor-3.png" alt="Sponsor 3">
+        <img src="sponsors/images/sponsor-4.png" alt="Sponsor 4">
+        <img src="sponsors/images/sponsor-5.png" alt="Sponsor 5">
+        <img src="sponsors/images/sponsor-6.png" alt="Sponsor 6">
+
+        <!-- loop duplicate (seamless) -->
+        <img src="sponsors/images/sponsor-1.png" alt="Sponsor 1 duplicate">
+        <img src="sponsors/images/sponsor-2.png" alt="Sponsor 2 duplicate">
+        <img src="sponsors/images/sponsor-3.png" alt="Sponsor 3 duplicate">
+        <img src="sponsors/images/sponsor-4.png" alt="Sponsor 4 duplicate">
+        <img src="sponsors/images/sponsor-5.png" alt="Sponsor 5 duplicate">
+        <img src="sponsors/images/sponsor-6.png" alt="Sponsor 6 duplicate">
+      </div>
     </div>
 
-    <div class="sponsor-cta">
-      <a href="sponsors/sponsors.html" class="btn ghost">
-        View All Sponsors →
-      </a>
+    <!-- Compact pitch + CTA -->
+    <div class="sponsor-pitch">
+      <p class="sponsor-pitch-lead">
+        Auto_Lab의 도전은 여러분의 후원으로 완성됩니다.
+      </p>
+
+      <div class="sponsor-actions">
+        <a href="sponsors/sponsors.html" class="sponsor-btn primary">View All Sponsors →</a>
+        <a href="#contact" class="sponsor-btn ghost">Partnership Inquiry →</a>
+      </div>
     </div>
 
   </div>
-
 </section>
+
 
 
 <!-- NEWS -->

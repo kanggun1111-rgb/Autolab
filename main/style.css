@@ -47,7 +47,8 @@ body{
 /* =========================
    Navbar
 ========================= */
-header{
+/* 기존 header -> site-header로 스코프 제한 */
+.site-header{
   position: fixed;
   top: 0; left: 0;
   width: 100%;
@@ -57,7 +58,7 @@ header{
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-header.scrolled{
+.site-header.scrolled{
   background: rgba(0,0,0,0.88);
   backdrop-filter: blur(12px);
 }
@@ -983,56 +984,213 @@ nav .nav-links li a:hover{
   opacity: 0.75;
 }
 
-/* Main sponsor */
-.sponsor-feature{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 56px;
+/* =========================
+   Sponsors (Main Page) – F1 Marquee
+========================= */
+.section-sponsors{
+  padding: 96px 0;
+  background:
+    radial-gradient(1100px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 60%),
+    radial-gradient(900px 420px at 85% 10%, rgba(225,6,0,0.10), transparent 55%);
 }
 
-.sponsor-feature img{
-  max-width: 320px;
+/* (선택) sponsors-f1로 스코프 더 강하게 */
+.sponsors-f1 .section-header{
+  margin-bottom: 42px;
+}
+
+/* Title sponsor card */
+.sponsor-title-card{
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  padding: 28px 18px;
+  margin: 0 auto 26px;
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sponsor-title-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.0) 100%),
+    radial-gradient(700px 260px at 25% 0%, rgba(240,165,0,0.14), transparent 60%),
+    radial-gradient(650px 260px at 85% 20%, rgba(225,6,0,0.12), transparent 55%);
+  pointer-events:none;
+}
+
+.sponsor-title-badge{
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.80);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.45);
+  outline: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.sponsor-title-card img{
+  position: relative;
+  z-index: 1;
+  width: min(520px, 86%);
   max-height: 120px;
   object-fit: contain;
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 
-/* Grid sponsors */
-.sponsor-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 32px;
+/* Marquee */
+.sponsor-marquee{
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  outline: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+
+.sponsor-marquee::before,
+.sponsor-marquee::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  width: 72px;
+  z-index: 2;
+  pointer-events:none;
+}
+
+.sponsor-marquee::before{
+  left:0;
+  background: linear-gradient(90deg, rgba(10,12,18,1), rgba(10,12,18,0));
+}
+
+.sponsor-marquee::after{
+  right:0;
+  background: linear-gradient(270deg, rgba(10,12,18,1), rgba(10,12,18,0));
+}
+
+.sponsor-marquee-track{
+  display: flex;
   align-items: center;
+  gap: 34px;
+  padding: 18px 18px;
+  will-change: transform;
+  animation: sponsorScroll 22s linear infinite;
 }
 
-.sponsor-grid img{
-  max-height: 64px;
-  width: 100%;
+.sponsor-marquee-track img{
+  height: 46px;
+  width: auto;
+  max-width: 180px;
   object-fit: contain;
-  opacity: 0.8;
-  transition: opacity .2s ease, transform .2s ease;
+  opacity: 0.82;
+  filter: grayscale(100%) brightness(1.2);
+  transition: opacity .2s ease, transform .2s ease, filter .2s ease;
 }
 
-.sponsor-grid img:hover{
+.sponsor-marquee-track img:hover{
   opacity: 1;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  filter: grayscale(0%) brightness(1.05);
 }
 
-.sponsor-cta{
-  margin-top: 48px;
+@keyframes sponsorScroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* duplicate 넣었기 때문에 -50% */
+}
+
+/* Pitch + CTA */
+.sponsor-pitch{
+  margin-top: 22px;
   text-align: center;
 }
 
-@media (max-width: 600px){
-  .sponsor-grid{
-    gap: 20px;
-  }
-
-  .sponsor-grid img{
-    max-height: 52px;
-  }
+.sponsor-pitch-lead{
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+  margin-bottom: 14px;
 }
 
+.sponsor-actions{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sponsor-btn{
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.sponsor-btn.primary{
+  color: #fff;
+  background: rgba(225,6,0,0.88);
+  border: 1px solid rgba(225,6,0,0.55);
+  box-shadow: 0 0 36px rgba(225,6,0,0.22);
+}
+
+.sponsor-btn.primary:hover{
+  transform: translateY(-2px);
+  background: rgba(225,6,0,0.98);
+  box-shadow: 0 0 48px rgba(225,6,0,0.28);
+}
+
+.sponsor-btn.ghost{
+  color: rgba(255,255,255,0.90);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+}
+
+.sponsor-btn.ghost:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.09);
+}
+
+/* Mobile tuning */
+@media (max-width: 600px){
+  .section-sponsors{ padding: 72px 0; }
+
+  .sponsor-title-card{
+    border-radius: 18px;
+    padding: 22px 14px;
+  }
+  .sponsor-title-badge{
+    left: 14px;
+    top: 12px;
+    font-size: 0.68rem;
+  }
+  .sponsor-title-card img{
+    width: min(520px, 92%);
+    max-height: 96px;
+  }
+
+  .sponsor-marquee-track{
+    gap: 22px;
+    padding: 14px 14px;
+    animation-duration: 18s;
+  }
+  .sponsor-marquee-track img{
+    height: 38px;
+    max-width: 150px;
+  }
+}
 
 /* =========================
    News
