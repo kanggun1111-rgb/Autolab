@@ -127,6 +127,50 @@ nav .nav-links li a:hover{
 }
 
 /* =========================
+   Section Divider (HUD line)
+========================= */
+.section-divider{
+  width: min(1240px, calc(100% - 12vw));
+  margin: 70px auto;              /* 섹션 간 간격 */
+  height: 1px;
+  position: relative;
+  opacity: 0.85;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.12),
+    rgba(240,165,0,0.22),
+    rgba(225,6,0,0.18),
+    rgba(255,255,255,0.10),
+    transparent
+  );
+}
+
+/* 가운데 HUD 포인트 (레이싱 감성) */
+.section-divider::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: 88px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  opacity: 0.75;
+
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 24px rgba(240,165,0,0.18);
+}
+
+@media (max-width: 900px){
+  .section-divider{
+    margin: 52px auto;
+  }
+}
+
+
+/* =========================
    Sections (No background per section)
 ========================= */
 .section{
