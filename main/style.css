@@ -39,9 +39,9 @@ body{
 
 
 .container{
-  width: min(1400px, 100%);
+  width: min(1600px, 100%);
   margin: 0 auto;
-  padding: 0 6vw;
+  padding: 0 3vw;
 }
 
 /* =========================
@@ -251,9 +251,9 @@ nav .nav-links li a:hover{
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;  /* ✅ 행을 동일 비율로 고정 */
   gap: 24px;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 6vw;
+  padding: 0 3vw;
 
   /* ✅ 전체 hero 높이를 한 번만 정의 (여기가 핵심) */
   height: min(78vh, 760px);
