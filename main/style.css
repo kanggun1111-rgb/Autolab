@@ -441,47 +441,24 @@ nav .nav-links li a:hover{
     height: auto;
     gap: 16px;
     padding: 0 3.5vw;
-    margin-top: 16px; /* ✅ 모바일 간격 */
   }
 
-  .card-large{ min-height: 360px; }
-  .card-wide{  min-height: 260px; }
-  .card-small{ min-height: 220px; }
-
-  .hero-card img{
-    height: 100%;
+  /* ✅ 핵심: 데스크톱 그리드 배치 제거 */
+  .card-large,
+  .card-wide,
+  .card-small{
+    grid-column: auto;
+    grid-row: auto;
   }
+
+  /* ✅ (권장) 그리드/컨텐츠 overflow 방지 */
+  .hero-card{ min-width: 0; }
+}
 
   .card-content{
     padding: 22px;
     max-width: 100%;
   }
-}
-
-/* Small mobile */
-@media (max-width: 560px){
-  .section-hero{
-    padding-top: 96px;
-    padding-bottom: 48px;
-  }
-
-  .hero-grid{
-    gap: 14px;
-    padding: 0 16px;
-  }
-
-  .card-large{ min-height: 320px; }
-  .card-wide{  min-height: 230px; }
-  .card-small{ min-height: 200px; }
-
-  .card-content{
-    padding: 18px;
-  }
-}
-
-/* Ultra small */
-@media (max-width: 360px){
-  .card-large{ min-height: 300px; }
 }
 
 
@@ -1308,3 +1285,5 @@ nav .nav-links li a:hover{
 @media (max-width: 900px){
   .container{ padding: 0 3.5vw; }
 }
+
+html, body { overflow-x: hidden; }
