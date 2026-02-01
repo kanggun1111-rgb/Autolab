@@ -1,0 +1,1420 @@
+/* =========================
+   Base + Theme (Single Canvas)
+========================= */
+:root{
+  /* Background canvas (brighter dark) */
+  --bg0:#0a0c12;
+  --bg1:#121621;
+
+  /* Accent (유지) */
+  --accent:#f0a500;
+  --accent2:#e10600;
+
+  /* Text */
+  --text: rgba(255,255,255,0.94);
+  --muted: rgba(255,255,255,0.68);
+
+  /* Panels */
+  --panel: rgba(255,255,255,0.065);
+  --stroke: rgba(255,255,255,0.12);
+  --stroke2: rgba(255,255,255,0.18);
+
+  /* Shadow (조금 부드럽게) */
+  --shadow: 0 18px 55px rgba(0,0,0,0.45);
+}
+
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'Roboto', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% 0%, rgba(240,165,0,0.14), transparent 60%),
+    radial-gradient(900px 520px at 85% 20%, rgba(225,6,0,0.12), transparent 55%),
+    linear-gradient(to bottom, var(--bg0), var(--bg1));
+  scroll-padding-top: 92px;
+}
+
+
+.container{
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+
+/* =========================
+   Navbar
+========================= */
+/* 기존 header -> site-header로 스코프 제한 */
+.site-header{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  z-index: 9999;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.site-header.scrolled{
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(12px);
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+}
+
+nav .logo img{
+  height: 55px;
+  width: auto;
+}
+
+nav .nav-links{
+  display: flex;
+  list-style: none;
+}
+
+nav .nav-links li{
+  margin-left: 20px;
+}
+
+nav .nav-links li a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+nav .nav-links li a:hover{
+  color: var(--accent);
+}
+
+/* Hamburger */
+.hamburger{
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div{
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+@media (max-width:768px){
+  nav .nav-links{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 18px 0;
+    background: rgba(0,0,0,0.92);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  nav .nav-links.active{ display: flex; }
+  .hamburger{ display: flex; }
+}
+
+/* =========================
+   Sections (No background per section)
+========================= */
+.section{
+  background: transparent !important;
+  padding: 88px 0;
+}
+
+/* Hero는 헤더 높이 고려 */
+.section-hero{
+  padding-top: 110px;
+  padding-bottom: 72px;
+}
+
+/* 공통 섹션 헤더 + 미세 장식 */
+.section-header{
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.section-header .eyebrow{
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.section-header h2{
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  letter-spacing: 0.02em;
+  color: #fff;
+  position: relative;
+}
+
+.section-header h2::after{
+  content:"";
+  display:block;
+  width: 56px;
+  height: 2px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0.75;
+  border-radius: 2px;
+}
+
+.section-subtitle{
+  max-width: 760px;
+  margin: 1rem auto 0;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  font-size: 1rem;
+}
+
+/* =========================
+   Hero Banner (Single Impact)
+========================= */
+.hero-banner{
+  position: relative;
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  border-radius: 26px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  outline: 1px solid rgba(255,255,255,0.07);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.24) 58%, rgba(0,0,0,0.05) 82%),
+    url("images/hero-banner.jpg") right center/cover no-repeat; /* ✅ center → right center */  
+  height: min(74vh, 680px);
+}
+
+.hero-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 420px at 20% 25%, rgba(240,165,0,0.14), transparent 60%),
+    radial-gradient(880px 460px at 80% 30%, rgba(225,6,0,0.12), transparent 55%);
+  pointer-events:none;
+}
+
+.hero-banner-inner{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 90px;
+  padding-bottom: 10px;
+  max-width: 920px;
+}
+
+/* ✅ hero-banner 텍스트를 NSRUK처럼 더 왼쪽에 고정 */
+.hero-banner .hero-banner-inner.container{
+  max-width: none;                 /* container 폭 제한 해제 */
+  width: 100%;
+  padding-left: clamp(18px, 6vw, 96px);  /* 왼쪽 여백 크게 */
+  padding-right: clamp(18px, 3vw, 56px); /* 오른쪽은 조금만 */
+}
+
+
+.hero-eyebrow{
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 14px;
+}
+
+.hero-title{
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.4rem, 4.6vw, 4.1rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color:#fff;
+}
+
+.hero-subtitle{
+  margin-top: 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.80);
+  max-width: 680px;
+}
+
+.hero-actions{
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-btn{
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.hero-btn.primary{
+  color: #fff;
+  background: rgba(225,6,0,0.88);
+  border: 1px solid rgba(225,6,0,0.55);
+  box-shadow: 0 0 36px rgba(225,6,0,0.22);
+}
+
+.hero-btn.primary:hover{
+  transform: translateY(-2px);
+  background: rgba(225,6,0,0.98);
+  box-shadow: 0 0 48px rgba(225,6,0,0.28);
+}
+
+.hero-btn.ghost{
+  color: rgba(255,255,255,0.90);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  box-shadow: none;
+}
+
+.hero-btn.ghost:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.09);
+}
+
+/* =========================
+   Hero Section
+========================= */
+
+/* ✅ hero-banner를 화면 최상단부터 시작시키기 */
+.section-hero{
+  padding-top: 0;        /* 110px 제거 */
+  padding-bottom: 72px;  /* 유지 */
+}
+
+
+/* Grid (Desktop) */
+.hero-grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 3vw;
+  height: min(78vh, 760px);
+
+  /* ✅ hero-banner와의 간격 */
+  margin-top: 30px;
+}
+
+
+/* Card base */
+.hero-card{
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow);
+  outline: 1px solid rgba(255,255,255,0.08);
+  transition: transform .28s ease, outline-color .28s ease;
+}
+
+.hero-card:hover{
+  transform: translateY(-6px);
+  outline-color: var(--stroke2);
+}
+
+/* Image */
+.hero-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) contrast(1.05);
+  transition: transform .6s ease, filter .6s ease;
+}
+
+.hero-card:hover img{
+  transform: scale(1.06);
+  filter: brightness(0.8) contrast(1.08);
+}
+
+/* Gradient overlay */
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.78) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.05) 75%
+  );
+  z-index:1;
+}
+
+/* Content */
+.card-content{
+  position:absolute;
+  left:0;
+  bottom:0;
+  z-index:2;
+  padding: 26px;
+  max-width: 92%;
+}
+
+.card-content h3{
+  font-family:"Orbitron", sans-serif;
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.card-content p{
+  font-size: 0.95rem;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+/* CTA */
+.card-cta{
+  display:inline-flex;
+  margin-top: 14px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent2);
+  color:#fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration:none;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.card-cta:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* Layout roles */
+.card-large{
+  grid-row: 1 / span 2;
+  grid-column: 1 / 2;
+}
+
+.card-wide{
+  grid-column: 2 / span 2;
+}
+
+.card-small{}
+
+
+/* =========================
+   Hero – Mobile (Fixed Rhythm)
+========================= */
+@media (max-width: 900px){
+
+  .hero-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    height: auto;
+    padding: 0 4vw;
+  }
+  .card-large,
+  .card-wide,
+  .card-small{
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hero-card{
+    height: 180px;          /* ⭐ Sponsors 카드 느낌 */
+    border-radius: 18px;
+    min-width: 0;
+  }
+
+  .hero-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-content{
+    padding: 16px;
+  }
+
+  .card-content h3{
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .card-content p{
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .card-cta{
+    margin-top: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+
+/* =========================
+   Sponsors (Main Page)
+========================= */
+.section-sponsors{
+  padding: 96px 0;
+  background: radial-gradient(
+    1200px 400px at 50% 0%,
+    rgba(255,255,255,0.04),
+    transparent 70%
+  );
+}
+
+.section-sponsors .section-header{
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-sponsors h2{
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.section-sponsors p{
+  opacity: 0.75;
+}
+
+/* =========================================================
+   SPONSORS – F1 STYLE (Main Page)
+   Tiers: Title / Gold / Silver / Support
+========================================================= */
+
+/* Section base */
+.section-sponsors{
+  padding: 96px 0;
+  background:
+    radial-gradient(1100px 420px at 15% 0%, rgba(240,165,0,0.10), transparent 60%),
+    radial-gradient(900px 420px at 85% 10%, rgba(225,6,0,0.10), transparent 55%);
+}
+
+/* Section header */
+.section-sponsors .section-header{
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-sponsors .eyebrow{
+  display: inline-block;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.section-sponsors h2{
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 8px;
+}
+
+.section-sponsors .section-subtitle{
+  opacity: 0.75;
+}
+
+/* =========================================================
+   TITLE SPONSOR (Fixed Highlight)
+========================================================= */
+
+.sponsor-title-card{
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 26px;
+  padding: 30px 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sponsor-title-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.0) 100%),
+    radial-gradient(700px 260px at 25% 0%, rgba(240,165,0,0.14), transparent 60%),
+    radial-gradient(650px 260px at 85% 20%, rgba(225,6,0,0.12), transparent 55%);
+  pointer-events:none;
+}
+
+.sponsor-title-badge{
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.45);
+  outline: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.sponsor-title-card img{
+  position: relative;
+  z-index: 1;
+  width: min(520px, 86%);
+  max-height: 120px;
+  object-fit: contain;
+  filter: brightness(1.08);
+}
+
+/* =========================================================
+   MARQUEE BASE (Shared)
+========================================================= */
+
+.sponsor-marquee{
+  position: relative;
+  overflow: hidden;
+  margin-top: 14px;
+  border-radius: 18px;
+  outline: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+
+  /* Tier defaults (override per tier) */
+  --logo-h: 46px;
+  --gap: 34px;
+  --speed: 22s;
+}
+
+.sponsor-marquee::before,
+.sponsor-marquee::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width: 72px;
+  z-index: 2;
+  pointer-events:none;
+}
+
+.sponsor-marquee::before{
+  left:0;
+  background: linear-gradient(90deg, rgba(10,12,18,1), rgba(10,12,18,0));
+}
+
+.sponsor-marquee::after{
+  right:0;
+  background: linear-gradient(270deg, rgba(10,12,18,1), rgba(10,12,18,0));
+}
+
+.sponsor-marquee-track{
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 16px 18px;
+  will-change: transform;
+  animation: sponsorScroll var(--speed) linear infinite;
+}
+
+.sponsor-marquee-track img{
+  height: var(--logo-h);
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+  opacity: 0.82;
+  filter: grayscale(100%) brightness(1.18);
+  transition: opacity .2s ease, transform .2s ease, filter .2s ease;
+}
+
+.sponsor-marquee-track img:hover{
+  opacity: 1;
+  transform: translateY(-2px);
+  filter: grayscale(0%) brightness(1.05);
+}
+
+/* Default direction (left → right) */
+@keyframes sponsorScroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reverse direction (right → left) */
+.sponsor-marquee-track.reverse{
+  animation-name: sponsorScrollReverse;
+}
+
+@keyframes sponsorScrollReverse{
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* =========================================================
+   TIER SIZING
+========================================================= */
+
+.sponsor-marquee.tier-gold{
+  --logo-h: 54px;
+  --gap: 40px;
+  --speed: 20s;
+}
+
+.sponsor-marquee.tier-silver{
+  --logo-h: 46px;
+  --gap: 34px;
+  --speed: 15s;
+}
+
+.sponsor-marquee.tier-support{
+  --logo-h: 38px;
+  --gap: 30px;
+  --speed: 10s;
+}
+
+/* =========================================================
+   CTA / PITCH
+========================================================= */
+
+.sponsor-pitch{
+  margin-top: 26px;
+  text-align: center;
+}
+
+.sponsor-pitch-lead{
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 14px;
+}
+
+.sponsor-actions{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sponsor-btn{
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.sponsor-btn.primary{
+  color: #fff;
+  background: rgba(225,6,0,0.88);
+  border: 1px solid rgba(225,6,0,0.55);
+  box-shadow: 0 0 36px rgba(225,6,0,0.22);
+}
+
+.sponsor-btn.primary:hover{
+  transform: translateY(-2px);
+  background: rgba(225,6,0,0.98);
+  box-shadow: 0 0 48px rgba(225,6,0,0.28);
+}
+
+.sponsor-btn.ghost{
+  color: rgba(255,255,255,0.90);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+}
+
+.sponsor-btn.ghost:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.10);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 600px){
+
+  .section-sponsors{
+    padding: 72px 0;
+  }
+
+  .sponsor-title-card{
+    padding: 22px 14px;
+    border-radius: 18px;
+  }
+
+  .sponsor-title-badge{
+    left: 14px;
+    top: 12px;
+    font-size: 0.68rem;
+  }
+
+  .sponsor-title-card img{
+    max-height: 96px;
+    width: min(520px, 92%);
+  }
+
+  .sponsor-marquee{
+    margin-top: 12px;
+    border-radius: 16px;
+  }
+
+  .sponsor-marquee-track{
+    padding: 12px 14px;
+  }
+
+  .sponsor-marquee.tier-gold{
+    --logo-h: 44px;
+    --gap: 24px;
+    --speed: 22s;
+  }
+
+  .sponsor-marquee.tier-silver{
+    --logo-h: 38px;
+    --gap: 22px;
+    --speed: 20s;
+  }
+
+  .sponsor-marquee.tier-support{
+    --logo-h: 32px;
+    --gap: 20px;
+    --speed: 18s;
+  }
+
+  .sponsor-marquee-track img{
+    max-width: 160px;
+  }
+}
+
+
+/* =========================
+   News
+========================= */
+.news-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.news-card{
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow:hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
+  display:flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.news-card:hover{
+  transform: translateY(-6px);
+  outline-color: var(--stroke2);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.60);
+}
+
+.news-image img{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+}
+
+.news-content{
+  padding: 1.2rem 1.1rem 1.5rem;
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.news-content h3{
+  font-family:"Montserrat", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color:#fff;
+}
+
+.news-date{
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 0.8rem;
+}
+
+.news-excerpt{
+  flex:1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 1rem;
+}
+
+.news-link{
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration:none;
+  align-self: flex-start;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.news-link:hover{
+  color:#ff7a00;
+  transform: translateX(4px);
+}
+
+.news-footer{
+  margin-top: 3.2rem;
+  text-align: center;
+}
+
+.news-archive-link{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  font-family:"Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration:none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  outline: 1px solid rgba(255,255,255,0.12);
+  transition: color .25s ease, background .25s ease, outline-color .25s ease, transform .25s ease;
+}
+
+.news-archive-link:hover{
+  color: var(--accent);
+  background: rgba(240,165,0,0.12);
+  outline-color: rgba(240,165,0,0.35);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px){
+  .news-grid{ grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* =========================
+   Contact (Minimal Footer Style)
+========================= */
+.contact-min{
+  padding: 56px 0 44px;
+  background: rgba(255,255,255,0.02);
+  outline: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-min__inner{
+  width: min(1100px, 100%);
+}
+
+.contact-min__grid{
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.contact-min__person{
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-min__person:last-child{
+  border-bottom: none;
+}
+
+.contact-min__role{
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.contact-min__name{
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.contact-min__link{
+  display: inline-block;
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  margin-right: 14px;
+  margin-top: 4px;
+  font-size: 0.95rem;
+  transition: opacity .2s ease;
+}
+
+.contact-min__link:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.contact-min__meta{
+  padding: 18px 18px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.22);
+  outline: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-min__label{
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+.contact-min__text{
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-min__map{
+  display: inline-flex;
+  margin-top: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.88);
+  border-bottom: 1px solid rgba(255,255,255,0.22);
+  padding-bottom: 2px;
+  transition: opacity .2s ease, border-color .2s ease;
+}
+
+.contact-min__map:hover{
+  opacity: 1;
+  border-color: rgba(255,255,255,0.40);
+}
+
+.contact-min__divider{
+  margin-top: 26px;
+  height: 1px;
+  background: rgba(255,255,255,0.10);
+}
+
+.contact-min__bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+  color: rgba(255,255,255,0.70);
+  font-size: 0.92rem;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.contact-min__dot{
+  opacity: 0.5;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .contact-min{
+    padding: 44px 0 36px;
+  }
+
+  .contact-min__grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .contact-min__meta{
+    padding: 16px 16px;
+  }
+
+  .contact-min__link{
+    display: block;     /* 모바일에서는 한 줄에 하나씩 */
+    margin-right: 0;
+  }
+}
+
+/* =========================
+   Contact – Google Map Embed
+========================= */
+
+.contact-min__mapwrap{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.35);
+  outline: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-min__mapwrap iframe{
+  width: 100%;
+  height: 320px;
+  border: 0;
+  filter: grayscale(0%) contrast(1.05) brightness(0.9);
+}
+
+/* Address overlay */
+.contact-min__mapinfo{
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(10px);
+  outline: 1px solid rgba(255,255,255,0.12);
+}
+
+.contact-min__mapinfo .contact-min__label{
+  margin-bottom: 6px;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .contact-min__mapwrap iframe{
+    height: 260px;
+  }
+
+  .contact-min__mapinfo{
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+
+
+/* =========================
+   Small screens: container padding tweak
+========================= */
+@media (max-width: 900px){
+  .container{ padding: 0 3.5vw; }
+}
+
+html, body { overflow-x: hidden; }
+
+/* ===========================
+   Mobile-only: PC view toggle
+=========================== */
+
+/* 기본은 숨김 (PC에서는 안 보이게) */
+.nav-mobile-only {
+  display: none;
+}
+
+/* 버튼 스타일 */
+.view-toggle{
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(240,165,0,0.55);
+  background: rgba(240,165,0,0.12);
+  color: #fff;
+
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+/* 모바일에서만 보여주기 */
+@media (max-width: 900px){
+  .nav-mobile-only{
+    display: block;
+  }
+
+  /* 모바일 메뉴에서 버튼이 너무 붙지 않게 */
+  .nav-links .nav-mobile-only{
+    margin-top: 8px;
+  }
+}
+
+/* ===========================
+   Force Desktop Layout on Mobile
+=========================== */
+html.pc-view {
+  min-width: 1200px;
+}
+
+html.pc-view body {
+  overflow-x: auto;
+}
+
+/* PC 강제 모드에서는 모바일 햄버거 대신 PC 네비처럼 보이게(선택) */
+html.pc-view .hamburger{
+  display: none !important;
+}
+
+html.pc-view .nav-links{
+  display: flex !important;
+}
+
+/* ==================================================
+   PC VIEW (force desktop layout even on small screens)
+   ✅ main/style.css 맨 아래에 붙이기
+================================================== */
+
+/* PC 보기일 때는 데스크톱 네비처럼 강제 */
+html.pc-view .hamburger{
+  display: none !important;
+}
+
+html.pc-view nav .nav-links{
+  display: flex !important;
+  position: static !important;
+  flex-direction: row !important;
+  width: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* ✅ hero-grid: 모바일 1열 규칙 무시하고 데스크톱 그리드로 강제 */
+html.pc-view .hero-grid{
+  grid-template-columns: 2fr 1fr 1fr !important;
+  grid-template-rows: 1fr 1fr !important;
+  gap: 24px !important;
+  height: min(78vh, 760px) !important;
+  padding: 0 3vw !important;
+}
+
+/* 카드 역할(배치)도 데스크톱처럼 강제 */
+html.pc-view .card-large{
+  grid-row: 1 / span 2 !important;
+  grid-column: 1 / 2 !important;
+}
+html.pc-view .card-wide{
+  grid-column: 2 / span 2 !important;
+}
+html.pc-view .card-small{
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+/* pc-view에서 모바일 카드 고정높이(180px) 강제값 무효화 */
+html.pc-view .hero-card{
+  height: auto !important;
+}
+
+
+/* ==================================================
+   pc-view: News / Contact를 "실제 PC"와 동일하게 강제
+================================================== */
+
+/* NEWS: 모바일 1열 강제 무시 → 3열(PC와 동일한 느낌) */
+html.pc-view .news-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 2.5rem !important;
+}
+
+/* CONTACT: 모바일 1열 강제 무시 → 2열(지도/연락처) */
+html.pc-view .contact-min__grid{
+  grid-template-columns: 1.25fr 1fr !important;
+  gap: 36px !important;
+}
+
+/* 연락 링크: 모바일에서 block 처리된 것 되돌리기 */
+html.pc-view .contact-min__link{
+  display: inline-block !important;
+  margin-right: 14px !important;
+}
+
+/* 지도 높이: 모바일 260px 강제값 되돌리기 */
+html.pc-view .contact-min__mapwrap iframe{
+  height: 320px !important;
+}
+
+/* 주소 오버레이: 모바일에서 left/right로 넓게 잡히는 것 되돌리기 */
+html.pc-view .contact-min__mapinfo{
+  left: 14px !important;
+  right: auto !important;
+  bottom: 14px !important;
+}
+
+
+/* ================= LANG TOGGLE ================= */
+.lang-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
+.lang-toggle:active{ transform: translateY(0px); opacity:.92; }
+
+
+/* ================= WHY THIS SEASON ================= */
+.why-season{
+  padding: 88px 0;
+  background: #0a0a0a;
+}
+.why-grid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+.why-left .eyebrow{
+  font-size: .75rem;
+  letter-spacing: .18em;
+  color: #f0a500;
+  margin-bottom: 12px;
+  display:inline-block;
+  font-family: 'Orbitron', sans-serif;
+}
+.why-left h2{
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.why-lead{
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 14px;
+  color: rgba(255,255,255,0.86);
+}
+.why-desc{
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.68);
+}
+.why-points{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap: 22px;
+}
+.why-points li{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.02);
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+}
+.why-points li strong{
+  display:block;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color:#fff;
+}
+.why-points li span{
+  font-size: .9rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  display:block;
+}
+@media (max-width: 900px){
+  .why-season{ padding: 70px 0; }
+  .why-grid{ grid-template-columns: 1fr; gap: 36px; }
+}
+
+
+/* NAV ITEM UNIFY */
+:root{
+  --nav-item-h: 42px;
+  --nav-item-px: 14px;
+  --nav-item-radius: 999px;
+}
+
+header nav .nav-links{
+  align-items:center;
+}
+
+header nav .nav-links li{
+  display:flex;
+  align-items:center;
+}
+
+header nav .nav-links a,
+header nav .nav-links button{
+  height: var(--nav-item-h);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 0 var(--nav-item-px);
+  line-height: 1;
+  border-radius: var(--nav-item-radius);
+}
+
+/* Keep normal links looking like links (no filled bg) */
+header nav .nav-links a{
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+/* Language + View toggle buttons (same height as links) */
+header nav .nav-links .lang-toggle,
+header nav .nav-links .view-toggle{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color:#fff;
+  font-weight: 900;
+  cursor:pointer;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+header nav .nav-links .lang-toggle:hover,
+header nav .nav-links .view-toggle:hover{
+  opacity:1;
+  transform: translateY(-1px);
+}
+
+header nav .nav-links .lang-toggle:active,
+header nav .nav-links .view-toggle:active{
+  transform: translateY(0px);
+  opacity:.92;
+}
+
+/* Mobile-only list item should not break sizing */
+header nav .nav-links .nav-mobile-only button{
+  width: 100%;
+  justify-content: center;
+}

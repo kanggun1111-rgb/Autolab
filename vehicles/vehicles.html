@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<base href="/Autolab/"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vehicles | Auto_Lab</title>
+<link href="main/style.css" rel="stylesheet"/>
+<link href="vehicles/vehiclesstyle.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Navbar -->
+<header class="site-header">
+<nav>
+<div class="logo">
+<img alt="Autolab Logo" src="main/images/logo.png"/>
+</div>
+<ul class="nav-links">
+<li><a href="#hero-grid">Home</a></li>
+<li><a href="team/team.html">Team</a></li>
+<li><a href="vehicles/index.html">Vehicles</a></li>
+<li><a href="#sponsors">Sponsors</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+<li class="nav-mobile-only">
+<button class="view-toggle" id="toggleViewBtn" type="button">
+       PC 버전으로 보기
+      </button>
+</li>
+
+      
+</ul>
+<div aria-label="Open menu" class="hamburger" role="button" tabindex="0">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</nav>
+</header>
+<main class="vehicles-page">
+<div class="container">
+<section class="vehicles-hero">
+<span class="eyebrow">VEHICLES • PROGRAM</span>
+<h1>Two Platforms, One Team.</h1>
+<p data-i18n="vehicles_vehicles.autolab---2-ev--cv.0">
+          Auto_Lab은 매 시즌 2대의 차량(EV / CV)을 병행 개발하여 대회에 출전합니다.
+          아래에서 시즌 대표 차량을 동일한 비중으로 확인하고, 이전 시즌 차량의 제원도 탐색할 수 있습니다.
+        </p>
+<div class="hero-actions">
+<a class="primary" href="#featured">Current Vehicles →</a>
+<a href="#previous">Explore Previous Vehicles →</a>
+</div>
+</section>
+<section class="featured" id="featured">
+<div class="featured-head">
+<h2>Current Vehicles</h2>
+<div class="featured-tools">
+<label aria-label="Select season" class="select-wrap">
+<span>Season</span>
+<select id="seasonSelect"></select>
+</label>
+</div>
+</div>
+<div aria-label="Featured vehicles" class="featured-grid" id="featuredGrid"></div>
+</section>
+<section class="previous" id="previous">
+<div class="previous-head">
+<div>
+<h2>Explore Previous Vehicles</h2>
+<p data-i18n="vehicles_vehicles.text.1">연도/플랫폼별로 이전 차량을 필터링하고, 각 차량의 주요 제원을 확인할 수 있습니다.</p>
+</div>
+</div>
+<div class="previous-tools">
+<select aria-label="Filter by type" id="filterType">
+<option value="ALL">All</option>
+<option value="EV">EV</option>
+<option value="CV">CV</option>
+</select>
+<input aria-label="Search previous vehicles" id="filterYear" placeholder="Search year or name (e.g., 2025, ALE-25)" type="search"/>
+</div>
+<div aria-label="Previous vehicles list" class="previous-grid" id="previousGrid"></div>
+</section>
+</div>
+</main>
+<!-- Previous specs modal -->
+<div aria-hidden="true" aria-modal="true" class="modal" id="specModal" role="dialog">
+<div class="modal__panel" role="document">
+<div class="modal__head">
+<h3 id="modalTitle">Vehicle Specs</h3>
+<button aria-label="Close" class="modal__close" id="modalClose">×</button>
+</div>
+<div class="modal__body" id="modalBody"></div>
+</div>
+</div>
+<script src="main/script.js"></script>
+<script src="vehicles/vehicles.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* team/teamstyle.css (v2 - simplified)
+   Sections:
+   - Hero
+   - Achievements
+   - Members (bottom)
+*/
+
+.team-page{ padding:130px 0 90px; }
+.team-page .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+
+/* HERO */
+.team-hero{
+  border:1px solid rgba(255,255,255,0.08);
+  background: radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
+              rgba(255,255,255,0.02);
+  border-radius:24px;
+  padding:26px 22px 22px;
+}
+
+.team-hero .eyebrow{
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:.14em;
+  font-size:.78rem;
+  opacity:.9;
+}
+
+.team-hero h1{
+  margin-top:10px;
+  font-size:clamp(2.1rem,3.8vw,3.2rem);
+  letter-spacing:-.02em;
+  line-height:1.08;
+  white-space:pre-line;
+}
+
+.team-hero .lead{ margin-top:12px; opacity:.82; max-width:66ch; }
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:18px;
+}
+
+.hero-metrics{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.metric{
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.02);
+  border-radius:18px;
+  padding:12px;
+}
+
+.metric b{
+  font-family:'Orbitron',sans-serif;
+  font-size:.72rem;
+  letter-spacing:.10em;
+  opacity:.82;
+}
+
+.metric span{ display:block; margin-top:8px; font-weight:900; }
+
+.hero-media{
+  height:420px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.10);
+}
+
+.hero-media img{
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:saturate(.95) contrast(1.05);
+}
+
+.hero-caption{ margin-top:10px; opacity:.8; }
+.hero-caption b{ opacity:1; }
+
+/* BLOCK */
+.team-block{
+  margin-top:28px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:22px;
+}
+
+.block-head h2{
+  font-size:1.55rem;
+  letter-spacing:-.01em;
+}
+
+.block-head p{ opacity:.78; max-width:70ch; }
+
+/* TIMELINE */
+.timeline{ margin-top:14px; display:grid; gap:12px; }
+.t-item{
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.02);
+  border-radius:20px;
+  padding:16px;
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:14px;
+}
+
+.t-item .date{
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:.14em;
+}
+
+.t-item h3{ font-size:1.06rem; }
+.t-item p{ margin-top:8px; opacity:.82; line-height:1.7; }
+
+/* MEMBERS (BOTTOM) */
+.member-tools{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.member-tools select,
+.member-tools input{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.10);
+  color:#fff;
+  border-radius:12px;
+  padding:11px 12px;
+}
+
+.member-grid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.member-card{
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.02);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.member-photo{ height:190px; background:rgba(0,0,0,0.35); }
+.member-photo img{ width:100%; height:100%; object-fit:cover; }
+
+.member-body{ padding:14px; }
+.member-body h3{ font-size:1.05rem; }
+.member-body .meta{
+  margin-top:8px;
+  display:flex;
+  justify-content:space-between;
+  opacity:.82;
+}
+
+.member-body .pill{
+  font-family:'Orbitron',sans-serif;
+  font-size:.68rem;
+  letter-spacing:.10em;
+  padding:6px 9px;
+  border-radius:999px;
+  border:1px solid rgba(240,165,0,0.30);
+  background:rgba(240,165,0,0.08);
+}
+
+@media(max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-media{ height:320px; }
+  .member-grid{ grid-template-columns:repeat(2,1fr); }
+  .t-item{ grid-template-columns:1fr; }
+}
+
+@media(max-width:600px){
+  .team-page{ padding-top:110px; }
+  .hero-metrics{ grid-template-columns:1fr; }
+  .member-grid{ grid-template-columns:1fr; }
+}
+
+/* ===== Fix select option visibility ===== */
+.member-tools select option {
+  background: #fff;   /* 드롭다운 배경 */
+  color: #000;        /* 드롭다운 글자 */
+}
+
+
+/* ================= LANG TOGGLE ================= */
+.lang-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
+.lang-toggle:active{ transform: translateY(0px); opacity:.92; }

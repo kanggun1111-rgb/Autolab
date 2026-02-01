@@ -1,0 +1,145 @@
+{
+  "featured": [
+    {
+      "id": "ale-26",
+      "name": "ALE-26",
+      "type": "EV",
+      "season": "2026",
+      "tagline": "Auto_Lab Electric platform for the 2026 season—built around aero + data-driven iteration.",
+      "cover": "vehicles/images/ale-26-hero.jpg",
+      "gallery": [
+        "vehicles/images/ale-26-1.jpg",
+        "vehicles/images/ale-26-2.jpg",
+        "vehicles/images/ale-26-3.jpg"
+      ],
+      "stats": {
+        "Powertrain": "Electric",
+        "Accumulator": "—",
+        "Max Voltage": "—",
+        "Motor": "—",
+        "Inverter": "—",
+        "Weight": "—",
+        "Wheelbase": "—"
+      },
+      "highlights": [
+        "Full aero package development (Front/Rear wing, sidepod).",
+        "Telemetry + data logging expansion for iteration speed.",
+        "Reliability & serviceability improvements for endurance."
+      ],
+      "sections": [
+        {
+          "title": "Concept",
+          "body": [
+            "ALE-26은 2026 시즌 전기차 플랫폼으로, 고속 안정성과 코너링 성능 향상을 목표로 설계되었습니다.",
+            "CFD/구조 해석 기반의 공력 패키지와 데이터 기반 셋업 개발을 병행합니다."
+          ]
+        },
+        {
+          "title": "Engineering Focus",
+          "body": [
+            "공력(다운포스/밸런스) 최적화",
+            "데이터 로깅 기반 개발 루프 강화",
+            "정비성/신뢰성 개선"
+          ]
+        },
+        {
+          "title": "Competition",
+          "body": [
+            "Formula Student / FSAE 규정에 맞춰 제작되며, 스키드패드/오토크로스/엔듀런스 등 모든 동적 종목을 목표로 합니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alc-26",
+      "name": "ALC-26",
+      "type": "CV",
+      "season": "2026",
+      "tagline": "Auto_Lab Combustion platform for the 2026 season—balanced handling and robust endurance.",
+      "cover": "vehicles/images/alc-26-hero.jpg",
+      "gallery": [
+        "vehicles/images/alc-26-1.jpg",
+        "vehicles/images/alc-26-2.jpg",
+        "vehicles/images/alc-26-3.jpg"
+      ],
+      "stats": {
+        "Powertrain": "Combustion",
+        "Engine": "—",
+        "ECU": "—",
+        "Intake/Exhaust": "—",
+        "Weight": "—",
+        "Wheelbase": "—",
+        "Tires": "—"
+      },
+      "highlights": [
+        "Track evaluation feedback loop (setup → data → iteration).",
+        "Packaging improvements for maintenance access.",
+        "Chassis refinement for predictable balance."
+      ],
+      "sections": [
+        {
+          "title": "Concept",
+          "body": [
+            "ALC-26은 2026 시즌 내연기관 플랫폼으로, 예측 가능한 밸런스와 내구성을 중심으로 개발되었습니다.",
+            "트랙 평가 데이터를 기반으로 셋업 개발과 패키징 최적화를 수행합니다."
+          ]
+        },
+        {
+          "title": "Engineering Focus",
+          "body": [
+            "핸들링 밸런스/응답성 개선",
+            "정비 접근성 향상",
+            "엔듀런스 신뢰성 확보"
+          ]
+        },
+        {
+          "title": "Competition",
+          "body": [
+            "내연기관 부문 규정에 맞춘 설계/제작을 수행하며, 실전 주행 데이터 기반의 개선을 반복합니다."
+          ]
+        }
+      ]
+    }
+  ],
+  "previous": [
+    {
+      "id": "ale-25",
+      "name": "ALE-25",
+      "type": "EV",
+      "season": "2025",
+      "cover": "vehicles/images/ale-25.jpg",
+      "specs": {
+        "Powertrain": "Electric",
+        "Voltage": "—",
+        "Weight": "—",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "alc-25",
+      "name": "ALC-25",
+      "type": "CV",
+      "season": "2025",
+      "cover": "vehicles/images/alc-25.jpg",
+      "specs": {
+        "Powertrain": "Combustion",
+        "Engine": "—",
+        "Weight": "—",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "ale-24",
+      "name": "ALE-24",
+      "type": "EV",
+      "season": "2024",
+      "cover": "vehicles/images/ale-24.jpg",
+      "specs": {
+        "Powertrain": "Electric",
+        "Voltage": "—",
+        "Weight": "—",
+        "Highlights": "—"
+      }
+    }
+  ]
+}

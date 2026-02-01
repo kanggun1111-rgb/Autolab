@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "ko": {
+      "eyebrow": "PUSAN NATIONAL UNIVERSITY",
+      "title": "Engineering a Better Season.",
+      "subtitle": "Auto_Lab은 새로운 EV 파워트레인, 풀 에어로 개발, 데이터 기반 검증으로 더 나은 시즌을 설계합니다."
+    },
+    "en": {
+      "eyebrow": "PUSAN NATIONAL UNIVERSITY",
+      "title": "Engineering a Better Season.",
+      "subtitle": "Auto_Lab is rebuilding its program around a new EV powertrain, full aerodynamic development, and data-driven validation."
+    }
+  },
+  "why": {
+    "ko": {
+      "lead": "이번 시즌은 ‘조금 더’가 아니라 ‘구조를 바꾸는’ 시즌입니다.",
+      "desc": "모터/인버터 플랫폼 교체, 풀 에어로 패키지 구축, 그리고 계측·테스트 확장은 성능과 신뢰성의 변화를 만드는 핵심 단계입니다.",
+      "points": [
+        {
+          "title": "New Electric Powertrain",
+          "desc": "효율·열 안정성·내구성 중심으로 구동계를 재정의합니다."
+        },
+        {
+          "title": "Full Aerodynamic Package",
+          "desc": "부분 최적화가 아닌 ‘시스템’으로 공력 패키지를 설계합니다."
+        },
+        {
+          "title": "Data-Driven Development",
+          "desc": "센서/로깅/검증을 테스트 루프에 통합해 개선을 증명합니다."
+        }
+      ]
+    },
+    "en": {
+      "lead": "This season is a structural shift—not an incremental update.",
+      "desc": "A new motor/inverter platform, a full aero package, and expanded testing capability are essential steps toward measurable performance and reliability gains.",
+      "points": [
+        {
+          "title": "New Electric Powertrain",
+          "desc": "Redefining efficiency, thermal stability, and endurance reliability."
+        },
+        {
+          "title": "Full Aerodynamic Package",
+          "desc": "A complete aero concept designed as a system—not isolated parts."
+        },
+        {
+          "title": "Data-Driven Development",
+          "desc": "Instrumentation and validation integrated into every test cycle."
+        }
+      ]
+    }
+  }
+}

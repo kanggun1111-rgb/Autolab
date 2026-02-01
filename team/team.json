@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "eyebrow": "AUTO_LAB • TEAM",
+    "title": "Auto_Lab",
+    "lead": "부산대학교 자작자동차 동아리 Auto_Lab은 EV/CV 2대의 차량을 병행 개발하며, 설계–제작–시험–데이터 기반 개선 루프를 통해 매 시즌 성능을 끌어올립니다.",
+    "image": "team/images/team-hero.jpg",
+    "caption_bold": "Engineering-driven.",
+    "caption": "Minimal, editorial, and track-focused."
+  },
+  "metrics": [
+    {
+      "label": "Vehicles / Season",
+      "value": "2 (EV + CV)"
+    },
+    {
+      "label": "Competition",
+      "value": "Formula Student / FSK"
+    },
+    {
+      "label": "Core Focus",
+      "value": "Aero • Chassis • Powertrain"
+    },
+    {
+      "label": "Based in",
+      "value": "Pusan National University"
+    }
+  ],
+  "members": [
+    {
+      "name": "홍길동",
+      "role": "Team Leader",
+      "division": "Operations",
+      "image": "team/images/member-placeholder.jpg"
+    },
+    {
+      "name": "김철수",
+      "role": "Chief Engineer",
+      "division": "Chassis",
+      "image": "team/images/member-placeholder.jpg"
+    },
+    {
+      "name": "이영희",
+      "role": "Aero Lead",
+      "division": "Aerodynamics",
+      "image": "team/images/member-placeholder.jpg"
+    },
+    {
+      "name": "박민수",
+      "role": "EV Lead",
+      "division": "Powertrain (EV)",
+      "image": "team/images/member-placeholder.jpg"
+    },
+    {
+      "name": "최지훈",
+      "role": "Data Lead",
+      "division": "Electronics & Data",
+      "image": "team/images/member-placeholder.jpg"
+    }
+  ],
+  "achievements": [
+    {
+      "date": "2026",
+      "title": "Dual Platform Development",
+      "desc": "ALE / ALC 플랫폼 병행 개발 및 테스트 프로그램 확장"
+    },
+    {
+      "date": "2025",
+      "title": "Vehicle Iteration",
+      "desc": "셋업 및 패키징 개선을 통한 주행 안정성 강화"
+    },
+    {
+      "date": "2024",
+      "title": "Competition Participation",
+      "desc": "대회 출전 및 개발 프로세스 체계화"
+    }
+  ]
+}

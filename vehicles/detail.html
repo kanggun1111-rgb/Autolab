@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <base href="/Autolab/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Detail | Auto_Lab</title>
+
+  <link rel="stylesheet" href="main/style.css" />
+  <link rel="stylesheet" href="vehicles/vehicledetailstyle.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="site-header">
+  <nav>
+    <div class="logo">
+      <img src="main/images/logo.png" alt="Autolab Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html#hero-grid">Home</a></li>
+      <li><a href="team/team.html">Team</a></li>
+      <li><a href="vehicles/index.html">Vehicles</a></li>
+      <li><a href="sponsors/sponsors.html">Sponsors</a></li>
+      <li><a href="news/index.html">News</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+<li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+
+      <li class="nav-mobile-only">
+        <button type="button" id="toggleViewBtn" class="view-toggle" data-i18n="toggle.view.pc">PC 버전으로 보기</button>
+      </li>
+
+      
+    </ul>
+
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <div></div><div></div><div></div>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- ✅ 메인과 동일한 Navbar를 그대로 붙여넣으세요 -->
+
+  <main class="vehicle-detail">
+    <div class="container" id="detailMount"></div>
+  </main>
+
+  <script src="main/script.js"></script>
+  <script src="vehicles/vehicledetail.js"></script>
+</body>
+</html>

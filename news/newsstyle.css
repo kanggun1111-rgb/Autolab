@@ -1,0 +1,195 @@
+/* news/newsstyle.css
+   게시판(목록/상세) 전용 스타일.
+   메인(main/style.css)의 news-card 스타일을 그대로 재사용하고,
+   게시판 페이지에 필요한 레이아웃만 추가합니다.
+*/
+
+.news-board{
+  padding: 130px 0 90px; /* fixed header 고려 */
+}
+
+.news-board .container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 상단 헤더 */
+.news-board__head{
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.news-board__head h1{
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.news-board__head p{
+  opacity: 0.8;
+}
+
+/* 툴바(검색/필터) */
+.news-toolbar{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0 26px;
+  flex-wrap: wrap;
+}
+
+.news-toolbar input,
+.news-toolbar select{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  min-width: 220px;
+}
+
+.news-toolbar input::placeholder{ color: rgba(255,255,255,0.55); }
+
+/* 목록 그리드: 메인과 동일 클래스(news-grid)를 그대로 씀 */
+.news-board .news-grid{
+  margin-top: 18px;
+}
+
+/* 페이징 */
+.news-pagination{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.news-pagination button{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.news-pagination button[disabled]{
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Post (상세)
+========================= */
+.post{
+  padding: 130px 0 90px;
+}
+
+.post .container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.post__back{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+.post__back:hover{ opacity: 1; }
+
+.post__head{
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.post__cover{
+  height: min(46vh, 420px);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+.post__meta{
+  display: flex;
+  gap: 14px;
+  padding: 18px 18px 0;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+.post__title{
+  padding: 10px 18px 18px;
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.02em;
+}
+
+.post__body{
+  margin-top: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  border-radius: 18px;
+  padding: 20px 18px;
+  line-height: 1.75;
+  opacity: 0.92;
+}
+
+.post__body p{ margin: 0 0 12px; }
+
+.post__source{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(240,165,0,0.35);
+  background: rgba(240,165,0,0.08);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.post__source:hover{
+  background: rgba(240,165,0,0.12);
+}
+
+@media (max-width: 768px){
+  .news-board{ padding-top: 110px; }
+  .post{ padding-top: 110px; }
+  .news-toolbar input, .news-toolbar select{ min-width: 160px; }
+}
+
+/* ===== Fix select option visibility ===== */
+.news-toolbar select {
+  background: #fff;   /* 드롭다운 배경 */
+  color: #000;        /* 드롭다운 글자 */
+}
+
+/* ================= LANG TOGGLE ================= */
+.lang-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
+.lang-toggle:active{ transform: translateY(0px); opacity:.92; }

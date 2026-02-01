@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autolab EV Team</title>
+
+<!-- 프로젝트 루트 기준 -->
+<base href="/Autolab/">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- 메인 페이지 CSS -->
+<link rel="stylesheet" href="main/style.css">
+</head>
+<body class="page-home">
+
+<!-- Navbar -->
+<header class="site-header">
+
+  <nav>
+    <div class="logo">
+      <img src="main/images/logo.png" alt="Autolab Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#hero-grid" data-i18n="nav.home">Home</a></li>
+      <li><a href="team/team.html" data-i18n="nav.team">Team</a></li>
+      <li><a href="vehicles/index.html" data-i18n="nav.vehicles">Vehicles</a></li>
+      <li><a href="#sponsors" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="#news" data-i18n="nav.news">News</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+<li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+      <li class="nav-mobile-only">
+      <button type="button" id="toggleViewBtn" class="view-toggle" data-i18n="toggle.view.pc">
+       PC 버전으로 보기
+      </button>
+</li>
+      
+
+    </ul>
+
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO (Single Impact) + Cards Below -->
+<section id="hero-grid" class="section section-hero">
+
+  <div class="hero-banner">
+    <div class="hero-banner-inner container">
+      <p class="hero-eyebrow" id="homeHeroEyebrow">PUSAN NATIONAL UNIVERSITY</p>
+      <h1 class="hero-title" id="homeHeroTitle">Engineering a Better Season.</h1>
+      <p class="hero-subtitle" id="homeHeroSubtitle">Auto_Lab은 새로운 EV 파워트레인, 풀 에어로 개발, 데이터 기반 검증으로 더 나은 시즌을 설계합니다.</p>
+
+      <div class="hero-actions">
+<a class="hero-btn primary" href="team/team.html">About Us</a>
+      <a class="hero-btn ghost" href="#sponsors">Partnership →</a>
+      </div>
+    </div>
+  </div>
+
+ <div class="hero-grid">
+
+  <!-- Large / Main : Vehicles -->
+  <article class="hero-card card-large">
+    <img src="main/images/hero-vehicles.jpg" alt="Vehicles">
+    <div class="card-content">
+      <h3>Vehicles</h3>
+      <p data-i18n="home.cards.vehicles.desc">Formula SAE 차량 개발과 EV / CV 프로젝트.</p>
+      <a class="card-cta" href="vehicles/vehicles.html">Vehicle Detail</a>
+    </div>
+  </article>
+
+  <!-- Wide : Sponsors -->
+  <article class="hero-card card-wide">
+    <img src="main/images/hero-sponsors.jpg" alt="Sponsors">
+    <div class="card-content">
+      <h3>Sponsors</h3>
+      <p data-i18n="home.cards.sponsors.desc">Auto_Lab과 함께하는 공식 파트너.</p>
+      <a class="card-cta" href="#sponsors">Our Sponsors</a>
+    </div>
+  </article>
+
+  <!-- Small : News (placeholder) -->
+  <article class="hero-card card-small">
+    <img src="main/images/hero-news.jpg" alt="News">
+    <div class="card-content">
+      <h3>News</h3>
+      <p data-i18n="home.cards.news.desc">최신 소식과 팀 업데이트.</p>
+      <a class="card-cta" href="#news">Latest News</a>
+    </div>
+  </article>
+
+  <!-- Small : Contact → Team -->
+  <article class="hero-card card-small">
+    <img src="main/images/hero-contact.jpg" alt="Contact">
+    <div class="card-content">
+      <h3>Contact</h3>
+      <p data-i18n="home.cards.contact.desc">스폰서십 및 팀 문의.</p>
+      <a class="card-cta" href="#contact">Contact Us</a>
+    </div>
+  </article>
+
+</div>
+
+
+</section>
+
+<!-- WHY THIS SEASON -->
+<section id="why-season" class="section why-season">
+  <div class="container">
+    <div class="why-grid">
+
+      <div class="why-left">
+        <span class="eyebrow" data-i18n="home.why.eyebrow">WHY THIS SEASON</span>
+        <h2 data-i18n="home.why.title">Why This Season Matters</h2>
+
+        <p class="why-lead" id="whyLead"></p>
+        <p class="why-desc" id="whyDesc"></p>
+      </div>
+
+      <div class="why-right">
+        <ul class="why-points" id="whyPoints"></ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SPONSORS (Main Preview) -->
+<section id="sponsors" class="section section-sponsors sponsors-f1">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">SPONSORS</span>
+      <h2>Partners & Supporters</h2>
+      <p class="section-subtitle" data-i18n="home.sponsors.subtitle">Auto_Lab의 도전은 파트너의 신뢰와 지원으로 완성됩니다.</p>
+    </div>
+
+    <!-- TITLE (fixed highlight) -->
+    <div class="sponsor-title-card">
+      <div class="sponsor-title-badge">TITLE PARTNER</div>
+      <img src="sponsors/images/logo-title-01.png" alt="Title Sponsor">
+    </div>
+
+    <!-- GOLD (row 1) -->
+    <div class="sponsor-marquee tier-gold" aria-label="Gold sponsors scrolling row">
+      <div class="sponsor-marquee-track">
+        <img src="sponsors/images/logo-gold-01.png" alt="Gold Sponsor 01">
+        <img src="sponsors/images/logo-gold-02.png" alt="Gold Sponsor 02">
+        <img src="sponsors/images/logo-gold-03.png" alt="Gold Sponsor 03">
+        <img src="sponsors/images/logo-gold-04.png" alt="Gold Sponsor 04">
+
+        <!-- duplicate for seamless loop -->
+        <img src="sponsors/images/logo-gold-01.png" alt="Gold Sponsor 01 duplicate">
+        <img src="sponsors/images/logo-gold-02.png" alt="Gold Sponsor 02 duplicate">
+        <img src="sponsors/images/logo-gold-03.png" alt="Gold Sponsor 03 duplicate">
+        <img src="sponsors/images/logo-gold-04.png" alt="Gold Sponsor 04 duplicate">
+      </div>
+    </div>
+
+    <!-- SILVER (row 2, reverse) -->
+    <div class="sponsor-marquee tier-silver" aria-label="Silver sponsors scrolling row">
+      <div class="sponsor-marquee-track reverse">
+        <img src="sponsors/images/logo-silver-01.png" alt="Silver Sponsor 01">
+        <img src="sponsors/images/logo-silver-02.png" alt="Silver Sponsor 02">
+        <img src="sponsors/images/logo-silver-03.png" alt="Silver Sponsor 03">
+        <img src="sponsors/images/logo-silver-04.png" alt="Silver Sponsor 04">
+        <img src="sponsors/images/logo-silver-05.png" alt="Silver Sponsor 05">
+
+        <!-- duplicate -->
+        <img src="sponsors/images/logo-silver-01.png" alt="Silver Sponsor 01 duplicate">
+        <img src="sponsors/images/logo-silver-02.png" alt="Silver Sponsor 02 duplicate">
+        <img src="sponsors/images/logo-silver-03.png" alt="Silver Sponsor 03 duplicate">
+        <img src="sponsors/images/logo-silver-04.png" alt="Silver Sponsor 04 duplicate">
+        <img src="sponsors/images/logo-silver-05.png" alt="Silver Sponsor 05 duplicate">
+      </div>
+    </div>
+
+    <!-- SUPPORT (row 3) -->
+    <div class="sponsor-marquee tier-support" aria-label="Support sponsors scrolling row">
+      <div class="sponsor-marquee-track">
+        <img src="sponsors/images/logo-support-01.png" alt="Support Sponsor 01">
+        <img src="sponsors/images/logo-support-02.png" alt="Support Sponsor 02">
+        <img src="sponsors/images/logo-support-03.png" alt="Support Sponsor 03">
+        <img src="sponsors/images/logo-support-04.png" alt="Support Sponsor 04">
+        <img src="sponsors/images/logo-support-05.png" alt="Support Sponsor 05">
+        <img src="sponsors/images/logo-support-06.png" alt="Support Sponsor 06">
+
+        <!-- duplicate -->
+        <img src="sponsors/images/logo-support-01.png" alt="Support Sponsor 01 duplicate">
+        <img src="sponsors/images/logo-support-02.png" alt="Support Sponsor 02 duplicate">
+        <img src="sponsors/images/logo-support-03.png" alt="Support Sponsor 03 duplicate">
+        <img src="sponsors/images/logo-support-04.png" alt="Support Sponsor 04 duplicate">
+        <img src="sponsors/images/logo-support-05.png" alt="Support Sponsor 05 duplicate">
+        <img src="sponsors/images/logo-support-06.png" alt="Support Sponsor 06 duplicate">
+      </div>
+    </div>
+
+    <div class="sponsor-pitch">
+      <p class="sponsor-pitch-lead" data-i18n="home.sponsors.pitch">Auto_Lab의 도전을 후원해주세요.</p>
+      <div class="sponsor-actions">
+        <a href="sponsors/sponsors.html" class="sponsor-btn primary">View All Sponsors →</a>
+        <a href="team/team.html" class="sponsor-btn ghost">Partnership Inquiry →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- NEWS -->
+<section id="news" class="section news-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">LATEST NEWS</span>
+      <h2>Updates & Announcements</h2>
+      <p class="section-subtitle" data-i18n="home.news.subtitle">최근 업데이트와 공지사항을 확인하세요.</p>
+    </div>
+
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/news1.jpg" alt="News 1">
+        </div>
+        <div class="news-content">
+          <h3>EV-06 Launch Event</h3>
+          <p class="news-date">Jan 25, 2026</p>
+          <p class="news-excerpt">
+            EV-06, our latest electric Formula SAE vehicle, has officially debuted. Designed for top performance and stability.
+          </p>
+          <a href="https://www.instagram.com/p/CsE1A1vHh1Q/" target="_blank" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/news2.jpg" alt="News 2">
+        </div>
+        <div class="news-content">
+          <h3>CV-05 Performance Review</h3>
+          <p class="news-date">Dec 15, 2025</p>
+          <p class="news-excerpt">
+            Our internal combustion platform CV-05 has been evaluated on track. Insights on reliability and handling.
+          </p>
+          <a href="https://www.instagram.com/p/CsD2B2vHh2Q/" target="_blank" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/hero-news.jpg" alt="News 3">
+        </div>
+        <div class="news-content">
+          <h3>Season Update</h3>
+          <p class="news-date">Feb 01, 2026</p>
+          <p class="news-excerpt" data-i18n="home.news.card3.excerpt">2026 시즌 개발 진행 상황과 주요 일정 업데이트를 공유합니다.</p>
+          <a href="news/index.html" class="news-link">Read More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-footer">
+      <a href="news/index.html" class="news-archive-link">View All News →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-min">
+  <div class="contact-min__inner container">
+
+    <div class="contact-min__grid">
+
+<!-- LEFT : Google Map -->
+<div class="contact-min__col">
+  <div class="contact-min__mapwrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3259.008450274865!2d129.0810366749457!3d35.231159672735835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893ed1bcd45e1%3A0x22537fe5e2f1fa4c!2z67aA7IKw6rSR7Jet7IucIOyepeyghOygnDLrj5kg67aA7IKw64yA7ZWZ6rWQIOygnDPqs7XtlZnqtIA!5e0!3m2!1sko!2skr!4v1769927671665!5m2!1sko!2skr"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <div class="contact-min__mapinfo">
+      <div class="contact-min__label" data-i18n="contact.location.label">Location</div>
+      <p class="contact-min__text" data-i18n-html="contact.location.address">
+        부산광역시 금정구 부산대학로63번길 2<br>
+        부산대학교 제3공학관 (융합기계관, 105동) 3410호
+      </p>
+    </div>
+  </div>
+</div>
+
+
+      <!-- RIGHT : People -->
+      <div class="contact-min__col">
+
+        <div class="contact-min__person">
+          <div class="contact-min__role" data-i18n="contact.role.ev">EV Leader</div>
+          <div class="contact-min__name">강건</div>
+          <a class="contact-min__link" href="mailto:kanggun1111@pusan.ac.kr">
+            kanggun1111@pusan.ac.kr
+          </a>
+          <a class="contact-min__link" href="tel:+821085304462">
+            +82 010 8530 4462
+          </a>
+        </div>
+
+        <div class="contact-min__person">
+          <div class="contact-min__role" data-i18n="contact.role.cv">CV Leader</div>
+          <div class="contact-min__name">김민재</div>
+          <a class="contact-min__link" href="mailto:~~~~~~@pusan.ac.kr">
+            ~~~~~~@pusan.ac.kr
+          </a>
+          <a class="contact-min__link" href="tel:+821040670590">
+            +82 010 4067 0590
+          </a>
+        </div>
+
+        <div class="contact-min__person">
+          <div class="contact-min__role" data-i18n="contact.role.president">President</div>
+          <div class="contact-min__name">김수오</div>
+          <a class="contact-min__link" href="mailto:~~~~~~@pusan.ac.kr">
+            ~~~~~~@pusan.ac.kr
+          </a>
+          <a class="contact-min__link" href="tel:+821026282007">
+            +82 010 2628 2007
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="contact-min__divider"></div>
+
+    <div class="contact-min__bottom">
+      <span>© <span id="copyrightYear"></span> <span data-i18n="footer.rights">Auto_Lab. All rights reserved.</span></span>
+      <span class="contact-min__dot">·</span>
+      <span data-i18n="footer.team">Pusan National University Formula Student Team</span>
+    </div>
+
+  </div>
+</section>
+
+
+<script src="main/script.js"></script>
+<script src="main/home.js"></script>
+<script src="news/latest.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<base href="/Autolab/"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>News | Auto_Lab</title>
+<!-- ✅ 메인 스타일 재사용 -->
+<link href="main/style.css" rel="stylesheet"/>
+<!-- ✅ 게시판 전용 스타일 -->
+<link href="news/newsstyle.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Navbar -->
+<header class="site-header">
+<nav>
+<div class="logo">
+<img alt="Autolab Logo" src="main/images/logo.png"/>
+</div>
+<ul class="nav-links">
+<li><a href="#hero-grid">Home</a></li>
+<li><a href="team/team.html">Team</a></li>
+<li><a href="vehicles/index.html">Vehicles</a></li>
+<li><a href="#sponsors">Sponsors</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+<li class="nav-mobile-only">
+<button class="view-toggle" id="toggleViewBtn" type="button">
+       PC 버전으로 보기
+      </button>
+</li>
+
+      
+</ul>
+<div aria-label="Open menu" class="hamburger" role="button" tabindex="0">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</nav>
+</header>
+<main class="news-board">
+<div class="container">
+<header class="news-board__head">
+<span class="eyebrow">LATEST NEWS</span>
+<h1>Updates &amp; Announcements</h1>
+<p data-i18n="news_index.text.0">최근 업데이트와 공지사항을 확인하세요.</p>
+</header>
+<div class="news-toolbar">
+<input autocomplete="off" id="newsSearch" placeholder="검색 (제목/내용)" type="search"/>
+<select id="newsCategory">
+<option data-i18n="news_index.text.1" value="ALL">전체</option>
+</select>
+</div>
+<section aria-label="News list" class="news-grid" id="newsList"></section>
+<div aria-label="Pagination" class="news-pagination" id="newsPager"></div>
+</div>
+</main>
+<script src="main/script.js"></script>
+<script src="news/news.js"></script>
+</body>
+</html>

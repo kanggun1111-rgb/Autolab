@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<base href="/Autolab/"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sponsors | Auto_Lab</title>
+<link href="main/style.css" rel="stylesheet"/>
+<link href="sponsors/sponsorsstyle.css" rel="stylesheet"/>
+</head>
+<body class="page-sponsors">
+<!-- Navbar -->
+<header class="site-header">
+<nav>
+<div class="logo">
+<img alt="Autolab Logo" src="main/images/logo.png"/>
+</div>
+<ul class="nav-links">
+<li><a data-i18n="nav.home" href="index.html#hero-grid">Home</a></li>
+<li><a data-i18n="nav.team" href="team/team.html">Team</a></li>
+<li><a data-i18n="nav.vehicles" href="vehicles/index.html">Vehicles</a></li>
+<li><a data-i18n="nav.sponsors" href="sponsors/sponsors.html">Sponsors</a></li>
+<li><a data-i18n="nav.news" href="news/index.html">News</a></li>
+<li><a data-i18n="nav.contact" href="index.html#contact">Contact</a></li>
+<li><button class="lang-toggle" data-i18n="toggle.lang" id="langToggleBtn" type="button">ENG</button></li>
+<li class="nav-mobile-only">
+<button class="view-toggle" id="toggleViewBtn" type="button">
+       PC 버전으로 보기
+      </button>
+</li>
+
+</ul>
+<div aria-label="Open menu" class="hamburger" role="button" tabindex="0">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</nav>
+</header>
+<main class="sponsors-page">
+<div class="container">
+<!-- HERO -->
+<section class="s-hero">
+<div class="s-hero__left">
+<span class="eyebrow" id="heroEyebrow"></span>
+<h1 id="heroTitle"></h1>
+<p class="subtitle" id="heroSubtitle"></p>
+<div class="hero-actions">
+<a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
+<a href="#" id="heroCtaSecondary">Contact →</a>
+</div>
+<div class="hero-note">
+<b>Tier:</b> Title • Gold • Silver • Support
+          </div>
+</div>
+<div class="s-hero__right">
+<div class="hero-card">
+<div class="hero-card__top">
+<span class="badge">SPONSORSHIP</span>
+<span class="muted">Auto_Lab Formula Student</span>
+</div>
+<div class="hero-card__mid">
+<h3>함께 더 빠르게.</h3>
+<p data-i18n="sponsors.guide.text.0">개발 비용, 제작 인프라, 테스트 운영은 파트너의 지원으로 확장됩니다.</p>
+</div>
+<div class="hero-card__bottom">
+<div class="chip">Aero</div>
+<div class="chip">Data</div>
+<div class="chip">Reliability</div>
+<div class="chip">Endurance</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TIERS -->
+<div id="tiersMount"></div>
+<!-- FOOTER NOTE -->
+<section class="s-foot">
+<div class="foot-card">
+<h2>스폰서 참여 안내</h2>
+<ol>
+<li><b data-i18n="sponsors.guide.text.1">로고 파일</b>을 <code>Autolab/sponsors/images/</code>에 넣습니다. (PNG/SVG 권장)</li>
+<li><code>sponsors/sponsors.json</code>의 해당 Tier에 항목을 추가/수정합니다.</li>
+<li>로고가 잘리지 않도록 <b data-i18n="sponsors.guide.text.2">이미지는 투명 여백 포함</b>으로 준비하면 가장 안정적입니다.</li>
+</ol>
+</div>
+</section>
+</div>
+</main>
+<script src="main/script.js"></script>
+<script src="sponsors/sponsors.js"></script>
+</body>
+</html>
