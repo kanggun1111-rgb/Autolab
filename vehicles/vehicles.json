@@ -5,7 +5,7 @@
       "name": "ALE-26",
       "type": "EV",
       "season": "2026",
-      "tagline": "Auto_Lab Electric platform for the 2026 season—built around aero + data-driven iteration.",
+      "tagline": { "ko": "새로운 파워트레인 시스템과 공력 장치를 중심으로 설계된 2026 시즌 Auto_Lab 전기 플랫폼.", "en": "The 2026 Auto_Lab electric platform, developed with a focus on a new powertrain architecture and aerodynamic performance." },
       "cover": "vehicles/images/ale-26-hero.jpg",
       "gallery": [
         "vehicles/images/ale-26-1.jpg",
@@ -21,85 +21,164 @@
         "Weight": "—",
         "Wheelbase": "—"
       },
+
       "highlights": [
-        "Full aero package development (Front/Rear wing, sidepod).",
-        "Telemetry + data logging expansion for iteration speed.",
-        "Reliability & serviceability improvements for endurance."
+        {
+          "en": "Full aero package development (front/rear wing, sidepod).",
+          "ko": "프론트/리어 윙과 사이드팟을 포함한 풀 에어로 패키지 개발."
+        },
+        {
+          "en": "Telemetry and data logging expansion to accelerate iteration speed.",
+          "ko": "반복 개발 속도 향상을 위한 텔레메트리 및 데이터 로깅 시스템 확장."
+        },
+        {
+          "en": "Reliability and serviceability improvements for endurance performance.",
+          "ko": "내구 주행을 고려한 신뢰성 및 정비성 개선."
+        }
       ],
+
       "sections": [
+  {
+    "title": {
+      "en": "Concept",
+      "ko": "컨셉"
+    },
+    "body": [
+      {
+        "en": "ALE-26 is a 2026-season electric vehicle platform designed to improve high-speed stability and cornering performance.",
+        "ko": "ALE-26은 2026 시즌 전기차 플랫폼으로, 고속 안정성과 코너링 성능 향상을 목표로 설계되었습니다."
+      },
+      {
+        "en": "The program combines CFD and structural-analysis-driven aero development with data-driven setup iteration.",
+        "ko": "CFD 및 구조 해석 기반의 공력 패키지 개발과 데이터 기반 셋업 반복 개발을 병행합니다."
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Engineering Focus",
+      "ko": "엔지니어링 중점"
+    },
+    "body": [
+      {
+        "en": "Aerodynamic optimization (downforce and balance)",
+        "ko": "공력 성능 최적화 (다운포스 및 밸런스)"
+      },
+      {
+        "en": "Strengthening the data-logging-driven development loop",
+        "ko": "데이터 로깅 기반 개발 루프 강화"
+      },
+      {
+        "en": "Improvements in serviceability and reliability",
+        "ko": "정비성 및 신뢰성 개선"
+      }
+    ]
+  },
+  {
+    "title": {
+      "en": "Competition",
+      "ko": "대회 목표"
+    },
+    "body": [
+      {
+        "en": "Designed in compliance with Formula Student and FSAE regulations, targeting all dynamic events including skidpad, autocross, and endurance.",
+        "ko": "Formula Student / FSAE 규정에 맞춰 제작되며, 스키드패드, 오토크로스, 엔듀런스 등 모든 동적 종목을 목표로 합니다."
+      }
+    ]
+  }
+]
+
+    },
+    {
+  "id": "alc-26",
+  "name": "ALC-26",
+  "type": "CV",
+  "season": "2026",
+  "tagline": {
+    "en": "Auto_Lab Combustion platform for the 2026 season—balanced handling and robust endurance.",
+    "ko": "균형 잡힌 핸들링과 높은 내구성을 중심으로 개발된 2026 시즌 Auto_Lab 내연기관 플랫폼."
+  },
+  "cover": "vehicles/images/alc-26-hero.jpg",
+  "gallery": [
+    "vehicles/images/alc-26-1.jpg",
+    "vehicles/images/alc-26-2.jpg",
+    "vehicles/images/alc-26-3.jpg"
+  ],
+  "stats": {
+    "Powertrain": "Combustion",
+    "Engine": "—",
+    "ECU": "—",
+    "Intake/Exhaust": "—",
+    "Weight": "—",
+    "Wheelbase": "—",
+    "Tires": "—"
+  },
+  "highlights": [
+    {
+      "en": "Track evaluation feedback loop (setup → data → iteration).",
+      "ko": "트랙 평가를 통한 피드백 루프 구축 (셋업 → 데이터 → 반복 개선)."
+    },
+    {
+      "en": "Packaging improvements for maintenance access.",
+      "ko": "정비 접근성 향상을 위한 패키징 개선."
+    },
+    {
+      "en": "Chassis refinement for predictable balance.",
+      "ko": "예측 가능한 차량 밸런스를 위한 섀시 개선."
+    }
+  ],
+  "sections": [
+    {
+      "title": {
+        "en": "Concept",
+        "ko": "컨셉"
+      },
+      "body": [
         {
-          "title": "Concept",
-          "body": [
-            "ALE-26은 2026 시즌 전기차 플랫폼으로, 고속 안정성과 코너링 성능 향상을 목표로 설계되었습니다.",
-            "CFD/구조 해석 기반의 공력 패키지와 데이터 기반 셋업 개발을 병행합니다."
-          ]
+          "en": "ALC-26 is a 2026-season combustion platform developed with a focus on predictable balance and durability.",
+          "ko": "ALC-26은 예측 가능한 밸런스와 내구성을 중심으로 개발된 2026 시즌 내연기관 플랫폼입니다."
         },
         {
-          "title": "Engineering Focus",
-          "body": [
-            "공력(다운포스/밸런스) 최적화",
-            "데이터 로깅 기반 개발 루프 강화",
-            "정비성/신뢰성 개선"
-          ]
-        },
-        {
-          "title": "Competition",
-          "body": [
-            "Formula Student / FSAE 규정에 맞춰 제작되며, 스키드패드/오토크로스/엔듀런스 등 모든 동적 종목을 목표로 합니다."
-          ]
+          "en": "Setup development and packaging optimization are carried out based on on-track evaluation data.",
+          "ko": "트랙 평가 데이터를 기반으로 셋업 개발과 패키징 최적화를 수행합니다."
         }
       ]
     },
     {
-      "id": "alc-26",
-      "name": "ALC-26",
-      "type": "CV",
-      "season": "2026",
-      "tagline": "Auto_Lab Combustion platform for the 2026 season—balanced handling and robust endurance.",
-      "cover": "vehicles/images/alc-26-hero.jpg",
-      "gallery": [
-        "vehicles/images/alc-26-1.jpg",
-        "vehicles/images/alc-26-2.jpg",
-        "vehicles/images/alc-26-3.jpg"
-      ],
-      "stats": {
-        "Powertrain": "Combustion",
-        "Engine": "—",
-        "ECU": "—",
-        "Intake/Exhaust": "—",
-        "Weight": "—",
-        "Wheelbase": "—",
-        "Tires": "—"
+      "title": {
+        "en": "Engineering Focus",
+        "ko": "엔지니어링 중점"
       },
-      "highlights": [
-        "Track evaluation feedback loop (setup → data → iteration).",
-        "Packaging improvements for maintenance access.",
-        "Chassis refinement for predictable balance."
-      ],
-      "sections": [
+      "body": [
         {
-          "title": "Concept",
-          "body": [
-            "ALC-26은 2026 시즌 내연기관 플랫폼으로, 예측 가능한 밸런스와 내구성을 중심으로 개발되었습니다.",
-            "트랙 평가 데이터를 기반으로 셋업 개발과 패키징 최적화를 수행합니다."
-          ]
+          "en": "Handling balance and response optimization",
+          "ko": "핸들링 밸런스 및 응답성 개선"
         },
         {
-          "title": "Engineering Focus",
-          "body": [
-            "핸들링 밸런스/응답성 개선",
-            "정비 접근성 향상",
-            "엔듀런스 신뢰성 확보"
-          ]
+          "en": "Improved serviceability and maintenance access",
+          "ko": "정비 접근성 향상"
         },
         {
-          "title": "Competition",
-          "body": [
-            "내연기관 부문 규정에 맞춘 설계/제작을 수행하며, 실전 주행 데이터 기반의 개선을 반복합니다."
-          ]
+          "en": "Ensuring endurance reliability",
+          "ko": "엔듀런스 주행을 고려한 신뢰성 확보"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Competition",
+        "ko": "대회 목표"
+      },
+      "body": [
+        {
+          "en": "Designed and manufactured in compliance with combustion-class regulations, with iterative improvements based on real-world driving data.",
+          "ko": "내연기관 부문 규정에 맞춰 설계·제작되며, 실주행 데이터 기반의 반복 개선을 수행합니다."
         }
       ]
     }
+  ]
+}
+
   ],
   "previous": [
     {
