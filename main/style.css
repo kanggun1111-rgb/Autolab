@@ -961,133 +961,75 @@ nav .nav-links li a:hover{
 /* =========================
    Sponsors (Main Page)
 ========================= */
-.sponsors-main{
-  padding-bottom: 88px;
+.section-sponsors{
+  padding: 96px 0;
+  background: radial-gradient(
+    1200px 400px at 50% 0%,
+    rgba(255,255,255,0.04),
+    transparent 70%
+  );
 }
 
-.sponsor-featured{
-  margin-top: 42px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 18px;
-  max-width: 1200px;
-}
-
-.sponsor-tile{
-  position: relative;
-  height: 110px;
-  border-radius: 16px;
-  background: var(--panel);
-  outline: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  overflow: hidden;
-  transition:
-    transform 220ms ease,
-    outline-color 220ms ease,
-    box-shadow 220ms ease,
-    background 220ms ease;
-}
-
-.sponsor-tile img{
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-
-  /* 기본: 컬러 */
-  filter: grayscale(0) brightness(0.92) contrast(1.02);
-  opacity: 0.95;
-
-  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
-}
-
-.sponsor-tile:hover img{
-  /* hover: 더 선명하게 */
-  filter: grayscale(0) brightness(1) contrast(1.06);
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-
-/* Recruitment block */
-.sponsor-recruit{
-  margin-top: 52px;
+.section-sponsors .section-header{
   text-align: center;
+  margin-bottom: 48px;
 }
 
-.recruit-lead{
-  font-size: 1.15rem;
-  color: rgba(255,255,255,0.88);
-  margin-bottom: 10px;
+.section-sponsors h2{
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
 }
 
-.recruit-sub{
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.70);
+.section-sponsors p{
+  opacity: 0.75;
 }
 
-.sponsor-cta-row{
-  margin-top: 26px;
+/* Main sponsor */
+.sponsor-feature{
   display: flex;
   justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.sponsor-feature img{
+  max-width: 320px;
+  max-height: 120px;
+  object-fit: contain;
+  filter: brightness(1.05);
+}
+
+/* Grid sponsors */
+.sponsor-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 32px;
+  align-items: center;
+}
+
+.sponsor-grid img{
+  max-height: 64px;
+  width: 100%;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.sponsor-grid img:hover{
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .sponsor-cta{
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 20px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    background 220ms ease,
-    border-color 220ms ease;
-}
-
-.sponsor-cta.primary{
-  color: #fff;
-  background: rgba(240,165,0,0.18);
-  border: 1px solid rgba(240,165,0,0.55);
-  box-shadow: 0 0 32px rgba(240,165,0,0.18);
-}
-
-.sponsor-cta.primary:hover{
-  transform: translateY(-2px);
-  background: rgba(240,165,0,0.28);
-  box-shadow: 0 0 44px rgba(240,165,0,0.28);
-}
-
-.sponsor-cta.ghost{
-  color: rgba(255,255,255,0.88);
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.05);
-}
-
-.sponsor-cta.ghost:hover{
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.08);
-}
-
-/* Responsive */
-@media (max-width: 1100px){
-  .sponsor-featured{
-    grid-template-columns: repeat(3, 1fr);
-  }
+  margin-top: 48px;
+  text-align: center;
 }
 
 @media (max-width: 600px){
-  .sponsor-featured{
-    grid-template-columns: repeat(2, 1fr);
+  .sponsor-grid{
+    gap: 20px;
+  }
+
+  .sponsor-grid img{
+    max-height: 52px;
   }
 }
 
