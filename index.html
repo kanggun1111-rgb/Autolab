@@ -27,8 +27,8 @@
 
     <ul class="nav-links">
       <li><a href="#hero-grid">Home</a></li>
-      <li><a href="#team-intro">Team</a></li>
-      <li><a href="#vehicle">Vehicles</a></li>
+      <li><a href="team/team.html">Team</a></li>
+      <li><a href="vehicles/index.html">Vehicles</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -51,7 +51,7 @@
       <div class="card-content">
         <h3>About Us</h3>
         <p>Auto_Lab의 도전과 방향을 소개합니다.</p>
-        <a class="card-cta" href="#team-intro">Read More</a>
+        <a class="card-cta" href="team/team.html">Read More</a>
       </div>
     </article>
 
@@ -60,7 +60,7 @@
       <div class="card-content">
         <h3>Vehicles</h3>
         <p>EV / CV 프로젝트와 차량 개발 히스토리.</p>
-        <a class="card-cta" href="#vehicle">Read More</a>
+        <a class="card-cta" href="vehicles/index.html">Read More</a>
       </div>
     </article>
 
@@ -86,71 +86,158 @@
 </section>
 
 
-<!-- NEWS (Main Preview with Images) -->
-<section id="news" class="section news-main">
+<!-- NEWS -->
+<section id="news" class="section news-section">
   <div class="container">
 
-    <div class="section-header section-header--framed">
-      <span class="eyebrow">NEWS</span>
-      <h2>Latest Updates</h2>
+    <div class="section-header">
+      <span class="eyebrow">LATEST NEWS</span>
+      <h2>Updates & Announcements</h2>
       <p class="section-subtitle">
-        Auto Lab의 최신 활동과 프로젝트 소식입니다.
+        최근 업데이트와 공지사항을 확인하세요.
       </p>
     </div>
 
-    <div class="news-preview-grid">
-
-      <article class="news-preview-card">
-        <div class="news-thumb">
-          <img src="main/images/news-ev-frame.jpg" alt="EV Frame Design">
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/news1.jpg" alt="News 1">
         </div>
-        <div class="news-body">
-          <p class="news-date">2026 · 02</p>
-          <h3 class="news-title">2026 시즌 EV 차량 프레임 설계 완료</h3>
+        <div class="news-content">
+          <h3>EV-06 Launch Event</h3>
+          <p class="news-date">Jan 25, 2026</p>
           <p class="news-excerpt">
-            전기 포뮬러 차량의 프레임 설계를 완료하고 제작 단계에 돌입했습니다.
+            EV-06, our latest electric Formula SAE vehicle, has officially debuted. Designed for top performance and stability.
           </p>
-          <a href="news/ev-frame-2026.html" class="news-link">Read More →</a>
+          <a href="news/index.html" class="news-link">Read More →</a>
         </div>
-      </article>
+      </div>
 
-      <article class="news-preview-card">
-        <div class="news-thumb">
-          <img src="main/images/news-datalogging.jpg" alt="Data Logging">
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/news2.jpg" alt="News 2">
         </div>
-        <div class="news-body">
-          <p class="news-date">2026 · 01</p>
-          <h3 class="news-title">AIM 데이터 로깅 시스템 도입</h3>
+        <div class="news-content">
+          <h3>CV-05 Performance Review</h3>
+          <p class="news-date">Dec 15, 2025</p>
           <p class="news-excerpt">
-            주행 데이터 분석을 위해 AIM EVO 기반 로깅 시스템을 적용했습니다.
+            Our internal combustion platform CV-05 has been evaluated on track. Insights on reliability and handling.
           </p>
-          <a href="news/aim-datalogging.html" class="news-link">Read More →</a>
+          <a href="news/index.html" class="news-link">Read More →</a>
         </div>
-      </article>
+      </div>
 
-      <article class="news-preview-card">
-        <div class="news-thumb">
-          <img src="main/images/news-fsk.jpg" alt="Formula Student Korea">
+      <div class="news-card">
+        <div class="news-image">
+          <img src="main/images/news3.jpg" alt="News 3">
         </div>
-        <div class="news-body">
-          <p class="news-date">2025 · 12</p>
-          <h3 class="news-title">Formula Student Korea 참가 준비</h3>
+        <div class="news-content">
+          <h3>Recruiting New Members</h3>
+          <p class="news-date">Nov 30, 2025</p>
           <p class="news-excerpt">
-            2026 FSK 대회를 목표로 차량 개발 및 팀 운영을 진행 중입니다.
+            We are recruiting passionate engineers and builders. Join us to design, manufacture, and test a Formula Student car.
           </p>
-          <a href="news/fsk-prep.html" class="news-link">Read More →</a>
+          <a href="news/index.html" class="news-link">Read More →</a>
         </div>
-      </article>
-
+      </div>
     </div>
 
-    <div class="news-main-cta">
-      <a href="news/index.html" class="news-cta">View All News →</a>
+    <div class="news-footer">
+      <a href="news/index.html" class="news-archive-link">
+        View All News →
+      </a>
     </div>
 
   </div>
 </section>
 
+<!-- SPONSORS (Main Preview + Recruitment) -->
+<section id="sponsors" class="section sponsors-main">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">SPONSORS</span>
+      <h2>Partners & Supporters</h2>
+      <p class="section-subtitle">
+        Auto Lab의 도전은 파트너의 신뢰와 지원으로 완성됩니다.
+      </p>
+    </div>
+
+    <!-- Featured partners -->
+    <div class="sponsor-featured">
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor1.png" alt="Sponsor 1">
+      </div>
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor2.png" alt="Sponsor 2">
+      </div>
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor3.png" alt="Sponsor 3">
+      </div>
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor4.png" alt="Sponsor 4">
+      </div>
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor5.png" alt="Sponsor 5">
+      </div>
+      <div class="sponsor-tile">
+        <img src="main/images/sponsor6.png" alt="Sponsor 6">
+      </div>
+    </div>
+
+    <!-- Recruitment message -->
+    <div class="sponsor-recruit">
+      <p class="recruit-lead">
+        Auto Lab은 기술 기반의 산학 협력과 장기적인 파트너십을 지향합니다.
+      </p>
+      <p class="recruit-sub">
+        차량 개발, 제조, 시험, 데이터 분석 전 과정에 함께하며<br>
+        학생 엔지니어링과 실차 개발 경험을 동시에 만들어갈 파트너를 모집합니다.
+      </p>
+
+      <div class="sponsor-cta-row">
+        <a href="sponsors/sponsors.html" class="sponsor-cta primary">
+          View All Partners →
+        </a>
+        <a href="#contact" class="sponsor-cta ghost">
+          Partnership Inquiry →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">CONTACT</span>
+      <h2>Get in Touch</h2>
+      <p class="section-subtitle">
+        후원/ 문의는 아래 연락처로 부탁드립니다.
+      </p>
+    </div>
+
+    <div class="contact-mini">
+      <p class="contact-mini-lead">
+        Partnership / Sponsorship / Collaboration
+      </p>
+      <p class="contact-mini-sub">
+       빠른 연락을 위해 이메일로 연락 부탁드립니다.
+      </p>
+      <a class="contact-mini-mail" href="mailto:kanggun1111@pusan.ac.kr">kanggun1111@pusan.ac.kr</a>
+
+      <div class="contact-mini-actions">
+        <a href="mailto:kanggun1111@pusan.ac.kr" class="contact-mini-btn primary">
+          Email Us →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <script src="main/script.js"></script>
