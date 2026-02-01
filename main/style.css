@@ -293,28 +293,33 @@ nav .nav-links li a:hover{
 }
 
 /* =========================
-   Hero Grid (Cards below hero)
+   Hero Section
 ========================= */
+.section-hero{
+  padding-top: 110px;
+  padding-bottom: 64px;
+}
+
+/* Grid (Desktop) */
 .hero-grid{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 320px 320px;
+  grid-template-rows: 1fr 1fr;
   gap: 24px;
   max-width: 1600px;
-  margin: 26px auto 0;
+  margin: 0 auto;
   padding: 0 3vw;
+  height: min(78vh, 760px);
 }
 
-
+/* Card base */
 .hero-card{
-  height: 100%;
   position: relative;
   border-radius: 22px;
   overflow: hidden;
   background: #000;
-  cursor: pointer;
   box-shadow: var(--shadow);
-  outline: 1px solid rgba(255,255,255,0.07);
+  outline: 1px solid rgba(255,255,255,0.08);
   transition: transform .28s ease, outline-color .28s ease;
 }
 
@@ -323,71 +328,78 @@ nav .nav-links li a:hover{
   outline-color: var(--stroke2);
 }
 
+/* Image */
 .hero-card img{
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: brightness(0.70) contrast(1.05);
-  transform: scale(1.02);
-  transition: transform 0.65s ease, filter 0.65s ease;
+  filter: brightness(0.72) contrast(1.05);
+  transition: transform .6s ease, filter .6s ease;
 }
 
 .hero-card:hover img{
-  transform: scale(1.08);
-  filter: brightness(0.78) contrast(1.08);
+  transform: scale(1.06);
+  filter: brightness(0.8) contrast(1.08);
 }
 
+/* Gradient overlay */
 .hero-card::after{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.0) 75%);
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.78) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.05) 75%
+  );
   z-index:1;
 }
 
+/* Content */
 .card-content{
   position:absolute;
-  left:0; bottom:0;
-  padding: 26px;
+  left:0;
+  bottom:0;
   z-index:2;
+  padding: 26px;
   max-width: 92%;
 }
 
 .card-content h3{
   font-family:"Orbitron", sans-serif;
-  font-size: clamp(1.15rem, 1.4vw, 1.6rem);
-  letter-spacing: 0.02em;
-  margin-bottom: 10px;
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color:#fff;
+  margin-bottom: 8px;
 }
 
 .card-content p{
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   line-height: 1.55;
-  opacity: 0.86;
+  opacity: 0.85;
 }
 
+/* CTA */
 .card-cta{
   display:inline-flex;
-  align-items:center;
-  gap: 8px;
   margin-top: 14px;
   padding: 10px 18px;
+  border-radius: 999px;
   background: var(--accent2);
   color:#fff;
-  border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration:none;
   transition: transform .2s ease, filter .2s ease;
 }
+
 .card-cta:hover{
   transform: translateY(-2px);
-  filter: brightness(1.06);
+  filter: brightness(1.05);
 }
 
-/* hero 카드 배치 (aspect-ratio 기반 고정) */
+/* Layout roles */
 .card-large{
   grid-row: 1 / span 2;
   grid-column: 1 / 2;
@@ -397,39 +409,40 @@ nav .nav-links li a:hover{
   grid-column: 2 / span 2;
 }
 
-.card-small{
-  /* 그냥 기본 */
-}
+.card-small{}
 
 
-
+/* =========================
+   Hero – Mobile (Fixed Rhythm)
+========================= */
 @media (max-width: 900px){
-  .hero-banner{
-    border-radius: 22px;
-    height: min(66vh, 560px);
-  }
-
   .hero-grid{
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    height: auto;
     gap: 16px;
     padding: 0 3.5vw;
-    margin-top: 18px;
   }
 
-  .card-large{ min-height: 360px; grid-row:auto; grid-column:auto; }
-  .card-wide{ min-height: 260px; grid-row:auto; grid-column:auto; }
-  .card-small{ min-height: 220px; grid-row:auto; grid-column:auto; }
+  .card-large{ min-height: 360px; }
+  .card-wide{  min-height: 260px; }
+  .card-small{ min-height: 220px; }
+
+  .hero-card img{
+    height: 100%;
+  }
+
+  .card-content{
+    padding: 22px;
+    max-width: 100%;
+  }
 }
 
+/* Small mobile */
 @media (max-width: 560px){
   .section-hero{
     padding-top: 96px;
     padding-bottom: 48px;
-  }
-
-  .hero-banner{
-    height: min(64vh, 520px);
   }
 
   .hero-grid{
@@ -438,29 +451,19 @@ nav .nav-links li a:hover{
   }
 
   .card-large{ min-height: 320px; }
-  .card-wide{ min-height: 230px; }
+  .card-wide{  min-height: 230px; }
   .card-small{ min-height: 200px; }
 
   .card-content{
     padding: 18px;
-    max-width: 100%;
-  }
-
-  .card-content h3{
-    font-size: 1.05rem;
-  }
-
-  .card-content p{
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
-  .card-cta{
-    margin-top: 12px;
-    padding: 10px 14px;
-    font-size: 0.85rem;
   }
 }
+
+/* Ultra small */
+@media (max-width: 360px){
+  .card-large{ min-height: 300px; }
+}
+
 
 /* =========================
    About Us (F1 Split Command Center)
