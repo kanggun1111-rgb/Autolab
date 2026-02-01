@@ -131,7 +131,7 @@ nav .nav-links li a:hover{
 ========================= */
 .section{
   background: transparent !important;
-  padding: 120px 0;
+  padding: 88px 0;
 }
 
 /* Hero는 헤더 높이 고려 */
@@ -139,6 +139,18 @@ nav .nav-links li a:hover{
   padding-top: 110px;
   padding-bottom: 50px;
 }
+
+@media (max-width: 768px){
+  .section{
+    padding: 64px 0;
+  }
+
+  .section-hero{
+    padding-top: 96px;
+    padding-bottom: 48px;
+  }
+}
+
 
 /* =========================
    Section Header (Left / Minimal Racing)
