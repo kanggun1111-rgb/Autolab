@@ -195,8 +195,8 @@ nav .nav-links li a:hover{
   box-shadow: var(--shadow);
   outline: 1px solid rgba(255,255,255,0.07);
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.05) 80%),
-    url("images/hero-vehicles.jpg") center/cover no-repeat;
+    linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.24) 58%, rgba(0,0,0,0.05) 82%),
+    url("images/hero-vehicles.jpg") right center/cover no-repeat; /* ✅ center → right center */  
   height: min(74vh, 680px);
 }
 
@@ -219,8 +219,17 @@ nav .nav-links li a:hover{
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  max-width: 760px;
+  max-width: 920px;
 }
+
+/* ✅ hero-banner 텍스트를 NSRUK처럼 더 왼쪽에 고정 */
+.hero-banner .hero-banner-inner.container{
+  max-width: none;                 /* container 폭 제한 해제 */
+  width: 100%;
+  padding-left: clamp(18px, 6vw, 96px);  /* 왼쪽 여백 크게 */
+  padding-right: clamp(18px, 3vw, 56px); /* 오른쪽은 조금만 */
+}
+
 
 .hero-eyebrow{
   display: inline-block;
@@ -310,7 +319,11 @@ nav .nav-links li a:hover{
   margin: 0 auto;
   padding: 0 3vw;
   height: min(78vh, 760px);
+
+  /* ✅ hero-banner와의 간격 */
+  margin-top: 24px;
 }
+
 
 /* Card base */
 .hero-card{
@@ -422,6 +435,7 @@ nav .nav-links li a:hover{
     height: auto;
     gap: 16px;
     padding: 0 3.5vw;
+    margin-top: 16px; /* ✅ 모바일 간격 */
   }
 
   .card-large{ min-height: 360px; }
