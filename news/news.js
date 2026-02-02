@@ -57,9 +57,9 @@ function asText(v){
   if (Array.isArray(v)) return v.filter(Boolean).join(' ');
   return String(v ?? '');
 }
-function pick(p, key){
-  const lang = getLang();
-  const v = p && p[`${key}_${lang}`];
+function pickText(p, baseKey, fallback=''){
+  const lang = (localStorage.getItem('lang') || 'ko').toLowerCase() === 'en' ? 'en' : 'ko';
+  const v1 = p?.[`${baseKey}_${lang}`];
   if (v !== undefined && v !== null && v !== '') return v;
   return p ? p[key] : '';
 }
@@ -151,3 +151,16 @@ function pick(p, key){
 
   render();
 })();
+
+// --- re-render on language toggle (do NOT block existing handler) ---
+const langBtn = document.getElementById('langToggleBtn');
+if (langBtn && !langBtn.dataset.newsRerenderBound) {
+  langBtn.dataset.newsRerenderBound = '1';
+  langBtn.addEventListener('click', () => {
+    // main/script.js가 localStorage.lang을 바꾼 다음 렌더되도록 한 틱 늦춰 실행
+    setTimeout(() => {
+      page = 1;
+      render();
+    }, 0);
+  });
+}
