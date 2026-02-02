@@ -1,18 +1,30 @@
 [
-  {
-    "id": "ev-06-launch-event",
-    "title": "EV-06 Launch Event",
-    "date": "2026-01-25",
-    "category": "EV",
-    "excerpt": "EV-06, our latest electric Formula SAE vehicle, has officially debuted. Designed for top performance and stability.",
-    "cover": "news/images/news1.jpg",
-    "source_url": "https://www.instagram.com/p/CsE1A1vHh1Q/",
-    "content": [
-      "EV-06 공개를 진행했습니다.",
-      "올 시즌 목표는 데이터 기반 성능 향상과 신뢰성 확보입니다.",
-      "차량 개발 현황 및 테스트 결과는 추후 지속적으로 업데이트하겠습니다."
-    ]
-  },
+    {
+        "id": "AutoLab | Official Website",
+        "title": "AutoLab | Official Website",
+        "date": "2026-02-02",
+        "category": "about autolab",
+        "excerpt": [
+            "AutoLab의 공식 홈페이지를 개설했습니다."
+        ],
+
+        "cover": "news/images/news1.jpg",
+        "source_url": "https://www.instagram.com/pnu_autolab?igsh=dDcwc2FhNnhuMThi&utm_source=qr",
+        "content": [
+            "AutoLab의 공식 홈페이지를 개설했습니다.",
+            "이 공간에서는",
+            "차량 개발 과정, 대회 활동 기록",
+            "그리고 팀의 주요 소식을 정리해 나갈 예정입니다.",
+
+            "그동안 SNS을 통해 전하지 못했던",
+            "보다 자세한 내용과 기록을",
+            "홈페이지를 통해 공유하고자 합니다.",
+
+            "앞으로 AutoLab의 활동을",
+            "이곳에서 꾸준히 업데이트 하겠습니다"
+        ]
+
+    },
   {
     "id": "cv-05-performance-review",
     "title": "CV-05 Performance Review",
