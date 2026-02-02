@@ -180,19 +180,6 @@
   ],
   "previous": [
     {
-      "id": "ale-25",
-      "name": "ALE-25",
-      "type": "EV",
-      "season": "2025",
-      "cover": "vehicles/images/ale-25.jpg",
-      "specs": {
-        "Powertrain": "Electric",
-        "Voltage": "—",
-        "Weight": "—",
-        "Highlights": "—"
-      }
-    },
-    {
       "id": "alc-25",
       "name": "ALC-25",
       "type": "CV",
@@ -200,8 +187,8 @@
       "cover": "vehicles/images/alc-25.jpg",
       "specs": {
         "Powertrain": "Combustion",
-        "Engine": "—",
-        "Weight": "—",
+        "Engine": "Kawasaki ZX6R",
+        "Weight": "220",
         "Highlights": "—"
       }
     },
@@ -213,8 +200,60 @@
       "cover": "vehicles/images/ale-24.jpg",
       "specs": {
         "Powertrain": "Electric",
-        "Voltage": "—",
-        "Weight": "—",
+        "Voltage": "453.6V",
+        "Weight": "258Kg",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "alc-23",
+      "name": "ALC-23",
+      "type": "CV",
+      "season": "2023",
+      "cover": "vehicles/images/alc-23.jpg",
+      "specs": {
+        "Powertrain": "Combustion",
+        "Engine": "Yamaha R6",
+        "Weight": "270Kg",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "FAL-22",
+      "name": "FAL-22",
+      "type": "CV",
+      "season": "2022",
+      "cover": "vehicles/images/fal-22.jpg",
+      "specs": {
+        "Powertrain": "Combustion",
+        "Engine": "VJF250",
+        "Weight": "186Kg",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "fal-21",
+      "name": "FAL-21",
+      "type": "CV",
+      "season": "2021",
+      "cover": "vehicles/images/fal-21.jpg",
+      "specs": {
+        "Powertrain": "Combustion",
+        "Engine": "VJF250",
+        "Weight": "220Kg",
+        "Highlights": "—"
+      }
+    },
+    {
+      "id": "fal-20",
+      "name": "FAL-20",
+      "type": "CV",
+      "season": "2020",
+      "cover": "vehicles/images/fal-20.jpg",
+      "specs": {
+        "Powertrain": "Combustion",
+        "Engine": "VJF250",
+        "Weight": "233Kg",
         "Highlights": "—"
       }
     }
