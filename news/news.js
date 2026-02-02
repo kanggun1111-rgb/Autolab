@@ -177,34 +177,35 @@
   // ---------- lang toggle integration ----------
   // 1) main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시
   // 2) main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
+  
   (function bindLang(){
-    const btn = document.getElementById('langToggleBtn');
-    if (!btn || btn.dataset.newsLangBound) return;
-    btn.dataset.newsLangBound = '1';
+  const btn = document.getElementById('langToggleBtn');
+  if (!btn || btn.dataset.newsLangBound) return;
+  btn.dataset.newsLangBound = '1';
 
-    // capture: before 저장
-    btn.addEventListener('click', () => {
-      btn.dataset.langBefore = (localStorage.getItem('lang') || 'ko');
-    }, true);
+  btn.addEventListener('click', () => {
+    const before = (localStorage.getItem('lang') || 'ko').toLowerCase();
 
-    // bubble: 토글 감지/보조
-    btn.addEventListener('click', () => {
-      const before = (btn.dataset.langBefore || 'ko').toLowerCase();
+    // main/script.js가 먼저 토글/라벨 갱신을 끝내도록 한 틱 늦춰서 확인
+    setTimeout(() => {
       const after = (localStorage.getItem('lang') || 'ko').toLowerCase();
 
-      // main/script.js가 이미 바꿨으면: 리렌더만
+      // main/script.js가 성공적으로 바꿨으면: 렌더만
       if (after !== before){
         page = 1;
         render();
         return;
       }
 
-      // 아니면 여기서 토글 수행 후 리렌더
-      localStorage.setItem('lang', before === 'en' ? 'ko' : 'en');
+      // main/script.js가 못 바꿨으면: 여기서 보조로 토글하고 렌더
+      const next = (before === 'en') ? 'ko' : 'en';
+      localStorage.setItem('lang', next);
       page = 1;
       render();
-    });
-  })();
+    }, 0);
+  });
+})();
+
 
   // initial render
   render();
