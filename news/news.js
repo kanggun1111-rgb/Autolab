@@ -12,7 +12,7 @@
 
   if (!listEl) return;
 
-  const PAGE_SIZE = 9;
+  const PAGE_SIZE = 6;
   let page = 1;
   let posts = [];
 
@@ -28,6 +28,26 @@
   posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
   // 카테고리 채우기
+// 카테고리 채우기 (catEl 없으면 스킵)
+if (catEl){
+  // 🔹 ALL 옵션 먼저 추가
+  const allOpt = document.createElement('option');
+  allOpt.value = 'ALL';
+  allOpt.textContent = 'ALL';
+  catEl.appendChild(allOpt);
+
+  const cats = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    catEl.appendChild(opt);
+  });
+
+  // 🔹 기본값을 ALL로 고정
+  catEl.value = 'ALL';
+}
+
   const cats = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
   cats.forEach(c => {
     const opt = document.createElement('option');
