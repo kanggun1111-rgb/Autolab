@@ -46,6 +46,46 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
+
+
+// ===== locale helpers (keeps existing layout / functions) =====
+function getLang(){
+  const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
+  return (v === 'en') ? 'en' : 'ko';
+}
+function asText(v){
+  if (Array.isArray(v)) return v.filter(Boolean).join(' ');
+  return String(v ?? '');
+}
+function pick(p, key){
+  const lang = getLang();
+  const v = p && p[`${key}_${lang}`];
+  if (v !== undefined && v !== null && v !== '') return v;
+  return p ? p[key] : '';
+}
+// Safe fallback: if main/script.js failed to bind lang toggle on this page,
+// we bind it here WITHOUT interfering when it already works.
+(function bindLangToggleFallback(){
+  const btn = document.getElementById('langToggleBtn');
+  if (!btn || btn.dataset.langFallbackBound) return;
+  btn.dataset.langFallbackBound = '1';
+
+  // Capture: remember lang BEFORE any other click handlers run.
+  btn.addEventListener('click', () => {
+    btn.dataset.langBefore = (localStorage.getItem('lang') || 'ko');
+  }, true);
+
+  // Bubble: only toggle if nothing changed.
+  btn.addEventListener('click', () => {
+    const before = (btn.dataset.langBefore || (localStorage.getItem('lang') || 'ko')).toLowerCase();
+    const after = (localStorage.getItem('lang') || 'ko').toLowerCase();
+    if (after !== before) return; // already handled elsewhere
+    localStorage.setItem('lang', before === 'en' ? 'ko' : 'en');
+    location.reload();
+  });
+})();
+// ==============================================================
+
   function getFiltered(){
     const q = normalize(searchEl.value).trim();
     const cat = catEl.value;
@@ -54,7 +94,10 @@
       const okCat = (cat === 'ALL') || (p.category === cat);
       if (!okCat) return false;
       if (!q) return true;
-      const hay = normalize(p.title) + ' ' + normalize(p.excerpt) + ' ' + normalize((p.content || []).join(' '));
+      const title = asText(pick(p,'title'));
+      const excerpt = asText(pick(p,'excerpt'));
+      const content = asText(pick(p,'content'));
+      const hay = normalize(title) + ' ' + normalize(excerpt) + ' ' + normalize(content);
       return hay.includes(q);
     });
   }
@@ -70,12 +113,12 @@
     listEl.innerHTML = slice.map(p => `
       <div class="news-card">
         <div class="news-image">
-          <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(p.title)}">
+          <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(asText(pick(p,'title')))}">
         </div>
         <div class="news-content">
-          <h3>${escapeHtml(p.title)}</h3>
+          <h3>${escapeHtml(asText(pick(p,'title')))}</h3>
           <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
-          <p class="news-excerpt">${escapeHtml(p.excerpt || '')}</p>
+          <p class="news-excerpt">${escapeHtml(asText(pick(p,'excerpt')) || '')}</p>
           <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
         </div>
       </div>

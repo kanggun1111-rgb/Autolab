@@ -29,15 +29,32 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
+
+
+function getLang(){
+  const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
+  return (v === 'en') ? 'en' : 'ko';
+}
+function asText(v){
+  if (Array.isArray(v)) return v.filter(Boolean).join(' ');
+  return String(v ?? '');
+}
+function pick(p, key){
+  const lang = getLang();
+  const v = p && p[`${key}_${lang}`];
+  if (v !== undefined && v !== null && v !== '') return v;
+  return p ? p[key] : '';
+}
+
   grid.innerHTML = top.map(p => `
     <div class="news-card">
       <div class="news-image">
-        <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(p.title)}">
+        <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(asText(pick(p,'title')))}">
       </div>
       <div class="news-content">
-        <h3>${escapeHtml(p.title)}</h3>
+        <h3>${escapeHtml(asText(pick(p,'title')))}</h3>
         <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
-        <p class="news-excerpt">${escapeHtml(p.excerpt || '')}</p>
+        <p class="news-excerpt">${escapeHtml(asText(pick(p,'excerpt')) || '')}</p>
         <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
       </div>
     </div>
