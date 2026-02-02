@@ -14,12 +14,11 @@
       ],
       "stats": {
         "Powertrain": "Electric",
-        "Accumulator": "—",
-        "Max Voltage": "—",
-        "Motor": "—",
-        "Inverter": "—",
-        "Weight": "—",
-        "Wheelbase": "—"
+        "Max Voltage": "453.6V",
+        "Motor": "EMRAX 208HV",
+        "Inverter": "BAMOCAR D3 PG 700-400",
+        "Weight": "225Kg",
+        "Wheelbase": "1510mm"
       },
 
       "highlights": [
@@ -81,8 +80,8 @@
     },
     "body": [
       {
-        "en": "Designed in compliance with Formula Student and FSAE regulations, targeting all dynamic events including skidpad, autocross, and endurance.",
-        "ko": "Formula Student / FSAE 규정에 맞춰 제작되며, 스키드패드, 오토크로스, 엔듀런스 등 모든 동적 종목을 목표로 합니다."
+        "en": "Designed in compliance with Formula Student and FSAE regulations, targeting all dynamic events including acceleration, skidpad, autocross, and endurance.",
+        "ko": "Formula Student / FSAE 규정에 맞춰 제작되며, 가속, 스키드패드, 오토크로스, 엔듀런스 등 모든 동적 종목을 목표로 합니다."
       }
     ]
   }
@@ -106,12 +105,11 @@
   ],
   "stats": {
     "Powertrain": "Combustion",
-    "Engine": "—",
-    "ECU": "—",
+    "Engine": "Kawasaki ZX6R",
+    "ECU": "Fuel Tech FT450",
     "Intake/Exhaust": "—",
-    "Weight": "—",
-    "Wheelbase": "—",
-    "Tires": "—"
+    "Weight": "220Kg",
+    "Wheelbase": "1510mm"
   },
   "highlights": [
     {
