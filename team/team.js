@@ -1,230 +1,293 @@
-/* team/team.js — robust KO/EN toggle, no i18n keys required
-   - team.json uses {en,ko} objects for content (hero/metrics/achievements)
-   - members stays as-is (usually English roles), but still searchable/filterable
-   - Works with or without main/script.js:
-     • If window.__getLang/__setLang exist → uses them
-     • Otherwise → uses localStorage + dispatches a custom event
-   - HTML text can be switched via data-en/data-ko (safe: keeps fallback text)
+/* team/team.js — SAFE KO/EN toggle + keep existing features
+   - Reads global language if available (window.__getLang / window.__setLang / window.__onLangChange)
+   - Falls back to localStorage.lang if global helpers are absent
+   - Keeps members search/division filter functionality
+   - Supports {ko,en} fields in team.json (hero/metrics/achievements etc.)
+   - "members" can stay single-language; if you later add {ko,en} it still works
+   - Toggle button label stays English: KOR / ENG
 */
-(async function(){
+(async function () {
   "use strict";
 
   const $ = (id) => document.getElementById(id);
 
-  // ---------------- Base-safe asset path (works with <base href="/Autolab/">)
-  function asset(path){
-    const base = document.querySelector('base')?.getAttribute('href') || '/';
-    return base.replace(/\/+$/, '') + '/' + String(path).replace(/^\/+/, '');
+  // ----- base-safe asset path (works with <base href="/Autolab/">) -----
+  function asset(path) {
+    const base = document.querySelector("base")?.getAttribute("href") || "/";
+    return base.replace(/\/+$/, "") + "/" + String(path || "").replace(/^\/+/, "");
   }
 
-  // ---------------- Lang manager (single source of truth)
-  const LANG_KEY = "lang";
-
-  function getLang(){
-    if (typeof window.__getLang === "function") return window.__getLang();
-    const v = (localStorage.getItem(LANG_KEY) || "en").toLowerCase();
-    return (v === "ko" || v === "en") ? v : "en";
+  // ----- language: use global if present, else localStorage -----
+  function getLang() {
+    const v = (window.__getLang ? window.__getLang() : localStorage.getItem("lang") || "en");
+    const s = String(v || "en").toLowerCase();
+    return s === "ko" || s === "en" ? s : "en";
   }
 
-  function setLang(next){
-    const lang = (next === "ko") ? "ko" : "en";
-    if (typeof window.__setLang === "function") {
+  function setLang(next) {
+    const lang = next === "ko" ? "ko" : "en";
+
+    // Prefer global setter (so every page stays in sync)
+    if (window.__setLang) {
       window.__setLang(lang);
-      return lang;
+    } else {
+      localStorage.setItem("lang", lang);
+      document.documentElement.lang = lang;
+
+      // notify same-page listeners
+      window.dispatchEvent(new CustomEvent("autolab:langchange", { detail: { lang } }));
     }
-    localStorage.setItem(LANG_KEY, lang);
-    document.documentElement.lang = lang;
-    // notify listeners
-    window.dispatchEvent(new CustomEvent("autolab:langchange", { detail: { lang } }));
+
+    syncLangToggleLabel();
     return lang;
   }
 
-  function onLangChange(fn){
+  function onLangChange(cb) {
+    // If your project provides a registrar, use it
     if (typeof window.__onLangChange === "function") {
-      window.__onLangChange(fn);
+      window.__onLangChange(cb);
       return;
     }
-    window.addEventListener("autolab:langchange", () => fn());
-  }
-
-  // ---------------- HTML data-en/data-ko apply (safe fallback)
-  function applyHtmlLang(){
-    const L = getLang();
-    document.documentElement.lang = L;
-
-    document.querySelectorAll("[data-en]").forEach(el => {
-      const next = (L === "ko")
-        ? (el.getAttribute("data-ko") || el.getAttribute("data-en"))
-        : el.getAttribute("data-en");
-
-      // Only override when attribute exists; keep authored fallback otherwise
-      if (next != null) el.textContent = next;
+    // fallback: listen to our custom event
+    window.addEventListener("autolab:langchange", () => cb());
+    // also react to storage changes (other tabs / or some implementations)
+    window.addEventListener("storage", (e) => {
+      if (e.key === "lang") cb();
     });
   }
 
-  // ---------------- Pick localized string from value
-  function pick(v){
-    const L = getLang();
-    if (v == null) return "";
-    if (typeof v === "string" || typeof v === "number") return String(v);
-    if (typeof v === "object" && !Array.isArray(v)){
-      const a = v[L];
-      if (typeof a === "string" || typeof a === "number") return String(a);
-      const b = v.en;
-      if (typeof b === "string" || typeof b === "number") return String(b);
-      const c = v.ko;
-      if (typeof c === "string" || typeof c === "number") return String(c);
-      for (const key of Object.keys(v)){
-        const x = v[key];
-        if (typeof x === "string" || typeof x === "number") return String(x);
-      }
-    }
-    return "";
-  }
-
-  const esc = (s)=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-
-  // ---------------- Fetch data once
-  let data;
-  try{
-    const res = await fetch(asset("team/team.json"), { cache: "no-store" });
-    if (!res.ok) return;
-    data = await res.json();
-  }catch(e){
-    return;
-  }
-
-  // ---------------- UI: toggle button label (always English)
-  function syncLangToggleButton(){
-    const L = getLang();
+  function syncLangToggleLabel() {
     const btn = $("langToggleBtn");
     if (!btn) return;
-    // show the OTHER language as action
+    const L = getLang();
+    // label in English only
     btn.textContent = (L === "en") ? "KOR" : "ENG";
   }
 
-  function wireLangToggle(){
-    const btn = $("langToggleBtn");
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-      const next = (getLang() === "en") ? "ko" : "en";
-      setLang(next);
+  // ----- pick localized value from {ko,en} or return string -----
+  function pick(val) {
+    const L = getLang();
+    if (val == null) return "";
+    if (typeof val === "string" || typeof val === "number") return String(val);
+    if (typeof val === "object" && !Array.isArray(val)) {
+      const a = val[L];
+      if (typeof a === "string" || typeof a === "number") return String(a);
+      const b = val.en;
+      if (typeof b === "string" || typeof b === "number") return String(b);
+      const c = val.ko;
+      if (typeof c === "string" || typeof c === "number") return String(c);
+    }
+    return String(val);
+  }
+
+  function esc(s) {
+    return String(s ?? "").replace(/[&<>"']/g, (m) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[m]));
+  }
+
+  // ----- OPTIONAL: apply data-en/data-ko in HTML (if you used it anywhere) -----
+  function applyHtmlLang() {
+    const L = getLang();
+    document.documentElement.lang = L;
+
+    document.querySelectorAll("[data-en]").forEach((el) => {
+      const txt = (L === "ko")
+        ? (el.getAttribute("data-ko") || el.getAttribute("data-en"))
+        : el.getAttribute("data-en");
+      if (txt != null) el.textContent = txt;
     });
   }
 
-  // ---------------- Render all sections (rerunnable)
-  function renderHero(){
-    const h = data.hero || {};
-    const heroEyebrow = $("heroEyebrow");
-    const heroTitle = $("heroTitle");
-    const heroLead = $("heroLead");
-    const heroImage = $("heroImage");
-    const heroCaptionBold = $("heroCaptionBold");
-    const heroCaption = $("heroCaption");
+  // ----- mount points -----
+  const heroEyebrow = $("heroEyebrow");
+  const heroTitle = $("heroTitle");
+  const heroLead = $("heroLead");
+  const heroImage = $("heroImage");
+  const heroCaptionBold = $("heroCaptionBold");
+  const heroCaption = $("heroCaption");
+  const heroMetrics = $("heroMetrics");
 
-    if (heroEyebrow) heroEyebrow.textContent = pick(h.eyebrow);
-    if (heroTitle) heroTitle.textContent = pick(h.title);
-    if (heroLead) heroLead.textContent = pick(h.lead);
-    if (heroImage && h.image) heroImage.src = h.image;
-    if (heroCaptionBold) heroCaptionBold.textContent = pick(h.caption_bold);
-    if (heroCaption) heroCaption.textContent = pick(h.caption);
+  const memberSearch = $("memberSearch");
+  const memberDivision = $("memberDivision");
+  const memberGrid = $("memberGrid");
+
+  const timeline = $("timeline");
+
+  // If core mounts are missing, exit safely
+  if (!heroTitle || !heroLead || !heroMetrics || !memberGrid || !timeline) {
+    // still try to wire button label if exists
+    syncLangToggleLabel();
+    return;
   }
 
-  function renderMetrics(){
-    const heroMetrics = $("heroMetrics");
-    if (!heroMetrics) return;
-    heroMetrics.innerHTML = (data.metrics || []).map(m => `
-      <div class="metric">
-        <b>${esc(pick(m.label))}</b>
-        <span>${esc(pick(m.value))}</span>
-      </div>
-    `).join("");
+  // ----- load data -----
+  let data;
+  try {
+    const res = await fetch(asset("team/team.json"), { cache: "no-store" });
+    data = await res.json();
+  } catch (e) {
+    heroLead.textContent = "Failed to load team data.";
+    return;
   }
 
-  function renderTimeline(){
-    const timeline = $("timeline");
-    if (!timeline) return;
-    timeline.innerHTML = (data.achievements || []).map(t => `
-      <article class="t-item">
-        <div class="date">${esc(pick(t.date))}</div>
-        <div>
-          <h3>${esc(pick(t.title))}</h3>
-          <p>${esc(pick(t.desc))}</p>
+  // ----- render functions -----
+  function renderHero() {
+    const hero = data.hero || {};
+
+    if (heroEyebrow) heroEyebrow.textContent = pick(hero.eyebrow);
+    if (heroTitle) heroTitle.textContent = pick(hero.title);
+    if (heroLead) heroLead.textContent = pick(hero.lead);
+
+    if (heroImage && hero.image) {
+      heroImage.src = asset(hero.image).replace(/\/team\/team\//, "/team/"); 
+      // ^ in case asset() already includes base; safe no-op if not needed
+      heroImage.src = hero.image.startsWith("http") ? hero.image : asset(hero.image);
+      heroImage.alt = pick(hero.title) || "Auto_Lab";
+    }
+
+    if (heroCaptionBold) heroCaptionBold.textContent = pick(hero.caption_bold);
+    if (heroCaption) heroCaption.textContent = pick(hero.caption);
+  }
+
+  function renderMetrics() {
+    const metrics = Array.isArray(data.metrics) ? data.metrics : [];
+
+    heroMetrics.innerHTML = metrics.map((m) => {
+      const label = pick(m.label);
+      const value = pick(m.value);
+      return `
+        <div class="metric">
+          <div class="metric__label">${esc(label)}</div>
+          <div class="metric__value">${esc(value)}</div>
         </div>
-      </article>
-    `).join("");
+      `;
+    }).join("");
   }
 
-  function renderMembers(){
-    const members = data.members || [];
-    const divSel = $("memberDivision");
-    const search = $("memberSearch");
-    const grid = $("memberGrid");
+  function currentMemberFilters() {
+    const q = (memberSearch?.value || "").trim().toLowerCase();
+    const div = (memberDivision?.value || "ALL").trim();
+    return { q, div };
+  }
 
-    if (!divSel || !search || !grid) return;
+  function matchesMember(m, q, div) {
+    const name = String(m.name || "").toLowerCase();
+    const role = String(pick(m.role) || "").toLowerCase();
+    const division = String(pick(m.division) || "").toLowerCase();
 
-    // Always English for UI controls (per your rule)
-    const divisions = [...new Set(members.map(m => pick(m.division)).filter(Boolean))].sort();
-    divSel.innerHTML = ['<option value="ALL">All Divisions</option>']
-      .concat(divisions.map(d => `<option value="${esc(d)}">${esc(d)}</option>`))
-      .join("");
+    if (div !== "ALL" && String(m.division || "") !== div) return false;
+    if (!q) return true;
+    const hay = `${name} ${role} ${division}`;
+    return hay.includes(q);
+  }
 
-    if (!search.getAttribute("placeholder")) {
-      search.setAttribute("placeholder", "Search name or role");
+  function renderMemberDivisionOptions() {
+    if (!memberDivision) return;
+    const members = Array.isArray(data.members) ? data.members : [];
+
+    // Collect unique divisions from raw value (keep stable)
+    const set = new Set(members.map(m => String(m.division || "")).filter(Boolean));
+    const divisions = Array.from(set);
+
+    // Keep existing first option if already present; else build minimal
+    const hasAll = Array.from(memberDivision.options || []).some(o => o.value === "ALL");
+    if (!hasAll) {
+      memberDivision.innerHTML = `<option value="ALL">All</option>` + divisions.map(d => `<option value="${esc(d)}">${esc(d)}</option>`).join("");
+    } else {
+      // ensure divisions are present
+      const existing = new Set(Array.from(memberDivision.options).map(o => o.value));
+      divisions.forEach(d => {
+        if (!existing.has(d)) {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          memberDivision.appendChild(opt);
+        }
+      });
     }
+  }
 
-    function match(m){
-      const mDivision = pick(m.division);
-      if (divSel.value !== "ALL" && mDivision !== divSel.value) return false;
+  function renderMembers() {
+    const members = Array.isArray(data.members) ? data.members : [];
+    const { q, div } = currentMemberFilters();
 
-      const q = (search.value || "").toLowerCase();
-      const hay = `${pick(m.name)} ${pick(m.role)} ${mDivision}`.toLowerCase();
-      return !q || hay.includes(q);
-    }
+    const items = members.filter(m => matchesMember(m, q, div));
 
-    function draw(){
-      const list = members.filter(match);
-      grid.innerHTML = list.map(m => `
+    memberGrid.innerHTML = items.map((m) => {
+      const img = m.image ? (m.image.startsWith("http") ? m.image : asset(m.image)) : "";
+      const name = m.name || "";
+      // members section: keep as-is; if you later make role/division {ko,en}, pick() will support it
+      const role = pick(m.role);
+      const divisionText = pick(m.division);
+
+      return `
         <article class="member-card">
           <div class="member-photo">
-            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+            ${img ? `<img src="${esc(img)}" alt="${esc(name)}">` : ``}
           </div>
-          <div class="member-body">
-            <h3>${esc(pick(m.name))}</h3>
-            <div class="meta">
-              <span>${esc(pick(m.role))}</span>
-              <span class="pill">${esc(pick(m.division))}</span>
-            </div>
+          <div class="member-meta">
+            <h3>${esc(name)}</h3>
+            <p class="member-role">${esc(role)}</p>
+            <span class="member-division">${esc(divisionText)}</span>
           </div>
         </article>
-      `).join("") || '<p style="opacity:.8">No members found.</p>';
-    }
-
-    // preserve user input on rerender
-    const prevDivision = divSel.value;
-    const prevSearch = search.value;
-
-    divSel.onchange = draw;
-    search.oninput = draw;
-
-    // restore
-    divSel.value = prevDivision;
-    search.value = prevSearch;
-
-    draw();
+      `;
+    }).join("");
   }
 
-  function renderAll(){
-    applyHtmlLang();          // switches any data-en/data-ko
-    syncLangToggleButton();   // updates toggle label
+  function renderAchievements() {
+    const ach = Array.isArray(data.achievements) ? data.achievements : [];
+
+    timeline.innerHTML = ach.map((a) => {
+      const date = String(a.date || "");
+      const title = pick(a.title);
+      const desc = pick(a.desc);
+
+      return `
+        <div class="timeline-item">
+          <div class="timeline-date">${esc(date)}</div>
+          <div class="timeline-content">
+            <h3>${esc(title)}</h3>
+            <p>${esc(desc)}</p>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderAll() {
+    applyHtmlLang();
+    syncLangToggleLabel();
+
     renderHero();
     renderMetrics();
-    renderTimeline();
+
+    renderMemberDivisionOptions();
     renderMembers();
+
+    renderAchievements();
   }
 
-  // ---------------- Init
-  wireLangToggle();
+  // ----- wire events -----
+  const langBtn = $("langToggleBtn");
+  if (langBtn) {
+    langBtn.addEventListener("click", () => {
+      const L = getLang();
+      const next = (L === "en") ? "ko" : "en";
+      setLang(next);
+      renderAll();
+    });
+  }
+
+  memberSearch?.addEventListener("input", renderMembers);
+  memberDivision?.addEventListener("change", renderMembers);
+
+  // react to global language changes (e.g., user toggles in navbar)
+  onLangChange(() => {
+    renderAll();
+  });
+
+  // initial render
   renderAll();
-  onLangChange(renderAll);
 })();
