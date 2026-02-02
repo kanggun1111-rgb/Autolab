@@ -1,10 +1,10 @@
 /* news/news.js
    - news.json을 읽어서 목록 렌더링
    - 검색/카테고리 필터
-   - 간단 페이징 (페이지당 9개)
+   - 간단 페이징 (페이지당 6개)
+   - ko/en 전환 즉시 반영 (기존 레이아웃/기능 유지)
 */
 (async function(){
-  const T = (k, f='') => (window.__t ? window.__t(k, f) : f);
   const listEl = document.getElementById('newsList');
   const pagerEl = document.getElementById('newsPager');
   const searchEl = document.getElementById('newsSearch');
@@ -16,6 +16,60 @@
   let page = 1;
   let posts = [];
 
+  // ---------- utils ----------
+  function normalize(s){ return String(s || '').toLowerCase(); }
+  function escapeHtml(s){
+    return String(s ?? '').replace(/[&<>"']/g, m => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'
+    }[m]));
+  }
+  function formatDate(iso){
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
+  }
+
+  // ---------- locale helpers (backward compatible) ----------
+  function getLang(){
+    const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
+    return v === 'en' ? 'en' : 'ko';
+  }
+  function asText(v){
+    if (Array.isArray(v)) return v.filter(Boolean).join(' ');
+    return String(v ?? '');
+  }
+  function asLines(v){
+    if (Array.isArray(v)) return v.filter(x => x !== null && x !== undefined).map(String);
+    if (typeof v === 'string' && v.trim()) return [v];
+    return [];
+  }
+  function coverUrl(p){
+    const c = p?.cover;
+    if (Array.isArray(c)) return c[0] || '';
+    return c || '';
+  }
+
+  // baseKey_ko/en → {ko,en} → baseKey 순으로 안전하게 가져오기
+  function pickText(p, baseKey, fallback=''){
+    const lang = getLang();
+
+    const v1 = p?.[`${baseKey}_${lang}`];
+    if (v1 !== undefined && v1 !== null && v1 !== '') return v1;
+
+    const obj = p?.[baseKey];
+    if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
+      const v2 = obj[lang];
+      if (v2 !== undefined && v2 !== null && v2 !== '') return v2;
+      return obj.ko ?? obj.en ?? fallback;
+    }
+
+    const v3 = p?.[baseKey];
+    if (v3 !== undefined && v3 !== null && v3 !== '') return v3;
+
+    return fallback;
+  }
+
+  // ---------- load ----------
   try{
     const res = await fetch('news/news.json', { cache: 'no-store' });
     posts = await res.json();
@@ -27,96 +81,39 @@
   // 최신순
   posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-  // 카테고리 채우기
-// 카테고리 채우기 (catEl 없으면 스킵)
-if (catEl){
-  // 🔹 ALL 옵션 먼저 추가
-  const allOpt = document.createElement('option');
-  allOpt.value = 'ALL';
-  allOpt.textContent = 'ALL';
-  catEl.appendChild(allOpt);
+  // ---------- category options ----------
+  if (catEl){
+    catEl.innerHTML = ''; // 안전: 중복 방지
+    const allOpt = document.createElement('option');
+    allOpt.value = 'ALL';
+    allOpt.textContent = 'ALL';
+    catEl.appendChild(allOpt);
 
-  const cats = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
-  cats.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c;
-    opt.textContent = c;
-    catEl.appendChild(opt);
-  });
+    const cats = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
+    cats.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      catEl.appendChild(opt);
+    });
 
-  // 🔹 기본값을 ALL로 고정
-  catEl.value = 'ALL';
-}
-
-  const cats = Array.from(new Set(posts.map(p => p.category).filter(Boolean)));
-  cats.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c;
-    opt.textContent = c;
-    catEl.appendChild(opt);
-  });
-
-  function normalize(s){ return String(s || '').toLowerCase(); }
-  function escapeHtml(s){
-    return String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]));
-  }
-  function formatDate(iso){
-    const d = new Date(iso);
-    if (Number.isNaN(d.getTime())) return iso;
-    return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
+    catEl.value = 'ALL';
   }
 
-
-
-// ===== locale helpers (keeps existing layout / functions) =====
-function getLang(){
-  const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
-  return (v === 'en') ? 'en' : 'ko';
-}
-function asText(v){
-  if (Array.isArray(v)) return v.filter(Boolean).join(' ');
-  return String(v ?? '');
-}
-function pickText(p, baseKey, fallback=''){
-  const lang = (localStorage.getItem('lang') || 'ko').toLowerCase() === 'en' ? 'en' : 'ko';
-  const v1 = p?.[`${baseKey}_${lang}`];
-  if (v !== undefined && v !== null && v !== '') return v;
-  return p ? p[key] : '';
-}
-// Safe fallback: if main/script.js failed to bind lang toggle on this page,
-// we bind it here WITHOUT interfering when it already works.
-(function bindLangToggleFallback(){
-  const btn = document.getElementById('langToggleBtn');
-  if (!btn || btn.dataset.langFallbackBound) return;
-  btn.dataset.langFallbackBound = '1';
-
-  // Capture: remember lang BEFORE any other click handlers run.
-  btn.addEventListener('click', () => {
-    btn.dataset.langBefore = (localStorage.getItem('lang') || 'ko');
-  }, true);
-
-  // Bubble: only toggle if nothing changed.
-  btn.addEventListener('click', () => {
-    const before = (btn.dataset.langBefore || (localStorage.getItem('lang') || 'ko')).toLowerCase();
-    const after = (localStorage.getItem('lang') || 'ko').toLowerCase();
-    if (after !== before) return; // already handled elsewhere
-    localStorage.setItem('lang', before === 'en' ? 'ko' : 'en');
-    location.reload();
-  });
-})();
-// ==============================================================
-
+  // ---------- filter + render ----------
   function getFiltered(){
-    const q = normalize(searchEl.value).trim();
-    const cat = catEl.value;
+    const q = normalize(searchEl?.value).trim();
+    const cat = catEl?.value || 'ALL';
 
     return posts.filter(p => {
       const okCat = (cat === 'ALL') || (p.category === cat);
       if (!okCat) return false;
       if (!q) return true;
-      const title = asText(pick(p,'title'));
-      const excerpt = asText(pick(p,'excerpt'));
-      const content = asText(pick(p,'content'));
+
+      const title = asText(pickText(p, 'title', p.title || ''));
+      const excerpt = asText(pickText(p, 'excerpt', p.excerpt || ''));
+      const content = asLines(pickText(p, 'content', p.content || [])).join(' ');
+
       const hay = normalize(title) + ' ' + normalize(excerpt) + ' ' + normalize(content);
       return hay.includes(q);
     });
@@ -130,22 +127,30 @@ function pickText(p, baseKey, fallback=''){
     const start = (page - 1) * PAGE_SIZE;
     const slice = filtered.slice(start, start + PAGE_SIZE);
 
-    listEl.innerHTML = slice.map(p => `
+    listEl.innerHTML = slice.map(p => {
+      const title = asText(pickText(p, 'title', p.title || ''));
+      const excerpt = asText(pickText(p, 'excerpt', p.excerpt || ''));
+      const cover = coverUrl(p);
+
+      return `
       <div class="news-card">
         <div class="news-image">
-          <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(asText(pick(p,'title')))}">
+          <img src="${escapeHtml(cover)}" alt="${escapeHtml(title)}">
         </div>
         <div class="news-content">
-          <h3>${escapeHtml(asText(pick(p,'title')))}</h3>
+          <h3>${escapeHtml(title)}</h3>
           <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
-          <p class="news-excerpt">${escapeHtml(asText(pick(p,'excerpt')) || '')}</p>
+          <p class="news-excerpt">${escapeHtml(excerpt || '')}</p>
           <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
         </div>
       </div>
-    `).join('');
+      `;
+    }).join('');
 
     // pager
+    if (!pagerEl) return;
     pagerEl.innerHTML = '';
+
     const prev = document.createElement('button');
     prev.textContent = 'Prev';
     prev.disabled = page <= 1;
@@ -165,22 +170,43 @@ function pickText(p, baseKey, fallback=''){
     pagerEl.appendChild(next);
   }
 
-  // events
-  searchEl.addEventListener('input', () => { page = 1; render(); });
-  catEl.addEventListener('change', () => { page = 1; render(); });
+  // ---------- events ----------
+  if (searchEl) searchEl.addEventListener('input', () => { page = 1; render(); });
+  if (catEl) catEl.addEventListener('change', () => { page = 1; render(); });
 
+  // ---------- lang toggle integration ----------
+  // 1) main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시
+  // 2) main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
+  (function bindLang(){
+    const btn = document.getElementById('langToggleBtn');
+    if (!btn || btn.dataset.newsLangBound) return;
+    btn.dataset.newsLangBound = '1';
+
+    // capture: before 저장
+    btn.addEventListener('click', () => {
+      btn.dataset.langBefore = (localStorage.getItem('lang') || 'ko');
+    }, true);
+
+    // bubble: 토글 감지/보조
+    btn.addEventListener('click', () => {
+      const before = (btn.dataset.langBefore || 'ko').toLowerCase();
+      const after = (localStorage.getItem('lang') || 'ko').toLowerCase();
+
+      // main/script.js가 이미 바꿨으면: 리렌더만
+      if (after !== before){
+        page = 1;
+        render();
+        return;
+      }
+
+      // 아니면 여기서 토글 수행 후 리렌더
+      localStorage.setItem('lang', before === 'en' ? 'ko' : 'en');
+      page = 1;
+      render();
+    });
+  })();
+
+  // initial render
   render();
 })();
 
-// --- re-render on language toggle (do NOT block existing handler) ---
-const langBtn = document.getElementById('langToggleBtn');
-if (langBtn && !langBtn.dataset.newsRerenderBound) {
-  langBtn.dataset.newsRerenderBound = '1';
-  langBtn.addEventListener('click', () => {
-    // main/script.js가 localStorage.lang을 바꾼 다음 렌더되도록 한 틱 늦춰 실행
-    setTimeout(() => {
-      page = 1;
-      render();
-    }, 0);
-  });
-}
