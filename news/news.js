@@ -46,6 +46,42 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
+  /* ===================== locale helpers (SAFE, backward compatible) ===================== */
+  function getLang(){
+    return (localStorage.getItem('lang') || 'ko').toLowerCase();
+  }
+  const LANG = (getLang() === 'en') ? 'en' : 'ko';
+
+  function pickText(p, baseKey, fallback=''){
+    // Prefer baseKey_ko / baseKey_en
+    const v1 = p?.[`${baseKey}_${LANG}`];
+    if (v1 !== undefined && v1 !== null) return v1;
+
+    // Support object form: { ko: ..., en: ... }
+    const obj = p?.[baseKey];
+    if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
+      const v2 = obj[LANG];
+      if (v2 !== undefined && v2 !== null) return v2;
+      return obj.ko ?? obj.en ?? fallback;
+    }
+
+    // Backward-compatible: plain field
+    const v3 = p?.[baseKey];
+    return (v3 !== undefined && v3 !== null) ? v3 : fallback;
+  }
+
+  function toOneLine(v){
+    if (Array.isArray(v)) return v.filter(Boolean).join(' ');
+    return String(v ?? '');
+  }
+
+  function toLines(v){
+    if (Array.isArray(v)) return v;
+    if (typeof v === 'string' && v.trim()) return [v];
+    return [];
+  }
+  /* ===================================================================================== */
+
   function getFiltered(){
     const q = normalize(searchEl.value).trim();
     const cat = catEl.value;
@@ -54,7 +90,13 @@
       const okCat = (cat === 'ALL') || (p.category === cat);
       if (!okCat) return false;
       if (!q) return true;
-      const hay = normalize(p.title) + ' ' + normalize(p.excerpt) + ' ' + normalize((p.content || []).join(' '));
+
+      // ✅ language-aware search index (does NOT break existing posts)
+      const title = toOneLine(pickText(p, 'title', p.title || ''));
+      const excerpt = toOneLine(pickText(p, 'excerpt', p.excerpt || ''));
+      const content = toLines(pickText(p, 'content', p.content || [])).join(' ');
+
+      const hay = normalize(title) + ' ' + normalize(excerpt) + ' ' + normalize(content);
       return hay.includes(q);
     });
   }
@@ -67,19 +109,24 @@
     const start = (page - 1) * PAGE_SIZE;
     const slice = filtered.slice(start, start + PAGE_SIZE);
 
-    listEl.innerHTML = slice.map(p => `
+    listEl.innerHTML = slice.map(p => {
+      const title = toOneLine(pickText(p, 'title', p.title || ''));
+      const excerpt = toOneLine(pickText(p, 'excerpt', p.excerpt || ''));
+
+      return `
       <div class="news-card">
         <div class="news-image">
-          <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(p.title)}">
+          <img src="${escapeHtml(p.cover)}" alt="${escapeHtml(title)}">
         </div>
         <div class="news-content">
-          <h3>${escapeHtml(p.title)}</h3>
+          <h3>${escapeHtml(title)}</h3>
           <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
-          <p class="news-excerpt">${escapeHtml(p.excerpt || '')}</p>
+          <p class="news-excerpt">${escapeHtml(excerpt)}</p>
           <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
         </div>
       </div>
-    `).join('');
+      `;
+    }).join('');
 
     // pager
     pagerEl.innerHTML = '';
