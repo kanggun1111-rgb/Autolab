@@ -38,7 +38,7 @@
       "items": [
         {
           "name": "Pusan National University School of Mechanical Engineering",
-          "logo": "sponsors/images/pnu-me.png",
+          "logo": "sponsors/images/title-1.png",
           "url": "https://me.pusan.ac.kr/"
         }
       ]
@@ -89,6 +89,31 @@
         {
           "name": "Sponsor F",
           "logo": "sponsors/images/silver-3.png",
+          "url": ""
+        },
+        {
+          "name": "Sponsor F",
+          "logo": "sponsors/images/silver-4.png",
+          "url": ""
+        },
+        {
+          "name": "Sponsor F",
+          "logo": "sponsors/images/silver-5.png",
+          "url": ""
+        },
+        {
+          "name": "Sponsor F",
+          "logo": "sponsors/images/silver-6.png",
+          "url": ""
+        },
+        {
+          "name": "Sponsor F",
+          "logo": "sponsors/images/silver-7.png",
+          "url": ""
+        },
+        {
+          "name": "Sponsor F",
+          "logo": "sponsors/images/silver-8.png",
           "url": ""
         }
       ]
