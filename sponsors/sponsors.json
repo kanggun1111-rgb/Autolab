@@ -52,12 +52,10 @@
       "layout": "grid",
       "items": [
         {
-          "name": "Sponsor A",
           "logo": "sponsors/images/gold-1.png",
           "url": ""
         },
         {
-          "name": "Sponsor B",
           "logo": "sponsors/images/gold-2.png",
           "url": ""
         },
