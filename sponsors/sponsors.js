@@ -68,29 +68,26 @@
     }
   }
 
-  function card(item, featured=false){
-    const href = (item.url || '').trim();
-    const link = href
-      ? `<a class="logo-link" href="${esc(href)}" target="_blank" rel="noopener">Visit →</a>`
-      : `<span style="opacity:.65;font-weight:800;">&nbsp;</span>`;
+function card(item, featured=false){ 
+  const href = (item.url || '').trim();
 
-    const name = item.name || '';
+  // url 있을 때만 링크를 생성 (없으면 아예 생성 X)
+  const link = href
+    ? `<a class="logo-link" href="${esc(href)}" target="_blank" rel="noopener">Visit →</a>`
+    : '';
 
-    return `
-      <article class="logo-card ${featured ? 'featured' : ''}">
-        <div class="logo-card__inner">
-          <div class="logo-title">
-            <b>${esc(name)}</b>
-            <span>${featured ? 'TITLE' : ''}</span>
-          </div>
-          <div class="logo-media">
-            <img src="${esc(item.logo || '')}" alt="${esc(name)}">
-          </div>
-          ${link}
+  return `
+    <article class="logo-card ${featured ? 'featured' : ''}">
+      <div class="logo-card__inner">
+        <div class="logo-media">
+          <img src="${esc(item.logo || '')}" alt="Sponsor logo">
         </div>
-      </article>
-    `;
-  }
+        ${link}
+      </div>
+    </article>
+  `;
+}
+
 
   function renderTier(t){
     const tierName = t.tier || '';
