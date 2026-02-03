@@ -1,57 +1,95 @@
-/* sponsors/sponsorsstyle.css
-   - Tiers: Title, Gold, Silver, Support
-   - Logos never crop: object-fit:contain + max-height
-   - Support tier optional marquee (CSS animation)
-*/
+/* =========================================================
+   sponsors/sponsorsstyle.css
+   - Tiers: Title / Gold / Silver / Support
+   - Card = clickable area
+   - Logo always centered, never cropped
+========================================================= */
 
-.sponsors-page{ padding:130px 0 90px; }
-.sponsors-page .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+/* ================= PAGE ================= */
+.sponsors-page{
+  padding:130px 0 90px;
+}
+.sponsors-page .container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
 
-/* HERO */
+/* ================= HERO ================= */
 .s-hero{
   border:1px solid rgba(255,255,255,0.08);
-  background: radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
-              rgba(255,255,255,0.02);
+  background:
+    radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
+    rgba(255,255,255,0.02);
   border-radius:24px;
   padding:26px 22px 22px;
   display:grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap:18px;
-  align-items:stretch;
 }
+
 .s-hero .eyebrow{
   font-family:'Orbitron',sans-serif;
   letter-spacing:.14em;
   font-size:.78rem;
   opacity:.9;
 }
+
 .s-hero h1{
   margin-top:10px;
   font-size:clamp(2.1rem,3.8vw,3.2rem);
   letter-spacing:-.02em;
   line-height:1.08;
 }
-.s-hero .subtitle{ margin-top:12px; opacity:.82; max-width:66ch; }
 
-.hero-actions{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-.hero-actions a{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:11px 14px; border-radius:999px; text-decoration:none; color:#fff;
-  border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); font-weight:900;
+.s-hero .subtitle{
+  margin-top:12px;
+  opacity:.82;
+  max-width:66ch;
 }
-.hero-actions a.primary{ border-color:rgba(240,165,0,0.35); background:rgba(240,165,0,0.10); }
 
-.hero-note{ margin-top:14px; opacity:.75; }
+.hero-actions{
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.hero-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
+}
+.hero-actions a.primary{
+  border-color:rgba(240,165,0,0.35);
+  background:rgba(240,165,0,0.10);
+}
 
+.hero-note{
+  margin-top:14px;
+  opacity:.75;
+}
+
+/* Hero side card */
 .hero-card{
   border:1px solid rgba(255,255,255,0.10);
   background:rgba(10,12,18,0.55);
   border-radius:22px;
-  overflow:hidden;
-  padding:16px 16px 14px;
+  padding:16px;
   box-shadow:0 14px 40px rgba(0,0,0,0.35);
 }
-.hero-card__top{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.hero-card__top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
 .badge{
   font-family:'Orbitron',sans-serif;
   letter-spacing:.12em;
@@ -62,10 +100,26 @@
   background:rgba(240,165,0,0.10);
 }
 .muted{ opacity:.75; font-weight:800; }
-.hero-card__mid{ margin-top:14px; }
-.hero-card__mid h3{ font-size:1.35rem; letter-spacing:-.01em; }
-.hero-card__mid p{ margin-top:10px; opacity:.82; line-height:1.7; }
-.hero-card__bottom{ margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; }
+
+.hero-card__mid{
+  margin-top:14px;
+}
+.hero-card__mid h3{
+  font-size:1.35rem;
+  letter-spacing:-.01em;
+}
+.hero-card__mid p{
+  margin-top:10px;
+  opacity:.82;
+  line-height:1.7;
+}
+
+.hero-card__bottom{
+  margin-top:14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
 .chip{
   font-family:'Orbitron',sans-serif;
   letter-spacing:.10em;
@@ -74,44 +128,41 @@
   border-radius:999px;
   border:1px solid rgba(255,255,255,0.12);
   background:rgba(255,255,255,0.03);
-  opacity:.92;
 }
 
-/* =========================================================
-   SPONSOR LOGO WALL (Grid only) — Hero CSS untouched
-   - 기존 기능/HTML 구조 유지
-   - 로고 전시 영역만 "쇼케이스 월"로 업그레이드
-========================================================= */
-
-/* 티어 블록(타이틀/골드/실버/서포트) 구간 */
+/* ================= TIERS ================= */
 .tier-block{
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top:26px;
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,0.08);
+
+  /* default tier variables */
+  --min:220px;
+  --h:132px;
+  --glow:rgba(240,165,0,0.10);
+  --border:rgba(255,255,255,0.10);
+  --bg:rgba(255,255,255,0.02);
 }
 
-/* 티어 헤더(타이틀/설명) — 히어로랑 무관 */
+/* Tier header */
 .tier-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
   gap:14px;
   flex-wrap:wrap;
-  margin-bottom: 14px;
+  margin-bottom:14px;
 }
-
 .tier-head h2{
-  font-size: clamp(1.25rem, 2vw, 1.65rem);
-  letter-spacing: -0.01em;
+  font-size:clamp(1.25rem,2vw,1.65rem);
+  letter-spacing:-0.01em;
 }
-
 .tier-head p{
-  opacity: .78;
-  max-width: 72ch;
-  line-height: 1.65;
+  opacity:.78;
+  max-width:72ch;
+  line-height:1.65;
 }
-
-.tier-head .tier-badge{
+.tier-badge{
   font-family:'Orbitron',sans-serif;
   letter-spacing:.14em;
   font-size:.78rem;
@@ -119,74 +170,48 @@
   border-radius:999px;
   border:1px solid rgba(255,255,255,0.12);
   background:rgba(255,255,255,0.03);
-  opacity:.9;
 }
 
-/* ✅ 티어별 차등 변수 (위계) */
-.tier-block{
-  --min: 220px;          /* 그리드 최소 폭 */
-  --h: 132px;            /* 카드 높이 */
-  --glow: rgba(240,165,0,0.10);
-  --border: rgba(255,255,255,0.10);
-  --bg: rgba(255,255,255,0.02);
-}
-
-/* Title: 대표 스폰서 더 크고 강조 */
+/* Tier scale */
 .tier-block[data-tier="Title"]{
-  --min: 520px;
-  --h: 220px;
-  --glow: rgba(240,165,0,0.18);
-  --border: rgba(240,165,0,0.22);
-  --bg: rgba(240,165,0,0.04);
+  --min:520px;
+  --h:220px;
+  --glow:rgba(240,165,0,0.18);
+  --border:rgba(240,165,0,0.22);
+  --bg:rgba(240,165,0,0.04);
 }
-
-/* Gold: 약간 더 큼 */
 .tier-block[data-tier="Gold"]{
-  --min: 260px;
-  --h: 148px;
-  --glow: rgba(240,165,0,0.12);
-  --border: rgba(240,165,0,0.16);
+  --min:260px;
+  --h:148px;
 }
-
-/* Silver: 표준 */
 .tier-block[data-tier="Silver"]{
-  --min: 230px;
-  --h: 132px;
+  --min:230px;
 }
-
-/* Support: 더 촘촘 */
 .tier-block[data-tier="Support"]{
-  --min: 200px;
-  --h: 118px;
-  --bg: rgba(255,255,255,0.015);
+  --min:200px;
+  --h:118px;
+  --bg:rgba(255,255,255,0.015);
 }
 
-/* ===== 로고 월 그리드 ===== */
+/* ================= LOGO GRID ================= */
 .logo-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
-  gap: 12px;
-  align-items: stretch;
+  grid-template-columns:repeat(auto-fit,minmax(var(--min),1fr));
+  gap:12px;
 }
 
-/* Title도 동일 그리드로 (HTML에 featured 클래스가 있어도 대응) */
-.logo-grid.featured{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
-  gap: 12px;
-  justify-items: center;
-}
-
-/* ===== 카드(전시 벽 느낌) ===== */
+/* ================= LOGO CARD ================= */
 .logo-card{
-  position: relative;
-  height: var(--h);
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  overflow: hidden;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  position:relative;
+  height:var(--h);
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,0.45);
+  text-decoration:none;
+  color:inherit;
+  transition:transform .18s ease, border-color .18s ease;
 }
 
 .logo-card::before{
@@ -194,117 +219,58 @@
   position:absolute;
   inset:0;
   background:
-    radial-gradient(900px 240px at 20% 0%, var(--glow), transparent 60%),
-    radial-gradient(700px 220px at 90% 110%, rgba(255,255,255,0.04), transparent 55%);
-  opacity: .9;
+    radial-gradient(900px 240px at 20% 0%, var(--glow), transparent 60%);
   pointer-events:none;
 }
 
 .logo-card__inner{
-  position: relative;
-  height: 100%;
-  padding: 14px;
-  display:flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* 기존 타이틀/메타가 있다면 hover에만 살짝 */
-.logo-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity .18s ease, transform .18s ease;
-  pointer-events:none;
-}
-.logo-title b{
-  font-family:'Orbitron',sans-serif;
-  letter-spacing:.12em;
-  font-size:.72rem;
-  opacity:.9;
-}
-.logo-title span{ opacity:.65; font-weight:800; }
-
-/* 로고 영역(기존 박스/보더 과하면 여기서 정리) */
-.logo-media{
-  flex: 1;
-  border: none !important;
-  background: rgba(0,0,0,0.18);
-  border-radius: 14px;
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 12px;
+  padding:14px;
 }
 
-.logo-media img{
-  width: 100%;
-  height: 100%;
-  max-height: calc(var(--h) - 38px);
-  object-fit: contain;
-  object-position: center;
-  filter: saturate(1.02) contrast(1.06);
-}
-
-/* 링크 버튼(있다면) hover에만 */
-.logo-link{
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
-  display:inline-flex;
+.logo-media{
+  width:100%;
+  height:100%;
+  display:flex;
   align-items:center;
-  gap:8px;
-  text-decoration:none;
-  font-weight: 900;
-  font-size: .92rem;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity .18s ease, transform .18s ease;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.28);
-  backdrop-filter: blur(8px);
+  justify-content:center;
+}
+.logo-media img{
+  width:100%;
+  height:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:saturate(1.02) contrast(1.06);
 }
 
-/* Hover: 살짝 들리고, 타이틀/링크 등장 */
-.logo-card:hover{
-  transform: translateY(-2px);
-  border-color: rgba(240,165,0,0.28);
-  background: rgba(255,255,255,0.03);
+/* Hover (clickable cards only) */
+.logo-card.is-clickable{
+  cursor:pointer;
 }
-.logo-card:hover .logo-title{
-  opacity: .95;
-  transform: translateY(0);
-}
-.logo-card:hover .logo-link{
-  opacity: .95;
-  transform: translateY(0);
+.logo-card.is-clickable:hover{
+  transform:translateY(-2px);
+  border-color:rgba(240,165,0,0.35);
 }
 
-/* 반응형 */
-@media (max-width: 980px){
-  .logo-grid,
-  .logo-grid.featured{
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
+/* ================= RESPONSIVE ================= */
+@media (max-width:980px){
   .tier-block[data-tier="Title"]{
-    --min: 100%;
-    --h: 210px;
+    --min:100%;
+    --h:210px;
   }
 }
 
-@media (max-width: 600px){
-  .logo-grid,
-  .logo-grid.featured{
-    grid-template-columns: 1fr;
+@media (max-width:600px){
+  .logo-grid{
+    grid-template-columns:1fr;
   }
-  .logo-card{ height: max(150px, var(--h)); }
+  .logo-card{
+    height:max(150px,var(--h));
+  }
 }
-
 
 /* ================= LANG TOGGLE ================= */
 .lang-toggle{
@@ -318,7 +284,7 @@
   color:#fff;
   font-weight:900;
   cursor:pointer;
-  transition: opacity .2s ease, transform .2s ease;
 }
-.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
-.lang-toggle:active{ transform: translateY(0px); opacity:.92; }
+.lang-toggle:hover{
+  transform:translateY(-1px);
+}

@@ -70,23 +70,26 @@
 
 function card(item, featured=false){ 
   const href = (item.url || '').trim();
+  const clickable = href ? 'is-clickable' : '';
 
-  // url 있을 때만 링크를 생성 (없으면 아예 생성 X)
-  const link = href
-    ? `<a class="logo-link" href="${esc(href)}" target="_blank" rel="noopener">Visit →</a>`
-    : '';
+  // url이 있으면 <a>, 없으면 <article>
+  const tagOpen  = href
+    ? `<a class="logo-card ${clickable} ${featured ? 'featured' : ''}" href="${esc(href)}" target="_blank" rel="noopener">`
+    : `<article class="logo-card ${featured ? 'featured' : ''}">`;
+
+  const tagClose = href ? `</a>` : `</article>`;
 
   return `
-    <article class="logo-card ${featured ? 'featured' : ''}">
+    ${tagOpen}
       <div class="logo-card__inner">
         <div class="logo-media">
           <img src="${esc(item.logo || '')}" alt="Sponsor logo">
         </div>
-        ${link}
       </div>
-    </article>
+    ${tagClose}
   `;
 }
+
 
 
   function renderTier(t){
