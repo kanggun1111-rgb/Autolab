@@ -60,7 +60,6 @@
           "url": ""
         },
         {
-          "name": "Sponsor C",
           "logo": "sponsors/images/gold-3.png",
           "url": ""
         }
@@ -75,42 +74,34 @@
       "layout": "grid",
       "items": [
         {
-          "name": "Sponsor D",
           "logo": "sponsors/images/silver-1.png",
           "url": ""
         },
         {
-          "name": "Sponsor E",
           "logo": "sponsors/images/silver-2.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-3.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-4.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-5.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-6.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-7.png",
           "url": ""
         },
         {
-          "name": "Sponsor F",
           "logo": "sponsors/images/silver-8.png",
           "url": ""
         }
@@ -125,27 +116,22 @@
       },
       "items": [
         {
-          "name": "Supporter 1",
           "logo": "sponsors/images/support-1.png",
           "url": ""
         },
         {
-          "name": "Supporter 2",
           "logo": "sponsors/images/support-2.png",
           "url": ""
         },
         {
-          "name": "Supporter 3",
           "logo": "sponsors/images/support-3.png",
           "url": ""
         },
         {
-          "name": "Supporter 4",
           "logo": "sponsors/images/support-4.png",
           "url": ""
         },
         {
-          "name": "Supporter 5",
           "logo": "sponsors/images/support-5.png",
           "url": ""
         }
