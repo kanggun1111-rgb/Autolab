@@ -1,100 +1,33 @@
-/* sponsors/sponsorsstyle.css
-   - Tiers: Title, Gold, Silver, Support
-   - Logos never crop: object-fit:contain + max-height
-   - Support tier optional marquee (CSS animation)
-*/
+/* =========================
+   Tier blocks (Showcase Wall)
+========================= */
 
-.sponsors-page{ padding:130px 0 90px; }
-.sponsors-page .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
-
-/* HERO */
-.s-hero{
-  border:1px solid rgba(255,255,255,0.08);
-  background: radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
-              rgba(255,255,255,0.02);
-  border-radius:24px;
-  padding:26px 22px 22px;
-  display:grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap:18px;
-  align-items:stretch;
-}
-.s-hero .eyebrow{
-  font-family:'Orbitron',sans-serif;
-  letter-spacing:.14em;
-  font-size:.78rem;
-  opacity:.9;
-}
-.s-hero h1{
-  margin-top:10px;
-  font-size:clamp(2.1rem,3.8vw,3.2rem);
-  letter-spacing:-.02em;
-  line-height:1.08;
-}
-.s-hero .subtitle{ margin-top:12px; opacity:.82; max-width:66ch; }
-
-.hero-actions{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-.hero-actions a{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:11px 14px; border-radius:999px; text-decoration:none; color:#fff;
-  border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); font-weight:900;
-}
-.hero-actions a.primary{ border-color:rgba(240,165,0,0.35); background:rgba(240,165,0,0.10); }
-
-.hero-note{ margin-top:14px; opacity:.75; }
-
-.hero-card{
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(10,12,18,0.55);
-  border-radius:22px;
-  overflow:hidden;
-  padding:16px 16px 14px;
-  box-shadow:0 14px 40px rgba(0,0,0,0.35);
-}
-.hero-card__top{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
-.badge{
-  font-family:'Orbitron',sans-serif;
-  letter-spacing:.12em;
-  font-size:.72rem;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid rgba(240,165,0,0.35);
-  background:rgba(240,165,0,0.10);
-}
-.muted{ opacity:.75; font-weight:800; }
-.hero-card__mid{ margin-top:14px; }
-.hero-card__mid h3{ font-size:1.35rem; letter-spacing:-.01em; }
-.hero-card__mid p{ margin-top:10px; opacity:.82; line-height:1.7; }
-.hero-card__bottom{ margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; }
-.chip{
-  font-family:'Orbitron',sans-serif;
-  letter-spacing:.10em;
-  font-size:.68rem;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.03);
-  opacity:.92;
-}
-
-/* Tier blocks */
 .tier-block{
-  margin-top:22px;
-  border-top:1px solid rgba(255,255,255,0.08);
-  padding-top:22px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
+
+/* 헤더를 "편집/매거진" 느낌으로 정리 */
 .tier-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
   gap:14px;
   flex-wrap:wrap;
+  margin-bottom: 14px;
 }
+
 .tier-head h2{
-  font-size:1.55rem;
-  letter-spacing:-.01em;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  letter-spacing: -0.01em;
 }
-.tier-head p{ opacity:.78; max-width:70ch; }
+.tier-head p{
+  opacity: .78;
+  max-width: 72ch;
+  line-height: 1.65;
+}
+
 .tier-head .tier-badge{
   font-family:'Orbitron',sans-serif;
   letter-spacing:.14em;
@@ -106,184 +39,189 @@
   opacity:.9;
 }
 
-/* Card */
-.logo-grid{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:14px;
-}
-.logo-grid.featured{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 14px;
-}
-.logo-grid.featured .logo-card{
-  width: min(520px, 100%);
-  flex: 1 1 420px;
-  max-width: 520px;
+/* ✅ 티어별 “벽 전시” 밀도 차등: 카드 크기/그리드가 달라짐 */
+.tier-block{ 
+  --min: 220px;  /* 그리드 최소 카드 폭 */
+  --h: 132px;    /* 카드 높이 */
+  --glow: rgba(240,165,0,0.10);
+  --border: rgba(255,255,255,0.10);
+  --bg: rgba(255,255,255,0.02);
 }
 
-.logo-card{
-  position:relative;
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(255,255,255,0.02);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 14px 40px rgba(0,0,0,0.35);
-  min-height: 170px;
+/* Title(Featured): 더 크고 존재감 있게 */
+.tier-block[data-tier="Title"]{
+  --min: 520px;
+  --h: 220px;
+  --glow: rgba(240,165,0,0.18);
+  --border: rgba(240,165,0,0.22);
+  --bg: rgba(240,165,0,0.04);
 }
-.logo-card.featured{ min-height: 240px; }
+
+/* Gold: 크고 간격 넓게 */
+.tier-block[data-tier="Gold"]{
+  --min: 260px;
+  --h: 148px;
+  --glow: rgba(240,165,0,0.12);
+  --border: rgba(240,165,0,0.16);
+}
+
+/* Silver: 표준 */
+.tier-block[data-tier="Silver"]{
+  --min: 230px;
+  --h: 132px;
+}
+
+/* Support: 더 촘촘하게 */
+.tier-block[data-tier="Support"]{
+  --min: 200px;
+  --h: 118px;
+  --bg: rgba(255,255,255,0.015);
+}
+
+/* ===== Logo wall grid ===== */
+.logo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* featured 레이아웃(Title)도 grid로 통일감 있게 */
+.logo-grid.featured{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* ===== Cards: “프레임 없는 전시벽” 느낌 ===== */
+.logo-card{
+  position: relative;
+  height: var(--h);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
 
 .logo-card::before{
   content:"";
   position:absolute;
   inset:0;
-  background: radial-gradient(800px 220px at 20% 10%, rgba(240,165,0,0.10), transparent 60%);
-  opacity: .8;
+  background:
+    radial-gradient(900px 240px at 20% 0%, var(--glow), transparent 60%),
+    radial-gradient(700px 220px at 90% 110%, rgba(255,255,255,0.04), transparent 55%);
+  opacity: .9;
   pointer-events:none;
 }
 
+/* 내부 구성: 로고를 "벽에 걸어 둔" 느낌으로 중앙 배치 */
 .logo-card__inner{
-  position:relative;
-  height:100%;
-  padding:16px 16px 14px;
+  position: relative;
+  height: 100%;
+  padding: 14px;
   display:flex;
-  flex-direction:column;
-  gap:12px;
+  flex-direction: column;
+  gap: 10px;
 }
 
+/* 기존 타이틀 영역은 “기본 숨김”, 필요하면 hover에서만 */
 .logo-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events:none;
 }
-.logo-title b{ font-family:'Orbitron',sans-serif; letter-spacing:.12em; font-size:.78rem; opacity:.9; }
-.logo-title span{ opacity:.7; font-weight:800; }
+.logo-title b{
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:.12em;
+  font-size:.72rem;
+  opacity:.9;
+}
+.logo-title span{ opacity:.65; font-weight:800; }
 
+/* 로고 프레임(기존 border 박스)을 없애고, 더 “전시”처럼 */
 .logo-media{
-  flex:1;
-  border:1px solid rgba(255,255,255,0.08);
-  background:rgba(0,0,0,0.30);
-  border-radius:18px;
+  flex: 1;
+  border: none;
+  background: rgba(0,0,0,0.18);
+  border-radius: 14px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:14px;
+  padding: 12px;
 }
-.logo-media img{
-  width:100%;
-  height:100%;
-  max-height: 120px;      /* ✅ 핵심: 로고 높이 제한 */
-  object-fit: contain;     /* ✅ 핵심: 잘림 방지 */
-  object-position:center;
-  filter: saturate(.95) contrast(1.05);
-}
-.logo-card.featured .logo-media img{ max-height: 160px; }
 
+.logo-media img{
+  width: 100%;
+  height: 100%;
+  max-height: calc(var(--h) - 38px);
+  object-fit: contain;
+  object-position: center;
+  /* 로고가 더 선명하게 보이도록 */
+  filter: saturate(1.02) contrast(1.06);
+}
+
+/* 링크는 “눈에 거슬리지 않게” hover에서만 슬쩍 등장 */
 .logo-link{
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
   display:inline-flex;
   align-items:center;
   gap:8px;
   text-decoration:none;
-  font-weight:900;
-  opacity:.9;
-}
-.logo-link:hover{ opacity:1; }
-
-/* Support marquee */
-.marquee{
-  margin-top:14px;
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(255,255,255,0.02);
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-}
-.marquee__track{
-  display:flex;
-  gap:14px;
-  padding:14px;
-  width:max-content;
-  animation: marquee 26s linear infinite;
-}
-.marquee:hover .marquee__track{ animation-play-state: paused; }
-
-.marquee-card{
-  width: 220px;
-  height: 120px;
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(0,0,0,0.30);
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px;
-  flex: 0 0 auto;
-}
-.marquee-card img{
-  width:100%;
-  height:100%;
-  max-height: 86px;
-  object-fit: contain;
+  font-weight: 900;
+  font-size: .92rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .18s ease, transform .18s ease;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(8px);
 }
 
-@keyframes marquee{
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* Hover 효과: 카드가 “브랜드 자산”처럼 살아남 */
+.logo-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(240,165,0,0.28);
+  background: rgba(255,255,255,0.03);
 }
-
-/* Footer note */
-.s-foot{ margin-top:22px; border-top:1px solid rgba(255,255,255,0.08); padding-top:22px; }
-.foot-card{
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(255,255,255,0.02);
-  border-radius:22px;
-  padding:16px 16px 14px;
+.logo-card:hover .logo-title{
+  opacity: .95;
+  transform: translateY(0);
 }
-.foot-card h2{ font-size:1.25rem; letter-spacing:-.01em; }
-.foot-card ol{ margin-top:10px; padding-left:20px; opacity:.88; }
-.foot-card li{ margin:0 0 10px; line-height:1.7; }
-.foot-card code{ font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.95em; }
+.logo-card:hover .logo-link{
+  opacity: .95;
+  transform: translateY(0);
+}
+.logo-link:hover{ opacity: 1; }
 
-/* Responsive */
+/* 모바일/태블릿 대응 */
 @media (max-width: 980px){
-  .s-hero{ grid-template-columns: 1fr; }
-  .logo-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .logo-grid.featured{ grid-template-columns: 1fr; }
+  .logo-grid,
+  .logo-grid.featured{
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .tier-block[data-tier="Title"]{
+    --min: 100%;
+    --h: 210px;
+  }
 }
+
 @media (max-width: 600px){
-  .sponsors-page{ padding-top:110px; }
-  .logo-grid{ grid-template-columns: 1fr; }
-  .logo-card{ min-height: 160px; }
+  .tier-block{ margin-top: 22px; }
+  .logo-grid,
+  .logo-grid.featured{
+    grid-template-columns: 1fr;
+  }
+  .logo-card{ height: max(150px, var(--h)); }
 }
-
-
-/* Support tier: compact but respectful */
-.tier-block[data-tier="Support"] .logo-card{
-  min-height: 140px;
-}
-.tier-block[data-tier="Support"] .logo-media img{
-  max-height: 95px;
-}
-
-
-/* ================= LANG TOGGLE ================= */
-.lang-toggle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:10px 14px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.04);
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
-  transition: opacity .2s ease, transform .2s ease;
-}
-.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
-.lang-toggle:active{ transform: translateY(0px); opacity:.92; }
