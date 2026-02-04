@@ -1,18 +1,28 @@
-/* team/teamstyle.css (v2 - simplified)
+/* team/teamstyle.css (v2.1 - simplified, hero spacing fixed)
    Sections:
+   - Page layout
    - Hero
    - Achievements
    - Members (bottom)
+   - Lang toggle
 */
 
-.team-page{ padding:130px 0 90px; }
-.team-page .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+/* ===== Page layout ===== */
+.team-page{
+  padding:130px 0 40px; /* FIX: bottom padding reduced (was 90px) */
+}
+.team-page .container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
 
-/* HERO */
+/* ===== HERO ===== */
 .team-hero{
   border:1px solid rgba(255,255,255,0.08);
-  background: radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
-              rgba(255,255,255,0.02);
+  background:
+    radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
+    rgba(255,255,255,0.02);
   border-radius:24px;
   padding:18px 20px 16px;
 }
@@ -32,7 +42,11 @@
   white-space:pre-line;
 }
 
-.team-hero .lead{ margin-top:12px; opacity:.82; max-width:66ch; }
+.team-hero .lead{
+  margin-top:12px;
+  opacity:.82;
+  max-width:66ch;
+}
 
 .hero-grid{
   display:grid;
@@ -61,7 +75,11 @@
   opacity:.82;
 }
 
-.metric span{ display:block; margin-top:8px; font-weight:900; }
+.metric span{
+  display:block;
+  margin-top:8px;
+  font-weight:900;
+}
 
 .hero-media{
   height:280px;
@@ -71,19 +89,23 @@
 }
 
 .hero-media img{
-  width:100%; height:100%;
+  width:100%;
+  height:100%;
   object-fit:cover;
   filter:saturate(.95) contrast(1.05);
 }
 
-.hero-caption{ margin-top:10px; opacity:.8; }
+.hero-caption{
+  margin-top:10px;
+  opacity:.8;
+}
 .hero-caption b{ opacity:1; }
 
-/* BLOCK */
+/* ===== BLOCK ===== */
 .team-block{
-  margin-top:28px;
+  margin-top:18px;   /* FIX: reduced (was 28px) */
   border-top:1px solid rgba(255,255,255,0.08);
-  padding-top:22px;
+  padding-top:16px;  /* FIX: reduced (was 22px) */
 }
 
 .block-head h2{
@@ -91,10 +113,18 @@
   letter-spacing:-.01em;
 }
 
-.block-head p{ opacity:.78; max-width:70ch; }
+.block-head p{
+  opacity:.78;
+  max-width:70ch;
+}
 
-/* TIMELINE */
-.timeline{ margin-top:14px; display:grid; gap:12px; }
+/* ===== TIMELINE ===== */
+.timeline{
+  margin-top:14px;
+  display:grid;
+  gap:12px;
+}
+
 .t-item{
   border:1px solid rgba(255,255,255,0.10);
   background:rgba(255,255,255,0.02);
@@ -111,14 +141,19 @@
 }
 
 .t-item h3{ font-size:1.06rem; }
-.t-item p{ margin-top:8px; opacity:.82; line-height:1.7; }
+.t-item p{
+  margin-top:8px;
+  opacity:.82;
+  line-height:1.7;
+}
 
-/* MEMBERS (BOTTOM) */
+/* ===== MEMBERS (BOTTOM) ===== */
 .member-tools{
   margin-top:14px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  align-items:center;
 }
 
 .member-tools select,
@@ -128,6 +163,12 @@
   color:#fff;
   border-radius:12px;
   padding:11px 12px;
+}
+
+/* Fix select option visibility */
+.member-tools select option{
+  background:#fff;
+  color:#000;
 }
 
 .member-grid{
@@ -144,11 +185,19 @@
   overflow:hidden;
 }
 
-.member-photo{ height:190px; background:rgba(0,0,0,0.35); }
-.member-photo img{ width:100%; height:100%; object-fit:cover; }
+.member-photo{
+  height:190px;
+  background:rgba(0,0,0,0.35);
+}
+.member-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
 .member-body{ padding:14px; }
 .member-body h3{ font-size:1.05rem; }
+
 .member-body .meta{
   margin-top:8px;
   display:flex;
@@ -166,38 +215,15 @@
   background:rgba(240,165,0,0.08);
 }
 
-@media(max-width:980px){
-  .hero-grid{ grid-template-columns:1fr; }
-  .hero-media{ height:220px; }
-  .member-grid{ grid-template-columns:repeat(2,1fr); }
-  .t-item{ grid-template-columns:1fr; }
-}
-
-@media(max-width:600px){
-  .team-page{ padding-top:110px; }
-  .hero-metrics{ grid-template-columns:1fr; }
-  .member-grid{ grid-template-columns:1fr; }
-}
-
-/* ===== Fix select option visibility ===== */
-.member-tools select option {
-  background: #fff;   /* 드롭다운 배경 */
-  color: #000;        /* 드롭다운 글자 */
-}
-
-/* Members tabs (EV/CV) */
-.member-tools{
-  align-items:center; /* 기존 flex 유지 + 정렬만 보강 */
-}
-
+/* ===== Members tabs (EV/CV) ===== */
 .member-tabs{
   display:inline-flex;
   gap:8px;
   padding:6px;
   border-radius:14px;
-  background: rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
+  backdrop-filter:blur(10px);
 }
 
 .member-tabs .tab{
@@ -206,20 +232,20 @@
   cursor:pointer;
   padding:10px 12px;
   border-radius:10px;
-  background: transparent;
-  color: rgba(255,255,255,0.85);
+  background:transparent;
+  color:rgba(255,255,255,0.85);
   font-weight:800;
   letter-spacing:.02em;
   line-height:1;
 }
 
 .member-tabs .tab.active{
-  background: rgba(240,165,0,0.14);
+  background:rgba(240,165,0,0.14);
   color:#f0a500;
-  box-shadow: inset 0 0 0 1px rgba(240,165,0,0.35);
+  box-shadow:inset 0 0 0 1px rgba(240,165,0,0.35);
 }
 
-/* Members pagination */
+/* ===== Members pagination ===== */
 .member-pagination{
   display:flex;
   justify-content:center;
@@ -251,14 +277,26 @@
   cursor:default;
 }
 
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-media{ height:220px; }
+  .member-grid{ grid-template-columns:repeat(2,1fr); }
+  .t-item{ grid-template-columns:1fr; }
+}
 
-@media (max-width: 680px){
+@media(max-width:680px){
   .member-tabs{ width:100%; justify-content:space-between; }
   .member-tabs .tab{ flex:1; text-align:center; }
 }
 
+@media(max-width:600px){
+  .team-page{ padding-top:110px; }
+  .hero-metrics{ grid-template-columns:1fr; }
+  .member-grid{ grid-template-columns:1fr; }
+}
 
-/* ================= LANG TOGGLE ================= */
+/* ===== LANG TOGGLE ===== */
 .lang-toggle{
   display:inline-flex;
   align-items:center;
@@ -270,7 +308,7 @@
   color:#fff;
   font-weight:900;
   cursor:pointer;
-  transition: opacity .2s ease, transform .2s ease;
+  transition:opacity .2s ease, transform .2s ease;
 }
-.lang-toggle:hover{ opacity:1; transform: translateY(-1px); }
-.lang-toggle:active{ transform: translateY(0px); opacity:.92; }
+.lang-toggle:hover{ opacity:1; transform:translateY(-1px); }
+.lang-toggle:active{ transform:translateY(0px); opacity:.92; }
