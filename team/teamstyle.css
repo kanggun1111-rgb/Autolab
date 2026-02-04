@@ -219,6 +219,39 @@
   box-shadow: inset 0 0 0 1px rgba(240,165,0,0.35);
 }
 
+/* Members pagination */
+.member-pagination{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.member-pagination button{
+  min-width:36px;
+  height:36px;
+  padding:0 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.member-pagination button.active{
+  background:rgba(240,165,0,0.18);
+  border-color:rgba(240,165,0,0.5);
+  color:#f0a500;
+}
+
+.member-pagination button:disabled{
+  opacity:.45;
+  cursor:default;
+}
+
+
 @media (max-width: 680px){
   .member-tabs{ width:100%; justify-content:space-between; }
   .member-tabs .tab{ flex:1; text-align:center; }

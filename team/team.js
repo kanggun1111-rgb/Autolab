@@ -1,4 +1,4 @@
-/* team/team.js (v3 safe ko/en + no i18n) */
+/* team/team.js (v3.1 safe ko/en + no i18n + EV/CV tabs + pagination) */
 (async function(){
   const $ = (id) => document.getElementById(id);
 
@@ -14,7 +14,8 @@
     return (v === 'ko' || v === 'en') ? v : 'en';
   }
   const lang = getLang();
-    // --- Language toggle (safe) ---
+
+  // --- Language toggle (safe) ---
   // Some pages rely on main/script.js to bind this, but if that script errors on this page
   // the button can become inert. We bind locally as a fallback without changing UI/design.
   const langToggleBtn = document.getElementById('langToggleBtn');
@@ -34,7 +35,6 @@
       location.reload();
     }, true);
   }
-
 
   // Pick localized string from value:
   // - string -> string
@@ -115,6 +115,11 @@
   const divSel = $('memberDivision');
   const search = $('memberSearch');
   const grid = $('memberGrid');
+  const pager = document.getElementById('memberPagination');
+
+  const PAGE_SIZE = 8;
+  let currentPage = 1;
+  function resetPage(){ currentPage = 1; }
 
   // EV/CV tabs
   const tabAll = document.getElementById('tabAll');
@@ -127,10 +132,10 @@
     let teamFilter = 'ALL'; // ALL | EV | CV
 
     function classifyTeam(m){
-      // ✅ JSON에 team: "EV" | "CV" 넣는 방식
+      // JSON에 team: "EV" | "CV" 넣는 방식
       const t = String(pick(m.team) || '').trim().toUpperCase();
       if (t === 'EV' || t === 'CV') return t;
-      return 'CV'; // fallback (원하면 'UNKNOWN'도 가능)
+      return 'CV'; // fallback
     }
 
     function baseListByTeam(){
@@ -167,6 +172,7 @@
       buildDivisionOptions(baseListByTeam());
       divSel.value = 'ALL';
 
+      resetPage();
       renderMembers();
     }
 
@@ -178,11 +184,11 @@
       // 먼저 team 탭 필터 적용
       if (teamFilter !== 'ALL' && classifyTeam(m) !== teamFilter) return false;
 
-      // 기존 division 필터
+      // division 필터
       const mDivision = pick(m.division);
       if (divSel.value !== 'ALL' && mDivision !== divSel.value) return false;
 
-      // 기존 검색
+      // 검색
       const q = (search.value || '').toLowerCase();
       const hay = `${pick(m.name)} ${pick(m.role)} ${mDivision}`.toLowerCase();
       return !q || hay.includes(q);
@@ -190,7 +196,18 @@
 
     function renderMembers(){
       const list = members.filter(match);
-      grid.innerHTML = list.map(m => `
+
+      // --- pagination ---
+      const total = list.length;
+      const totalPages = Math.ceil(total / PAGE_SIZE);
+
+      if (currentPage > totalPages) currentPage = totalPages || 1;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = list.slice(start, start + PAGE_SIZE);
+
+      // cards
+      grid.innerHTML = pageItems.map(m => `
         <article class="member-card">
           <div class="member-photo">
             <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
@@ -204,10 +221,41 @@
           </div>
         </article>
       `).join('') || '<p style="opacity:.8">No members found.</p>'; // always English
+
+      // pager UI
+      if (!pager) return;
+
+      if (totalPages <= 1){
+        pager.innerHTML = '';
+        return;
+      }
+
+      pager.innerHTML = Array.from({ length: totalPages }, (_, i) => {
+        const p = i + 1;
+        const active = (p === currentPage);
+        return `
+          <button type="button"
+                  class="${active ? 'active' : ''}"
+                  ${active ? 'disabled' : ''}
+                  data-page="${p}"
+                  aria-label="Page ${p}">
+            ${p}
+          </button>
+        `;
+      }).join('');
+
+      pager.querySelectorAll('button[data-page]').forEach(btn => {
+        btn.onclick = () => {
+          currentPage = Number(btn.dataset.page) || 1;
+          renderMembers();
+          grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      });
     }
 
-    divSel.onchange = renderMembers;
-    search.oninput = renderMembers;
+    // 🔥 필터/검색 바뀌면 항상 1페이지로
+    divSel.onchange = () => { resetPage(); renderMembers(); };
+    search.oninput = () => { resetPage(); renderMembers(); };
 
     // 초기 탭 상태 반영
     if (tabAll) setActiveTab('ALL');

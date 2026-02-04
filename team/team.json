@@ -104,49 +104,49 @@
     },
     {
       "name": "김도율",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Frame",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "신주빈",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Suspension",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김희수",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Brake",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "이우철",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Battery",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "한윤서",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Motor Control",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김여주",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Circuit",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "안성원",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Drivetrain",
       "image": "team/images/member-placeholder.jpg"
@@ -160,14 +160,14 @@
     },
     {
       "name": "박현성",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Aerodynamics",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "우성욱",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "EV",
       "division": "Cooling",
       "image": "team/images/member-placeholder.jpg"
@@ -188,30 +188,30 @@
     },
     {
       "name": "이지호",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "CV",
       "division": "Fuel&Wiring ",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "조형준",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "CV",
       "division": "Engine Control",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "이재원",
-      "role": "Lead",
+      "role": "Subsystem Lead",
       "team": "CV",
       "division": "Drivetrain",
       "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "최지훈",
-      "role": "Lead",
+      "role": "Team Lead",
       "team": "CV",
-      "division": "Aerodynamics",
+      "division": "Aero&Cooling",
       "image": "team/images/member-placeholder.jpg"
     }
   ],
