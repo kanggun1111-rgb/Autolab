@@ -147,92 +147,152 @@
   opacity: 0.82;
 }
 
-/* =========================
-   MEMBERS
-========================= */
+/* ===== MEMBERS (BOTTOM) ===== */
 .member-tools{
-  margin-top: 18px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.member-tools select,
+.member-tools input{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.10);
+  color:#fff;
+  border-radius:12px;
+  padding:11px 12px;
+}
+
+/* Fix select option visibility */
+.member-tools select option{
+  background:#fff;
+  color:#000;
 }
 
 .member-grid{
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 16px;
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 
 .member-card{
-  border-radius: 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.02);
+  border-radius:20px;
+  overflow:hidden;
 }
 
 .member-photo{
-  height: 180px;
+  height:190px;
+  background:rgba(0,0,0,0.35);
+}
+.member-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.member-body{
-  padding: 14px;
-}
-
-.member-body h3{
-  font-size: 1.02rem;
-}
+.member-body{ padding:14px; }
+.member-body h3{ font-size:1.05rem; }
 
 .member-body .meta{
-  margin-top: 8px;
-  display: flex;
-  justify-content: space-between;
-  opacity: 0.8;
+  margin-top:8px;
+  display:flex;
+  justify-content:space-between;
+  opacity:.82;
 }
 
-/* =========================
-   PAGINATION
-========================= */
+.member-body .pill{
+  font-family:'Orbitron',sans-serif;
+  font-size:.68rem;
+  letter-spacing:.10em;
+  padding:6px 9px;
+  border-radius:999px;
+  border:1px solid rgba(240,165,0,0.30);
+  background:rgba(240,165,0,0.08);
+}
+
+/* ===== Members tabs (EV/CV) ===== */
+.member-tabs{
+  display:inline-flex;
+  gap:8px;
+  padding:6px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(10px);
+}
+
+.member-tabs .tab{
+  appearance:none;
+  border:0;
+  cursor:pointer;
+  padding:10px 12px;
+  border-radius:10px;
+  background:transparent;
+  color:rgba(255,255,255,0.85);
+  font-weight:800;
+  letter-spacing:.02em;
+  line-height:1;
+}
+
+.member-tabs .tab.active{
+  background:rgba(240,165,0,0.14);
+  color:#f0a500;
+  box-shadow:inset 0 0 0 1px rgba(240,165,0,0.35);
+}
+
+/* ===== Members pagination ===== */
 .member-pagination{
-  margin-top: 22px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:18px;
+  flex-wrap:wrap;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 980px){
-  .hero-grid{
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .hero-media{
-    height: 42vh;
-  }
-
-  .hero-text{
-    padding: 42px 32px;
-  }
-
-  .member-grid{
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .t-item{
-    grid-template-columns: 1fr;
-  }
+.member-pagination button{
+  min-width:36px;
+  height:36px;
+  padding:0 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  cursor:pointer;
+  font-weight:800;
 }
 
-@media (max-width: 600px){
-  .team-page{
-    padding-top: 96px;
-  }
-
-  .member-grid{
-    grid-template-columns: 1fr;
-  }
+.member-pagination button.active{
+  background:rgba(240,165,0,0.18);
+  border-color:rgba(240,165,0,0.5);
+  color:#f0a500;
 }
+
+.member-pagination button:disabled{
+  opacity:.45;
+  cursor:default;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-media{ height:220px; }
+  .member-grid{ grid-template-columns:repeat(2,1fr); }
+  .t-item{ grid-template-columns:1fr; }
+}
+
+@media(max-width:680px){
+  .member-tabs{ width:100%; justify-content:space-between; }
+  .member-tabs .tab{ flex:1; text-align:center; }
+}
+
+@media(max-width:600px){
+  .team-page{ padding-top:110px; }
+  .member-grid{ grid-template-columns:1fr; }
+}
+
+
