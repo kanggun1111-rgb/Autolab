@@ -20,13 +20,6 @@
   border-radius: 18px;
   padding: 0;
   overflow: hidden;
-  background:
-    linear-gradient(110deg,
-      rgba(0,0,0,0.85) 0%,
-      rgba(0,0,0,0.55) 38%,
-      rgba(0,0,0,0.15) 62%,
-      rgba(0,0,0,0.00) 100%
-    );
 }
 
 /* Hero layout */
