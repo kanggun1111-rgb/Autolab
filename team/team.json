@@ -9,8 +9,8 @@
       "ko": "Auto_Lab"
     },
     "lead": {
-      "en": "Auto_Lab, the Formula Student team of Pusan National University, develops both EV and CV platforms each season, continuously improving performance through a design–build–test–data-driven iteration loop.",
-      "ko": "부산대학교 자작자동차 동아리 Auto_Lab은 EV/CV 2대의 차량을 병행 개발하며, 설계–제작–시험–데이터 기반 개선 루프를 통해 매 시즌 성능을 끌어올립니다."
+      "ko": "Auto_Lab은 1999년 경남 자작자동차 경주대회 우승을 시작으로 KSAE 및 Formula Student Korea 무대에서 꾸준히 성과를 쌓아왔습니다. 2016–2017 KSAE 입상, 2020 내연기관 포뮬러 부문 출전 및 KSAE Formula 부문 입상, 2021 Pro‑Makers 전시회 최우수상·Capstone Design 대상, 2022 KSAE Formula 종합 5위와 각종 설계/혁신상, 2024 FSK 종합 7위 및 E‑Formula 3위까지—매 시즌 ‘설계–제작–시험–데이터’ 개선 루프로 기록을 갱신합니다. 현재는 EV/CV 두 플랫폼을 병행 개발하며, 신뢰성 있는 성능과 경쟁력 있는 패키징을 목표로 시스템 단위의 엔지니어링을 수행합니다.",
+      "en": "Since its early achievements—including a win at the Gyeongnam student-built car race in 1999—Auto_Lab has continuously delivered results across KSAE and Formula Student Korea. From multiple KSAE awards (2016–2017), IC participation and KSAE Formula recognition (2020), top prizes at Pro‑Makers and Capstone Design (2021), strong overall finishes and engineering awards (2022–2023), to an FSK overall commendation and an E‑Formula podium in 2024, we improve every season through a design–build–test–data iteration loop. Today we develop EV and CV platforms in parallel, engineering at the system level to deliver reliable performance and competitive packaging."
     },
     "image": "team/images/team-hero.jpg",
     "caption_bold": {
@@ -22,50 +22,6 @@
       "ko": "Minimal, editorial, and track-focused."
     }
   },
-
-  "metrics": [
-    {
-      "label": {
-        "en": "Vehicles / Season",
-        "ko": "시즌당 차량 수"
-      },
-      "value": {
-        "en": "2 (EV + CV)",
-        "ko": "2대 (EV + CV)"
-      }
-    },
-    {
-      "label": {
-        "en": "Competition",
-        "ko": "출전 대회"
-      },
-      "value": {
-        "en": "Formula Student / FSK",
-        "ko": "Formula Student / FSK"
-      }
-    },
-    {
-      "label": {
-        "en": "Core Focus",
-        "ko": "핵심 개발 분야"
-      },
-      "value": {
-        "en": "Aero • Chassis • Powertrain",
-        "ko": "공력 • 섀시 • 파워트레인"
-      }
-    },
-    {
-      "label": {
-        "en": "Based in",
-        "ko": "소속"
-      },
-      "value": {
-        "en": "Pusan National University",
-        "ko": "부산대학교"
-      }
-    }
-  ],
-
   "members": [
     {
       "name": "강건",
@@ -215,39 +171,93 @@
       "image": "team/images/member-placeholder.jpg"
     }
   ],
-
   "achievements": [
     {
-      "date": "2026",
+      "date": "1999",
       "title": {
-        "en": "Dual Platform Development",
-        "ko": "듀얼 플랫폼 개발"
+        "ko": "경남 자작자동차 경주대회 우승",
+        "en": "Winner — Gyeongnam Student-Built Car Race"
       },
       "desc": {
-        "en": "Parallel development of ALE and ALC platforms with expanded testing programs.",
-        "ko": "ALE / ALC 플랫폼 병행 개발 및 테스트 프로그램 확장"
+        "ko": "Auto_Lab의 시작을 알린 초기 성과로, 경남 자작자동차 경주대회에서 우승을 기록했습니다.",
+        "en": "An early milestone that marked Auto_Lab’s start: first-place finish at the Gyeongnam student-built car race."
       }
     },
     {
-      "date": "2025",
+      "date": "2016",
       "title": {
-        "en": "Vehicle Iteration",
-        "ko": "차량 성능 반복 개선"
+        "ko": "KSAE 입상",
+        "en": "KSAE Award / Placement"
       },
       "desc": {
-        "en": "Improved vehicle stability through setup refinement and packaging optimization.",
-        "ko": "셋업 및 패키징 개선을 통한 주행 안정성 강화"
+        "ko": "KSAE 대회에서 입상하며 기술력과 팀 운영 역량을 입증했습니다.",
+        "en": "Earned recognition at KSAE, demonstrating technical capability and team execution."
+      }
+    },
+    {
+      "date": "2017",
+      "title": {
+        "ko": "KSAE 입상",
+        "en": "KSAE Award / Placement"
+      },
+      "desc": {
+        "ko": "KSAE 대회에서 연속 입상을 달성하며 성과를 이어갔습니다.",
+        "en": "Continued momentum with another award/placement at KSAE."
+      }
+    },
+    {
+      "date": "2020",
+      "title": {
+        "ko": "내연기관 포뮬러 출전 · KSAE Formula 입상",
+        "en": "IC Formula Entry · KSAE Formula Recognition"
+      },
+      "desc": {
+        "ko": "내연기관 포뮬러 부문에 출전했으며, KSAE Formula 부문에서 입상했습니다.",
+        "en": "Entered the IC Formula category and received recognition in KSAE Formula."
+      }
+    },
+    {
+      "date": "2021",
+      "title": {
+        "ko": "Pro‑Makers 최우수상 · Capstone Design 대상",
+        "en": "Pro‑Makers Grand Prize · Capstone Design Top Award"
+      },
+      "desc": {
+        "ko": "Pro‑Makers 전시회 최우수상, Capstone Design 성과발표 대상 수상.",
+        "en": "Won top prizes at Pro‑Makers and at the Capstone Design final presentation."
+      }
+    },
+    {
+      "date": "2022",
+      "title": {
+        "ko": "KSAE Formula 종합 5위 · KFGP C‑Formula 6위 · ARTECH 대상 · Altair 은상",
+        "en": "Overall P5 (KSAE Formula) · C‑Formula P6 (KFGP) · ARTECH Grand Prize · Altair Silver"
+      },
+      "desc": {
+        "ko": "KSAE Formula 종합 5위, KFGP C‑Formula 6위 달성. ARTECH 대상 및 Altair 최적설계상 은상 수상.",
+        "en": "Placed 5th overall in KSAE Formula and 6th in KFGP C‑Formula, with ARTECH Grand Prize and Altair design optimization Silver."
+      }
+    },
+    {
+      "date": "2023",
+      "title": {
+        "ko": "KSAE Formula 종합 10위 · ARTECH 금상",
+        "en": "Overall P10 (KSAE Formula) · ARTECH Gold"
+      },
+      "desc": {
+        "ko": "KSAE Formula 종합 10위, 미래 모빌리티 주제 ARTECH 금상 수상.",
+        "en": "Finished 10th overall in KSAE Formula and won ARTECH Gold for future mobility."
       }
     },
     {
       "date": "2024",
       "title": {
-        "en": "Competition Participation",
-        "ko": "대회 출전"
+        "ko": "FSK 종합 7위(장려상) · KFGP E‑Formula 3위 · Altair 금상",
+        "en": "FSK Overall P7 (Commendation) · E‑Formula P3 (KFGP) · Altair Gold"
       },
       "desc": {
-        "en": "Competition participation and establishment of a structured development process.",
-        "ko": "대회 출전 및 개발 프로세스 체계화"
+        "ko": "FSK 종합 7위(장려상), KFGP E‑Formula 부문 3위. Altair 최적설계상 금상 수상.",
+        "en": "Achieved an FSK overall commendation (7th) and a KFGP E‑Formula podium (3rd), plus Altair design optimization Gold."
       }
     }
   ]

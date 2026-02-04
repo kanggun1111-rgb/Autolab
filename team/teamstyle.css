@@ -54,33 +54,6 @@
   gap:18px;
 }
 
-.hero-metrics{
-  margin-top:16px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.metric{
-  border:1px solid rgba(255,255,255,0.10);
-  background:rgba(255,255,255,0.02);
-  border-radius:18px;
-  padding:12px;
-}
-
-.metric b{
-  font-family:'Orbitron',sans-serif;
-  font-size:.72rem;
-  letter-spacing:.10em;
-  opacity:.82;
-}
-
-.metric span{
-  display:block;
-  margin-top:8px;
-  font-weight:900;
-}
-
 .hero-media{
   height:280px;
   border-radius:20px;
@@ -292,7 +265,6 @@
 
 @media(max-width:600px){
   .team-page{ padding-top:110px; }
-  .hero-metrics{ grid-template-columns:1fr; }
   .member-grid{ grid-template-columns:1fr; }
 }
 
@@ -312,17 +284,3 @@
 }
 .lang-toggle:hover{ opacity:1; transform:translateY(-1px); }
 .lang-toggle:active{ transform:translateY(0px); opacity:.92; }
-
-/* ===== HERO hard override (kills unexpected min-height/height from other CSS) ===== */
-.team-hero{
-  min-height: 0 !important;
-  height: auto !important;
-  padding-bottom: 12px !important; /* 카드 아래쪽 여백도 살짝 줄임 */
-}
-
-/* 혹시 상위에서 hero를 화면 높이로 잡는 경우까지 같이 컷 */
-.team-page{
-  min-height: 0 !important;
-  height: auto !important;
-}
-

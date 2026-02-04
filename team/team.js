@@ -85,17 +85,6 @@
   if (heroCaptionBold) heroCaptionBold.textContent = pick(h.caption_bold);
   if (heroCaption) heroCaption.textContent = pick(h.caption);
 
-  /* Metrics */
-  const heroMetrics = $('heroMetrics');
-  if (heroMetrics){
-    heroMetrics.innerHTML = (data.metrics || []).map(m => `
-      <div class="metric">
-        <b>${esc(pick(m.label))}</b>
-        <span>${esc(pick(m.value))}</span>
-      </div>
-    `).join('');
-  }
-
   /* Timeline / Achievements */
   const timeline = $('timeline');
   if (timeline){
