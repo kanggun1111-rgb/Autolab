@@ -139,23 +139,43 @@
     }
 
     function renderMembers(){
-      const list = members.filter(match);
-      grid.innerHTML = list.map(m => `
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
-          </div>
-          <div class="member-body">
-            <h3>${esc(pick(m.name))}</h3>
-            <div class="meta">
-              <span>${esc(pick(m.role))}</span>
-              <span class="pill">${esc(pick(m.division))}</span>
-            </div>
-          </div>
-        </article>
-      `).join('') || '<p style="opacity:.8">No members found.</p>'; // always English
-    }
+  const list = members.filter(match);
 
+  // EV / CV 분류 기준:
+  // - division에 "(EV)"가 포함되면 EV
+  // - 그 외는 CV로 분류 (원하면 조건 추가 가능)
+  const isEV = (m) => String(pick(m.division) || '').includes('(EV)');
+
+  const ev = list.filter(isEV);
+  const cv = list.filter(m => !isEV(m));
+
+  const card = (m) => `
+    <article class="member-card">
+      <div class="member-photo">
+        <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+      </div>
+      <div class="member-body">
+        <h3>${esc(pick(m.name))}</h3>
+        <div class="meta">
+          <span>${esc(pick(m.role))}</span>
+          <span class="pill">${esc(pick(m.division))}</span>
+        </div>
+      </div>
+    </article>
+  `;
+
+  const group = (title, arr) => `
+    <div class="member-group">
+      <h3 class="member-group__title">${esc(title)}</h3>
+      <div class="member-grid">
+        ${arr.map(card).join('') || '<p style="opacity:.8">No members found.</p>'}
+      </div>
+    </div>
+  `;
+
+  // 항상 EV 먼저, 그 다음 CV
+  grid.innerHTML = group('EV Team', ev) + group('CV Team', cv);
+}
     divSel.onchange = renderMembers;
     search.oninput = renderMembers;
     renderMembers();

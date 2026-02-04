@@ -14,7 +14,7 @@
   background: radial-gradient(1200px 520px at 20% 10%, rgba(240,165,0,0.10), transparent 60%),
               rgba(255,255,255,0.02);
   border-radius:24px;
-  padding:26px 22px 22px;
+  padding:20px 20px 18px;
 }
 
 .team-hero .eyebrow{
@@ -64,7 +64,7 @@
 .metric span{ display:block; margin-top:8px; font-weight:900; }
 
 .hero-media{
-  height:420px;
+  height:340px;
   border-radius:22px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.10);
@@ -168,7 +168,7 @@
 
 @media(max-width:980px){
   .hero-grid{ grid-template-columns:1fr; }
-  .hero-media{ height:320px; }
+  .hero-media{ height:260px; }
   .member-grid{ grid-template-columns:repeat(2,1fr); }
   .t-item{ grid-template-columns:1fr; }
 }
@@ -183,6 +183,20 @@
 .member-tools select option {
   background: #fff;   /* 드롭다운 배경 */
   color: #000;        /* 드롭다운 글자 */
+}
+
+/* Members group (EV/CV) */
+.member-group{ margin-top:18px; }
+.member-group:first-child{ margin-top:14px; }
+
+.member-group__title{
+  margin: 6px 0 12px;
+  font-size:1.1rem;
+  font-weight:900;
+  letter-spacing:.02em;
+  color:#f0a500;
+  border-left:4px solid rgba(240,165,0,0.7);
+  padding-left:12px;
 }
 
 
