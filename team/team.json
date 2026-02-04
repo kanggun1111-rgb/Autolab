@@ -76,7 +76,8 @@
     {
       "name": "김철수",
       "role": "Chief Engineer",
-      "division": "Chassis",
+      "team": "CV",
+      "division": "Frame",
       "image": "team/images/member-placeholder.jpg"
     },
     {

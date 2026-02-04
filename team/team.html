@@ -74,12 +74,21 @@
 <h2>Members</h2>
 <p data-i18n="team_team.autolab.1">Auto_Lab을 구성하는 팀원들입니다.</p>
 </div>
+
 <div class="member-tools">
-<select id="memberDivision">
-<option value="ALL">All Divisions</option>
-</select>
-<input id="memberSearch" placeholder="Search name or role" type="search"/>
+  <div class="member-tabs" role="tablist" aria-label="EV/CV filter">
+    <button type="button" class="tab active" id="tabAll" data-team="ALL" role="tab" aria-selected="true">All</button>
+    <button type="button" class="tab" id="tabEV" data-team="EV" role="tab" aria-selected="false">EV</button>
+    <button type="button" class="tab" id="tabCV" data-team="CV" role="tab" aria-selected="false">CV</button>
+  </div>
+
+  <select id="memberDivision">
+    <option value="ALL">All Divisions</option>
+  </select>
+
+  <input id="memberSearch" placeholder="Search name or role" type="search"/>
 </div>
+
 <div class="member-grid" id="memberGrid"></div>
 </section>
 </div>

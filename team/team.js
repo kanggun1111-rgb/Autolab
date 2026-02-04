@@ -116,68 +116,102 @@
   const search = $('memberSearch');
   const grid = $('memberGrid');
 
-  if (divSel && search && grid){
-    const divisions = [...new Set(members.map(m => pick(m.division)).filter(Boolean))].sort();
+  // EV/CV tabs
+  const tabAll = document.getElementById('tabAll');
+  const tabEV  = document.getElementById('tabEV');
+  const tabCV  = document.getElementById('tabCV');
 
-    // Always English (per your rule for UI controls)
-    divSel.innerHTML = ['<option value="ALL">All Divisions</option>']
-      .concat(divisions.map(d => `<option value="${esc(d)}">${esc(d)}</option>`))
-      .join('');
+  if (divSel && search && grid){
+
+    // --- EV/CV tab state ---
+    let teamFilter = 'ALL'; // ALL | EV | CV
+
+    function classifyTeam(m){
+      // ✅ JSON에 team: "EV" | "CV" 넣는 방식
+      const t = String(pick(m.team) || '').trim().toUpperCase();
+      if (t === 'EV' || t === 'CV') return t;
+      return 'CV'; // fallback (원하면 'UNKNOWN'도 가능)
+    }
+
+    function baseListByTeam(){
+      if (teamFilter === 'ALL') return members;
+      return members.filter(m => classifyTeam(m) === teamFilter);
+    }
+
+    function buildDivisionOptions(list){
+      const divisions = [...new Set(list.map(m => pick(m.division)).filter(Boolean))].sort();
+      divSel.innerHTML = ['<option value="ALL">All Divisions</option>']
+        .concat(divisions.map(d => `<option value="${esc(d)}">${esc(d)}</option>`))
+        .join('');
+    }
+
+    // 초기 Division 옵션은 전체 멤버 기준
+    buildDivisionOptions(members);
 
     // Always English placeholder (do not localize UI controls)
     if (!search.getAttribute('placeholder')) {
       search.setAttribute('placeholder', 'Search name or role');
     }
 
+    function setActiveTab(next){
+      teamFilter = next;
+
+      const tabs = [tabAll, tabEV, tabCV].filter(Boolean);
+      tabs.forEach(btn => {
+        const on = (btn.dataset.team === next);
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+
+      // 탭이 바뀌면 Division 목록도 그 탭 기준으로 갱신 + 선택값 리셋
+      buildDivisionOptions(baseListByTeam());
+      divSel.value = 'ALL';
+
+      renderMembers();
+    }
+
+    [tabAll, tabEV, tabCV].filter(Boolean).forEach(btn => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.team));
+    });
+
     function match(m){
+      // 먼저 team 탭 필터 적용
+      if (teamFilter !== 'ALL' && classifyTeam(m) !== teamFilter) return false;
+
+      // 기존 division 필터
       const mDivision = pick(m.division);
       if (divSel.value !== 'ALL' && mDivision !== divSel.value) return false;
 
+      // 기존 검색
       const q = (search.value || '').toLowerCase();
       const hay = `${pick(m.name)} ${pick(m.role)} ${mDivision}`.toLowerCase();
       return !q || hay.includes(q);
     }
 
     function renderMembers(){
-  const list = members.filter(match);
+      const list = members.filter(match);
+      grid.innerHTML = list.map(m => `
+        <article class="member-card">
+          <div class="member-photo">
+            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+          </div>
+          <div class="member-body">
+            <h3>${esc(pick(m.name))}</h3>
+            <div class="meta">
+              <span>${esc(pick(m.role))}</span>
+              <span class="pill">${esc(pick(m.division))}</span>
+            </div>
+          </div>
+        </article>
+      `).join('') || '<p style="opacity:.8">No members found.</p>'; // always English
+    }
 
-  // EV / CV 분류 기준:
-  // - division에 "(EV)"가 포함되면 EV
-  // - 그 외는 CV로 분류 (원하면 조건 추가 가능)
-  const isEV = (m) => String(pick(m.division) || '').includes('(EV)');
-
-  const ev = list.filter(isEV);
-  const cv = list.filter(m => !isEV(m));
-
-  const card = (m) => `
-    <article class="member-card">
-      <div class="member-photo">
-        <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
-      </div>
-      <div class="member-body">
-        <h3>${esc(pick(m.name))}</h3>
-        <div class="meta">
-          <span>${esc(pick(m.role))}</span>
-          <span class="pill">${esc(pick(m.division))}</span>
-        </div>
-      </div>
-    </article>
-  `;
-
-  const group = (title, arr) => `
-    <div class="member-group">
-      <h3 class="member-group__title">${esc(title)}</h3>
-      <div class="member-grid">
-        ${arr.map(card).join('') || '<p style="opacity:.8">No members found.</p>'}
-      </div>
-    </div>
-  `;
-
-  // 항상 EV 먼저, 그 다음 CV
-  grid.innerHTML = group('EV Team', ev) + group('CV Team', cv);
-}
     divSel.onchange = renderMembers;
     search.oninput = renderMembers;
-    renderMembers();
+
+    // 초기 탭 상태 반영
+    if (tabAll) setActiveTab('ALL');
+    else renderMembers();
   }
+
 })();
