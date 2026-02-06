@@ -256,72 +256,92 @@
 }
 
 /* ================= PDF PICKER DIALOG ================= */
+
+/* dialog 자체를 화면 정중앙에 고정 */
 .pdf-dialog{
-  border:0;
-  padding:0;
-  background:transparent;
-  max-width: min(560px, calc(100vw - 32px));
+  border: 0;
+  padding: 0;
+  background: transparent;
+
+  position: fixed;
+  inset: 0;
+  margin: auto;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
 }
 
+.pdf-dialog[open]{
+  display: flex;
+}
+
+/* dim + blur */
 .pdf-dialog::backdrop{
   background: rgba(0,0,0,0.65);
   backdrop-filter: blur(6px);
 }
 
+/* 실제 카드 패널 */
 .pdf-dialog__panel{
-  border: 1px solid rgba(255,255,255,0.14);
+  width: min(560px, calc(100vw - 32px));
+  padding: 18px;
+
   border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
   background: rgba(10,10,12,0.92);
   box-shadow: 0 24px 80px rgba(0,0,0,0.55);
-  padding: 18px;
 }
 
+/* header */
 .pdf-dialog__head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .pdf-dialog__title{
+  margin: 0;
   font-size: 1.05rem;
   letter-spacing: .2px;
-  margin:0;
 }
 
+/* X 버튼 */
 .pdf-dialog__close{
   width: 36px;
   height: 36px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.04);
-  color:#fff;
-  cursor:pointer;
+  color: #fff;
+  cursor: pointer;
 }
 
+/* 설명 */
 .pdf-dialog__desc{
   margin: 10px 0 14px;
-  opacity:.82;
-  line-height:1.5;
+  opacity: .82;
+  line-height: 1.5;
 }
 
+/* KO / EN 버튼 */
 .pdf-dialog__actions{
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  gap:10px;
+  gap: 10px;
 }
 
 .pdf-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
   padding: 12px 14px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.04);
-  color:#fff;
+  color: #fff;
   font-weight: 800;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .pdf-btn:hover{
@@ -329,29 +349,24 @@
   border-color: rgba(240,165,0,0.35);
 }
 
+/* ❗ KO / EN 동일 스타일 */
 .pdf-btn--ko{
-  background: rgba(240,165,0,0.10);
-  border-color: rgba(240,165,0,0.28);
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.14);
 }
 
+/* footer */
 .pdf-dialog__foot{
-  display:flex;
-  justify-content:flex-end;
+  display: flex;
+  justify-content: flex-end;
   margin-top: 14px;
 }
 
-.pdf-dialog__cancel{
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.03);
-  color:#fff;
-  cursor:pointer;
-  opacity:.9;
-}
-
-@media (max-width:520px){
-  .pdf-dialog__actions{ grid-template-columns: 1fr; }
+/* 모바일 */
+@media (max-width: 520px){
+  .pdf-dialog__actions{
+    grid-template-columns: 1fr;
+  }
 }
 
 
