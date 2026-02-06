@@ -104,6 +104,14 @@
         {
           "logo": "sponsors/images/silver-8.png",
           "url": ""
+        },
+        {
+          "logo": "sponsors/images/silver-9.png",
+          "url": ""
+        },
+        {
+          "logo": "sponsors/images/silver-10.png",
+          "url": ""
         }
       ]
     },
@@ -141,6 +149,10 @@
         },
         {
           "logo": "sponsors/images/support-7.png",
+          "url": ""
+        },
+        {
+          "logo": "sponsors/images/support-8.png",
           "url": ""
         }
       ]
