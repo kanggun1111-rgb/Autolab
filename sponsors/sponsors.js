@@ -43,30 +43,84 @@
   }
 
   function setHero(){
-    const L = getLang();
-    const hero = (data.hero && data.hero[L]) || (data.hero && data.hero.en) || {};
+  const L = getLang();
+  const heroAll = data.hero || {};
+  const hero = (heroAll[L]) || heroAll.en || {};
 
-    const setText = (id, v) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = v || '';
-    };
+  const setText = (id, v) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v || '';
+  };
 
-    setText('heroEyebrow', hero.eyebrow);
-    setText('heroTitle', hero.title);
-    setText('heroSubtitle', hero.subtitle);
+  setText('heroEyebrow', hero.eyebrow);
+  setText('heroTitle', hero.title);
+  setText('heroSubtitle', hero.subtitle);
 
-    const c1 = document.getElementById('heroCtaPrimary');
-    const c2 = document.getElementById('heroCtaSecondary');
+  const c1 = document.getElementById('heroCtaPrimary');
+  const c2 = document.getElementById('heroCtaSecondary');
 
-    if (c1 && hero.cta_primary){
-      c1.textContent = hero.cta_primary.label || '';
+  // ✅ KO/EN PDF 링크를 "둘 다" 확보
+  const pdfKo = (heroAll.ko && heroAll.ko.cta_primary && heroAll.ko.cta_primary.href) ? heroAll.ko.cta_primary.href : '';
+  const pdfEn = (heroAll.en && heroAll.en.cta_primary && heroAll.en.cta_primary.href) ? heroAll.en.cta_primary.href : '';
+
+  // ===== Primary CTA (PDF) =====
+  if (c1 && hero.cta_primary){
+    c1.textContent = hero.cta_primary.label || '';
+
+    // KO/EN 둘 다 있으면: 클릭 시 선택 모달
+    if (pdfKo && pdfEn){
+      c1.href = "#";                 // 기본 링크 제거
+      c1.removeAttribute('target');  // 우리가 window.open으로 처리
+      c1.rel = "noopener";
+
+      // 중복 바인딩 방지
+      if (!c1.dataset.boundPdfPicker){
+        c1.dataset.boundPdfPicker = "1";
+
+        const dlg = document.getElementById('pdfLangDialog');
+        const koBtn = document.getElementById('pdfKoBtn');
+        const enBtn = document.getElementById('pdfEnBtn');
+
+        const openPdf = (href) => {
+          if (!href) return;
+          window.open(href, '_blank', 'noopener');
+          if (dlg && dlg.open) dlg.close();
+        };
+
+        const openDialog = () => {
+          // dialog 지원 브라우저
+          if (dlg && typeof dlg.showModal === 'function') {
+            dlg.showModal();
+          } else {
+            // fallback (구형): confirm으로 대체
+            const pickKo = confirm('한국어 PDF를 다운로드할까요?\n(확인=한국어 / 취소=English)');
+            openPdf(pickKo ? pdfKo : pdfEn);
+          }
+        };
+
+        c1.addEventListener('click', (e) => {
+          e.preventDefault();
+          openDialog();
+        });
+
+        if (koBtn) koBtn.addEventListener('click', () => openPdf(pdfKo));
+        if (enBtn) enBtn.addEventListener('click', () => openPdf(pdfEn));
+      }
+    } else {
+      // KO/EN 둘 중 하나만 있으면: 기존처럼 바로 열기
       c1.href = hero.cta_primary.href || '#';
-    }
-    if (c2 && hero.cta_secondary){
-      c2.textContent = hero.cta_secondary.label || '';
-      c2.href = hero.cta_secondary.href || '#';
+      c1.target = "_blank";
+      c1.rel = "noopener";
     }
   }
+
+  // ===== Secondary CTA =====
+  if (c2 && hero.cta_secondary){
+    c2.textContent = hero.cta_secondary.label || '';
+    c2.href = hero.cta_secondary.href || '#';
+  }
+}
+
 
 function card(item, featured=false){ 
   const href = (item.url || '').trim();

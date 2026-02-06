@@ -117,6 +117,40 @@
 <!-- TIERS -->
 <div id="tiersMount"></div>
 
+<!-- PDF language picker -->
+<dialog id="pdfLangDialog" class="pdf-dialog">
+  <form method="dialog" class="pdf-dialog__panel">
+    <div class="pdf-dialog__head">
+      <h3
+        class="pdf-dialog__title"
+        data-en="Download Sponsorship Deck"
+        data-ko="스폰서십 제안서 다운로드"
+      >Download Sponsorship Deck</h3>
+
+      <button class="pdf-dialog__close" value="cancel" aria-label="Close">✕</button>
+    </div>
+
+    <p
+      class="pdf-dialog__desc"
+      data-en="Choose a language."
+      data-ko="언어를 선택하세요."
+    >Choose a language.</p>
+
+    <div class="pdf-dialog__actions">
+      <button type="button" class="pdf-btn pdf-btn--ko" id="pdfKoBtn">한국어 (PDF)</button>
+      <button type="button" class="pdf-btn pdf-btn--en" id="pdfEnBtn">English (PDF)</button>
+    </div>
+
+    <div class="pdf-dialog__foot">
+      <button class="pdf-dialog__cancel" value="cancel"
+        data-en="Cancel"
+        data-ko="취소"
+      >Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+
  <script src="main/script.js"></script>
   <script src="sponsors/sponsors.js"></script>
 </body>
