@@ -3,10 +3,7 @@
   const $ = (id) => document.getElementById(id);
 
   // Base-safe asset path (works with)
-  function asset(path){
-    const base = document.querySelector('base')?.getAttribute('href') || '/';
-    return base.replace(/\/+$/, '') + '/' + String(path).replace(/^\/+/, '');
-  }
+  function asset(path){ return String(path); }
 
   // Language: 'en' default, persisted in localStorage
   function getLang(){
