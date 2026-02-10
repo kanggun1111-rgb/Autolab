@@ -3,10 +3,7 @@
   const $ = (id) => document.getElementById(id);
 
   // Base-safe asset path (works with)
-  function asset(path){
-    const base = document.querySelector('base')?.getAttribute('href') || '/';
-    return base.replace(/\/+$/, '') + '/' + String(path).replace(/^\/+/, '');
-  }
+  function asset(path){ return String(path); }
 
   // Language: 'en' default, persisted in localStorage
   function getLang(){
@@ -16,8 +13,7 @@
   const lang = getLang();
 
   // --- Language toggle (safe) ---
-  // Some pages rely on /main/script.js to bind this, but if that script errors on this page
-  // the button can become inert. We bind locally as a fallback without changing UI/design.
+  // Some pages rely on /main/script.js to bind this, but if that script errors on this page / the button can become inert. We bind locally as a fallback without changing UI/design.
   const langToggleBtn = document.getElementById('langToggleBtn');
   if (langToggleBtn && !langToggleBtn.dataset.langBound){
     langToggleBtn.dataset.langBound = '1';
@@ -62,7 +58,7 @@
 
   let data;
   try{
-    const res = await fetch(asset('team/team.json'), { cache: 'no-store' });
+    const res = await fetch(asset('/team/team.json'), { cache: 'no-store' });
     if(!res.ok) return;
     data = await res.json();
   }catch(e){
@@ -118,13 +114,13 @@
   if (divSel && search && grid){
 
     // --- EV/CV tab state ---
-    let teamFilter = 'ALL'; / ALL | EV | CV
+    let teamFilter = 'ALL'; // ALL | EV | CV
 
     function classifyTeam(m){
       // JSON에 team: "EV" | "CV" 넣는 방식
       const t = String(pick(m.team) || '').trim().toUpperCase();
       if (t === 'EV' || t === 'CV') return t;
-      return 'CV'; / fallback
+      return 'CV'; // fallback
     }
 
     function baseListByTeam(){
@@ -199,7 +195,7 @@
       grid.innerHTML = pageItems.map(m => `
         <article class="member-card">
           <div class="member-photo">
-            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+            <img src="${esc(pick(m.image) || '/team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
           </div>
           <div class="member-body">
             <h3>${esc(pick(m.name))}</h3>
@@ -209,9 +205,7 @@
             </div>
           </div>
         </article>
-      `).join('') || '<p style="opacity:.8">No members found.</p>'; / always English
-
-      // pager UI
+      `).join('') || '<p style="opacity:.8">No members found.</p>'; // always English / pager UI
       if (!pager) return;
 
       if (totalPages <= 1){

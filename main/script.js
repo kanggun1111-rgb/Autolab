@@ -69,8 +69,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const originals = Array.from(track.children);
     if (originals.length === 0) return;
 
-    // 이미 수동 duplicate를 넣어놨다면(alt에 duplicate 등), 원본만 남기고 싶으면 여기서 필터 가능
-    // const originals = Array.from(track.children).filter(el => !el.alt?.includes('duplicate'));
+    // 이미 수동 duplicate를 넣어놨다면(alt에 duplicate 등), 원본만 남기고 싶으면 여기서 필터 가능 / const originals = Array.from(track.children).filter(el => !el.alt?.includes('duplicate'));
 
     // 컨테이너 폭의 최소 2배 이상이 될 때까지 반복 복제
     const targetWidth = marquee.clientWidth * 2.2;
@@ -87,9 +86,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         guard++;
       }
 
-      // -50% 애니메이션을 쓸 거면, "절반 지점이 동일한 시퀀스"가 되도록 한 번 더 복제
-      // 즉, track에 '원본 시퀀스'가 최소 2세트 이상 포함되게 보장
-      // (위 while이 보통 해결하지만, 아주 큰 화면에서 부족할 수 있어 1회 보강)
+      // -50% 애니메이션을 쓸 거면, "절반 지점이 동일한 시퀀스"가 되도록 한 번 더 복제 / 즉, track에 '원본 시퀀스'가 최소 2세트 이상 포함되게 보장 / (위 while이 보통 해결하지만, 아주 큰 화면에서 부족할 수 있어 1회 보강)
       if (track.children.length < originals.length * 2) {
         originals.forEach((node) => track.appendChild(node.cloneNode(true)));
       }
@@ -123,8 +120,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
     // 리사이즈 때 다시 맞춤 (모바일 회전 대응)
     window.addEventListener('resize', () => {
-      // 리사이즈 시 과복제 방지 위해, 다시 원본만 남기고 재복제하는 방식이 가장 깔끔
-      // (단, 기존의 clone들을 제거)
+      // 리사이즈 시 과복제 방지 위해, 다시 원본만 남기고 재복제하는 방식이 가장 깔끔 / (단, 기존의 clone들을 제거)
       const keep = originals.length;
       while (track.children.length > keep) track.removeChild(track.lastElementChild);
       fill();
@@ -190,7 +186,7 @@ if (navLinks) navLinks.classList.remove('active');
   async function loadSite(){
     if (SITE) return SITE;
     try{
-      const res = await fetch('main/site.json', { cache: 'no-store' });
+      const res = await fetch('/main/site.json', { cache: 'no-store' });
       SITE = await res.json();
     }catch(e){
       SITE = { i18n: { ko:{}, en:{} } };

@@ -71,7 +71,7 @@
 
   // ---------- load ----------
   try{
-    const res = await fetch('news.json', { cache: 'no-store' });
+    const res = await fetch('/news/news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     listEl.innerHTML = '<p style="opacity:.8;text-align:center">뉴스 데이터를 불러오지 못했습니다.</p>';
@@ -83,7 +83,7 @@
 
   // ---------- category options ----------
   if (catEl){
-    catEl.innerHTML = ''; / 안전: 중복 방지
+    catEl.innerHTML = ''; // 안전: 중복 방지
     const allOpt = document.createElement('option');
     allOpt.value = 'ALL';
     allOpt.textContent = 'ALL';
@@ -141,7 +141,7 @@
           <h3>${escapeHtml(title)}</h3>
           <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
           <p class="news-excerpt">${escapeHtml(excerpt || '')}</p>
-          <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
+          <a href="/news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
         </div>
       </div>
       `;
@@ -175,8 +175,7 @@
   if (catEl) catEl.addEventListener('change', () => { page = 1; render(); });
 
   // ---------- lang toggle integration ----------
-  // 1) /main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시
-  // 2) /main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
+  // 1) /main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시 / 2) /main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
   
   (function bindLang(){
   const btn = document.getElementById('langToggleBtn');
