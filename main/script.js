@@ -190,7 +190,7 @@ if (navLinks) navLinks.classList.remove('active');
   async function loadSite(){
     if (SITE) return SITE;
     try{
-      const res = await fetch('/main/site.json', { cache: 'no-store' });
+      const res = await fetch('main/site.json', { cache: 'no-store' });
       SITE = await res.json();
     }catch(e){
       SITE = { i18n: { ko:{}, en:{} } };

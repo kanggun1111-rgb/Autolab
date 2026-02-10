@@ -63,8 +63,8 @@
       searchPh: "연도/차량명 검색 (예: 2025, ALE-25)",
       loadFail: "데이터를 불러오지 못했습니다.",
       seasonEmpty: "해당 시즌 차량 데이터가 없습니다.",
-      modalSpecs: "Vehicle Specs", // keep header/button style English if desired
-      seasonLabel: "Season"        // keep label English per your earlier rule
+      modalSpecs: "Vehicle Specs", / keep header/button style English if desired
+      seasonLabel: "Season"        / keep label English per your earlier rule
     }
   };
 
@@ -121,7 +121,7 @@
 
     let data;
     try{
-      const res = await fetch(asset("/vehicles/vehicles.json"), { cache: "no-store" });
+      const res = await fetch(asset("vehicles/vehicles.json"), { cache: "no-store" });
       data = await res.json();
     }catch(err){
       featuredGrid.innerHTML = `<p style="opacity:.8">${esc(UI[lang].loadFail)}</p>`;

@@ -12,7 +12,7 @@
 
   let posts = [];
   try{
-    const res = await fetch('/news/news.json', { cache: 'no-store' });
+    const res = await fetch('news/news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     return;
@@ -76,7 +76,7 @@
             <h3>${escapeHtml(title)}</h3>
             <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
             <p class="news-excerpt">${escapeHtml(excerpt || '')}</p>
-            <a href="/news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
+            <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
           </div>
         </div>
       `;

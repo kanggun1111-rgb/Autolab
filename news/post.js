@@ -10,22 +10,22 @@
 
   const id = new URLSearchParams(location.search).get('id');
   if (!id){
-    mount.innerHTML = '<p style="opacity:.85">잘못된 접근입니다. <a href="/news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">잘못된 접근입니다. <a href="news/index.html">목록으로</a></p>';
     return;
   }
 
   let posts = [];
   try{
-    const res = await fetch('/news/news.json', { cache: 'no-store' });
+    const res = await fetch('news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
-    mount.innerHTML = '<p style="opacity:.85">게시글 데이터를 불러오지 못했습니다. <a href="/news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">게시글 데이터를 불러오지 못했습니다. <a href="news/index.html">목록으로</a></p>';
     return;
   }
 
   const p = posts.find(x => String(x.id) === String(id));
   if (!p){
-    mount.innerHTML = '<p style="opacity:.85">게시글을 찾을 수 없습니다. <a href="/news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">게시글을 찾을 수 없습니다. <a href="news/index.html">목록으로</a></p>';
     return;
   }
 
@@ -104,7 +104,7 @@
     const paragraphs = contentLines.map(line => `<p>${escapeHtml(line)}</p>`).join('');
 
     mount.innerHTML = `
-      <a class="post__back" href="/news/index.html">${escapeHtml(backLabel())}</a>
+      <a class="post__back" href="news/index.html">${escapeHtml(backLabel())}</a>
 
       <article class="post__head">
         <div class="post__meta">

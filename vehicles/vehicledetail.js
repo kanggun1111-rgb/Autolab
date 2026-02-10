@@ -96,7 +96,7 @@
           <p>${esc(pick(v.tagline, lang) ?? "")}</p>
 
           <div class="detail-actions">
-            <a class="primary" href="/vehicles/vehicles.html">← Back to Vehicles</a>
+            <a class="primary" href="vehicles/vehicles.html">← Back to Vehicles</a>
             <a href="#specs">Specs</a>
             <a href="#gallery">Gallery</a>
           </div>
@@ -157,7 +157,7 @@
 
     let data;
     try{
-      const res = await fetch(asset("/vehicles/vehicles.json"), { cache:"no-store" });
+      const res = await fetch(asset("vehicles/vehicles.json"), { cache:"no-store" });
       data = await res.json();
     }catch(e){
       mount.innerHTML = `<p style="opacity:.85">${esc(UI[lang].loadFail)}</p>`;
@@ -172,7 +172,7 @@
       return;
     }
 
-    window.__vehicleDetailData = v; // cache for re-render on lang switch
+    window.__vehicleDetailData = v; / cache for re-render on lang switch
     render(mount, v, lang);
   })();
 })();

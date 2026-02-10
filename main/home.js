@@ -7,7 +7,7 @@
 
   let data;
   try{
-    const res = await fetch('/main/home.json', { cache: 'no-store' });
+    const res = await fetch('main/home.json', { cache: 'no-store' });
     data = await res.json();
   }catch(e){
     console.warn('home.json load failed', e);
