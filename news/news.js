@@ -16,7 +16,7 @@
   let page = 1;
   let posts = [];
 
-  / ---------- utils ----------
+  // ---------- utils ----------
   function normalize(s){ return String(s || '').toLowerCase(); }
   function escapeHtml(s){
     return String(s ?? '').replace(/[&<>"']/g, m => ({
@@ -29,7 +29,7 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
-  / ---------- locale helpers (backward compatible) ----------
+  // ---------- locale helpers (backward compatible) ----------
   function getLang(){
     const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
     return v === 'en' ? 'en' : 'ko';
@@ -49,7 +49,7 @@
     return c || '';
   }
 
-  / baseKey_ko/en → {ko,en} → baseKey 순으로 안전하게 가져오기
+  // baseKey_ko/en → {ko,en} → baseKey 순으로 안전하게 가져오기
   function pickText(p, baseKey, fallback=''){
     const lang = getLang();
 
@@ -69,19 +69,19 @@
     return fallback;
   }
 
-  / ---------- load ----------
+  // ---------- load ----------
   try{
-    const res = await fetch('news/news.json', { cache: 'no-store' });
+    const res = await fetch('news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     listEl.innerHTML = '<p style="opacity:.8;text-align:center">뉴스 데이터를 불러오지 못했습니다.</p>';
     return;
   }
 
-  / 최신순
+  // 최신순
   posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-  / ---------- category options ----------
+  // ---------- category options ----------
   if (catEl){
     catEl.innerHTML = ''; / 안전: 중복 방지
     const allOpt = document.createElement('option');
@@ -100,7 +100,7 @@
     catEl.value = 'ALL';
   }
 
-  / ---------- filter + render ----------
+  // ---------- filter + render ----------
   function getFiltered(){
     const q = normalize(searchEl?.value).trim();
     const cat = catEl?.value || 'ALL';
@@ -147,7 +147,7 @@
       `;
     }).join('');
 
-    / pager
+    // pager
     if (!pagerEl) return;
     pagerEl.innerHTML = '';
 
@@ -170,13 +170,13 @@
     pagerEl.appendChild(next);
   }
 
-  / ---------- events ----------
+  // ---------- events ----------
   if (searchEl) searchEl.addEventListener('input', () => { page = 1; render(); });
   if (catEl) catEl.addEventListener('change', () => { page = 1; render(); });
 
-  / ---------- lang toggle integration ----------
-  / 1) /main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시
-  / 2) /main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
+  // ---------- lang toggle integration ----------
+  // 1) /main/script.js가 토글을 처리하면: localStorage.lang이 바뀐 뒤 render()만 다시
+  // 2) /main/script.js가 실패하면: 여기서 토글을 직접 하고 render()
   
   (function bindLang(){
   const btn = document.getElementById('langToggleBtn');
@@ -186,18 +186,18 @@
   btn.addEventListener('click', () => {
     const before = (localStorage.getItem('lang') || 'ko').toLowerCase();
 
-    / /main/script.js가 먼저 토글/라벨 갱신을 끝내도록 한 틱 늦춰서 확인
+    // /main/script.js가 먼저 토글/라벨 갱신을 끝내도록 한 틱 늦춰서 확인
     setTimeout(() => {
       const after = (localStorage.getItem('lang') || 'ko').toLowerCase();
 
-      / /main/script.js가 성공적으로 바꿨으면: 렌더만
+      // /main/script.js가 성공적으로 바꿨으면: 렌더만
       if (after !== before){
         page = 1;
         render();
         return;
       }
 
-      / /main/script.js가 못 바꿨으면: 여기서 보조로 토글하고 렌더
+      // /main/script.js가 못 바꿨으면: 여기서 보조로 토글하고 렌더
       const next = (before === 'en') ? 'ko' : 'en';
       localStorage.setItem('lang', next);
       page = 1;
@@ -207,7 +207,7 @@
 })();
 
 
-  / initial render
+  // initial render
   render();
 })();
 

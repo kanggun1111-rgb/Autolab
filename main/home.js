@@ -46,7 +46,7 @@
       `).join('');
     }
 
-    / Re-apply i18n (nav + fixed labels)
+    // Re-apply i18n (nav + fixed labels)
     if (window.__applyI18n) window.__applyI18n();
   }
 

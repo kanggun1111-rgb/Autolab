@@ -1,5 +1,5 @@
 
-/ Hamburger 메뉴 토글
+// Hamburger 메뉴 토글
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
@@ -18,7 +18,7 @@ if (hamburger && navLinks) {
 */
 window.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
-  / ✅ 페이지별 hero 표준: data-nav-hero 우선, 없으면 메인 hero-grid fallback
+  // ✅ 페이지별 hero 표준: data-nav-hero 우선, 없으면 메인 hero-grid fallback
   const hero = document.querySelector('[data-nav-hero]') || document.getElementById('hero-grid');
 
   if (!header || !hero) return;
@@ -65,19 +65,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const track = marquee.querySelector('.sponsor-marquee-track');
     if (!track) return;
 
-    / 원본 로고들만을 기준으로 복제하기 위해 초기 상태의 자식들을 저장
+    // 원본 로고들만을 기준으로 복제하기 위해 초기 상태의 자식들을 저장
     const originals = Array.from(track.children);
     if (originals.length === 0) return;
 
-    / 이미 수동 duplicate를 넣어놨다면(alt에 duplicate 등), 원본만 남기고 싶으면 여기서 필터 가능
-    / const originals = Array.from(track.children).filter(el => !el.alt?.includes('duplicate'));
+    // 이미 수동 duplicate를 넣어놨다면(alt에 duplicate 등), 원본만 남기고 싶으면 여기서 필터 가능
+    // const originals = Array.from(track.children).filter(el => !el.alt?.includes('duplicate'));
 
-    / 컨테이너 폭의 최소 2배 이상이 될 때까지 반복 복제
+    // 컨테이너 폭의 최소 2배 이상이 될 때까지 반복 복제
     const targetWidth = marquee.clientWidth * 2.2;
 
-    / track이 렌더된 뒤 실제 폭을 기준으로 복제
+    // track이 렌더된 뒤 실제 폭을 기준으로 복제
     const fill = () => {
-      / 너무 많이 복제되는 것 방지(안전장치)
+      // 너무 많이 복제되는 것 방지(안전장치)
       let guard = 0;
 
       while (track.scrollWidth < targetWidth && guard < 30) {
@@ -87,18 +87,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         guard++;
       }
 
-      / -50% 애니메이션을 쓸 거면, "절반 지점이 동일한 시퀀스"가 되도록 한 번 더 복제
-      / 즉, track에 '원본 시퀀스'가 최소 2세트 이상 포함되게 보장
-      / (위 while이 보통 해결하지만, 아주 큰 화면에서 부족할 수 있어 1회 보강)
+      // -50% 애니메이션을 쓸 거면, "절반 지점이 동일한 시퀀스"가 되도록 한 번 더 복제
+      // 즉, track에 '원본 시퀀스'가 최소 2세트 이상 포함되게 보장
+      // (위 while이 보통 해결하지만, 아주 큰 화면에서 부족할 수 있어 1회 보강)
       if (track.children.length < originals.length * 2) {
         originals.forEach((node) => track.appendChild(node.cloneNode(true)));
       }
     };
 
-    / 이미지 로딩 후 폭이 변하므로 onload/resize 대응
+    // 이미지 로딩 후 폭이 변하므로 onload/resize 대응
     const onReady = () => fill();
 
-    / 이미지들이 로드되면 재계산
+    // 이미지들이 로드되면 재계산
     const imgs = track.querySelectorAll('img');
     let remaining = imgs.length;
     if (remaining === 0) {
@@ -121,10 +121,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       });
     }
 
-    / 리사이즈 때 다시 맞춤 (모바일 회전 대응)
+    // 리사이즈 때 다시 맞춤 (모바일 회전 대응)
     window.addEventListener('resize', () => {
-      / 리사이즈 시 과복제 방지 위해, 다시 원본만 남기고 재복제하는 방식이 가장 깔끔
-      / (단, 기존의 clone들을 제거)
+      // 리사이즈 시 과복제 방지 위해, 다시 원본만 남기고 재복제하는 방식이 가장 깔끔
+      // (단, 기존의 clone들을 제거)
       const keep = originals.length;
       while (track.children.length > keep) track.removeChild(track.lastElementChild);
       fill();
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.documentElement;
 
-  / 저장된 상태 복원
+  // 저장된 상태 복원
   if (localStorage.getItem('viewMode') === 'pc') {
     root.classList.add('pc-view');
     btn.textContent = '모바일 버전으로 보기';
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = 'PC 버전으로 보기';
     }
   });
-/ pc-view 토글 버튼 로직 안에서 (pc-view 켜거나 끌 때 공통으로)
+// pc-view 토글 버튼 로직 안에서 (pc-view 켜거나 끌 때 공통으로)
 if (navLinks) navLinks.classList.remove('active');
 });
 
@@ -207,7 +207,7 @@ if (navLinks) navLinks.classList.remove('active');
   async function applyI18n(){
     await loadSite();
 
-    / Apply data-i18n
+    // Apply data-i18n
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const k = el.getAttribute('data-i18n-html');
       const v = t(k);
@@ -215,7 +215,7 @@ if (navLinks) navLinks.classList.remove('active');
       el.innerHTML = v;
     });
 
-    / Apply data-i18n
+    // Apply data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const k = el.getAttribute('data-i18n');
       const v = t(k);
@@ -223,11 +223,11 @@ if (navLinks) navLinks.classList.remove('active');
       el.textContent = v;
     });
 
-    / Update language toggle label (ENG <-> 한글)
+    // Update language toggle label (ENG <-> 한글)
     const btn = document.getElementById('langToggleBtn');
     if (btn) btn.textContent = t('toggle.lang') || (getLang()==='en'?'한글':'ENG');
 
-    / Update view toggle button label if exists
+    // Update view toggle button label if exists
     const viewBtn = document.getElementById('toggleViewBtn');
     if (viewBtn){
       const isPc = document.documentElement.classList.contains('pc-view');
@@ -236,7 +236,7 @@ if (navLinks) navLinks.classList.remove('active');
     }
   }
 
-  / Expose small API for page scripts
+  // Expose small API for page scripts
   window.__getLang = getLang;
   window.__setLang = setLang;
   window.__applyI18n = applyI18n;
@@ -255,7 +255,7 @@ if (navLinks) navLinks.classList.remove('active');
       btn.addEventListener('click', () => {
         const next = getLang() === 'ko' ? 'en' : 'ko';
         setLang(next);
-        / Close hamburger menu if open
+        // Close hamburger menu if open
         const navLinks = document.querySelector('.nav-links');
         if (navLinks) navLinks.classList.remove('active');
       });

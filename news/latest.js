@@ -18,7 +18,7 @@
     return;
   }
 
-  / 최신순 정렬
+  // 최신순 정렬
   posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
   function escapeHtml(s){
@@ -45,13 +45,13 @@
     const v1 = p && p[`${key}_${lang}`];
     if (v1 !== undefined && v1 !== null && v1 !== '') return v1;
 
-    / {ko,en} 객체도 지원
+    // {ko,en} 객체도 지원
     const obj = p && p[key];
     if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
       return obj[lang] ?? obj.ko ?? obj.en ?? '';
     }
 
-    / 단일 필드 백워드 호환
+    // 단일 필드 백워드 호환
     return p ? (p[key] ?? '') : '';
   }
   function coverUrl(p){
@@ -83,10 +83,10 @@
     }).join('');
   }
 
-  / 최초 렌더
+  // 최초 렌더
   render();
 
-  / lang 토글 시 재렌더 (/main/script.js가 lang을 바꾼 뒤 반영)
+  // lang 토글 시 재렌더 (/main/script.js가 lang을 바꾼 뒤 반영)
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn && !langBtn.dataset.latestRerenderBound){
     langBtn.dataset.latestRerenderBound = '1';

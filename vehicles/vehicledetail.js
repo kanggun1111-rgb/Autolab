@@ -1,7 +1,7 @@
-/ /vehicles/vehicledetail.js — language toggle without i18n keys (safe fallback)
-/ - Keeps existing functionality
-/ - Uses localStorage.lang = 'en' | 'ko'
-/ - Selects localized fields from vehicles.json when values are {ko,en}
+// /vehicles/vehicledetail.js — language toggle without i18n keys (safe fallback)
+// - Keeps existing functionality
+// - Uses localStorage.lang = 'en' | 'ko'
+// - Selects localized fields from vehicles.json when values are {ko,en}
 
 (function(){
   "use strict";
@@ -136,13 +136,13 @@
     const mount = document.getElementById("detailMount");
     if (!mount) return;
 
-    / init lang + toggle button
+    // init lang + toggle button
     let lang = setLang(getLang());
     const btn = document.getElementById("langToggleBtn");
     if (btn){
       btn.addEventListener("click", () => {
         lang = setLang(lang === "en" ? "ko" : "en");
-        / re-render once data already loaded
+        // re-render once data already loaded
         if (window.__vehicleDetailData) render(mount, window.__vehicleDetailData, lang);
       });
     }

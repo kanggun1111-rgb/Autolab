@@ -16,7 +16,7 @@
 
   let posts = [];
   try{
-    const res = await fetch('news/news.json', { cache: 'no-store' });
+    const res = await fetch('news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     mount.innerHTML = '<p style="opacity:.85">게시글 데이터를 불러오지 못했습니다. <a href="news/index.html">목록으로</a></p>';
@@ -41,7 +41,7 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
-  / ---------- locale helpers ----------
+  // ---------- locale helpers ----------
   function getLang(){
     const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
     return v === 'en' ? 'en' : 'ko';
@@ -50,11 +50,11 @@
   function pickText(post, baseKey, fallback=''){
     const lang = getLang();
 
-    / 1) baseKey_ko / baseKey_en 우선
+    // 1) baseKey_ko / baseKey_en 우선
     const v1 = post?.[`${baseKey}_${lang}`];
     if (v1 !== undefined && v1 !== null) return v1;
 
-    / 2) {ko,en} 객체 형태 지원
+    // 2) {ko,en} 객체 형태 지원
     const obj = post?.[baseKey];
     if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
       const v2 = obj[lang];
@@ -62,7 +62,7 @@
       return obj.ko ?? obj.en ?? fallback;
     }
 
-    / 3) 기존 단일 필드 (백워드 호환)
+    // 3) 기존 단일 필드 (백워드 호환)
     const v3 = post?.[baseKey];
     return (v3 !== undefined && v3 !== null) ? v3 : fallback;
   }
@@ -91,7 +91,7 @@
   function sourceLabel(){
     return getLang() === 'en' ? 'View source →' : '원문 보기 →';
   }
-  / -----------------------------------
+  // -----------------------------------
 
   function renderPost(){
     const title = toOneLine(pickText(p, 'title', p.title || ''));
@@ -126,15 +126,15 @@
     `;
   }
 
-  / 최초 렌더
+  // 최초 렌더
   renderPost();
 
-  / 언어 토글 시: /main/script.js가 localStorage.lang을 바꾼 뒤 재렌더
+  // 언어 토글 시: /main/script.js가 localStorage.lang을 바꾼 뒤 재렌더
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn && !langBtn.dataset.postRerenderBound){
     langBtn.dataset.postRerenderBound = '1';
     langBtn.addEventListener('click', () => {
-      / /main/script.js 토글 처리 후 반영
+      // /main/script.js 토글 처리 후 반영
       setTimeout(() => renderPost(), 0);
     });
   }
