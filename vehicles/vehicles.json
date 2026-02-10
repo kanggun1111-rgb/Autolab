@@ -6,11 +6,11 @@
       "type": "EV",
       "season": "2026",
       "tagline": { "ko": "새로운 파워트레인 시스템과 공력 장치를 중심으로 설계된 2026 시즌 Auto_Lab 전기 플랫폼.", "en": "The 2026 Auto_Lab electric platform, developed with a focus on a new powertrain architecture and aerodynamic performance." },
-      "cover": "/vehicles/images/ale-26-hero.jpg",
+      "cover": "vehicles/images/ale-26-hero.jpg",
       "gallery": [
-        "/vehicles/images/ale-26-1.jpg",
-        "/vehicles/images/ale-26-2.jpg",
-        "/vehicles/images/ale-26-3.jpg"
+        "vehicles/images/ale-26-1.jpg",
+        "vehicles/images/ale-26-2.jpg",
+        "vehicles/images/ale-26-3.jpg"
       ],
       "stats": {
         "Powertrain": "Electric",
@@ -97,11 +97,11 @@
     "en": "Auto_Lab Combustion platform for the 2026 season—balanced handling and robust endurance.",
     "ko": "균형 잡힌 핸들링과 높은 내구성을 중심으로 개발된 2026 시즌 Auto_Lab 내연기관 플랫폼."
   },
-  "cover": "/vehicles/images/alc-26-hero.jpg",
+  "cover": "vehicles/images/alc-26-hero.jpg",
   "gallery": [
-    "/vehicles/images/alc-26-1.jpg",
-    "/vehicles/images/alc-26-2.jpg",
-    "/vehicles/images/alc-26-3.jpg"
+    "vehicles/images/alc-26-1.jpg",
+    "vehicles/images/alc-26-2.jpg",
+    "vehicles/images/alc-26-3.jpg"
   ],
   "stats": {
     "Powertrain": "Combustion",
@@ -184,7 +184,7 @@
       "name": "ALC-25",
       "type": "CV",
       "season": "2025",
-      "cover": "/vehicles/images/alc-25.jpg",
+      "cover": "vehicles/images/alc-25.jpg",
       "specs": {
         "Powertrain": "Combustion",
         "Engine": "Kawasaki ZX6R",
@@ -197,7 +197,7 @@
       "name": "ALE-24",
       "type": "EV",
       "season": "2024",
-      "cover": "/vehicles/images/ale-24.jpg",
+      "cover": "vehicles/images/ale-24.jpg",
       "specs": {
         "Powertrain": "Electric",
         "Voltage": "453.6V",
@@ -210,7 +210,7 @@
       "name": "ALC-23",
       "type": "CV",
       "season": "2023",
-      "cover": "/vehicles/images/alc-23.jpg",
+      "cover": "vehicles/images/alc-23.jpg",
       "specs": {
         "Powertrain": "Combustion",
         "Engine": "Yamaha R6",
@@ -223,7 +223,7 @@
       "name": "FAL-22",
       "type": "CV",
       "season": "2022",
-      "cover": "/vehicles/images/fal-22.jpg",
+      "cover": "vehicles/images/fal-22.jpg",
       "specs": {
         "Powertrain": "Combustion",
         "Engine": "VJF250",
@@ -236,7 +236,7 @@
       "name": "FAL-21",
       "type": "CV",
       "season": "2021",
-      "cover": "/vehicles/images/fal-21.jpg",
+      "cover": "vehicles/images/fal-21.jpg",
       "specs": {
         "Powertrain": "Combustion",
         "Engine": "VJF250",
@@ -249,7 +249,7 @@
       "name": "FAL-20",
       "type": "CV",
       "season": "2020",
-      "cover": "/vehicles/images/fal-20.jpg",
+      "cover": "vehicles/images/fal-20.jpg",
       "specs": {
         "Powertrain": "Combustion",
         "Engine": "VJF250",

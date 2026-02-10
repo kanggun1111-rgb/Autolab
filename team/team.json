@@ -12,7 +12,7 @@
       "ko": "Auto_Lab은 1999년 경남 자작자동차 경주대회 우승을 시작으로 KSAE 및 Formula Student Korea 무대에서 꾸준히 성과를 쌓아왔습니다. 2016–2017 KSAE 입상, 2020 내연기관 포뮬러 부문 출전 및 KSAE Formula 부문 입상, 2021 Pro‑Makers 전시회 최우수상·Capstone Design 대상, 2022 KSAE Formula 종합 5위와 각종 설계/혁신상, 2024 FSK 종합 7위 및 E‑Formula 3위까지—매 시즌 ‘설계–제작–시험–데이터’ 개선 루프로 기록을 갱신합니다. 현재는 EV/CV 두 플랫폼을 병행 개발하며, 신뢰성 있는 성능과 경쟁력 있는 패키징을 목표로 시스템 단위의 엔지니어링을 수행합니다.",
       "en": "Since its early achievements—including a win at the Gyeongnam student-built car race in 1999—Auto_Lab has continuously delivered results across KSAE and Formula Student Korea. From multiple KSAE awards (2016–2017), IC participation and KSAE Formula recognition (2020), top prizes at Pro‑Makers and Capstone Design (2021), strong overall finishes and engineering awards (2022–2023), to an FSK overall commendation and an E‑Formula podium in 2024, we improve every season through a design–build–test–data iteration loop. Today we develop EV and CV platforms in parallel, engineering at the system level to deliver reliable performance and competitive packaging."
     },
-    "image": "/team/images/team-hero.jpg",
+    "image": "team/images/team-hero.jpg",
     "caption_bold": {
       "en": "Engineering-driven.",
       "ko": "Engineering-driven."
@@ -28,147 +28,147 @@
       "role": "EV Team Leader",
       "team": "EV",
       "division": "Operations",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김민재",
       "role": "CV Team Leader",
       "team": "CV",
       "division": "Operations",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김수오",
       "role": "President",
       "team": "EV",
       "division": "Suspension",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김윤지",
       "role": "Vice President",
       "team": "EV",
       "division": "Cooling",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "서민주",
       "role": "Treasurer",
       "team": "EV",
       "division": "Battery",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김도율",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Frame",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "신주빈",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Suspension",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김희수",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Brake",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "이우철",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Battery",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "한윤서",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Motor Control",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김여주",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Circuit",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "안성원",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Drivetrain",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "손진오",
       "role": "Team Lead",
       "team": "EV",
       "division": "Aero&Cooling",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "박현성",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Aerodynamics",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "우성욱",
       "role": "Subsystem Lead",
       "team": "EV",
       "division": "Cooling",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "최주현",
       "role": "Team Lead",
       "team": "CV",
       "division": "Chassis",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "김성윤",
       "role": "Team Lead",
       "team": "CV",
       "division": "Powertrain",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "이지호",
       "role": "Subsystem Lead",
       "team": "CV",
       "division": "Fuel&Wiring ",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "조형준",
       "role": "Subsystem Lead",
       "team": "CV",
       "division": "Engine Control",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "이재원",
       "role": "Subsystem Lead",
       "team": "CV",
       "division": "Drivetrain",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     },
     {
       "name": "최지훈",
       "role": "Team Lead",
       "team": "CV",
       "division": "Aero&Cooling",
-      "image": "/team/images/member-placeholder.jpg"
+      "image": "team/images/member-placeholder.jpg"
     }
   ],
   "achievements": [

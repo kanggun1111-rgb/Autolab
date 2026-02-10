@@ -10,7 +10,7 @@ Install:
 1) Copy files into Autolab/sponsors/
 2) Paste main navbar (<header>...</header>) into sponsors.html where indicated
 3) Add logos into Autolab/sponsors/images/
-4) Edit /sponsors/sponsors.json only (tiers/items)
+4) Edit sponsors/sponsors.json only (tiers/items)
 
 Tier names (fixed):
 - Title

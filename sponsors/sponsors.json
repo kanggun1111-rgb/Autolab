@@ -6,7 +6,7 @@
       "subtitle": "Auto_Lab의 더 나은 시즌은 파트너의 신뢰와 지원으로 완성됩니다.",
       "cta_primary": {
         "label": "스폰서십 제안서(PDF)",
-        "href": "/sponsors/images/sponsorship_ko.pdf"
+        "href": "sponsors/images/sponsorship_ko.pdf"
       },
       "cta_secondary": {
         "label": "문의하기 →",
@@ -19,7 +19,7 @@
       "subtitle": "A better season is built with trusted partners and support.",
       "cta_primary": {
         "label": "Sponsorship Deck (PDF)",
-        "href": "/sponsors/images/sponsorship_en.pdf"
+        "href": "sponsors/images/sponsorship_en.pdf"
       },
       "cta_secondary": {
         "label": "Contact →",
@@ -38,7 +38,7 @@
       "items": [
         {
           "name": "Pusan National University School of Mechanical Engineering",
-          "logo": "/sponsors/images/title-1.png",
+          "logo": "sponsors/images/title-1.png",
           "url": "https://me.pusan.ac.kr/"
         }
       ]
@@ -52,15 +52,15 @@
       "layout": "grid",
       "items": [
         {
-          "logo": "/sponsors/images/gold-1.png",
+          "logo": "sponsors/images/gold-1.png",
           "url": "https://pnurise.pusan.ac.kr/pnurise/index.do"
         },
         {
-          "logo": "/sponsors/images/gold-2.png",
+          "logo": "sponsors/images/gold-2.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/gold-3.png",
+          "logo": "sponsors/images/gold-3.png",
           "url": ""
         }
       ]
@@ -74,43 +74,43 @@
       "layout": "grid",
       "items": [
         {
-          "logo": "/sponsors/images/silver-1.png",
+          "logo": "sponsors/images/silver-1.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-2.png",
+          "logo": "sponsors/images/silver-2.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-3.png",
+          "logo": "sponsors/images/silver-3.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-4.png",
+          "logo": "sponsors/images/silver-4.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-5.png",
+          "logo": "sponsors/images/silver-5.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-6.png",
+          "logo": "sponsors/images/silver-6.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-7.png",
+          "logo": "sponsors/images/silver-7.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-8.png",
+          "logo": "sponsors/images/silver-8.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-9.png",
+          "logo": "sponsors/images/silver-9.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/silver-10.png",
+          "logo": "sponsors/images/silver-10.png",
           "url": ""
         }
       ]
@@ -124,35 +124,35 @@
       },
       "items": [
         {
-          "logo": "/sponsors/images/support-1.png",
+          "logo": "sponsors/images/support-1.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-2.png",
+          "logo": "sponsors/images/support-2.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-3.png",
+          "logo": "sponsors/images/support-3.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-4.png",
+          "logo": "sponsors/images/support-4.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-5.png",
+          "logo": "sponsors/images/support-5.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-6.png",
+          "logo": "sponsors/images/support-6.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-7.png",
+          "logo": "sponsors/images/support-7.png",
           "url": ""
         },
         {
-          "logo": "/sponsors/images/support-8.png",
+          "logo": "sponsors/images/support-8.png",
           "url": ""
         }
       ]
