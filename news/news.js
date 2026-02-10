@@ -83,7 +83,7 @@
 
   // ---------- category options ----------
   if (catEl){
-    catEl.innerHTML = ''; / 안전: 중복 방지
+    catEl.innerHTML = ''; // 안전: 중복 방지
     const allOpt = document.createElement('option');
     allOpt.value = 'ALL';
     allOpt.textContent = 'ALL';
@@ -121,7 +121,7 @@
 
   function render(){
     const filtered = getFiltered();
-    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    const totalPages = Math.max(1, Math.ceil(filtered.length // PAGE_SIZE));
     page = Math.min(page, totalPages);
 
     const start = (page - 1) * PAGE_SIZE;

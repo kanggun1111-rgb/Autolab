@@ -69,8 +69,8 @@
 
     // KO/EN 둘 다 있으면: 클릭 시 선택 모달
     if (pdfKo && pdfEn){
-      c1.href = "#";                 / 기본 링크 제거
-      c1.removeAttribute('target');  / 우리가 window.open으로 처리
+      c1.href = "#";                 // 기본 링크 제거
+      c1.removeAttribute('target');  // 우리가 window.open으로 처리
       c1.rel = "noopener";
 
       // 중복 바인딩 방지
@@ -184,7 +184,7 @@ function card(item, featured=false){
 
   function renderAll(){
     applyHtmlLang();   / 🔑 HTML 언어 적용
-    setHero();         / JSON hero
+    setHero();         // JSON hero
     const tiers = Array.isArray(data.tiers) ? data.tiers : [];
     mount.innerHTML = tiers.map(renderTier).join('');
   }

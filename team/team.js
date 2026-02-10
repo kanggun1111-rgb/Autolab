@@ -118,13 +118,13 @@
   if (divSel && search && grid){
 
     // --- EV/CV tab state ---
-    let teamFilter = 'ALL'; / ALL | EV | CV
+    let teamFilter = 'ALL'; // ALL | EV | CV
 
     function classifyTeam(m){
       // JSON에 team: "EV" | "CV" 넣는 방식
       const t = String(pick(m.team) || '').trim().toUpperCase();
       if (t === 'EV' || t === 'CV') return t;
-      return 'CV'; / fallback
+      return 'CV'; // fallback
     }
 
     function baseListByTeam(){
@@ -188,7 +188,7 @@
 
       // --- pagination ---
       const total = list.length;
-      const totalPages = Math.ceil(total / PAGE_SIZE);
+      const totalPages = Math.ceil(total // PAGE_SIZE);
 
       if (currentPage > totalPages) currentPage = totalPages || 1;
 

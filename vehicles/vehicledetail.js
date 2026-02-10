@@ -172,7 +172,7 @@
       return;
     }
 
-    window.__vehicleDetailData = v; / cache for re-render on lang switch
+    window.__vehicleDetailData = v; // cache for re-render on lang switch
     render(mount, v, lang);
   })();
 })();
