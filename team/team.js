@@ -1,28 +1,28 @@
-/* team/team.js (v3.1 safe ko/en + no i18n + EV/CV tabs + pagination) */
+/* /team/team.js (v3.1 safe ko/en + no i18n + EV/CV tabs + pagination) */
 (async function(){
   const $ = (id) => document.getElementById(id);
 
-  // Base-safe asset path (works with <base href="/Autolab/">)
+  / Base-safe asset path (works with)
   function asset(path){
     const base = document.querySelector('base')?.getAttribute('href') || '/';
     return base.replace(/\/+$/, '') + '/' + String(path).replace(/^\/+/, '');
   }
 
-  // Language: 'en' default, persisted in localStorage
+  / Language: 'en' default, persisted in localStorage
   function getLang(){
     const v = (localStorage.getItem('lang') || 'en').toLowerCase();
     return (v === 'ko' || v === 'en') ? v : 'en';
   }
   const lang = getLang();
 
-  // --- Language toggle (safe) ---
-  // Some pages rely on main/script.js to bind this, but if that script errors on this page
-  // the button can become inert. We bind locally as a fallback without changing UI/design.
+  / --- Language toggle (safe) ---
+  / Some pages rely on /main/script.js to bind this, but if that script errors on this page
+  / the button can become inert. We bind locally as a fallback without changing UI/design.
   const langToggleBtn = document.getElementById('langToggleBtn');
   if (langToggleBtn && !langToggleBtn.dataset.langBound){
     langToggleBtn.dataset.langBound = '1';
     langToggleBtn.addEventListener('click', (e) => {
-      // capture-phase handler to avoid double-toggle if another listener exists
+      / capture-phase handler to avoid double-toggle if another listener exists
       e.preventDefault();
       e.stopImmediatePropagation();
 
@@ -30,15 +30,15 @@
       const next = (cur === 'en') ? 'ko' : 'en';
       localStorage.setItem('lang', next);
 
-      // Reload to let each page's renderer apply the selected language.
-      // Keep the same URL (including hash) to preserve scroll position intent.
+      / Reload to let each page's renderer apply the selected language.
+      / Keep the same URL (including hash) to preserve scroll position intent.
       location.reload();
     }, true);
   }
 
-  // Pick localized string from value:
-  // - string -> string
-  // - {en,ko} -> v[lang] fallback to v.en/first string value
+  / Pick localized string from value:
+  / - string -> string
+  / - {en,ko} -> v[lang] fallback to v.en/first string value
   function pick(v){
     if (v == null) return '';
     if (typeof v === 'string' || typeof v === 'number') return String(v);
@@ -49,7 +49,7 @@
       if (typeof b === 'string' || typeof b === 'number') return String(b);
       const c = v.ko;
       if (typeof c === 'string' || typeof c === 'number') return String(c);
-      // last resort: first string-ish value in object
+      / last resort: first string-ish value in object
       for (const key of Object.keys(v)){
         const x = v[key];
         if (typeof x === 'string' || typeof x === 'number') return String(x);
@@ -62,7 +62,7 @@
 
   let data;
   try{
-    const res = await fetch(asset('team/team.json'), { cache: 'no-store' });
+    const res = await fetch(asset('/team/team.json'), { cache: 'no-store' });
     if(!res.ok) return;
     data = await res.json();
   }catch(e){
@@ -110,21 +110,21 @@
   let currentPage = 1;
   function resetPage(){ currentPage = 1; }
 
-  // EV/CV tabs
+  / EV/CV tabs
   const tabAll = document.getElementById('tabAll');
   const tabEV  = document.getElementById('tabEV');
   const tabCV  = document.getElementById('tabCV');
 
   if (divSel && search && grid){
 
-    // --- EV/CV tab state ---
-    let teamFilter = 'ALL'; // ALL | EV | CV
+    / --- EV/CV tab state ---
+    let teamFilter = 'ALL'; / ALL | EV | CV
 
     function classifyTeam(m){
-      // JSON에 team: "EV" | "CV" 넣는 방식
+      / JSON에 team: "EV" | "CV" 넣는 방식
       const t = String(pick(m.team) || '').trim().toUpperCase();
       if (t === 'EV' || t === 'CV') return t;
-      return 'CV'; // fallback
+      return 'CV'; / fallback
     }
 
     function baseListByTeam(){
@@ -139,10 +139,10 @@
         .join('');
     }
 
-    // 초기 Division 옵션은 전체 멤버 기준
+    / 초기 Division 옵션은 전체 멤버 기준
     buildDivisionOptions(members);
 
-    // Always English placeholder (do not localize UI controls)
+    / Always English placeholder (do not localize UI controls)
     if (!search.getAttribute('placeholder')) {
       search.setAttribute('placeholder', 'Search name or role');
     }
@@ -157,7 +157,7 @@
         btn.setAttribute('aria-selected', on ? 'true' : 'false');
       });
 
-      // 탭이 바뀌면 Division 목록도 그 탭 기준으로 갱신 + 선택값 리셋
+      / 탭이 바뀌면 Division 목록도 그 탭 기준으로 갱신 + 선택값 리셋
       buildDivisionOptions(baseListByTeam());
       divSel.value = 'ALL';
 
@@ -170,14 +170,14 @@
     });
 
     function match(m){
-      // 먼저 team 탭 필터 적용
+      / 먼저 team 탭 필터 적용
       if (teamFilter !== 'ALL' && classifyTeam(m) !== teamFilter) return false;
 
-      // division 필터
+      / division 필터
       const mDivision = pick(m.division);
       if (divSel.value !== 'ALL' && mDivision !== divSel.value) return false;
 
-      // 검색
+      / 검색
       const q = (search.value || '').toLowerCase();
       const hay = `${pick(m.name)} ${pick(m.role)} ${mDivision}`.toLowerCase();
       return !q || hay.includes(q);
@@ -186,7 +186,7 @@
     function renderMembers(){
       const list = members.filter(match);
 
-      // --- pagination ---
+      / --- pagination ---
       const total = list.length;
       const totalPages = Math.ceil(total / PAGE_SIZE);
 
@@ -195,11 +195,11 @@
       const start = (currentPage - 1) * PAGE_SIZE;
       const pageItems = list.slice(start, start + PAGE_SIZE);
 
-      // cards
+      / cards
       grid.innerHTML = pageItems.map(m => `
         <article class="member-card">
           <div class="member-photo">
-            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+            <img src="${esc(pick(m.image) || '/team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
           </div>
           <div class="member-body">
             <h3>${esc(pick(m.name))}</h3>
@@ -209,9 +209,9 @@
             </div>
           </div>
         </article>
-      `).join('') || '<p style="opacity:.8">No members found.</p>'; // always English
+      `).join('') || '<p style="opacity:.8">No members found.</p>'; / always English
 
-      // pager UI
+      / pager UI
       if (!pager) return;
 
       if (totalPages <= 1){
@@ -242,11 +242,11 @@
       });
     }
 
-    // 🔥 필터/검색 바뀌면 항상 1페이지로
+    / 🔥 필터/검색 바뀌면 항상 1페이지로
     divSel.onchange = () => { resetPage(); renderMembers(); };
     search.oninput = () => { resetPage(); renderMembers(); };
 
-    // 초기 탭 상태 반영
+    / 초기 탭 상태 반영
     if (tabAll) setActiveTab('ALL');
     else renderMembers();
   }

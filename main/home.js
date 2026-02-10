@@ -1,13 +1,13 @@
-/* main/home.js
-   - Renders index.html hero + why-season section from main/home.json
-   - Uses window.__getLang() + window.__onLangChange() from main/script.js
+/* /main/home.js
+   - Renders index.html hero + why-season section from /main/home.json
+   - Uses window.__getLang() + window.__onLangChange() from /main/script.js
 */
 (async function(){
   if (!document.body.classList.contains('page-home')) return;
 
   let data;
   try{
-    const res = await fetch('main/home.json', { cache: 'no-store' });
+    const res = await fetch('/main/home.json', { cache: 'no-store' });
     data = await res.json();
   }catch(e){
     console.warn('home.json load failed', e);
@@ -46,7 +46,7 @@
       `).join('');
     }
 
-    // Re-apply i18n (nav + fixed labels)
+    / Re-apply i18n (nav + fixed labels)
     if (window.__applyI18n) window.__applyI18n();
   }
 

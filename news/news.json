@@ -7,7 +7,7 @@
     "excerpt": [
       "AutoLab의 공식 홈페이지를 개설했습니다."
     ],
-    "cover": "news/images/news1.jpg",
+    "cover": "/news/images/news1.jpg",
     "source_url": "https://www.instagram.com/pnu_autolab?igsh=dDcwc2FhNnhuMThi&utm_source=qr",
     "content": [
       "AutoLab의 공식 홈페이지를 개설했습니다.",
@@ -48,7 +48,7 @@
     "date": "2025-02-02",
     "category": "Achievements",
     "excerpt": "오토랩의 주요 대회 실적과 성과",
-    "cover": "news/images/news2.jpg",
+    "cover": "/news/images/news2.jpg",
     "source_url": "https://www.instagram.com/p/DRL2Pxfks-S/?igsh=MWtybmt1ZjNnM2czaQ==",
     "content": [
       "1999년: 경남 자작자동차 경주대회 우승",
@@ -94,7 +94,7 @@
     "date": "2026-02-01",
     "category": "TEAM",
     "excerpt": "2026 시즌 개발 진행 상황과 주요 일정 업데이트를 공유합니다.",
-    "cover": "news/images/news3.jpg",
+    "cover": "/news/images/news3.jpg",
     "source_url": null,
     "content": [
       "2026 시즌 개발 진행 상황과 주요 일정 업데이트를 공유합니다.",

@@ -1,6 +1,6 @@
-/* news/newsstyle.css
+/* /news/newsstyle.css
    게시판(목록/상세) 전용 스타일.
-   메인(main/style.css)의 news-card 스타일을 그대로 재사용하고,
+   메인(/main/style.css)의 news-card 스타일을 그대로 재사용하고,
    게시판 페이지에 필요한 레이아웃만 추가합니다.
 */
 

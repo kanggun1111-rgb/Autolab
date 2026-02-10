@@ -1,7 +1,7 @@
-/* news/post.js
+/* /news/post.js
    - ?id= 로 게시글 렌더링
    - source_url이 있으면 '원문 보기' 버튼 표시(인스타 등)
-   - ko/en 전환 시 페이지 새로고침 없이 내용 재렌더링 (main/script.js 토글을 방해하지 않음)
+   - ko/en 전환 시 페이지 새로고침 없이 내용 재렌더링 (/main/script.js 토글을 방해하지 않음)
 */
 (async function(){
   const T = (k, f='') => (window.__t ? window.__t(k, f) : f);
@@ -10,22 +10,22 @@
 
   const id = new URLSearchParams(location.search).get('id');
   if (!id){
-    mount.innerHTML = '<p style="opacity:.85">잘못된 접근입니다. <a href="news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">잘못된 접근입니다. <a href="/news/index.html">목록으로</a></p>';
     return;
   }
 
   let posts = [];
   try{
-    const res = await fetch('news/news.json', { cache: 'no-store' });
+    const res = await fetch('/news/news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
-    mount.innerHTML = '<p style="opacity:.85">게시글 데이터를 불러오지 못했습니다. <a href="news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">게시글 데이터를 불러오지 못했습니다. <a href="/news/index.html">목록으로</a></p>';
     return;
   }
 
   const p = posts.find(x => String(x.id) === String(id));
   if (!p){
-    mount.innerHTML = '<p style="opacity:.85">게시글을 찾을 수 없습니다. <a href="news/index.html">목록으로</a></p>';
+    mount.innerHTML = '<p style="opacity:.85">게시글을 찾을 수 없습니다. <a href="/news/index.html">목록으로</a></p>';
     return;
   }
 
@@ -41,7 +41,7 @@
     return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
   }
 
-  // ---------- locale helpers ----------
+  / ---------- locale helpers ----------
   function getLang(){
     const v = (localStorage.getItem('lang') || 'ko').toLowerCase();
     return v === 'en' ? 'en' : 'ko';
@@ -50,11 +50,11 @@
   function pickText(post, baseKey, fallback=''){
     const lang = getLang();
 
-    // 1) baseKey_ko / baseKey_en 우선
+    / 1) baseKey_ko / baseKey_en 우선
     const v1 = post?.[`${baseKey}_${lang}`];
     if (v1 !== undefined && v1 !== null) return v1;
 
-    // 2) {ko,en} 객체 형태 지원
+    / 2) {ko,en} 객체 형태 지원
     const obj = post?.[baseKey];
     if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
       const v2 = obj[lang];
@@ -62,7 +62,7 @@
       return obj.ko ?? obj.en ?? fallback;
     }
 
-    // 3) 기존 단일 필드 (백워드 호환)
+    / 3) 기존 단일 필드 (백워드 호환)
     const v3 = post?.[baseKey];
     return (v3 !== undefined && v3 !== null) ? v3 : fallback;
   }
@@ -91,7 +91,7 @@
   function sourceLabel(){
     return getLang() === 'en' ? 'View source →' : '원문 보기 →';
   }
-  // -----------------------------------
+  / -----------------------------------
 
   function renderPost(){
     const title = toOneLine(pickText(p, 'title', p.title || ''));
@@ -104,7 +104,7 @@
     const paragraphs = contentLines.map(line => `<p>${escapeHtml(line)}</p>`).join('');
 
     mount.innerHTML = `
-      <a class="post__back" href="news/index.html">${escapeHtml(backLabel())}</a>
+      <a class="post__back" href="/news/index.html">${escapeHtml(backLabel())}</a>
 
       <article class="post__head">
         <div class="post__meta">
@@ -126,15 +126,15 @@
     `;
   }
 
-  // 최초 렌더
+  / 최초 렌더
   renderPost();
 
-  // 언어 토글 시: main/script.js가 localStorage.lang을 바꾼 뒤 재렌더
+  / 언어 토글 시: /main/script.js가 localStorage.lang을 바꾼 뒤 재렌더
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn && !langBtn.dataset.postRerenderBound){
     langBtn.dataset.postRerenderBound = '1';
     langBtn.addEventListener('click', () => {
-      // main/script.js 토글 처리 후 반영
+      / /main/script.js 토글 처리 후 반영
       setTimeout(() => renderPost(), 0);
     });
   }

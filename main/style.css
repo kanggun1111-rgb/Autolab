@@ -1192,7 +1192,7 @@ html.pc-view .nav-links{
 
 /* ==================================================
    PC VIEW (force desktop layout even on small screens)
-   ✅ main/style.css 맨 아래에 붙이기
+   ✅ /main/style.css 맨 아래에 붙이기
 ================================================== */
 
 /* PC 보기일 때는 데스크톱 네비처럼 강제 */
