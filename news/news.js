@@ -71,7 +71,7 @@
 
   // ---------- load ----------
   try{
-    const res = await fetch('news.json', { cache: 'no-store' });
+    const res = await fetch('/news/news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     listEl.innerHTML = '<p style="opacity:.8;text-align:center">뉴스 데이터를 불러오지 못했습니다.</p>';
@@ -141,7 +141,7 @@
           <h3>${escapeHtml(title)}</h3>
           <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
           <p class="news-excerpt">${escapeHtml(excerpt || '')}</p>
-          <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
+          <a href="/news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
         </div>
       </div>
       `;

@@ -121,7 +121,7 @@
 
     let data;
     try{
-      const res = await fetch(asset("vehicles/vehicles.json"), { cache: "no-store" });
+      const res = await fetch(asset("/vehicles/vehicles.json"), { cache: "no-store" });
       data = await res.json();
     }catch(err){
       featuredGrid.innerHTML = `<p style="opacity:.8">${esc(UI[lang].loadFail)}</p>`;

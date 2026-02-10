@@ -35,7 +35,7 @@
 
   let data;
   try{
-    const res = await fetch('sponsors.json', { cache:'no-store' });
+    const res = await fetch('/sponsors/sponsors.json', { cache:'no-store' });
     data = await res.json();
   }catch(e){
     mount.innerHTML = '<p style="opacity:.8">Failed to load sponsors data.</p>';

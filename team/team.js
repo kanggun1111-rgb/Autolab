@@ -62,7 +62,7 @@
 
   let data;
   try{
-    const res = await fetch(asset('team/team.json'), { cache: 'no-store' });
+    const res = await fetch(asset('/team/team.json'), { cache: 'no-store' });
     if(!res.ok) return;
     data = await res.json();
   }catch(e){
@@ -199,7 +199,7 @@
       grid.innerHTML = pageItems.map(m => `
         <article class="member-card">
           <div class="member-photo">
-            <img src="${esc(pick(m.image) || 'team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
+            <img src="${esc(pick(m.image) || '/team/images/member-placeholder.jpg')}" alt="${esc(pick(m.name) || 'Member')}">
           </div>
           <div class="member-body">
             <h3>${esc(pick(m.name))}</h3>
