@@ -1,4 +1,4 @@
-/* news/latest.js
+/* /news/latest.js
    - 메인(index.html)의 NEWS 섹션(.news-grid)을 news.json 기반으로 자동 채움 (최신 3개)
    - 기존의 카드(하드코딩)는 이 스크립트가 실행되면 자동으로 교체됨
    - lang 토글 시(전역 설정 localStorage.lang) 즉시 재렌더
@@ -12,13 +12,13 @@
 
   let posts = [];
   try{
-    const res = await fetch('/news/news.json', { cache: 'no-store' });
+    const res = await fetch('news/news.json', { cache: 'no-store' });
     posts = await res.json();
   }catch(err){
     return;
   }
 
-  // 최신순 정렬
+  / 최신순 정렬
   posts.sort((a,b) => new Date(b.date) - new Date(a.date));
 
   function escapeHtml(s){
@@ -45,13 +45,13 @@
     const v1 = p && p[`${key}_${lang}`];
     if (v1 !== undefined && v1 !== null && v1 !== '') return v1;
 
-    // {ko,en} 객체도 지원
+    / {ko,en} 객체도 지원
     const obj = p && p[key];
     if (obj && typeof obj === 'object' && (obj.ko !== undefined || obj.en !== undefined)){
       return obj[lang] ?? obj.ko ?? obj.en ?? '';
     }
 
-    // 단일 필드 백워드 호환
+    / 단일 필드 백워드 호환
     return p ? (p[key] ?? '') : '';
   }
   function coverUrl(p){
@@ -76,17 +76,17 @@
             <h3>${escapeHtml(title)}</h3>
             <p class="news-date">${escapeHtml(formatDate(p.date))}</p>
             <p class="news-excerpt">${escapeHtml(excerpt || '')}</p>
-            <a href="/news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
+            <a href="news/post.html?id=${encodeURIComponent(p.id)}" class="news-link">Read More →</a>
           </div>
         </div>
       `;
     }).join('');
   }
 
-  // 최초 렌더
+  / 최초 렌더
   render();
 
-  // lang 토글 시 재렌더 (main/script.js가 lang을 바꾼 뒤 반영)
+  / lang 토글 시 재렌더 (/main/script.js가 lang을 바꾼 뒤 반영)
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn && !langBtn.dataset.latestRerenderBound){
     langBtn.dataset.latestRerenderBound = '1';

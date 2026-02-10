@@ -1,7 +1,7 @@
-// vehicles/vehicledetail.js — language toggle without i18n keys (safe fallback)
-// - Keeps existing functionality
-// - Uses localStorage.lang = 'en' | 'ko'
-// - Selects localized fields from vehicles.json when values are {ko,en}
+/ /vehicles/vehicledetail.js — language toggle without i18n keys (safe fallback)
+/ - Keeps existing functionality
+/ - Uses localStorage.lang = 'en' | 'ko'
+/ - Selects localized fields from vehicles.json when values are {ko,en}
 
 (function(){
   "use strict";
@@ -96,7 +96,7 @@
           <p>${esc(pick(v.tagline, lang) ?? "")}</p>
 
           <div class="detail-actions">
-            <a class="primary" href="/vehicles/vehicles.html">← Back to Vehicles</a>
+            <a class="primary" href="vehicles/vehicles.html">← Back to Vehicles</a>
             <a href="#specs">Specs</a>
             <a href="#gallery">Gallery</a>
           </div>
@@ -136,13 +136,13 @@
     const mount = document.getElementById("detailMount");
     if (!mount) return;
 
-    // init lang + toggle button
+    / init lang + toggle button
     let lang = setLang(getLang());
     const btn = document.getElementById("langToggleBtn");
     if (btn){
       btn.addEventListener("click", () => {
         lang = setLang(lang === "en" ? "ko" : "en");
-        // re-render once data already loaded
+        / re-render once data already loaded
         if (window.__vehicleDetailData) render(mount, window.__vehicleDetailData, lang);
       });
     }
@@ -157,7 +157,7 @@
 
     let data;
     try{
-      const res = await fetch(asset("/vehicles/vehicles.json"), { cache:"no-store" });
+      const res = await fetch(asset("vehicles/vehicles.json"), { cache:"no-store" });
       data = await res.json();
     }catch(e){
       mount.innerHTML = `<p style="opacity:.85">${esc(UI[lang].loadFail)}</p>`;
@@ -172,7 +172,7 @@
       return;
     }
 
-    window.__vehicleDetailData = v; // cache for re-render on lang switch
+    window.__vehicleDetailData = v; / cache for re-render on lang switch
     render(mount, v, lang);
   })();
 })();

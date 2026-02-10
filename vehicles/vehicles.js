@@ -1,12 +1,12 @@
-// vehicles/vehicles.js — language toggle without i18n keys (safe fallback)
-// - Keeps all existing functionality (featured cards, previous modal, filters)
-// - Uses localStorage.lang = 'en' | 'ko'
-// - Does NOT require any i18n json; it only switches a few UI strings + selects ko/en fields in vehicles.json when present
+/ /vehicles/vehicles.js — language toggle without i18n keys (safe fallback)
+/ - Keeps all existing functionality (featured cards, previous modal, filters)
+/ - Uses localStorage.lang = 'en' | 'ko'
+/ - Does NOT require any i18n json; it only switches a few UI strings + selects ko/en fields in vehicles.json when present
 
 (function(){
   "use strict";
 
-  // ---------- base-safe asset path ----------
+  / ---------- base-safe asset path ----------
   function asset(path){
     const base = document.querySelector("base")?.getAttribute("href") || "/";
     const cleanBase = base.replace(/\/+$/,"");
@@ -14,7 +14,7 @@
     return cleanBase + "/" + cleanPath;
   }
 
-  // ---------- language state ----------
+  / ---------- language state ----------
   function getLang(){
     const v = (localStorage.getItem("lang") || "").toLowerCase();
     return (v === "ko" || v === "en") ? v : "en";
@@ -23,14 +23,14 @@
     const lang = (next === "ko") ? "ko" : "en";
     localStorage.setItem("lang", lang);
     document.documentElement.lang = lang;
-    // Toggle button label is always English: ENG/KOR
+    / Toggle button label is always English: ENG/KOR
     const btn = document.getElementById("langToggleBtn");
     if (btn) btn.textContent = (lang === "en" ? "KOR" : "ENG");
     return lang;
   }
 
-  // ---------- pick localized value from data ----------
-  // If value is {ko: "...", en: "..."}, choose by lang. Otherwise return as-is.
+  / ---------- pick localized value from data ----------
+  / If value is {ko: "...", en: "..."}, choose by lang. Otherwise return as-is.
   function pick(val, lang){
     if (val && typeof val === "object" && !Array.isArray(val)){
       if (typeof val[lang] === "string") return val[lang];
@@ -46,7 +46,7 @@
     }[m]));
   }
 
-  // ---------- UI strings (minimal, page-specific) ----------
+  / ---------- UI strings (minimal, page-specific) ----------
   const UI = {
     en: {
       hero: "Auto_Lab develops two cars each season (EV / CV). Explore current-season cars below, and browse past seasons for specs and highlights.",
@@ -63,34 +63,34 @@
       searchPh: "연도/차량명 검색 (예: 2025, ALE-25)",
       loadFail: "데이터를 불러오지 못했습니다.",
       seasonEmpty: "해당 시즌 차량 데이터가 없습니다.",
-      modalSpecs: "Vehicle Specs", // keep header/button style English if desired
-      seasonLabel: "Season"        // keep label English per your earlier rule
+      modalSpecs: "Vehicle Specs", / keep header/button style English if desired
+      seasonLabel: "Season"        / keep label English per your earlier rule
     }
   };
 
   function applyStaticText(lang){
-    // hero paragraph: first p inside .vehicles-hero
+    / hero paragraph: first p inside .vehicles-hero
     const heroP = document.querySelector(".vehicles-hero p");
     if (heroP) heroP.textContent = UI[lang].hero;
 
-    // previous lead: first p inside #previous .previous-head
+    / previous lead: first p inside #previous .previous-head
     const prevP = document.querySelector("#previous .previous-head p");
     if (prevP) prevP.textContent = UI[lang].previousLead;
 
-    // search placeholder
+    / search placeholder
     const yearInput = document.getElementById("filterYear");
     if (yearInput) yearInput.setAttribute("placeholder", UI[lang].searchPh);
 
-    // modal title default (actual title changes when opening modal)
+    / modal title default (actual title changes when opening modal)
     const modalTitle = document.getElementById("modalTitle");
     if (modalTitle && !modalTitle.textContent.trim()) modalTitle.textContent = UI[lang].modalSpecs;
 
-    // season label
+    / season label
     const seasonLabel = document.querySelector(".select-wrap > span");
     if (seasonLabel) seasonLabel.textContent = UI[lang].seasonLabel;
   }
 
-  // ---------- main app ----------
+  / ---------- main app ----------
   (async function(){
     const featuredGrid = document.getElementById("featuredGrid");
     const previousGrid = document.getElementById("previousGrid");
@@ -105,7 +105,7 @@
 
     if (!featuredGrid || !previousGrid) return;
 
-    // init lang + wire toggle
+    / init lang + wire toggle
     let lang = setLang(getLang());
     applyStaticText(lang);
 
@@ -121,7 +121,7 @@
 
     let data;
     try{
-      const res = await fetch(asset("/vehicles/vehicles.json"), { cache: "no-store" });
+      const res = await fetch(asset("vehicles/vehicles.json"), { cache: "no-store" });
       data = await res.json();
     }catch(err){
       featuredGrid.innerHTML = `<p style="opacity:.8">${esc(UI[lang].loadFail)}</p>`;
@@ -156,7 +156,7 @@
     }
 
     function detailHref(id){
-      return `vehicles/detail.html?id=${encodeURIComponent(id)}`;
+      return `/vehicles/detail.html?id=${encodeURIComponent(id)}`;
     }
 
     function renderFeatured(season){
