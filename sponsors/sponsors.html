@@ -66,11 +66,12 @@
     <div class="hero-actions">
       <!-- 버튼/헤더는 항상 영어여야 한다면: data-ko를 아예 안 넣고 영어 고정 -->
       <a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
+      <a class="primary secondary" href="#" id="heroCtaTiers" rel="noopener" data-en="Sponsor Tiers" data-ko="스폰서 티어표">Sponsor Tiers</a>
       <a href="#" id="heroCtaSecondary">Contact →</a>
     </div>
 
     <div class="hero-note">
-      <b>Tier:</b> Title • Gold • Silver • Support
+      <b>Tier:</b> Title • Platinum • Gold • Silver • Support
     </div>
   </div>
 
@@ -147,6 +148,42 @@
       >Cancel</button>
     </div>
   </form>
+</dialog>
+
+
+<!-- Tier table language picker -->
+<dialog id="tiersLangDialog" class="pdf-dialog">
+  <form method="dialog" class="pdf-dialog__panel">
+    <div class="pdf-dialog__head">
+      <h3
+        class="pdf-dialog__title"
+        data-en="Open Sponsor Tier Table"
+        data-ko="스폰서 티어표 열기"
+      >Open Sponsor Tier Table</h3>
+
+      <button class="pdf-dialog__close" value="cancel" aria-label="Close">✕</button>
+    </div>
+
+    <p
+      class="pdf-dialog__desc"
+      data-en="Choose a language."
+      data-ko="언어를 선택하세요."
+    >Choose a language.</p>
+
+    <div class="pdf-dialog__actions">
+      <button type="button" class="pdf-btn pdf-btn--ko" id="tiersKoBtn">한국어 (PDF)</button>
+      <button type="button" class="pdf-btn pdf-btn--en" id="tiersEnBtn">English (PDF)</button>
+    </div>
+
+    <div class="pdf-dialog__foot">
+      <button class="pdf-dialog__cancel" value="cancel"
+        data-en="Cancel"
+        data-ko="취소"
+      >Cancel</button>
+    </div>
+  </form>
+</dialog>
+
 </dialog>
 
 

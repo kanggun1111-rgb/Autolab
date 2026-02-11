@@ -71,6 +71,12 @@
   background:rgba(240,165,0,0.10);
 }
 
+.hero-actions a.primary.secondary{
+  border-color:rgba(255,255,255,0.22);
+  background:rgba(255,255,255,0.02);
+  opacity:.95;
+}
+
 .hero-note{
   margin-top:14px;
   opacity:.75;

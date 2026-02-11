@@ -1,7 +1,7 @@
 /* /sponsors/sponsors.js
    - sponsors.json 기반 렌더링 (KO/EN)
    - HTML data-en / data-ko 동시 지원
-   - Title/Gold/Silver/Support: grid
+   - Title/Platinum/Gold/Silver/Support: grid
 */
 (async function(){
   /* --------------------
@@ -63,6 +63,10 @@
   const pdfKo = (heroAll.ko && heroAll.ko.cta_primary && heroAll.ko.cta_primary.href) ? heroAll.ko.cta_primary.href : '';
   const pdfEn = (heroAll.en && heroAll.en.cta_primary && heroAll.en.cta_primary.href) ? heroAll.en.cta_primary.href : '';
 
+  // Sponsor tier table PDFs (language-specific)
+  const tiersPdfKo = '/sponsors/images/sponsor_tiers_ko.pdf';
+  const tiersPdfEn = '/sponsors/images/sponsor_tiers_en.pdf';
+
   // ===== Primary CTA (PDF) =====
   if (c1 && hero.cta_primary){
     c1.textContent = hero.cta_primary.label || '';
@@ -111,6 +115,47 @@
       c1.href = hero.cta_primary.href || '#';
       c1.target = "_blank";
       c1.rel = "noopener";
+    }
+  }
+
+
+  // ===== Sponsor Tiers CTA =====
+  const cT = document.getElementById('heroCtaTiers');
+  if (cT){
+    // label handled by HTML data-en/data-ko via applyHtmlLang()
+    cT.href = "#";
+    cT.removeAttribute('target');
+    cT.rel = "noopener";
+
+    if (!cT.dataset.boundTiersPicker){
+      cT.dataset.boundTiersPicker = "1";
+
+      const dlgT = document.getElementById('tiersLangDialog');
+      const koBtnT = document.getElementById('tiersKoBtn');
+      const enBtnT = document.getElementById('tiersEnBtn');
+
+      const openPdfT = (href) => {
+        if (!href) return;
+        window.open(href, '_blank', 'noopener');
+        if (dlgT && dlgT.open) dlgT.close();
+      };
+
+      const openDialogT = () => {
+        if (dlgT && typeof dlgT.showModal === 'function') {
+          dlgT.showModal();
+        } else {
+          const pickKo = confirm('한국어 PDF를 열까요?\n(확인=한국어 / 취소=English)');
+          openPdfT(pickKo ? tiersPdfKo : tiersPdfEn);
+        }
+      };
+
+      cT.addEventListener('click', (e) => {
+        e.preventDefault();
+        openDialogT();
+      });
+
+      if (koBtnT) koBtnT.addEventListener('click', () => openPdfT(tiersPdfKo));
+      if (enBtnT) enBtnT.addEventListener('click', () => openPdfT(tiersPdfEn));
     }
   }
 

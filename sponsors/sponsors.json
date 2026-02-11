@@ -44,6 +44,15 @@
       ]
     },
     {
+      "tier": "Platinum",
+      "note": {
+        "ko": "프리미엄 파트너",
+        "en": "Premium partner"
+      },
+      "layout": "grid",
+      "items": []
+    },
+    {
       "tier": "Gold",
       "note": {
         "ko": "핵심 파트너",
