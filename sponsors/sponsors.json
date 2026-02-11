@@ -50,7 +50,12 @@
         "en": "Premium partner"
       },
       "layout": "grid",
-      "items": []
+      "items": [
+        {
+          "logo": "/sponsors/images/platinum-1.png",
+          "url": "https://pnurise.pusan.ac.kr/pnurise/index.do"
+        }
+      ]
     },
     {
       "tier": "Gold",
@@ -62,15 +67,11 @@
       "items": [
         {
           "logo": "/sponsors/images/gold-1.png",
-          "url": "https://pnurise.pusan.ac.kr/pnurise/index.do"
+          "url": "https://www.we-online.com/en/special/country/south-korea?srsltid=AfmBOooeoBboE9tbrlwr8YVcqO696uLU_7-o8z2JX7wpEQRgXYDterV5"
         },
         {
           "logo": "/sponsors/images/gold-2.png",
-          "url": ""
-        },
-        {
-          "logo": "/sponsors/images/gold-3.png",
-          "url": ""
+          "url": "https://www.ntnkorea.co.kr/"
         }
       ]
     },
