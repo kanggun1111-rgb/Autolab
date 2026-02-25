@@ -1,4 +1,50 @@
 [
+      {
+        "id": "Graduation Ceremony 2025",
+        "title": "Graduation Ceremony 2025",
+        "date": "2026-02-20",
+        "category": "EVENT",
+        "excerpt": "2025 Graduation Ceremony – AUTOLAB",
+        "cover": "news/images/news1.jpg",
+        "source_url": "https://www.instagram.com/p/DVDiprJklHQ/?igsh=MXRzaWN6OTd1bnJxcg==",
+        "content": [
+            "오토랩 선배님들의 졸업식을 진행했습니다.",
+
+            "팀과 함께했던 시간 속에서 쌓아온 경험과 추억들이",
+            "앞으로의 길에도 큰 힘이 되기를 바랍니다.",
+            "그동안 함께해주셔서 진심으로 감사드립니다.",
+
+            "졸업을 진심으로 축하드립니다.",
+            "선배님들의 앞날을 응원합니다."
+        ],
+        "title_ko": "Graduation Ceremony 2025",
+        "excerpt_ko": [
+           "2025 Graduation Ceremony – AUTOLAB"
+        ],
+        "content_ko": [
+          "오토랩 선배님들의 졸업식을 진행했습니다.",
+
+            "팀과 함께했던 시간 속에서 쌓아온 경험과 추억들이",
+            "앞으로의 길에도 큰 힘이 되기를 바랍니다.",
+            "그동안 함께해주셔서 진심으로 감사드립니다.",
+
+            "졸업을 진심으로 축하드립니다.",
+            "선배님들의 앞날을 응원합니다."
+        ],
+        "title_en": "Graduation Ceremony 2025",
+        "excerpt_en": [
+          "2025 Graduation Ceremony – AUTOLAB"
+        ],
+        "content_en": [
+          " We held a graduation ceremony for our AUTOLAB seniors.",
+          "The experiences and memories built during your time with the team",
+          "will continue to be a great source of strength on your future path.",
+          "We sincerely thank you for everything you have shared with us.",
+
+          "Congratulations on your graduation.",
+          "We wish you all the best in your future endeavors."
+    ]
+    },
   {
     "id": "AutoLab | Official Website",
     "title": "AutoLab | Official Website",
@@ -7,7 +53,7 @@
     "excerpt": [
       "AutoLab의 공식 홈페이지를 개설했습니다."
     ],
-    "cover": "/news/images/news1.jpg",
+    "cover": "/news/images/news2.jpg",
     "source_url": "https://www.instagram.com/pnu_autolab?igsh=dDcwc2FhNnhuMThi&utm_source=qr",
     "content": [
       "AutoLab의 공식 홈페이지를 개설했습니다.",
@@ -48,7 +94,7 @@
     "date": "2025-02-02",
     "category": "Achievements",
     "excerpt": "오토랩의 주요 대회 실적과 성과",
-    "cover": "/news/images/news2.jpg",
+    "cover": "/news/images/news3.jpg",
     "source_url": "https://www.instagram.com/p/DRL2Pxfks-S/?igsh=MWtybmt1ZjNnM2czaQ==",
     "content": [
       "1999년: 경남 자작자동차 경주대회 우승",
@@ -94,7 +140,7 @@
     "date": "2026-02-01",
     "category": "TEAM",
     "excerpt": "2026 시즌 개발 진행 상황과 주요 일정 업데이트를 공유합니다.",
-    "cover": "/news/images/news3.jpg",
+    "cover": "/news/images/news4.jpg",
     "source_url": null,
     "content": [
       "2026 시즌 개발 진행 상황과 주요 일정 업데이트를 공유합니다.",
