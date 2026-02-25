@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="apply.title">지원하기 | Auto_Lab</title>
+  <link rel="stylesheet" href="/main/style.css" />
+  <style>
+    .apply-wrap{max-width:1000px;margin:80px auto;padding:0 16px}
+    .apply-title{font-size:36px;font-weight:700;margin-bottom:12px;text-align:center}
+    .apply-desc{text-align:center;opacity:.8;margin-bottom:32px}
+    .apply-deadline{text-align:center;opacity:.75;margin-bottom:28px}
+    .form-box{width:100%;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.18)}
+    .form-box iframe{width:100%;border:none;display:block}
+    .closed-card{display:none;padding:24px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);text-align:center}
+    .closed-card h2{margin:0 0 8px 0;font-size:22px}
+    .closed-card p{margin:0;opacity:.85}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <div class="logo">
+      <img src="/main/images/logo.png" alt="Autolab Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/#hero-grid" data-i18n="nav.home">Home</a></li>
+      <li><a href="/team/team.html" data-i18n="nav.team">Team</a></li>
+      <li><a href="/vehicles/vehicles.html" data-i18n="nav.vehicles">Vehicles</a></li>
+      <li><a href="/sponsors/sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="/news/index.html" data-i18n="nav.news">News</a></li>
+      <li><a href="/#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="/apply/apply.html" class="nav-apply" data-apply-cta="1" data-i18n="nav.apply">지원하기</a></li>
+      <li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+      <li class="nav-mobile-only">
+        <button type="button" id="toggleViewBtn" class="view-toggle" data-i18n="toggle.view.pc">PC 버전으로 보기</button>
+      </li>
+    </ul>
+
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <div></div><div></div><div></div>
+    </div>
+  </nav>
+</header>
+
+<main class="apply-wrap" data-nav-hero>
+  <h1 class="apply-title" data-i18n="apply.heading">AUTOLAB RECRUIT</h1>
+  <p class="apply-desc" data-i18n="apply.desc">아래 지원서를 작성해주세요.</p>
+  <p class="apply-deadline" data-i18n="apply.deadline">마감: 2026년 3월 10일 00:00 (KST)</p>
+
+  <div class="closed-card" id="applyClosedCard">
+    <h2 data-i18n="apply.closed.title">지원기간이 아닙니다</h2>
+    <p data-i18n="apply.closed.body">이번 모집은 마감되었습니다. 다음 모집 공지를 기다려주세요.</p>
+  </div>
+
+  <div class="form-box" id="applyFormBox">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdCLct-2FOHFvccxsHOSuVD8PLvlTJLZ0ym2jTfSXq1L-tGbA/viewform?embedded=true"
+      height="3992"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</main>
+
+<script src="/main/script.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var api = window.__AUTOLAB__ || {};
+      if (api.isRecruitOpen && !api.isRecruitOpen()) {
+        var form = document.getElementById('applyFormBox');
+        var card = document.getElementById('applyClosedCard');
+        if (form) form.style.display = 'none';
+        if (card) card.style.display = 'block';
+        if (api.showApplyClosedModal) api.showApplyClosedModal();
+      }
+    }catch(e){}
+  });
+</script>
+
+</body>
+</html>

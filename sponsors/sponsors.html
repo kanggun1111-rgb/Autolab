@@ -22,13 +22,12 @@
 <li><a data-i18n="nav.sponsors" href="/sponsors/sponsors.html">Sponsors</a></li>
 <li><a data-i18n="nav.news" href="/news/index.html">News</a></li>
 <li><a data-i18n="nav.contact" href="/index.html#contact">Contact</a></li>
-<li><button class="lang-toggle" data-i18n="toggle.lang" id="langToggleBtn" type="button">ENG</button></li>
+<li><a class="nav-apply" data-apply-cta="1" data-i18n="nav.apply" href="/apply/apply.html">지원하기</a></li><li><button class="lang-toggle" data-i18n="toggle.lang" id="langToggleBtn" type="button">ENG</button></li>
 <li class="nav-mobile-only">
 <button class="view-toggle" id="toggleViewBtn" type="button">
        PC 버전으로 보기
       </button>
 </li>
-
 </ul>
 <div aria-label="Open menu" class="hamburger" role="button" tabindex="0">
 <div></div>
@@ -39,155 +38,80 @@
 </header>
 <main class="sponsors-page">
 <div class="container">
-
 <!-- HERO -->
 <section class="s-hero">
-  <div class="s-hero__left">
-    <span
-      class="eyebrow"
-      id="heroEyebrow"
-      data-en="SPONSORSHIP"
-      data-ko="스폰서십"
-    >SPONSORSHIP</span>
-
-    <h1
-      id="heroTitle"
-      data-en="Sponsors"
-      data-ko="스폰서"
-    >Sponsors</h1>
-
-    <p
-      class="subtitle"
-      id="heroSubtitle"
-      data-en="Partner with Auto_Lab to accelerate development and testing."
-      data-ko="Auto_Lab의 개발과 테스트를 함께 가속할 파트너를 찾습니다."
-    >Partner with Auto_Lab to accelerate development and testing.</p>
-
-    <div class="hero-actions">
-      <!-- 버튼/헤더는 항상 영어여야 한다면: data-ko를 아예 안 넣고 영어 고정 -->
-      <a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
-      <a class="primary secondary" href="#" id="heroCtaTiers" rel="noopener" data-en="Sponsor Tiers" data-ko="스폰서 티어표">Sponsor Tiers</a>
-      <a href="#" id="heroCtaSecondary">Contact →</a>
+<div class="s-hero__left">
+<span class="eyebrow" data-en="SPONSORSHIP" data-ko="스폰서십" id="heroEyebrow">SPONSORSHIP</span>
+<h1 data-en="Sponsors" data-ko="스폰서" id="heroTitle">Sponsors</h1>
+<p class="subtitle" data-en="Partner with Auto_Lab to accelerate development and testing." data-ko="Auto_Lab의 개발과 테스트를 함께 가속할 파트너를 찾습니다." id="heroSubtitle">Partner with Auto_Lab to accelerate development and testing.</p>
+<div class="hero-actions">
+<!-- 버튼/헤더는 항상 영어여야 한다면: data-ko를 아예 안 넣고 영어 고정 -->
+<a class="primary" href="#" id="heroCtaPrimary" rel="noopener" target="_blank">Sponsorship PDF</a>
+<a class="primary secondary" data-en="Sponsor Tiers" data-ko="스폰서 티어표" href="#" id="heroCtaTiers" rel="noopener">Sponsor Tiers</a>
+<a href="#" id="heroCtaSecondary">Contact →</a>
+</div>
+<div class="hero-note">
+<b>Tier:</b> Title • Platinum • Gold • Silver • Support
     </div>
-
-    <div class="hero-note">
-      <b>Tier:</b> Title • Platinum • Gold • Silver • Support
-    </div>
-  </div>
-
-  <div class="s-hero__right">
-    <div class="hero-card">
-      <div class="hero-card__top">
-        <span
-          class="badge"
-          data-en="SPONSORSHIP"
-          data-ko="SPONSORSHIP"
-        >SPONSORSHIP</span>
-
-        <span
-          class="muted"
-          data-en="Auto_Lab Formula Student"
-          data-ko="Auto_Lab Formula Student"
-        >Auto_Lab Formula Student</span>
-      </div>
-
-      <div class="hero-card__mid">
-        <h3
-          data-en="Move Faster Together."
-          data-ko="함께 더 빠르게."
-        >Move Faster Together.</h3>
-
-        <p
-          data-en="Development cost, manufacturing infrastructure, and test operations scale with partner support."
-          data-ko="개발 비용, 제작 인프라, 테스트 운영은 파트너의 지원으로 확장됩니다."
-        >Development cost, manufacturing infrastructure, and test operations scale with partner support.</p>
-      </div>
-
-      <div class="hero-card__bottom">
-        <!-- 칩/버튼은 네 규칙대로 영어 고정이면 그대로 두면 됨 -->
-        <div class="chip">Aero</div>
-        <div class="chip">Data</div>
-        <div class="chip">Reliability</div>
-        <div class="chip">Endurance</div>
-      </div>
-    </div>
-  </div>
+</div>
+<div class="s-hero__right">
+<div class="hero-card">
+<div class="hero-card__top">
+<span class="badge" data-en="SPONSORSHIP" data-ko="SPONSORSHIP">SPONSORSHIP</span>
+<span class="muted" data-en="Auto_Lab Formula Student" data-ko="Auto_Lab Formula Student">Auto_Lab Formula Student</span>
+</div>
+<div class="hero-card__mid">
+<h3 data-en="Move Faster Together." data-ko="함께 더 빠르게.">Move Faster Together.</h3>
+<p data-en="Development cost, manufacturing infrastructure, and test operations scale with partner support." data-ko="개발 비용, 제작 인프라, 테스트 운영은 파트너의 지원으로 확장됩니다.">Development cost, manufacturing infrastructure, and test operations scale with partner support.</p>
+</div>
+<div class="hero-card__bottom">
+<!-- 칩/버튼은 네 규칙대로 영어 고정이면 그대로 두면 됨 -->
+<div class="chip">Aero</div>
+<div class="chip">Data</div>
+<div class="chip">Reliability</div>
+<div class="chip">Endurance</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- TIERS -->
 <div id="tiersMount"></div>
-
 <!-- PDF language picker -->
-<dialog id="pdfLangDialog" class="pdf-dialog">
-  <form method="dialog" class="pdf-dialog__panel">
-    <div class="pdf-dialog__head">
-      <h3
-        class="pdf-dialog__title"
-        data-en="Download Sponsorship Deck"
-        data-ko="스폰서십 제안서 다운로드"
-      >Download Sponsorship Deck</h3>
-
-      <button class="pdf-dialog__close" value="cancel" aria-label="Close">✕</button>
-    </div>
-
-    <p
-      class="pdf-dialog__desc"
-      data-en="Choose a language."
-      data-ko="언어를 선택하세요."
-    >Choose a language.</p>
-
-    <div class="pdf-dialog__actions">
-      <button type="button" class="pdf-btn pdf-btn--ko" id="pdfKoBtn">한국어 (PDF)</button>
-      <button type="button" class="pdf-btn pdf-btn--en" id="pdfEnBtn">English (PDF)</button>
-    </div>
-
-    <div class="pdf-dialog__foot">
-      <button class="pdf-dialog__cancel" value="cancel"
-        data-en="Cancel"
-        data-ko="취소"
-      >Cancel</button>
-    </div>
-  </form>
+<dialog class="pdf-dialog" id="pdfLangDialog">
+<form class="pdf-dialog__panel" method="dialog">
+<div class="pdf-dialog__head">
+<h3 class="pdf-dialog__title" data-en="Download Sponsorship Deck" data-ko="스폰서십 제안서 다운로드">Download Sponsorship Deck</h3>
+<button aria-label="Close" class="pdf-dialog__close" value="cancel">✕</button>
+</div>
+<p class="pdf-dialog__desc" data-en="Choose a language." data-ko="언어를 선택하세요.">Choose a language.</p>
+<div class="pdf-dialog__actions">
+<button class="pdf-btn pdf-btn--ko" id="pdfKoBtn" type="button">한국어 (PDF)</button>
+<button class="pdf-btn pdf-btn--en" id="pdfEnBtn" type="button">English (PDF)</button>
+</div>
+<div class="pdf-dialog__foot">
+<button class="pdf-dialog__cancel" data-en="Cancel" data-ko="취소" value="cancel">Cancel</button>
+</div>
+</form>
 </dialog>
-
-
 <!-- Tier table language picker -->
-<dialog id="tiersLangDialog" class="pdf-dialog">
-  <form method="dialog" class="pdf-dialog__panel">
-    <div class="pdf-dialog__head">
-      <h3
-        class="pdf-dialog__title"
-        data-en="Open Sponsor Tier Table"
-        data-ko="스폰서 티어표 열기"
-      >Open Sponsor Tier Table</h3>
-
-      <button class="pdf-dialog__close" value="cancel" aria-label="Close">✕</button>
-    </div>
-
-    <p
-      class="pdf-dialog__desc"
-      data-en="Choose a language."
-      data-ko="언어를 선택하세요."
-    >Choose a language.</p>
-
-    <div class="pdf-dialog__actions">
-      <button type="button" class="pdf-btn pdf-btn--ko" id="tiersKoBtn">한국어 (PDF)</button>
-      <button type="button" class="pdf-btn pdf-btn--en" id="tiersEnBtn">English (PDF)</button>
-    </div>
-
-    <div class="pdf-dialog__foot">
-      <button class="pdf-dialog__cancel" value="cancel"
-        data-en="Cancel"
-        data-ko="취소"
-      >Cancel</button>
-    </div>
-  </form>
+<dialog class="pdf-dialog" id="tiersLangDialog">
+<form class="pdf-dialog__panel" method="dialog">
+<div class="pdf-dialog__head">
+<h3 class="pdf-dialog__title" data-en="Open Sponsor Tier Table" data-ko="스폰서 티어표 열기">Open Sponsor Tier Table</h3>
+<button aria-label="Close" class="pdf-dialog__close" value="cancel">✕</button>
+</div>
+<p class="pdf-dialog__desc" data-en="Choose a language." data-ko="언어를 선택하세요.">Choose a language.</p>
+<div class="pdf-dialog__actions">
+<button class="pdf-btn pdf-btn--ko" id="tiersKoBtn" type="button">한국어 (PDF)</button>
+<button class="pdf-btn pdf-btn--en" id="tiersEnBtn" type="button">English (PDF)</button>
+</div>
+<div class="pdf-dialog__foot">
+<button class="pdf-dialog__cancel" data-en="Cancel" data-ko="취소" value="cancel">Cancel</button>
+</div>
+</form>
 </dialog>
 
-</dialog>
-
-
- <script src="/main/script.js"></script>
-  <script src="/sponsors/sponsors.js"></script>
-</body>
+<script src="/main/script.js"></script>
+<script src="/sponsors/sponsors.js"></script>
+</div></main></body>
 </html>

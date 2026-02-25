@@ -258,3 +258,111 @@ if (navLinks) navLinks.classList.remove('active');
     }
   });
 })();
+
+/* ================= APPLY DEADLINE (Recruit) =================
+   - Any element with [data-apply-cta] will be blocked after the deadline.
+   - Shows a modal: "지원기간이 아닙니다"
+   Deadline (UTC): 2026-03-09T15:00:00Z
+*/
+(function(){
+  const AUTOLAB_RECRUIT_DEADLINE = new Date('2026-03-09T15:00:00Z').getTime();
+
+  function getLang(){
+    const htmlLang = (document.documentElement.getAttribute('lang') || 'ko').toLowerCase();
+    const stored = (localStorage.getItem('lang') || '').toLowerCase();
+    const L = stored || htmlLang;
+    return (L === 'en') ? 'en' : 'ko';
+  }
+
+  function fallbackText(key){
+    const L = getLang();
+    const fb = {
+      ko: { title: '지원기간이 아닙니다', body: '이번 모집은 마감되었습니다.', close: '닫기' },
+      en: { title: 'Applications Closed', body: 'This recruitment period has ended.', close: 'Close' }
+    };
+    return (fb[L] && fb[L][key]) || fb.ko[key];
+  }
+
+  function pickText(i18nKey, fallbackKey){
+    const el = document.querySelector('[data-i18n="' + i18nKey + '"]');
+    const t = el && el.textContent ? el.textContent.trim() : '';
+    return t || fallbackText(fallbackKey);
+  }
+
+  function isRecruitOpen(nowMs){
+    const n = (typeof nowMs === 'number') ? nowMs : Date.now();
+    return n < AUTOLAB_RECRUIT_DEADLINE;
+  }
+
+  function closeModal(){
+    const ov = document.querySelector('.apply-modal-overlay');
+    if (ov) ov.remove();
+  }
+
+  function showApplyClosedModal(){
+    if (document.querySelector('.apply-modal-overlay')) return;
+
+    const title = pickText('apply.modal.title', 'title');
+    const body  = pickText('apply.modal.body',  'body');
+    const close = pickText('apply.modal.close', 'close');
+
+    const overlay = document.createElement('div');
+    overlay.className = 'apply-modal-overlay';
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+
+    const modal = document.createElement('div');
+    modal.className = 'apply-modal';
+
+    const h = document.createElement('h3');
+    h.textContent = title;
+
+    const p = document.createElement('p');
+    p.textContent = body;
+
+    const actions = document.createElement('div');
+    actions.className = 'apply-modal-actions';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'apply-modal-btn';
+    btn.textContent = close;
+    btn.addEventListener('click', closeModal);
+
+    actions.appendChild(btn);
+    modal.appendChild(h);
+    modal.appendChild(p);
+    modal.appendChild(actions);
+    overlay.appendChild(modal);
+
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function esc(e){
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', esc);
+      }
+    });
+
+    document.body.appendChild(overlay);
+  }
+
+  window.__AUTOLAB__ = window.__AUTOLAB__ || {};
+  window.__AUTOLAB__.isRecruitOpen = isRecruitOpen;
+  window.__AUTOLAB__.showApplyClosedModal = showApplyClosedModal;
+
+  window.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('[data-apply-cta]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        if (!isRecruitOpen()) {
+          e.preventDefault();
+          e.stopPropagation();
+          showApplyClosedModal();
+          return false;
+        }
+      });
+    });
+  });
+})();

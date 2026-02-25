@@ -22,14 +22,12 @@
 <li><a href="/sponsors/sponsors.html">Sponsors</a></li>
 <li><a href="/news/index.html">News</a></li>
 <li><a href="/#contact">Contact</a></li>
-<li><button type="button" id="langToggleBtn" class="lang-toggle" data-i18n="toggle.lang">ENG</button></li>
+<li><a class="nav-apply" data-apply-cta="1" data-i18n="nav.apply" href="/apply/apply.html">지원하기</a></li><li><button class="lang-toggle" data-i18n="toggle.lang" id="langToggleBtn" type="button">ENG</button></li>
 <li class="nav-mobile-only">
 <button class="view-toggle" id="toggleViewBtn" type="button">
        PC 버전으로 보기
       </button>
 </li>
-
-      
 </ul>
 <div aria-label="Open menu" class="hamburger" role="button" tabindex="0">
 <div></div>
@@ -72,24 +70,19 @@
 <h2>Members</h2>
 <p data-i18n="team_team.autolab.1">Auto_Lab을 구성하는 팀원들입니다.</p>
 </div>
-
 <div class="member-tools">
-  <div class="member-tabs" role="tablist" aria-label="EV/CV filter">
-    <button type="button" class="tab active" id="tabAll" data-team="ALL" role="tab" aria-selected="true">All</button>
-    <button type="button" class="tab" id="tabEV" data-team="EV" role="tab" aria-selected="false">EV</button>
-    <button type="button" class="tab" id="tabCV" data-team="CV" role="tab" aria-selected="false">CV</button>
-  </div>
-
-  <select id="memberDivision">
-    <option value="ALL">All Divisions</option>
-  </select>
-
-  <input id="memberSearch" placeholder="Search name or role" type="search"/>
+<div aria-label="EV/CV filter" class="member-tabs" role="tablist">
+<button aria-selected="true" class="tab active" data-team="ALL" id="tabAll" role="tab" type="button">All</button>
+<button aria-selected="false" class="tab" data-team="EV" id="tabEV" role="tab" type="button">EV</button>
+<button aria-selected="false" class="tab" data-team="CV" id="tabCV" role="tab" type="button">CV</button>
 </div>
-
+<select id="memberDivision">
+<option value="ALL">All Divisions</option>
+</select>
+<input id="memberSearch" placeholder="Search name or role" type="search"/>
+</div>
 <div class="member-grid" id="memberGrid"></div>
-<div id="memberPagination" class="member-pagination" aria-label="Members pagination"></div>
-
+<div aria-label="Members pagination" class="member-pagination" id="memberPagination"></div>
 </section>
 </div>
 </main>

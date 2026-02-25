@@ -1425,3 +1425,47 @@ header nav .nav-links .nav-mobile-only button{
     display: none !important;
   }
 }
+
+
+/* === APPLY CTA === */
+.nav-apply{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.10);
+  font-weight: 700;
+}
+.nav-apply:hover{ background: rgba(255,255,255,.16); }
+
+.apply-modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+.apply-modal{
+  width: min(520px, 100%);
+  border-radius: 18px;
+  background: rgba(20,20,24,.92);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  padding: 18px 18px 14px;
+}
+.apply-modal h3{ margin: 0 0 8px 0; font-size: 18px; }
+.apply-modal p{ margin: 0 0 14px 0; opacity: .85; line-height: 1.45; }
+.apply-modal .apply-modal-actions{ display:flex; justify-content:flex-end; gap:10px; }
+.apply-modal .apply-modal-btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  color: inherit;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.apply-modal .apply-modal-btn:hover{ background: rgba(255,255,255,.16); }

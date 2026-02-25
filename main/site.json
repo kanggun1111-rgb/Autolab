@@ -38,7 +38,18 @@
       "news.error.load_failed": "뉴스 데이터를 불러오지 못했습니다.",
       "news.error.invalid_access": "잘못된 접근입니다. 목록으로 이동합니다.",
       "news.error.post_load_failed": "게시글 데이터를 불러오지 못했습니다. 목록으로 이동합니다.",
-      "news.error.post_not_found": "게시글을 찾을 수 없습니다. 목록으로 이동합니다."
+      "news.error.post_not_found": "게시글을 찾을 수 없습니다. 목록으로 이동합니다.",
+      "nav.apply": "지원하기",
+      "home.hero.apply": "지원하기",
+      "apply.title": "지원하기 | Auto_Lab",
+      "apply.heading": "AUTOLAB RECRUIT",
+      "apply.desc": "아래 지원서를 작성해주세요.",
+      "apply.deadline": "마감: 2026년 3월 10일 00:00 (KST)",
+      "apply.closed.title": "지원기간이 아닙니다",
+      "apply.closed.body": "이번 모집은 마감되었습니다. 다음 모집 공지를 기다려주세요.",
+      "apply.modal.title": "지원기간이 아닙니다",
+      "apply.modal.body": "지원 마감: 2026년 3월 10일 00:00 (KST)",
+      "apply.modal.close": "닫기"
     },
     "en": {
       "nav.home": "Home",
@@ -77,7 +88,18 @@
       "news.error.load_failed": "Failed to load news data.",
       "news.error.invalid_access": "Invalid access. Returning to the list.",
       "news.error.post_load_failed": "Failed to load the post. Returning to the list.",
-      "news.error.post_not_found": "Post not found. Returning to the list."
+      "news.error.post_not_found": "Post not found. Returning to the list.",
+      "nav.apply": "Apply",
+      "home.hero.apply": "Apply Now",
+      "apply.title": "Apply | Auto_Lab",
+      "apply.heading": "AUTOLAB RECRUIT",
+      "apply.desc": "Please fill out the application form below.",
+      "apply.deadline": "Deadline: Mar 10, 2026 00:00 (KST)",
+      "apply.closed.title": "Applications Closed",
+      "apply.closed.body": "This recruitment period has ended. Please wait for the next announcement.",
+      "apply.modal.title": "Applications Closed",
+      "apply.modal.body": "The deadline has passed.",
+      "apply.modal.close": "Close"
     }
   }
 }
