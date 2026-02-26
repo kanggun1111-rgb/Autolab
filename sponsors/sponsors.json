@@ -53,8 +53,12 @@
       "items": [
         {
           "logo": "/sponsors/images/platinum-1.png",
+          "url": "https://www.cascadiamotion.com/"
+        },
+        {
+          "logo": "/sponsors/images/platinum-2.png",
           "url": "https://pnurise.pusan.ac.kr/pnurise/index.do"
-        }
+        }        
       ]
     },
     {
