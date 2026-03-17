@@ -262,10 +262,10 @@ if (navLinks) navLinks.classList.remove('active');
 /* ================= APPLY DEADLINE (Recruit) =================
    - Any element with [data-apply-cta] will be blocked after the deadline.
    - Shows a modal: "지원기간이 아닙니다"
-   Deadline (UTC): 2026-03-09T15:00:00Z
+   Deadline (UTC): 2026-03-19T13:00:00Z
 */
 (function(){
-  const AUTOLAB_RECRUIT_DEADLINE = new Date('2026-03-09T15:00:00Z').getTime();
+  const AUTOLAB_RECRUIT_DEADLINE = new Date('2026-03-19T13:00:00Z').getTime();
 
   function getLang(){
     const htmlLang = (document.documentElement.getAttribute('lang') || 'ko').toLowerCase();
